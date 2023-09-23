@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dwh16uujwbqmm"]
+
+[ext_resource type="Texture2D" uid="uid://b6ff6o738gube" path="res://ArtResources/Environment/Source/brickwall_brick_ivy.png" id="1_284fr"]
+
+[resource]
+resource_name = "brick_ivy"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_284fr")
+roughness = 0.5
+emission_enabled = true
+texture_filter = 2
