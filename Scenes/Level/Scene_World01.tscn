@@ -339,3 +339,4 @@ shape = SubResource("ConcavePolygonShape3D_c5nv4")
 navigation_mesh = SubResource("NavigationMesh_6rwdy")
 
 [node name="Player" parent="." instance=ExtResource("7_n6wfk")]
+visible = false

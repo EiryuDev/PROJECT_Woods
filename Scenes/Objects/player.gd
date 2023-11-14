@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+@export var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SLIDE_SPEED = 10.0  # Adjust this speed as needed
 const SLIDE_DURATION = 0.5  # Adjust the slide duration as needed
