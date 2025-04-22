@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=2 format=3 uid="uid://1feqnpy3upl3"]
 
-[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_gjc4m"]
+[ext_resource type="Script" uid="uid://clgl0lslaqn7j" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_gjc4m"]
 
 [resource]
 script = ExtResource("1_gjc4m")

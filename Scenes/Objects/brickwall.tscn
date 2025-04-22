@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://vxn2xxxvrrwh"]
+[gd_scene load_steps=5 format=4 uid="uid://vxn2xxxvrrwh"]
 
 [ext_resource type="Material" uid="uid://dwh16uujwbqmm" path="res://ArtResources/Environment/Source/brick_ivy.tres" id="1_cqjlo"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rp0to"]
 _surfaces = [{
 "aabb": AABB(-2, 0, -0.3, 4, 3.00001, 0.6),
-"format": 4097,
+"format": 34359742465,
 "index_count": 36,
-"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 1, 0, 5, 0, 4, 0, 0, 0, 1, 0, 6, 0, 5, 0, 7, 0, 6, 0, 4, 0, 5, 0, 3, 0, 7, 0, 2, 0, 3, 0, 6, 0, 7, 0, 2, 0, 5, 0, 1, 0, 2, 0, 7, 0, 5, 0, 6, 0, 0, 0, 4, 0, 6, 0, 3, 0, 0, 0),
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAABAAUABAAAAAEABgAFAAcABgAEAAUAAwAHAAIAAwAGAAcAAgAFAAEAAgAHAAUABgAAAAQABgADAAAA"),
 "name": "brick_ivy",
 "primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
-"vertex_data": PackedByteArray(0, 0, 0, 192, 0, 0, 64, 64, 154, 153, 153, 190, 0, 0, 0, 192, 0, 0, 0, 0, 154, 153, 153, 190, 0, 0, 0, 192, 0, 0, 0, 0, 154, 153, 153, 62, 0, 0, 0, 192, 0, 0, 64, 64, 154, 153, 153, 62, 0, 0, 0, 64, 0, 0, 64, 64, 154, 153, 153, 190, 0, 0, 0, 64, 0, 0, 0, 0, 154, 153, 153, 190, 0, 0, 0, 64, 0, 0, 64, 64, 154, 153, 153, 62, 0, 0, 0, 64, 0, 0, 0, 0, 154, 153, 153, 62)
+"vertex_data": PackedByteArray("AAAAwAAAQECamZm+AAAAwAAAAACamZm+AAAAwAAAAACamZk+AAAAwAAAQECamZk+AAAAQAAAQECamZm+AAAAQAAAAACamZm+AAAAQAAAQECamZk+AAAAQAAAAACamZk+")
 }]
 blend_shape_mode = 0
 
@@ -19,15 +20,16 @@ blend_shape_mode = 0
 resource_name = "brickwall_Cube_012"
 _surfaces = [{
 "aabb": AABB(-2, 0, -0.3, 4, 3.00001, 0.6),
-"attribute_data": PackedByteArray(231, 142, 59, 56, 0, 64, 59, 56, 229, 206, 59, 56, 17, 253, 127, 63, 213, 211, 76, 62, 18, 253, 127, 63, 213, 211, 76, 62, 0, 64, 59, 56, 0, 200, 17, 59, 0, 132, 137, 58, 0, 200, 17, 59, 62, 60, 64, 63, 54, 67, 128, 63, 62, 60, 64, 63, 54, 67, 128, 63, 0, 136, 137, 58, 231, 142, 59, 56, 0, 64, 59, 56, 229, 206, 59, 56, 17, 253, 127, 63, 213, 211, 76, 62, 18, 253, 127, 63, 213, 211, 76, 62, 0, 64, 59, 56, 0, 200, 17, 59, 0, 132, 137, 58, 0, 198, 17, 59, 63, 60, 64, 63, 54, 67, 128, 63, 66, 60, 64, 63, 55, 67, 128, 63, 0, 136, 137, 58, 0, 28, 72, 187, 47, 205, 88, 63, 128, 27, 72, 187, 209, 50, 127, 63, 208, 50, 127, 63, 209, 50, 127, 63, 208, 50, 127, 63, 45, 205, 88, 63, 124, 239, 127, 63, 124, 254, 21, 62, 124, 239, 127, 63, 0, 4, 102, 187, 0, 8, 55, 185, 0, 4, 102, 187, 0, 24, 55, 185, 124, 254, 21, 62),
-"format": 4119,
+"attribute_data": PackedByteArray("5447OABAOzjlzjs4Ef1/P9XTTD4S/X8/1dNMPgBAOzgAyBE7AISJOgDIETs+PEA/NkOAPz48QD82Q4A/AIiJOueOOzgAQDs45c47OBH9fz/V00w+Ev1/P9XTTD4AQDs4AMgROwCEiToAxhE7PzxAPzZDgD9CPEA/N0OAPwCIiToAHEi7L81YP4AbSLvRMn8/0DJ/P9Eyfz/QMn8/Lc1YP3zvfz98/hU+fO9/PwAEZrsACDe5AARmuwAYN7l8/hU+"),
+"format": 34359742487,
 "index_count": 36,
-"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 8, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 12, 0, 15, 0, 14, 0, 16, 0, 18, 0, 17, 0, 16, 0, 19, 0, 18, 0, 20, 0, 22, 0, 21, 0, 20, 0, 23, 0, 22, 0),
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAAGAAUABAAHAAYACAAKAAkACAALAAoADAAOAA0ADAAPAA4AEAASABEAEAATABIAFAAWABUAFAAXABYA"),
 "material": ExtResource("1_cqjlo"),
 "name": "brick_ivy",
 "primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
-"vertex_data": PackedByteArray(0, 0, 0, 192, 0, 0, 64, 64, 154, 153, 153, 190, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 0, 192, 0, 0, 0, 0, 154, 153, 153, 190, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 0, 192, 0, 0, 0, 0, 154, 153, 153, 62, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 0, 192, 0, 0, 64, 64, 154, 153, 153, 62, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 0, 64, 0, 0, 64, 64, 154, 153, 153, 190, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 64, 0, 0, 0, 0, 154, 153, 153, 190, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 192, 0, 0, 0, 0, 154, 153, 153, 190, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 192, 0, 0, 64, 64, 154, 153, 153, 190, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 0, 64, 0, 0, 64, 64, 154, 153, 153, 62, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 0, 64, 0, 0, 0, 0, 154, 153, 153, 62, 255, 255, 255, 127, 254, 255, 255, 255, 0, 0, 0, 64, 0, 0, 0, 0, 154, 153, 153, 190, 255, 255, 255, 127, 254, 255, 255, 255, 0, 0, 0, 64, 0, 0, 64, 64, 154, 153, 153, 190, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 0, 192, 0, 0, 64, 64, 154, 153, 153, 62, 255, 127, 255, 127, 254, 255, 255, 191, 0, 0, 0, 192, 0, 0, 0, 0, 154, 153, 153, 62, 255, 127, 255, 127, 254, 255, 255, 191, 0, 0, 0, 64, 0, 0, 0, 0, 154, 153, 153, 62, 255, 127, 255, 127, 254, 255, 255, 191, 0, 0, 0, 64, 0, 0, 64, 64, 154, 153, 153, 62, 255, 127, 255, 127, 254, 255, 255, 191, 0, 0, 0, 192, 0, 0, 0, 0, 154, 153, 153, 62, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 0, 0, 154, 153, 153, 190, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 0, 0, 154, 153, 153, 190, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 0, 0, 154, 153, 153, 62, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 64, 64, 154, 153, 153, 62, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 64, 64, 154, 153, 153, 190, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 64, 64, 154, 153, 153, 190, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 64, 64, 154, 153, 153, 62, 255, 127, 255, 255, 255, 255, 255, 191)
+"vertex_data": PackedByteArray("AAAAwAAAQECamZm+AAAAwAAAAACamZm+AAAAwAAAAACamZk+AAAAwAAAQECamZk+AAAAQAAAQECamZm+AAAAQAAAAACamZm+AAAAwAAAAACamZm+AAAAwAAAQECamZm+AAAAQAAAQECamZk+AAAAQAAAAACamZk+AAAAQAAAAACamZm+AAAAQAAAQECamZm+AAAAwAAAQECamZk+AAAAwAAAAACamZk+AAAAQAAAAACamZk+AAAAQAAAQECamZk+AAAAwAAAAACamZk+AAAAwAAAAACamZm+AAAAQAAAAACamZm+AAAAQAAAAACamZk+AAAAQAAAQECamZk+AAAAQAAAQECamZm+AAAAwAAAQECamZm+AAAAwAAAQECamZk+AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//////AAD/v/////8AAP+//////wAA/7//////AAD/v////3//////////f/7///////9//v///////3///////3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9///////+//3///////7//f///////v/9///////+/")
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rp0to")
