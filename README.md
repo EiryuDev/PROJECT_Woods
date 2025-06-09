@@ -1,2 +1,2 @@
-# PROJECT_Deathlore
- A game project inspired from Death road to canada and Mob Psycho anime where a group of psychic friends who are on a quest to protect the bangalore from evil spirits and supernatural threats. Each member of the group has their own % value and unique psychic abilities.
+# PROJECT_Woods
+A British major is sent to a forest feared by villagers. They say it’s alive—haunted by an angry goddess, old magic, and strange machines from another time. Now, the forest is watching him... and it’s not alone.
