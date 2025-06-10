@@ -1,10 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=10 format=3 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://c1jl0tqh02m1r" path="res://Scripts/Movement/Player/Player Locomotion Manager.gd" id="1_a4a77"]
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
+[ext_resource type="Script" uid="uid://d22tr7toifvol" path="res://Scripts/Combat/Player/PlayerWeaponManager.gd" id="2_dfgsd"]
 [ext_resource type="Script" uid="uid://c08p5lx400ri0" path="res://Scripts/Stats/PlayerStatsManager.gd" id="2_kvv6r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbvo1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_picsy"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_picsy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_picsy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_picsy"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -17,6 +26,31 @@ shape = SubResource("CapsuleShape3D_hbvo1")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 fov = 80.0
+
+[node name="Player Weapon Manager" type="Node3D" parent="Camera3D"]
+script = ExtResource("2_dfgsd")
+
+[node name="Weapons" type="Node3D" parent="Camera3D/Player Weapon Manager"]
+
+[node name="Machete" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.240902, -0.102817, -0.352253)
+visible = false
+mesh = SubResource("BoxMesh_picsy")
+
+[node name="Machine Gun" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.240902, -0.102817, -0.352253)
+visible = false
+mesh = SubResource("SphereMesh_picsy")
+
+[node name="Shotgun" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.240902, -0.102817, -0.352253)
+visible = false
+mesh = SubResource("CylinderMesh_picsy")
+
+[node name="Rocket Launcher" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons"]
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 0.240902, -0.102817, -0.352253)
+visible = false
+mesh = SubResource("CapsuleMesh_picsy")
 
 [node name="Player Stats Manager" type="Node" parent="."]
 script = ExtResource("2_kvv6r")
