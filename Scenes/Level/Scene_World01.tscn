@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=4 uid="uid://bc4u7he8yghg5"]
+[gd_scene load_steps=28 format=4 uid="uid://bc4u7he8yghg5"]
 
+[ext_resource type="Script" uid="uid://dq1uggnt0h6yf" path="res://Scripts/_World/_Character/_Root/WRLD_MANAGER.gd" id="1_ikhcb"]
 [ext_resource type="Texture2D" uid="uid://ckukvgj3xpwmj" path="res://ArtResources/Environment/Textures/grass_lowres.png" id="1_yuhoi"]
 [ext_resource type="Material" uid="uid://dwh16uujwbqmm" path="res://ArtResources/Environment/Source/brick_ivy.tres" id="2_33l6s"]
 [ext_resource type="Texture2D" uid="uid://2saoiftww80j" path="res://ArtResources/Environment/Source/shed_low_res_wood.png" id="3_5pkxh"]
@@ -217,10 +218,20 @@ data = PackedVector3Array(-50, 0.5, 50, 50, 0.5, 50, -50, -0.5, 50, 50, 0.5, 50,
 vertices = PackedVector3Array(7.75, 1, -39.25, 9, 1, -39.75, 9, 1, -40.25, -2, 1, -40.5, 13.5, 1, -36, 13, 1, -36, 8, 1, -35.75, 13.5, 1, -28.5, -1.75, 1, -42, 0.25, 1, -42, 0.25, 1, -49.5, -6, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -49.5, -49.5, 1, -43.5, -31, 1, -49.5, -49.5, 1, 0, -49.5, 1, 6, -49.5, 1, 43.25, -49.5, 1, 49.5, -43.5, 1, 49.5, 12.25, 1, 49.5, 18.5, 1, 49.5, 49.5, 1, 29.5, -31, 1, -49.5, -49.5, 1, -18.75, -49.5, 1, -12.5, -2, 1, -40.5, -1.75, 1, -42, -6, 1, -49.5, -12.25, 1, -49.5, 8, 1, -35.75, 7.75, 1, -39.25, -2, 1, -40.5, 43.25, 1, 49.5, 49.5, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, -0.25, 49.5, 1, -10, 13.5, 1, -28.5, -37.25, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -43.5, -49.5, 1, -37.25, -49.5, 1, 43.25, -43.5, 1, 49.5, -37.25, 1, 49.5, -49.5, 1, 37, 37, 1, 49.5, 43.25, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -49.5, 1, -12.5, -49.5, 1, -6.25, 12.25, 1, 49.5, 49.5, 1, 29.5, 49.5, 1, 19.5, 6, 1, 49.5, -2, 1, -40.5, -12.25, 1, -49.5, -18.5, 1, -49.5, 13.5, 1, -28.5, 8, 1, -35.75, -2, 1, -40.5, -24.75, 1, -49.5, -31, 1, -49.5, 30.75, 1, 49.5, 37, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -37.25, 1, -49.5, -49.5, 1, -37.25, -49.5, 1, -31, -49.5, 1, 37, -37.25, 1, 49.5, -31, 1, 49.5, -49.5, 1, 30.75, -2, 1, -40.5, -18.5, 1, -49.5, -24.75, 1, -49.5, 49.5, 1, 9.75, 49.5, 1, -0.25, 13.5, 1, -28.5, -6.25, 1, 49.5, 0, 1, 49.5, 49.5, 1, 19.5, 13.5, 1, -28.5, -31, 1, -49.5, -49.5, 1, 6, 24.75, 1, 49.5, 30.75, 1, 49.5, 49.5, 1, 39.5, -49.5, 1, 18.5, -18.75, 1, 49.5, -12.5, 1, 49.5, -49.5, 1, 12.25, -31, 1, -49.5, -49.5, 1, -31, -49.5, 1, -24.75, -49.5, 1, 24.75, -49.5, 1, 30.75, -31, 1, 49.5, -24.75, 1, 49.5, 24.75, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, 29.5, 18.5, 1, 49.5, 49.5, 1, -29.75, 15.25, 1, -30, 15, 1, -28.25, 49.5, 1, -20, 49.5, 1, 19.5, 49.5, 1, 9.75, 13.5, 1, -28.5, -49.5, 1, 12.25, -12.5, 1, 49.5, -6.25, 1, 49.5, -49.5, 1, 6, -31, 1, -49.5, -49.5, 1, -24.75, -49.5, 1, -18.75, -31, 1, -49.5, -49.5, 1, -6.25, -49.5, 1, 0, 49.5, 1, -20, 15, 1, -28.25, 13.5, 1, -28.5, 49.5, 1, -10, -49.5, 1, 24.75, -24.75, 1, 49.5, -18.75, 1, 49.5, -49.5, 1, 18.5, 0, 1, 49.5, 6, 1, 49.5, 49.5, 1, 19.5, 6.5, 1, -49.5, 0.25, 1, -49.5, 0.25, 1, -42, 6.5, 1, -42, 6.5, 1, -42, 13, 1, -42, 13, 1, -49.5, 6.5, 1, -49.5, 13, 1, -49.5, 13, 1, -42, 15.25, 1, -41.75, 22, 1, -49.5, 49.5, 1, -39.75, 40.25, 1, -49.5, 31.25, 1, -49.5, 15.25, 1, -41.75, 15.25, 1, -30, 49.5, 1, -29.75, 49.5, 1, -39.75, 49.5, 1, -49.5, 40.25, 1, -49.5, 31.25, 1, -49.5, 22, 1, -49.5, 15.25, 1, -41.75, 12.75, 1, -39.5, 13, 1, -36, 13.5, 1, -36, 13.5, 1, -40.25, 12.75, 1, -39.5, 13.5, 1, -40.25, 9, 1, -40.25, 9, 1, -39.75, 8.75, 4.75, -38.75, 8.75, 4.75, -36.75, 12, 4.75, -36.75, 12, 4.75, -38.75, 8.75, 5.25, -37.75, 12, 5.25, -37.75, 9, 1, -38.25, 9, 1, -37, 11.75, 1, -37, 11.75, 1, -38.25)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(20, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 30), PackedInt32Array(33, 32, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(39, 38, 37), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(50, 49, 48), PackedInt32Array(53, 52, 51), PackedInt32Array(54, 57, 55), PackedInt32Array(55, 57, 56), PackedInt32Array(60, 59, 58), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(64, 61, 65), PackedInt32Array(68, 67, 66), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(79, 78, 77), PackedInt32Array(82, 81, 80), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(86, 83, 88), PackedInt32Array(86, 88, 87), PackedInt32Array(91, 90, 89), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 95), PackedInt32Array(98, 97, 96), PackedInt32Array(100, 99, 101), PackedInt32Array(101, 99, 102), PackedInt32Array(103, 106, 104), PackedInt32Array(104, 106, 105), PackedInt32Array(108, 107, 109), PackedInt32Array(109, 107, 110), PackedInt32Array(113, 112, 111), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(120, 119, 118), PackedInt32Array(123, 122, 121), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(129, 128, 130), PackedInt32Array(130, 128, 131), PackedInt32Array(134, 133, 132), PackedInt32Array(138, 137, 135), PackedInt32Array(135, 137, 136), PackedInt32Array(142, 141, 139), PackedInt32Array(139, 141, 140), PackedInt32Array(144, 143, 145), PackedInt32Array(145, 143, 146), PackedInt32Array(148, 147, 149), PackedInt32Array(149, 147, 152), PackedInt32Array(149, 152, 150), PackedInt32Array(150, 152, 151), PackedInt32Array(155, 154, 153), PackedInt32Array(158, 157, 156), PackedInt32Array(160, 159, 161), PackedInt32Array(161, 159, 162), PackedInt32Array(166, 165, 163), PackedInt32Array(163, 165, 164), PackedInt32Array(170, 172, 167), PackedInt32Array(167, 172, 171), PackedInt32Array(171, 172, 169), PackedInt32Array(171, 169, 168), PackedInt32Array(176, 175, 173), PackedInt32Array(173, 175, 174)]
 
+[sub_resource type="BoxMesh" id="BoxMesh_ikhcb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikhcb"]
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rm08j")
+
+[node name="World Manager" type="Node" parent="."]
+script = ExtResource("1_ikhcb")
+
+[node name="World Discord Manager" type="Node" parent="."]
+script = ExtResource("1_ikhcb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.945518, -0.28195, 0.162784, 0, 0.5, 0.866026, -0.325568, 0.818843, -0.472759, 0, 0, 0)
@@ -322,7 +333,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_clnb3")
 
 [node name="brickwall6" type="Node3D" parent="Environment/Walls"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.3081, 0, -30.8666)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.302, -0.0201116, -30.8661)
 
 [node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/brickwall6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
@@ -349,4 +360,28 @@ shape = SubResource("ConcavePolygonShape3D_c5nv4")
 navigation_mesh = SubResource("NavigationMesh_6rwdy")
 
 [node name="Player" parent="." instance=ExtResource("7_n6wfk")]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26979, -29.255)
+
+[node name="Stair" type="Node" parent="."]
+
+[node name="Staircase" type="MeshInstance3D" parent="Stair"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15.6601, 1.56065, -33.4245)
+material_override = ExtResource("2_33l6s")
+mesh = SubResource("BoxMesh_ikhcb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stair/Staircase"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stair/Staircase/StaticBody3D"]
+shape = SubResource("BoxShape3D_ikhcb")
+
+[node name="Stair2" type="Node" parent="."]
+
+[node name="Staircase" type="MeshInstance3D" parent="Stair2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15.6485, 0.538179, -31.4807)
+material_override = ExtResource("2_33l6s")
+mesh = SubResource("BoxMesh_ikhcb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stair2/Staircase"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stair2/Staircase/StaticBody3D"]
+shape = SubResource("BoxShape3D_ikhcb")
