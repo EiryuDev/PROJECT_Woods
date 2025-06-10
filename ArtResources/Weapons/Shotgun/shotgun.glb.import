@@ -1,0 +1,52 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cupupie8mgckj"
+path="res://.godot/imported/shotgun.glb-4de473a6b88b0e0dc65a9789b439293c.scn"
+
+[deps]
+
+source_file="res://ArtResources/Weapons/Shotgun/shotgun.glb"
+dest_files=["res://.godot/imported/shotgun.glb-4de473a6b88b0e0dc65a9789b439293c.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"BlackMetal": {
+"use_external/enabled": true,
+"use_external/path": "uid://w04cgjpaao52"
+},
+"ShinyMetal": {
+"use_external/enabled": true,
+"use_external/path": "uid://cxgu2efwff8eh"
+},
+"Wood": {
+"use_external/enabled": true,
+"use_external/path": "uid://l5iui03xh7ho"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=0

@@ -1,19 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=12 format=3 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://c1jl0tqh02m1r" path="res://Scripts/Movement/Player/Player Locomotion Manager.gd" id="1_a4a77"]
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://d22tr7toifvol" path="res://Scripts/Combat/Player/PlayerWeaponManager.gd" id="2_dfgsd"]
 [ext_resource type="Script" uid="uid://c08p5lx400ri0" path="res://Scripts/Stats/PlayerStatsManager.gd" id="2_kvv6r"]
+[ext_resource type="PackedScene" uid="uid://bb1xpijsib3ha" path="res://ArtResources/Weapons/Machine Gun/machinegun.glb" id="3_xbekk"]
+[ext_resource type="PackedScene" uid="uid://bukcse5m60lc3" path="res://ArtResources/Weapons/Machete/machete.glb" id="3_y42te"]
+[ext_resource type="PackedScene" uid="uid://cupupie8mgckj" path="res://ArtResources/Weapons/Shotgun/shotgun.glb" id="5_2i876"]
+[ext_resource type="PackedScene" uid="uid://cnb57hid0o5pt" path="res://ArtResources/Weapons/Rocket Launcher/rocketlauncher.glb" id="6_jvxap"]
+[ext_resource type="PackedScene" uid="uid://ctssta4ymqadr" path="res://ArtResources/Weapons/Desert Eagle/Desert Eagle.glb" id="7_2i876"]
+[ext_resource type="Texture2D" uid="uid://bxe61tlsxg7le" path="res://ArtResources/UI/GUI/Crosshairs/crosshair010.png" id="10_jvxap"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbvo1"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_picsy"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_picsy"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_picsy"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_picsy"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -32,25 +30,27 @@ script = ExtResource("2_dfgsd")
 
 [node name="Weapons" type="Node3D" parent="Camera3D/Player Weapon Manager"]
 
-[node name="Machete" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.240902, -0.102817, -0.352253)
-visible = false
-mesh = SubResource("BoxMesh_picsy")
+[node name="Empty" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
 
-[node name="Machine Gun" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.240902, -0.102817, -0.352253)
+[node name="Machete" parent="Camera3D/Player Weapon Manager/Weapons" instance=ExtResource("3_y42te")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.448009, -0.535145, -0.656691)
 visible = false
-mesh = SubResource("SphereMesh_picsy")
 
-[node name="Shotgun" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons"]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.240902, -0.102817, -0.352253)
+[node name="Desert Eagle" parent="Camera3D/Player Weapon Manager/Weapons" instance=ExtResource("7_2i876")]
+transform = Transform3D(-0.2, 8.74228e-09, -1.51421e-08, 0, 0.173205, 0.1, 1.74846e-08, 0.1, -0.173205, 0.441, -0.333, -0.881)
 visible = false
-mesh = SubResource("CylinderMesh_picsy")
 
-[node name="Rocket Launcher" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons"]
-transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 0.240902, -0.102817, -0.352253)
+[node name="Machinegun" parent="Camera3D/Player Weapon Manager/Weapons" instance=ExtResource("3_xbekk")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.456387, -0.462753, -0.669759)
 visible = false
-mesh = SubResource("CapsuleMesh_picsy")
+
+[node name="Shotgun" parent="Camera3D/Player Weapon Manager/Weapons" instance=ExtResource("5_2i876")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.456387, -0.363011, -0.669759)
+visible = false
+
+[node name="Rocketlauncher" parent="Camera3D/Player Weapon Manager/Weapons" instance=ExtResource("6_jvxap")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.456387, -0.462753, -0.980995)
+visible = false
 
 [node name="Player Stats Manager" type="Node" parent="."]
 script = ExtResource("2_kvv6r")
@@ -61,3 +61,27 @@ SPEED = 4.0
 sprintSpeed = 1.5
 crouch_height = 1.5
 mouse_sens = 0.8
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="GUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -20.5
+offset_right = 20.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_jvxap")
+expand_mode = 3

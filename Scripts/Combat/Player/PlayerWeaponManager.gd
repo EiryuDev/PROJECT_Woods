@@ -5,12 +5,20 @@ var weaponsUnlocked = []
 var currentSlot = 0
 var currentWeapon = null
 
+@onready var crosshair = $"../../GUI/Crosshair"
+
 func _ready():
 	DisableAllWeapons()
 	for _i in range(weapons.size()):
-		weaponsUnlocked.append(false) # True for testing, default false
+		weaponsUnlocked.append(_i == 0 or _i == 2) # True for testing, default false
 	pass
 	
+func _process(delta):
+	if currentSlot == 0:
+		crosshair.visible = false
+	else:
+		crosshair.visible = true
+		
 func DisableAllWeapons():
 	for weapon in weapons:
 		if has_method("set_active"):

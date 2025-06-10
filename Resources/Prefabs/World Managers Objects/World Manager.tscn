@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://127i8t1q6urm"]
+
+[ext_resource type="Script" uid="uid://dq1uggnt0h6yf" path="res://Scripts/_World/_Character/_Root/WRLD_MANAGER.gd" id="1_kybvh"]
+
+[node name="World Manager" type="Node"]
+script = ExtResource("1_kybvh")
