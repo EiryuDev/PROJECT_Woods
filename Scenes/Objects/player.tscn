@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=20 format=3 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://c1jl0tqh02m1r" path="res://Scripts/Movement/Player/Player Locomotion Manager.gd" id="1_a4a77"]
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bukcse5m60lc3" path="res://ArtResources/Weapons/Machete/machete.glb" id="3_y42te"]
 [ext_resource type="Script" uid="uid://mv2yjxs4djj7" path="res://Scripts/_World/_Character/Combat/Weapons/WRLD_WEAPON.gd" id="4_y42te"]
 [ext_resource type="Script" uid="uid://b3ujgip13wym3" path="res://Scripts/_World/_Character/Combat/Weapons/WRLD_BULLET_EMITTER.gd" id="6_2i876"]
+[ext_resource type="PackedScene" uid="uid://bnj33ns5cbt7o" path="res://Resources/Prefabs/VFX Objects/Weapons/Muzzle Flashes/MuzzleFlash.tscn" id="6_6odyb"]
+[ext_resource type="PackedScene" uid="uid://oj4y021smnot" path="res://ArtResources/VFX/Weapons/Muzzle Flashes/muzzleflash1.glb" id="7_1mxid"]
 [ext_resource type="PackedScene" uid="uid://ctssta4ymqadr" path="res://ArtResources/Weapons/Desert Eagle/Desert Eagle.glb" id="7_2i876"]
 [ext_resource type="PackedScene" uid="uid://dflhlysk1h8pk" path="res://Resources/Prefabs/VFX Objects/Weapons/Bullet Emitters/HitScanBulletEmitter.tscn" id="7_jvxap"]
 [ext_resource type="Texture2D" uid="uid://bxe61tlsxg7le" path="res://ArtResources/UI/GUI/Crosshairs/crosshair010.png" id="10_jvxap"]
@@ -190,6 +192,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_h2jbs")
 }
 autoplay = "RESET"
+
+[node name="MuzzleFlash" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics" instance=ExtResource("6_6odyb")]
+transform = Transform3D(1, 8.88178e-14, -7.10543e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0.00677204, -1.16967, 2.69441)
+
+[node name="muzzleflash1" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/MuzzleFlash" instance=ExtResource("7_1mxid")]
+transform = Transform3D(1, -3.55271e-15, 0, 0, 1, 2.98023e-08, -7.10543e-15, -2.98023e-08, 1, 0, 0, 0)
 
 [node name="BulletEmitter" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle"]
 transform = Transform3D(1, 1.06581e-14, -7.10543e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)

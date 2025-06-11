@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnj33ns5cbt7o"]
+
+[ext_resource type="Script" uid="uid://g62vh7xppl3t" path="res://Scripts/_World/_Character/Combat/Weapons/WRLD_MUZZLE_FLASH.gd" id="1_r43nu"]
+
+[node name="MuzzleFlash" type="Node3D"]
+script = ExtResource("1_r43nu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0.145098, 1)

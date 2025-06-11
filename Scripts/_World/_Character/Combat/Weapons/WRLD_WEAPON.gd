@@ -46,6 +46,8 @@ func Attack(inputJustPressed: bool, inputHeld: bool):
 	lastAttackTime = curTime
 	animationPlayer.stop()
 	animationPlayer.play("Attack")
+	if has_node("Graphics/MuzzleFlash"):
+		$Graphics/MuzzleFlash.Flash()
 	
 func set_active(a: bool):
 	visible = a
