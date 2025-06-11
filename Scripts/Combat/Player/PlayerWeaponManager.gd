@@ -10,7 +10,7 @@ var currentWeapon = null
 func _ready():
 	DisableAllWeapons()
 	for _i in range(weapons.size()):
-		weaponsUnlocked.append(_i == 0 or _i == 2) # True for testing, default false
+		weaponsUnlocked.append(true) # True for testing, default false
 	pass
 	
 func _process(delta):
