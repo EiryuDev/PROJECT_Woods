@@ -21,6 +21,13 @@ var isDead = false
 func _ready():
 	playerStatsManager.died.connect(kill)
 
+func _process(delta):
+	if isDead:
+		return
+		
+	playerWeaponManager.Attack(Input.is_action_just_pressed("Attack"), Input.is_action_pressed("Attack"))
+	pass
+
 func _input(event):
 	if isDead:
 		return

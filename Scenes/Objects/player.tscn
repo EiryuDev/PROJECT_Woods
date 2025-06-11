@@ -1,41 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=18 format=3 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://c1jl0tqh02m1r" path="res://Scripts/Movement/Player/Player Locomotion Manager.gd" id="1_a4a77"]
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://d22tr7toifvol" path="res://Scripts/Combat/Player/PlayerWeaponManager.gd" id="2_dfgsd"]
 [ext_resource type="Script" uid="uid://c08p5lx400ri0" path="res://Scripts/Stats/PlayerStatsManager.gd" id="2_kvv6r"]
 [ext_resource type="PackedScene" uid="uid://bukcse5m60lc3" path="res://ArtResources/Weapons/Machete/machete.glb" id="3_y42te"]
+[ext_resource type="Script" uid="uid://mv2yjxs4djj7" path="res://Scripts/_World/_Character/Combat/Weapons/WRLD_WEAPON.gd" id="4_y42te"]
+[ext_resource type="Script" uid="uid://b3ujgip13wym3" path="res://Scripts/_World/_Character/Combat/Weapons/WRLD_BULLET_EMITTER.gd" id="6_2i876"]
 [ext_resource type="PackedScene" uid="uid://ctssta4ymqadr" path="res://ArtResources/Weapons/Desert Eagle/Desert Eagle.glb" id="7_2i876"]
+[ext_resource type="PackedScene" uid="uid://dflhlysk1h8pk" path="res://Resources/Prefabs/VFX Objects/Weapons/Bullet Emitters/HitScanBulletEmitter.tscn" id="7_jvxap"]
 [ext_resource type="Texture2D" uid="uid://bxe61tlsxg7le" path="res://ArtResources/UI/GUI/Crosshairs/crosshair010.png" id="10_jvxap"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbvo1"]
-
-[sub_resource type="Animation" id="Animation_0b04c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:quaternion")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Quaternion(0, 0, 0, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_jvxap"]
 resource_name = "Attack"
@@ -66,13 +42,7 @@ tracks/1/keys = {
 "values": [Quaternion(0, 0, 0, 1), Quaternion(0.235618, 0.00164513, -0.332231, 0.913293), Quaternion(-0.799538, 0.271095, -0.119293, 0.52251), Quaternion(-0.00119727, 0.00310563, -0.00279651, 0.999991)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6odyb"]
-_data = {
-&"Attack": SubResource("Animation_jvxap"),
-&"RESET": SubResource("Animation_0b04c")
-}
-
-[sub_resource type="Animation" id="Animation_1mxid"]
+[sub_resource type="Animation" id="Animation_0b04c"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -97,6 +67,12 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Quaternion(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6odyb"]
+_data = {
+&"Attack": SubResource("Animation_jvxap"),
+&"RESET": SubResource("Animation_0b04c")
 }
 
 [sub_resource type="Animation" id="Animation_6odyb"]
@@ -128,6 +104,33 @@ tracks/1/keys = {
 "values": [Quaternion(0, 0, 0, 1), Quaternion(-0.166579, 0, 0, 0.986028), Quaternion(-0.078184, -3.09935e-09, 3.99564e-09, 0.996939), Quaternion(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_1mxid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:quaternion")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Quaternion(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h2jbs"]
 _data = {
 &"Attack": SubResource("Animation_6odyb"),
@@ -135,7 +138,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 3
 script = ExtResource("1_picsy")
 
@@ -145,6 +148,9 @@ shape = SubResource("CapsuleShape3D_hbvo1")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 fov = 80.0
+
+[node name="FirePoint" type="Node3D" parent="Camera3D"]
+unique_name_in_owner = true
 
 [node name="Player Weapon Manager" type="Node3D" parent="Camera3D"]
 script = ExtResource("2_dfgsd")
@@ -158,7 +164,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.448009, -0.535145, -0
 visible = false
 
 [node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 rotation_edit_mode = 1
 
 [node name="Machete" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics" instance=ExtResource("3_y42te")]
@@ -171,9 +176,10 @@ autoplay = "RESET"
 
 [node name="Desert Eagle" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
 transform = Transform3D(-0.2, 8.74228e-09, -1.51421e-08, 0, 0.173205, 0.1, 1.74846e-08, 0.1, -0.173205, 0.441, -0.333, -0.881)
+script = ExtResource("4_y42te")
+attackRate = 0.5
 
 [node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 rotation_edit_mode = 1
 
 [node name="Desert Eagle" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics" instance=ExtResource("7_2i876")]
@@ -184,6 +190,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_h2jbs")
 }
 autoplay = "RESET"
+
+[node name="BulletEmitter" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle"]
+transform = Transform3D(1, 1.06581e-14, -7.10543e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+script = ExtResource("6_2i876")
+metadata/_custom_type_script = "uid://b3ujgip13wym3"
+
+[node name="HitScanBulletEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/BulletEmitter" instance=ExtResource("7_jvxap")]
 
 [node name="Player Stats Manager" type="Node" parent="."]
 script = ExtResource("2_kvv6r")

@@ -11,7 +11,7 @@ func _ready():
 	DisableAllWeapons()
 	for _i in range(weapons.size()):
 		weaponsUnlocked.append(true) # True for testing, default false
-	pass
+	SwitchToWeaponSlot(1)
 	
 func _process(delta):
 	if currentSlot == 0:
@@ -19,6 +19,10 @@ func _process(delta):
 	else:
 		crosshair.visible = true
 		
+func Attack(inputJustPressed: bool, inputHeld: bool):
+	if currentWeapon is Weapon:
+		currentWeapon.Attack(inputJustPressed, inputHeld)
+	
 func DisableAllWeapons():
 	for weapon in weapons:
 		if has_method("set_active"):

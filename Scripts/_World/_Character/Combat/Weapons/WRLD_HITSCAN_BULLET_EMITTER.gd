@@ -9,6 +9,8 @@ func SetBodiesToExclude(bodies: Array):
 		raycast3D.add_exception(body)
 		
 func Fire():
+	raycast3D.enabled = true
+	raycast3D.force_raycast_update()
 	if raycast3D.is_colliding():
 		if raycast3D.get_collider().has_method("Hurt"):
 			var damageData = DamageData.new()
@@ -26,5 +28,6 @@ func Fire():
 				hitEffect.look_at(lookAtPosition, Vector3.RIGHT)
 			else:
 				hitEffect.look_at(lookAtPosition)
+	raycast3D.enabled = false
 	super()
 	
