@@ -35,6 +35,9 @@ func _input(event):
 		playerWeaponManager.SwitchToWeaponSlot(HOTKEYS[event.keycode])
 	
 
+func Hurt(WRLD_DAMAGE_DATA: DamageData):
+	playerStatsManager.hurt(WRLD_DAMAGE_DATA)
+
 func kill():
 	isDead = true;
 	playerLocomotionManager.StopMovement()
