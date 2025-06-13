@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=35 format=3 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://c1jl0tqh02m1r" path="res://Scripts/Movement/Player/Player Locomotion Manager.gd" id="1_a4a77"]
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dflhlysk1h8pk" path="res://Resources/Prefabs/VFX Objects/Weapons/Bullet Emitters/HitScanBulletEmitter.tscn" id="7_jvxap"]
 [ext_resource type="Texture2D" uid="uid://bxe61tlsxg7le" path="res://ArtResources/UI/GUI/Crosshairs/crosshair010.png" id="10_jvxap"]
 [ext_resource type="Script" uid="uid://sjns8dyc44ww" path="res://Scripts/Items/Player/Pickup/PlayerPickupManager.gd" id="13_h2jbs"]
+[ext_resource type="Script" uid="uid://f1stis0b1nv5" path="res://Scripts/UI/Player/UI_HealthEffectsDisplay.gd" id="14_5rt57"]
 [ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="15_ea56u"]
 [ext_resource type="Script" uid="uid://cr2e7aw2vly3e" path="res://Scripts/UI/Player/UI_StatsDisplay.gd" id="16_8ietw"]
 
@@ -201,6 +202,44 @@ _data = {
 radius = 0.583
 height = 2.091
 
+[sub_resource type="Animation" id="Animation_8ietw"]
+resource_name = "Flash"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5rt57"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2cyj"]
+_data = {
+&"Flash": SubResource("Animation_8ietw"),
+&"RESET": SubResource("Animation_5rt57")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_ea56u"]
 font_size = 40
 
@@ -339,6 +378,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Health Effects Display" type="Control" parent="GUI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_5rt57")
+
+[node name="Healed" type="ColorRect" parent="GUI/Health Effects Display"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="Hurt" type="ColorRect" parent="GUI/Health Effects Display"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Health Effects Display"]
+libraries = {
+&"": SubResource("AnimationLibrary_u2cyj")
+}
 
 [node name="Crosshair" type="TextureRect" parent="GUI"]
 layout_mode = 1

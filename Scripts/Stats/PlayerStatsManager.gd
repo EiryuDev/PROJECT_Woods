@@ -12,6 +12,7 @@ signal gibbed
 signal healthChanged(currentHealth, maxHealth)
 
 func _ready():
+	currentHealth = 60
 	healthChanged.emit(currentHealth, maxHealth)
 	if verbose:
 		print("Starting health: %s/%s" % [currentHealth, maxHealth])
