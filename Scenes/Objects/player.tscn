@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=31 format=3 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://c1jl0tqh02m1r" path="res://Scripts/Movement/Player/Player Locomotion Manager.gd" id="1_a4a77"]
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dflhlysk1h8pk" path="res://Resources/Prefabs/VFX Objects/Weapons/Bullet Emitters/HitScanBulletEmitter.tscn" id="7_jvxap"]
 [ext_resource type="Texture2D" uid="uid://bxe61tlsxg7le" path="res://ArtResources/UI/GUI/Crosshairs/crosshair010.png" id="10_jvxap"]
 [ext_resource type="Script" uid="uid://sjns8dyc44ww" path="res://Scripts/Items/Player/Pickup/PlayerPickupManager.gd" id="13_h2jbs"]
+[ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="15_ea56u"]
+[ext_resource type="Script" uid="uid://cr2e7aw2vly3e" path="res://Scripts/UI/Player/UI_StatsDisplay.gd" id="16_8ietw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbvo1"]
 
@@ -199,6 +201,26 @@ _data = {
 radius = 0.583
 height = 2.091
 
+[sub_resource type="LabelSettings" id="LabelSettings_ea56u"]
+font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ea56u"]
+bg_color = Color(0.384314, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ietw"]
+bg_color = Color(0.443137, 1, 0.411765, 1)
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0, 0.67451, 0, 1)
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 6
 collision_mask = 3
@@ -219,8 +241,6 @@ unique_name_in_owner = true
 script = ExtResource("2_dfgsd")
 
 [node name="Weapons" type="Node3D" parent="Camera3D/Player Weapon Manager"]
-
-[node name="Empty" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
 
 [node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.448009, -0.535145, -0.656691)
@@ -335,6 +355,62 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_jvxap")
 expand_mode = 3
+
+[node name="Stats Display" type="Control" parent="GUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -152.0
+offset_right = 576.0
+grow_vertical = 0
+theme = ExtResource("15_ea56u")
+script = ExtResource("16_8ietw")
+
+[node name="Ammo Display" type="Label" parent="GUI/Stats Display"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -152.0
+offset_right = 568.0
+offset_bottom = -106.0
+grow_vertical = 0
+text = "Ammo: 0"
+label_settings = SubResource("LabelSettings_ea56u")
+vertical_alignment = 1
+
+[node name="Health Text" type="Label" parent="GUI/Stats Display"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -96.0
+offset_right = 203.0
+offset_bottom = -40.0
+grow_vertical = 0
+text = "Health : "
+label_settings = SubResource("LabelSettings_ea56u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health Display" type="ProgressBar" parent="GUI/Stats Display"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = -96.0
+offset_right = 572.0
+offset_bottom = -48.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_ea56u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8ietw")
+step = 1.0
+value = 50.0
+show_percentage = false
 
 [connection signal="moved" from="Player Locomotion Manager" to="Camera3D/Player Weapon Manager" method="UpdateAnimation"]
 

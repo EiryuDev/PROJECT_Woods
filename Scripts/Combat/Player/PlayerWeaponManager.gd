@@ -15,8 +15,8 @@ func _ready():
 	DisableAllWeapons()
 	for _i in range(weapons.size()):
 		weaponsUnlocked.append(false) # True for testing, default false
-	weaponsUnlocked[1] = true
-	SwitchToWeaponSlot(1)
+	weaponsUnlocked[0] = true
+	SwitchToWeaponSlot(0)
 	
 func _process(delta):
 	if currentSlot == 0:
