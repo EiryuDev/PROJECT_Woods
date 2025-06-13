@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhsl3maubl5in"]
+
+[ext_resource type="PackedScene" uid="uid://7yie33yn1whl" path="res://Resources/Prefabs/Item Objects/Pickups/Pickup.tscn" id="1_8gyd5"]
+[ext_resource type="PackedScene" uid="uid://ctssta4ymqadr" path="res://ArtResources/Weapons/Desert Eagle/Desert Eagle.glb" id="2_4vpls"]
+
+[node name="Deagle Pickup" instance=ExtResource("1_8gyd5")]
+pickupType = 1
+pickupAmount = 9
+
+[node name="Desert Eagle" parent="Graphics" index="0" instance=ExtResource("2_4vpls")]
+transform = Transform3D(-0.15, -6.55671e-09, 1.13566e-08, 0, 0.129904, 0.075, -1.31134e-08, 0.075, -0.129904, 0, 0, 0)

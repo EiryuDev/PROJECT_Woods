@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq18tbgnu146j"]
+
+[ext_resource type="PackedScene" uid="uid://7yie33yn1whl" path="res://Resources/Prefabs/Item Objects/Pickups/Pickup.tscn" id="1_0o3hh"]
+[ext_resource type="PackedScene" uid="uid://cn676cifqnkdc" path="res://ArtResources/Pickups/health_pack.glb" id="2_to758"]
+
+[node name="Health Pickup" instance=ExtResource("1_0o3hh")]
+pickupAmount = 40
+
+[node name="health_pack" parent="Graphics" index="0" instance=ExtResource("2_to758")]

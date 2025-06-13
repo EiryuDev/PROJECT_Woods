@@ -41,6 +41,8 @@ var is_crouching = false
 @onready var player = $".."
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+signal moved(velocity: Vector3, grounded: bool)
+
 func _input(event):
 	if player.isDead:
 		return
@@ -126,3 +128,4 @@ func _physics_process(delta):
 		characterBody.velocity.z = move_toward(characterBody.velocity.z, 0, SPEED)
 
 	characterBody.move_and_slide()  # Call on parent, not self
+	moved.emit(characterBody.velocity, characterBody.is_on_floor())

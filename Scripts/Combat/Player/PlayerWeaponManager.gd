@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var animationPlayer = $AnimationPlayer
 @onready var weapons = $Weapons.get_children()
 var weaponsUnlocked = []
 var currentSlot = 0
@@ -8,9 +9,13 @@ var currentWeapon = null
 @onready var crosshair = $"../../GUI/Crosshair"
 
 func _ready():
+	for weapon in weapons:
+		if weapon.has_method("SetBodiesToExclude"):
+			weapon.SetBodiesToExclude([get_parent().get_parent()])
 	DisableAllWeapons()
 	for _i in range(weapons.size()):
-		weaponsUnlocked.append(true) # True for testing, default false
+		weaponsUnlocked.append(false) # True for testing, default false
+	weaponsUnlocked[1] = true
 	SwitchToWeaponSlot(1)
 	
 func _process(delta):
@@ -22,6 +27,15 @@ func _process(delta):
 func Attack(inputJustPressed: bool, inputHeld: bool):
 	if currentWeapon is Weapon:
 		currentWeapon.Attack(inputJustPressed, inputHeld)
+	
+func UnlockWeapon(weapon : Weapon):
+	if weapon == null:
+		return
+	var weaponIndex = weapon.get_index()
+	var weaponAlreadyUnlocked = weaponsUnlocked[weaponIndex]
+	weaponsUnlocked[weaponIndex] = true
+	if !weaponAlreadyUnlocked:
+		SwitchToWeaponSlot(weaponIndex)
 	
 func DisableAllWeapons():
 	for weapon in weapons:
@@ -57,3 +71,17 @@ func SwitchToWeaponSlot(slotIndex: int)->bool:
 		currentWeapon.show()
 		
 	return true
+
+func UpdateAnimation(velocity: Vector3, grounded: bool):
+	if currentWeapon is Weapon and !currentWeapon.isIdle():
+		animationPlayer.play("RESET")
+	elif !grounded or velocity.length() < 3.0:
+		animationPlayer.play("RESET", 0.3)
+	else:
+		animationPlayer.play("Moving", 0.3)
+
+func GetWeaponFromPickUpType(weaponType: Pickup.WEAPONS) -> Weapon:
+	match weaponType:
+		Pickup.WEAPONS.DEAGLE:
+			return $"Weapons/Desert Eagle"
+	return null

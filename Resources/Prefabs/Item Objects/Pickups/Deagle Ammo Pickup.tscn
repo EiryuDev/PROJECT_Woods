@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8yug1ie1muvy"]
+
+[ext_resource type="PackedScene" uid="uid://7yie33yn1whl" path="res://Resources/Prefabs/Item Objects/Pickups/Pickup.tscn" id="1_13mmi"]
+[ext_resource type="PackedScene" uid="uid://dpno4gqdq1jt0" path="res://ArtResources/Pickups/mg_ammo.glb" id="2_tmbys"]
+
+[node name="Deagle Ammo Pickup" instance=ExtResource("1_13mmi")]
+pickupType = 2
+pickupAmount = 9
+
+[node name="mg_ammo" parent="Graphics" index="0" instance=ExtResource("2_tmbys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.186794, 0)

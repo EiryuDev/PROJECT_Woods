@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtslyr5sut3p2"]
+
+[ext_resource type="Script" uid="uid://ddu3w8sg1hkap" path="res://Scripts/_World/_Character/Combat/Weapons/WRLD_AREA_DAMAGE_EMITTER.gd" id="1_etpye"]
+
+[node name="AreaDamageEmitter" type="Node3D"]
+script = ExtResource("1_etpye")
+
+[node name="LOSRaycast" type="RayCast3D" parent="."]
+enabled = false

@@ -1,5 +1,7 @@
 extends BulletEmitter
 
+@export var onlyHitEnvironment = false 
+
 @onready var raycast3D = $RayCast3D
 var bulletHitEffect = preload("res://Resources/Prefabs/VFX Objects/Weapons/BulletHitEffect.tscn")
 
@@ -12,7 +14,10 @@ func Fire():
 	raycast3D.enabled = true
 	raycast3D.force_raycast_update()
 	if raycast3D.is_colliding():
-		if raycast3D.get_collider().has_method("Hurt"):
+		var canHurt = raycast3D.get_collider().has_method("Hurt")
+		if canHurt and onlyHitEnvironment:
+			pass
+		elif canHurt:
 			var damageData = DamageData.new()
 			damageData.amount = damage
 			damageData.hitPos = raycast3D.get_collision_point()

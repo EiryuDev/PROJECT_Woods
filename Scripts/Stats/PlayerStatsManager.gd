@@ -3,7 +3,7 @@ extends Node
 @export var maxHealth = 100
 @onready var currentHealth = maxHealth
 @export var gibAt = -10
-@export var verbose = false
+@export var verbose = true
 
 signal died
 signal healed 
