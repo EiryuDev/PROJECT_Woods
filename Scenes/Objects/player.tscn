@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=37 format=3 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://c1jl0tqh02m1r" path="res://Scripts/Movement/Player/Player Locomotion Manager.gd" id="1_a4a77"]
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://f1stis0b1nv5" path="res://Scripts/UI/Player/UI_HealthEffectsDisplay.gd" id="14_5rt57"]
 [ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="15_ea56u"]
 [ext_resource type="Script" uid="uid://cr2e7aw2vly3e" path="res://Scripts/UI/Player/UI_StatsDisplay.gd" id="16_8ietw"]
+[ext_resource type="Script" uid="uid://bqnwa2gc2aesx" path="res://Scripts/UI/Player/UI_PickupInfoDisplay.gd" id="16_u2cyj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbvo1"]
 
@@ -240,6 +241,9 @@ _data = {
 &"RESET": SubResource("Animation_5rt57")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_5rt57"]
+font_size = 40
+
 [sub_resource type="LabelSettings" id="LabelSettings_ea56u"]
 font_size = 40
 
@@ -378,6 +382,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_ea56u")
 
 [node name="Health Effects Display" type="Control" parent="GUI"]
 modulate = Color(1, 1, 1, 0)
@@ -413,6 +418,22 @@ color = Color(1, 0, 0, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_u2cyj")
 }
+
+[node name="Pickup Info Display" type="Label" parent="GUI"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0.666667, 1)
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 264.0
+offset_bottom = 128.0
+text = "Picked Up Deagle
+Picked Up 9 Deagle Ammo
+Picked Up Health
+Picked Up Deagle
+Picked Up 9 Deagle Ammo"
+label_settings = SubResource("LabelSettings_5rt57")
+script = ExtResource("16_u2cyj")
 
 [node name="Crosshair" type="TextureRect" parent="GUI"]
 layout_mode = 1

@@ -399,3 +399,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4288, 0.19163, 1.81209)
 
 [node name="Health Pickup" parent="Pickups" instance=ExtResource("12_k1sfk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81243, 0.315706, 0.822128)
+
+[node name="Health Pickup2" parent="Pickups" instance=ExtResource("12_k1sfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8124, 0.315706, 4.21812)
+
+[node name="Health Pickup3" parent="Pickups" instance=ExtResource("12_k1sfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8124, 0.315706, 4.21812)
+
+[node name="Health Pickup4" parent="Pickups" instance=ExtResource("12_k1sfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8124, 0.315706, 6.21812)
+
+[node name="Health Pickup5" parent="Pickups" instance=ExtResource("12_k1sfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8124, 0.315706, 6.21812)
+
+[node name="Health Pickup6" parent="Pickups" instance=ExtResource("12_k1sfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8124, 0.315706, 8.21812)
+
+[node name="Health Pickup7" parent="Pickups" instance=ExtResource("12_k1sfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8124, 0.315706, 8.21812)
+
+[node name="Health Pickup8" parent="Pickups" instance=ExtResource("12_k1sfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8124, 0.315706, 10.2181)
+
+[node name="Health Pickup9" parent="Pickups" instance=ExtResource("12_k1sfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8124, 0.315706, 10.2181)

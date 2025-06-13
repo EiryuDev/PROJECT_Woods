@@ -2,6 +2,7 @@ extends Area3D
 
 @onready var playerStatsManager = %"Player Stats Manager"
 @onready var playerWeaponManager = %"Player Weapon Manager"
+@onready var pickupInfoDisplay = %"Pickup Info Display"
 
 func _ready():
 	area_entered.connect(OnAreaEnter)
@@ -24,4 +25,5 @@ func OnAreaEnter(pickup: Area3D):
 				weapon.AddAmmo(pickup.pickupAmount)
 	
 	if deleteOnPickup:
+		pickupInfoDisplay.OnPickup(pickup)
 		pickup.Pickup()
