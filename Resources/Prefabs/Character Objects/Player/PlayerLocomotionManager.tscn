@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdy3j8i233lnn"]
+
+[ext_resource type="Script" uid="uid://c1jl0tqh02m1r" path="res://Scripts/Movement/Player/Player Locomotion Manager.gd" id="1_umjap"]
+
+[node name="Player Locomotion Manager" type="Node3D"]
+script = ExtResource("1_umjap")
+SPEED = 4.0
+sprintSpeed = 1.5
+crouch_height = 1.5
+mouse_sens = 0.8

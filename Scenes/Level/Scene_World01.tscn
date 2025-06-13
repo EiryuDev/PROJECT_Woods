@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=4 uid="uid://bc4u7he8yghg5"]
+[gd_scene load_steps=33 format=4 uid="uid://bc4u7he8yghg5"]
 
+[ext_resource type="AudioStream" uid="uid://ut1mhyvtapuk" path="res://Audio/BGS/Silent Hill Ambient.mp3" id="1_1eanf"]
 [ext_resource type="PackedScene" uid="uid://127i8t1q6urm" path="res://Resources/Prefabs/World Managers Objects/World Manager.tscn" id="1_ikhcb"]
 [ext_resource type="Texture2D" uid="uid://ckukvgj3xpwmj" path="res://ArtResources/Environment/Textures/grass_lowres.png" id="1_yuhoi"]
 [ext_resource type="Material" uid="uid://dwh16uujwbqmm" path="res://ArtResources/Environment/Source/brick_ivy.tres" id="2_33l6s"]
@@ -231,6 +232,12 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rm08j")
 
+[node name="Background Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_1eanf")
+volume_db = 1.0
+autoplay = true
+parameters/looping = true
+
 [node name="World Manager" parent="." instance=ExtResource("1_ikhcb")]
 
 [node name="World Discord Manager" parent="." instance=ExtResource("2_hqcm7")]
@@ -399,27 +406,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4288, 0.19163, 1.81209)
 
 [node name="Health Pickup" parent="Pickups" instance=ExtResource("12_k1sfk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81243, 0.315706, 0.822128)
-
-[node name="Health Pickup2" parent="Pickups" instance=ExtResource("12_k1sfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8124, 0.315706, 4.21812)
-
-[node name="Health Pickup3" parent="Pickups" instance=ExtResource("12_k1sfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8124, 0.315706, 4.21812)
-
-[node name="Health Pickup4" parent="Pickups" instance=ExtResource("12_k1sfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8124, 0.315706, 6.21812)
-
-[node name="Health Pickup5" parent="Pickups" instance=ExtResource("12_k1sfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8124, 0.315706, 6.21812)
-
-[node name="Health Pickup6" parent="Pickups" instance=ExtResource("12_k1sfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8124, 0.315706, 8.21812)
-
-[node name="Health Pickup7" parent="Pickups" instance=ExtResource("12_k1sfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8124, 0.315706, 8.21812)
-
-[node name="Health Pickup8" parent="Pickups" instance=ExtResource("12_k1sfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8124, 0.315706, 10.2181)
-
-[node name="Health Pickup9" parent="Pickups" instance=ExtResource("12_k1sfk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8124, 0.315706, 10.2181)

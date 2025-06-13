@@ -1,4 +1,4 @@
-extends Node  # Or whatever type your child node actually is (Node3D, Area3D, etc.)
+class_name PlayerLocomotionManager extends Node  # Or whatever type your child node actually is (Node3D, Area3D, etc.)
 @onready var characterBody = get_parent() as CharacterBody3D
 
 # === Movement Settings ===
@@ -72,6 +72,8 @@ func _physics_process(delta):
 	# Handle jump
 	if Input.is_action_just_pressed("jump") and characterBody.is_on_floor():
 		characterBody.velocity.y = JUMP_VELOCITY
+		if has_node("JumpSound"):
+			$JumpSound.play()
 
 	# Handle crouch (disables sprinting when crouching)
 	if Input.is_action_pressed("crouch"):

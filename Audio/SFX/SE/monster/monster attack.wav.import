@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfbf8evo4w2mr"
+path="res://.godot/imported/monster attack.wav-93bc10ee5a541a6bf8c2fe3d7c41abd5.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/SE/monster/monster attack.wav"
+dest_files=["res://.godot/imported/monster attack.wav-93bc10ee5a541a6bf8c2fe3d7c41abd5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

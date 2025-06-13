@@ -20,6 +20,10 @@ boot_splash/use_filter=false
 boot_splash/image="uid://cwpc7uxbfr3rc"
 config/icon="uid://8cnyq3i0h18x"
 
+[audio]
+
+buses/default_bus_layout="res://Audio/_MIXER.tres"
+
 [autoload]
 
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"

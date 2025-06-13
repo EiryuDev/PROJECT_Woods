@@ -35,6 +35,8 @@ func Attack(inputJustPressed: bool, inputHeld: bool):
 	if ammo == 0:
 		if inputJustPressed:
 			outOfAmmo.emit()
+			if has_node("OutofAmmoSound"):
+				$OutofAmmoSound.play()
 		return
 	
 	var curTime = Time.get_ticks_msec() / 1000.0
@@ -50,6 +52,7 @@ func Attack(inputJustPressed: bool, inputHeld: bool):
 	animationPlayer.stop()
 	animationPlayer.play("Attack")
 	fired.emit()
+	$AttackSounds.play()
 	ammoUpdated.emit(ammo)
 	if has_node("Graphics/MuzzleFlash"):
 		$Graphics/MuzzleFlash.Flash()
@@ -63,6 +66,7 @@ func set_active(a: bool):
 	if !a:
 		animationPlayer.play("RESET")
 	else:
+		$EquipSound.play()
 		ammoUpdated.emit(ammo)
 
 func isIdle() -> bool:
