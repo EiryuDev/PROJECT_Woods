@@ -37,7 +37,7 @@ var is_crouching = false
 # === Nodes and Physics ===
 @onready var camera = $"../Camera3D"
 @onready var player_collision_shape = $"../CollisionShape3D"
-@onready var camera_start_pos = $"../Camera3D".position
+@onready var camera_start_pos = camera.position
 @onready var player = $".."
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 

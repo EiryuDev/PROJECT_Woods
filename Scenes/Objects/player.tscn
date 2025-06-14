@@ -631,4 +631,13 @@ label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewport" type="SubViewportContainer" parent="CanvasLayer"]
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewport"]
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
 [editable path="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]
