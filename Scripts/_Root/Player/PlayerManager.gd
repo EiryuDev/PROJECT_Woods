@@ -1,10 +1,11 @@
 extends Node
 
-@onready var playerStatsManager = $"Player Stats Manager"
+@onready var playerStatsManager = %"Player Stats Manager"
 @onready var playerLocomotionManager = $"Player Locomotion Manager"
 @onready var playerWeaponManager = $"Camera3D/Player Weapon Manager"
 @onready var interactRaycast = $Camera3D/InteractRayCast
 @onready var interactDisplay =  $"CanvasLayer/GUI/Interact Display"
+@onready var canvasLayer = $CanvasLayer
 
 @export_group("FLAGS")
 @export var canMove = true

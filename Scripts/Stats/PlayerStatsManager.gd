@@ -1,6 +1,6 @@
 extends Node
 
-@onready var statsDisplay = $"../GUI/Stats Display"
+@onready var statsDisplay = $"../CanvasLayer/GUI/Stats Display"
 
 @export var maxHealth = 100
 @onready var currentHealth = maxHealth

@@ -32,5 +32,8 @@ bones/15/rotation = Quaternion(0.414923, -0.0476296, 0.264247, 0.869335)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881463, 0)
 shape = SubResource("CapsuleShape3D_fpclg")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
+layer = 2
+
 [editable path="Cop1"]
 [editable path="Cop1/Cop Model"]
