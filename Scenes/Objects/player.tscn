@@ -277,7 +277,7 @@ border_width_left = 2
 border_width_right = 2
 border_color = Color(0, 0.67451, 0, 1)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 6
 collision_mask = 3
 script = ExtResource("1_picsy")
@@ -420,7 +420,7 @@ libraries = {
 }
 
 [node name="InteractRayCast" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -5)
+target_position = Vector3(0, 0, -2)
 collision_mask = 32
 collide_with_areas = true
 
@@ -553,11 +553,16 @@ expand_mode = 3
 
 [node name="Stats Display" type="Control" parent="GUI"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -152.0
-offset_right = 576.0
+offset_left = -592.0
+offset_top = -136.0
+offset_right = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("15_ea56u")
 script = ExtResource("16_8ietw")
@@ -574,6 +579,7 @@ offset_bottom = -106.0
 grow_vertical = 0
 text = "Ammo: 0"
 label_settings = SubResource("LabelSettings_ea56u")
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Health Text" type="Label" parent="GUI/Stats Display"]

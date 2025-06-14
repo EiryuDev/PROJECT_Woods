@@ -10,8 +10,8 @@ extends Node
 # === Head Bobbing ===
 @export_group("Head Bob Settings")
 var _delta := 0.0
-var camBobSpeed := 10.0
-var camBobUpDown := 1.0
+@export var camBobSpeed := 10.0
+@export var camBobUpDown := 1.0
 var origCamPos := Vector3.ZERO
 
 # === Sprint Settings ===
@@ -66,8 +66,14 @@ func _physics_process(delta):
 
 	if player.isDead:
 		return
+	
+	if(player.canMove):
+		GroundedMovement(delta)
+	
+	process_camBob(delta)
 
-	# Add gravity
+func GroundedMovement(delta):
+		# Add gravity
 	if not characterBody.is_on_floor():
 		characterBody.velocity.y -= gravity * delta
 
@@ -114,8 +120,6 @@ func _physics_process(delta):
 	characterBody.move_and_slide()
 	moved.emit(characterBody.velocity, characterBody.is_on_floor())
 
-	process_camBob(delta)
-
 func process_camBob(delta):
 	_delta += delta
 
@@ -126,13 +130,19 @@ func process_camBob(delta):
 	var objCam
 	var is_moving = direction.length() > 0.01 and characterBody.is_on_floor()
 
-	if is_sprinting:
-		cam_bob = floor(abs(direction.z) + abs(direction.x)) * _delta * camBobSpeed * 1.5
-		objCam = origCamPos + Vector3.UP * sin(cam_bob) * camBobUpDown
-	elif is_moving:
-		cam_bob = floor(abs(direction.z) + abs(direction.x)) * _delta * camBobSpeed
-		objCam = origCamPos + Vector3.UP * sin(cam_bob) * camBobUpDown
+	if player.canMove:
+		if is_sprinting:
+			cam_bob = floor(abs(direction.z) + abs(direction.x)) * _delta * camBobSpeed * 1.5
+			objCam = origCamPos + Vector3.UP * sin(cam_bob) * camBobUpDown
+		elif is_moving:
+			cam_bob = floor(abs(direction.z) + abs(direction.x)) * _delta * camBobSpeed
+			objCam = origCamPos + Vector3.UP * sin(cam_bob) * camBobUpDown
+		else:
+			# Idle bob if standing still
+			cam_bob = floor(abs(1) + abs(1)) * _delta * 0.6
+			objCam = origCamPos + Vector3.UP * sin(cam_bob) * camBobUpDown * 0.1
 	else:
+		# Idle bob only
 		cam_bob = floor(abs(1) + abs(1)) * _delta * 0.6
 		objCam = origCamPos + Vector3.UP * sin(cam_bob) * camBobUpDown * 0.1
 

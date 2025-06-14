@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkvrjhg0v6ygk"]
+
+[ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="1_j4vlv"]
+[ext_resource type="Script" uid="uid://bhait4plhpc6x" path="res://Scripts/UI/Player/UI_DialogueBox.gd" id="2_2mxkb"]
+[ext_resource type="AudioStream" uid="uid://cbk3bw07onfr7" path="res://Audio/SFX/SE/weapons/Stab_Knife_00.mp3" id="2_r5ekl"]
+
+[sub_resource type="Animation" id="Animation_2mxkb"]
+resource_name = "IndicatorMoving"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0172261, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-992, -152), Vector2(-992, -151.972), Vector2(-992, -144), Vector2(-992, -152)]
+}
+
+[sub_resource type="Animation" id="Animation_jusw0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-992, -152)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jusw0"]
+_data = {
+&"IndicatorMoving": SubResource("Animation_2mxkb"),
+&"RESET": SubResource("Animation_jusw0")
+}
+
+[node name="Dialogue Box" type="ColorRect"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -184.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme = ExtResource("1_j4vlv")
+color = Color(0, 0, 0, 0.713726)
+script = ExtResource("2_2mxkb")
+
+[node name="Name" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_top = -48.0
+offset_right = 608.0
+offset_bottom = -2.0
+theme = ExtResource("1_j4vlv")
+theme_override_font_sizes/normal_font_size = 40
+text = "Name"
+fit_content = true
+
+[node name="Text" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_j4vlv")
+theme_override_font_sizes/normal_font_size = 32
+text = "Phantomware has already caught the attention of international YouTubers, completely organically and without any marketing. "
+scroll_following = true
+
+[node name="Indicator" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(1, 1, 1, 0)
+
+[node name="IndicatorIcon" type="Polygon2D" parent="Indicator"]
+position = Vector2(-992, -152)
+color = Color(0.752941, 0.0509804, 0.0862745, 1)
+polygon = PackedVector2Array(984, 144, 1008, 144, 1032, 144, 1016, 160, 1008, 168)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator/IndicatorIcon"]
+libraries = {
+&"": SubResource("AnimationLibrary_jusw0")
+}
+autoplay = "IndicatorMoving"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioLetter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_r5ekl")
+bus = &"SFX"

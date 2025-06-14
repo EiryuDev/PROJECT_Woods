@@ -6,6 +6,9 @@ extends Node
 @onready var interactRaycast = $Camera3D/InteractRayCast
 @onready var interactDisplay =  $"GUI/Interact Display"
 
+@export_group("FLAGS")
+@export var canMove = true
+
 const HOTKEYS = {
 	KEY_1:0,
 	KEY_2:1,

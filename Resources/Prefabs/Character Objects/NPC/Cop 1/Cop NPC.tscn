@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://fe5e2bghp07v"]
+
+[ext_resource type="PackedScene" uid="uid://cxov42su3s2fo" path="res://Resources/Prefabs/Item Objects/Interactable/Interact Generic.tscn" id="1_56pwh"]
+[ext_resource type="Script" uid="uid://usajohk0ajou" path="res://Scripts/_World/_Character/_Root/WRLD_NPC.gd" id="2_fpclg"]
+[ext_resource type="PackedScene" uid="uid://k3y7lbhq1oep" path="res://Resources/Prefabs/Character Objects/NPC/Cop 1/cop_1.tscn" id="3_fpclg"]
+
+[node name="Cop NPC" instance=ExtResource("1_56pwh")]
+script = ExtResource("2_fpclg")
+dialoguePath = ""
+sound = ""
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Cop1" parent="." index="1" instance=ExtResource("3_fpclg")]
+
+[node name="Cop Model" parent="Cop1" index="0"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+
+[editable path="Cop1"]
+[editable path="Cop1/Cop Model"]

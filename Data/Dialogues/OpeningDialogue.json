@@ -1,0 +1,9 @@
+[
+	{"Name" :  "Random British Cop", "Text": "You are trespassing buddy."},
+	{"Name" : "Random British Cop", "Text": "Behind me is dangerous forest area, not allowed to public to enter."},
+	{"Name" : "Ethan (Main Character)", "Text": "Who are you?"},
+	{"Name" :  "Random British Cop", "Text": "My name is John, I am british official cop."},
+	{"Name" :  "John", "Text": "What are you doing here?"},
+	{"Name" : "Ethan (Main Character)", "Text": "I am also a british offical, came here to solve a deforestation case"},
+	{"Name" :  "John", "Text": "Whatever, just come back later"}
+]
