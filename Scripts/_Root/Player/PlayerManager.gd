@@ -3,6 +3,8 @@ extends Node
 @onready var playerStatsManager = $"Player Stats Manager"
 @onready var playerLocomotionManager = $"Player Locomotion Manager"
 @onready var playerWeaponManager = $"Camera3D/Player Weapon Manager"
+@onready var interactRaycast = $Camera3D/InteractRayCast
+@onready var interactDisplay =  $"GUI/Interact Display"
 
 const HOTKEYS = {
 	KEY_1:0,
@@ -26,7 +28,18 @@ func _process(delta):
 		return
 		
 	playerWeaponManager.Attack(Input.is_action_just_pressed("Attack"), Input.is_action_pressed("Attack"))
-	pass
+	PromptInteractable()
+
+func PromptInteractable():
+	if interactRaycast.is_colliding():
+		if is_instance_valid(interactRaycast.get_collider()):
+			if interactRaycast.get_collider().is_in_group("Interactable"):
+				interactDisplay.text = interactRaycast.get_collider().type
+				interactDisplay.visible = true
+			else:
+				interactDisplay.visible = false
+	else:
+		interactDisplay.visible = false
 
 func _input(event):
 	if isDead:
@@ -41,6 +54,10 @@ func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode in HOTKEYS:
 		playerWeaponManager.SwitchToWeaponSlot(HOTKEYS[event.keycode])
 	
+	if Input.is_action_just_pressed("interact"):
+		var interacted = interactRaycast.get_collider()
+		if interacted != null and interacted.is_in_group("Interactable") and interacted.has_method("action_use"):
+			interacted.action_use()
 
 func Hurt(WRLD_DAMAGE_DATA: DamageData):
 	playerStatsManager.hurt(WRLD_DAMAGE_DATA)

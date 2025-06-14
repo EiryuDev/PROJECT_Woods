@@ -419,11 +419,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_ea56u")
 }
 
-[node name="InteractRayCast" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -5)
-collision_mask = 32
-collide_with_areas = true
-
 [node name="Player Stats Manager" parent="." instance=ExtResource("16_v7n4v")]
 unique_name_in_owner = true
 
@@ -606,23 +601,5 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_8ietw")
 step = 1.0
 value = 50.0
 show_percentage = false
-
-[node name="Interact Display" type="Label" parent="GUI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -97.5
-offset_top = -28.0
-offset_right = 97.5
-offset_bottom = 28.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Interact"
-label_settings = SubResource("LabelSettings_ea56u")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [editable path="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]

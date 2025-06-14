@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cayvxusygia1b"]
+
+[ext_resource type="PackedScene" uid="uid://cxov42su3s2fo" path="res://Resources/Prefabs/Item Objects/Interactable/Interact Generic.tscn" id="1_m401n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gv6i8"]
+
+[node name="CubeInteractable" instance=ExtResource("1_m401n")]
+isCubeInteractable = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_gv6i8")

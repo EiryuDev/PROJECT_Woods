@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bc4u7he8yghg5"]
+[gd_scene load_steps=35 format=4 uid="uid://bc4u7he8yghg5"]
 
 [ext_resource type="AudioStream" uid="uid://ut1mhyvtapuk" path="res://Audio/BGS/Silent Hill Ambient.mp3" id="1_1eanf"]
 [ext_resource type="PackedScene" uid="uid://127i8t1q6urm" path="res://Resources/Prefabs/World Managers Objects/World Manager.tscn" id="1_ikhcb"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dhsl3maubl5in" path="res://Resources/Prefabs/Item Objects/Pickups/Deagle Pickup.tscn" id="10_j5jdo"]
 [ext_resource type="PackedScene" uid="uid://b8yug1ie1muvy" path="res://Resources/Prefabs/Item Objects/Pickups/Deagle Ammo Pickup.tscn" id="11_1eanf"]
 [ext_resource type="PackedScene" uid="uid://dq18tbgnu146j" path="res://Resources/Prefabs/Item Objects/Pickups/Health Pickup.tscn" id="12_k1sfk"]
+[ext_resource type="PackedScene" uid="uid://cxov42su3s2fo" path="res://Resources/Prefabs/Item Objects/Interactable/Interact Generic.tscn" id="14_k1sfk"]
+[ext_resource type="PackedScene" uid="uid://cayvxusygia1b" path="res://Resources/Prefabs/Item Objects/Interactable/Cube Interactable.tscn" id="15_n6cyh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -406,3 +408,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4288, 0.19163, 1.81209)
 
 [node name="Health Pickup" parent="Pickups" instance=ExtResource("12_k1sfk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81243, 0.315706, 0.822128)
+
+[node name="Interact Generic" parent="." instance=ExtResource("14_k1sfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27276, 1, -37.5011)
+type = "Interact with Generic"
+
+[node name="CubeInteractable" parent="." instance=ExtResource("15_n6cyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88912, 1, -36.8213)
+type = "Interact with Cube"
