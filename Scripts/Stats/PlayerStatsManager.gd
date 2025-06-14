@@ -1,5 +1,7 @@
 extends Node
 
+@onready var statsDisplay = $"../GUI/Stats Display"
+
 @export var maxHealth = 100
 @onready var currentHealth = maxHealth
 @export var gibAt = -10

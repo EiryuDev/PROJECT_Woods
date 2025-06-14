@@ -22,6 +22,7 @@ const HOTKEYS = {
 	KEY_0:9,
 }
 var isDead = false
+var toggleActive = false
 
 func _ready():
 	playerStatsManager.died.connect(kill)
@@ -61,6 +62,15 @@ func _input(event):
 		var interacted = interactRaycast.get_collider()
 		if interacted != null and interacted.is_in_group("Interactable") and interacted.has_method("action_use"):
 			interacted.action_use()
+	
+	if Input.is_action_just_pressed("hide ui"):
+		if !toggleActive:
+			toggleActive = true
+			playerStatsManager.statsDisplay.visible = false
+		else:
+			toggleActive = false
+			playerStatsManager.statsDisplay.visible = true
+		
 
 func Hurt(WRLD_DAMAGE_DATA: DamageData):
 	playerStatsManager.hurt(WRLD_DAMAGE_DATA)

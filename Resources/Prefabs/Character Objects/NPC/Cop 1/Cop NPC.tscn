@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://fe5e2bghp07v"]
+[gd_scene load_steps=5 format=3 uid="uid://fe5e2bghp07v"]
 
 [ext_resource type="PackedScene" uid="uid://cxov42su3s2fo" path="res://Resources/Prefabs/Item Objects/Interactable/Interact Generic.tscn" id="1_56pwh"]
 [ext_resource type="Script" uid="uid://usajohk0ajou" path="res://Scripts/_World/_Character/_Root/WRLD_NPC.gd" id="2_fpclg"]
 [ext_resource type="PackedScene" uid="uid://k3y7lbhq1oep" path="res://Resources/Prefabs/Character Objects/NPC/Cop 1/cop_1.tscn" id="3_fpclg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fpclg"]
+radius = 0.374548
+height = 1.76331
 
 [node name="Cop NPC" instance=ExtResource("1_56pwh")]
 script = ExtResource("2_fpclg")
@@ -16,6 +20,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Cop Model" parent="Cop1" index="0"]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Cop1/Cop Model" index="0"]
+bones/0/position = Vector3(0.00173994, 0.934395, 0.00896603)
+bones/0/rotation = Quaternion(-0.0257636, -0.124442, 0.00717723, 0.991866)
+bones/1/rotation = Quaternion(-0.0708024, -0.0124631, -0.00486495, 0.997401)
+bones/2/rotation = Quaternion(-0.00159998, -0.0275717, 0.0150861, 0.999505)
+bones/3/rotation = Quaternion(-0.00144628, -0.026685, 0.0163143, 0.99951)
+bones/4/rotation = Quaternion(0.0712579, -0.0113259, 0.0272724, 0.997021)
+bones/5/rotation = Quaternion(-0.0230922, -0.02221, 0.0404904, 0.998666)
+bones/7/rotation = Quaternion(-0.574857, -0.401357, 0.613875, -0.36278)
+bones/8/rotation = Quaternion(0.330725, 0.394189, 0.141583, 0.845689)
+bones/9/rotation = Quaternion(-0.0337469, 0.000711862, 0.727144, 0.685654)
+bones/10/rotation = Quaternion(-0.218978, 0.188323, -0.157975, 0.94426)
+bones/11/rotation = Quaternion(0.0934991, -0.118226, 0.4541, 0.878108)
+bones/13/rotation = Quaternion(0.0939453, -0.0746624, 0.0169412, 0.992629)
+bones/15/rotation = Quaternion(0.414923, -0.0476296, 0.264247, 0.869335)
+bones/16/rotation = Quaternion(0.182183, 0.00234051, -0.0701013, 0.98076)
+bones/17/rotation = Quaternion(-0.11658, -0.0148281, -0.054821, 0.991556)
+bones/19/rotation = Quaternion(0.520904, -0.415226, 0.667764, 0.332171)
+bones/20/rotation = Quaternion(0.326246, -0.420021, -0.256436, 0.807085)
+bones/21/rotation = Quaternion(-0.0194426, -0.000869294, -0.612494, 0.790236)
+bones/22/rotation = Quaternion(-0.0635506, -0.074016, -0.166431, 0.981215)
+bones/23/rotation = Quaternion(0.0573778, -0.03493, -0.209487, 0.975501)
+bones/24/rotation = Quaternion(0.0530069, 0.00328699, 0.0254149, 0.998265)
+bones/25/rotation = Quaternion(0.0704529, 0.101036, 0.056798, 0.990758)
+bones/27/rotation = Quaternion(0.343844, 0.0347202, -0.234424, 0.908631)
+bones/28/rotation = Quaternion(0.252481, 0.00487867, -0.0379319, 0.966846)
+bones/29/rotation = Quaternion(0.0159996, 0.00455433, 0.0351434, 0.999244)
+bones/31/rotation = Quaternion(0.0474505, 0.01972, 0.99855, -0.0160587)
+bones/32/rotation = Quaternion(-0.206396, -0.0762629, 0.0258384, 0.97515)
+bones/33/rotation = Quaternion(0.62462, -0.0572632, 0.0159547, 0.778663)
+bones/34/rotation = Quaternion(0.25302, -0.076942, 0.020191, 0.964185)
+bones/36/rotation = Quaternion(-0.0961048, 0.0397755, 0.98671, 0.12484)
+bones/37/rotation = Quaternion(-0.118505, -0.0866285, -0.000862339, 0.989167)
+bones/38/rotation = Quaternion(0.562731, -0.0495968, 0.0873659, 0.820513)
+bones/39/rotation = Quaternion(0.253655, 0.0764878, -0.0201249, 0.964056)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cop1/Cop Model/Skeleton3D" index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cop1/Cop Model/Skeleton3D/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881463, 0)
+shape = SubResource("CapsuleShape3D_fpclg")
 
 [editable path="Cop1"]
 [editable path="Cop1/Cop Model"]

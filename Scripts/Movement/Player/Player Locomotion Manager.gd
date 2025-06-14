@@ -49,7 +49,10 @@ func _ready():
 func _input(event):
 	if player.isDead:
 		return
-
+		
+	#if !player.canMove:
+		#return
+		
 	if event is InputEventMouseMotion:
 		characterBody.rotation.y -= mouse_sens * event.relative.x * 0.001
 		camera.rotation.x -= mouse_sens * event.relative.y * 0.001
