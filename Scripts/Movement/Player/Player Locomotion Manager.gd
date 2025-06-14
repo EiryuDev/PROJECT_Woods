@@ -36,6 +36,7 @@ var is_crouching = false
 
 # === Nodes and Physics ===
 @onready var camera = $"../Camera3D"
+@onready var viewportCamera = get_node("%ViewportCamera")
 @onready var player_collision_shape = $"../CollisionShape3D"
 @onready var camera_start_pos = camera.position
 @onready var player = $".."
@@ -45,6 +46,9 @@ signal moved(velocity: Vector3, grounded: bool)
 
 func _ready():
 	origCamPos = camera.position
+
+func _process(delta):
+	viewportCamera.set_global_transform(camera.get_global_transform())
 
 func _input(event):
 	if player.isDead:

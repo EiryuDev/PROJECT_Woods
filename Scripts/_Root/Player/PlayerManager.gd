@@ -4,7 +4,7 @@ extends Node
 @onready var playerLocomotionManager = $"Player Locomotion Manager"
 @onready var playerWeaponManager = $"Camera3D/Player Weapon Manager"
 @onready var interactRaycast = $Camera3D/InteractRayCast
-@onready var interactDisplay =  $"GUI/Interact Display"
+@onready var interactDisplay =  $"CanvasLayer/GUI/Interact Display"
 
 @export_group("FLAGS")
 @export var canMove = true

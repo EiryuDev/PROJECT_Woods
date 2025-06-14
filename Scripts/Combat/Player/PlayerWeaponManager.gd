@@ -6,7 +6,7 @@ var weaponsUnlocked = []
 var currentSlot = 0
 var currentWeapon = null
 
-@onready var crosshair = $"../../GUI/Crosshair"
+@onready var crosshair = $"../../CanvasLayer/GUI/Crosshair"
 
 func _ready():
 	for weapon in weapons:
