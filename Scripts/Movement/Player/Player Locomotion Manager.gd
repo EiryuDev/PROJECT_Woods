@@ -91,7 +91,8 @@ func GroundedMovement(delta):
 	if playerStatsManager.currentStamina >= jumpStamina:
 		if Input.is_action_just_pressed("jump") and characterBody.is_on_floor():
 			characterBody.velocity.y = JUMP_VELOCITY
-			playerStatsManager.hurtStamina(jumpStamina)
+			if playerStatsManager.currentStamina >= 0:
+				playerStatsManager.hurtStamina(jumpStamina)
 			if has_node("JumpSound"):
 				$JumpSound.play()
 
@@ -113,7 +114,8 @@ func GroundedMovement(delta):
 
 	# Drain stamina if sprinting
 	if is_sprinting:
-		playerStatsManager.hurtStamina(sprintStaminaPerSecond * delta)
+		if playerStatsManager.currentStamina >= 0:
+			playerStatsManager.hurtStamina(sprintStaminaPerSecond * delta)
 
 	# Get movement input
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
