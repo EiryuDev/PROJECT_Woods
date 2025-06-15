@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://btxbe5h1urm2c"
 path.s3tc="res://.godot/imported/cop_01_Body_256_pxs.png-9e4035a9057ca884490756ebad3f7828.s3tc.ctex"
+path.etc2="res://.godot/imported/cop_01_Body_256_pxs.png-9e4035a9057ca884490756ebad3f7828.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ArtResources/Characters/NPC/Cops/psx-cop/textures/cop_01_Body_256_pxs.png"
-dest_files=["res://.godot/imported/cop_01_Body_256_pxs.png-9e4035a9057ca884490756ebad3f7828.s3tc.ctex"]
+dest_files=["res://.godot/imported/cop_01_Body_256_pxs.png-9e4035a9057ca884490756ebad3f7828.s3tc.ctex", "res://.godot/imported/cop_01_Body_256_pxs.png-9e4035a9057ca884490756ebad3f7828.etc2.ctex"]
 
 [params]
 

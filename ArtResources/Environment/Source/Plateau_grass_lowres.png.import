@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqo3u2n4bh7w6"
 path.s3tc="res://.godot/imported/Plateau_grass_lowres.png-15143b4088431d037d7a6185a020443d.s3tc.ctex"
+path.etc2="res://.godot/imported/Plateau_grass_lowres.png-15143b4088431d037d7a6185a020443d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://ArtResources/Environment/Source/Plateau_grass_lowres.png"
-dest_files=["res://.godot/imported/Plateau_grass_lowres.png-15143b4088431d037d7a6185a020443d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Plateau_grass_lowres.png-15143b4088431d037d7a6185a020443d.s3tc.ctex", "res://.godot/imported/Plateau_grass_lowres.png-15143b4088431d037d7a6185a020443d.etc2.ctex"]
 
 [params]
 

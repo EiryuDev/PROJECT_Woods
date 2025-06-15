@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d33o1jt35vj6a"
 path.s3tc="res://.godot/imported/matGen.jpg-64d3c53a5bfb5ba8706ae4a8ccb2897f.s3tc.ctex"
+path.etc2="res://.godot/imported/matGen.jpg-64d3c53a5bfb5ba8706ae4a8ccb2897f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ArtResources/Characters/NPC/Cops/psx-cop/textures/matGen.jpg"
-dest_files=["res://.godot/imported/matGen.jpg-64d3c53a5bfb5ba8706ae4a8ccb2897f.s3tc.ctex"]
+dest_files=["res://.godot/imported/matGen.jpg-64d3c53a5bfb5ba8706ae4a8ccb2897f.s3tc.ctex", "res://.godot/imported/matGen.jpg-64d3c53a5bfb5ba8706ae4a8ccb2897f.etc2.ctex"]
 
 [params]
 

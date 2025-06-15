@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://drkuws0oxgngw"
 path.s3tc="res://.godot/imported/Plateau_stone_lowres.png-3bfc7e353a62c343840e35c251f9fb87.s3tc.ctex"
+path.etc2="res://.godot/imported/Plateau_stone_lowres.png-3bfc7e353a62c343840e35c251f9fb87.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://ArtResources/Environment/Source/Plateau_stone_lowres.png"
-dest_files=["res://.godot/imported/Plateau_stone_lowres.png-3bfc7e353a62c343840e35c251f9fb87.s3tc.ctex"]
+dest_files=["res://.godot/imported/Plateau_stone_lowres.png-3bfc7e353a62c343840e35c251f9fb87.s3tc.ctex", "res://.godot/imported/Plateau_stone_lowres.png-3bfc7e353a62c343840e35c251f9fb87.etc2.ctex"]
 
 [params]
 

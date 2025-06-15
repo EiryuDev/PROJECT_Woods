@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6ff6o738gube"
 path.s3tc="res://.godot/imported/brickwall_brick_ivy.png-1d9966243a4d8c8370b5106a95ea91e3.s3tc.ctex"
+path.etc2="res://.godot/imported/brickwall_brick_ivy.png-1d9966243a4d8c8370b5106a95ea91e3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://ArtResources/Environment/Source/brickwall_brick_ivy.png"
-dest_files=["res://.godot/imported/brickwall_brick_ivy.png-1d9966243a4d8c8370b5106a95ea91e3.s3tc.ctex"]
+dest_files=["res://.godot/imported/brickwall_brick_ivy.png-1d9966243a4d8c8370b5106a95ea91e3.s3tc.ctex", "res://.godot/imported/brickwall_brick_ivy.png-1d9966243a4d8c8370b5106a95ea91e3.etc2.ctex"]
 
 [params]
 

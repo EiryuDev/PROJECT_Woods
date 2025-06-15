@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://2saoiftww80j"
 path.s3tc="res://.godot/imported/shed_low_res_wood.png-c5b796f541a37e94ec0e0e4f52db611e.s3tc.ctex"
+path.etc2="res://.godot/imported/shed_low_res_wood.png-c5b796f541a37e94ec0e0e4f52db611e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://ArtResources/Environment/Source/shed_low_res_wood.png"
-dest_files=["res://.godot/imported/shed_low_res_wood.png-c5b796f541a37e94ec0e0e4f52db611e.s3tc.ctex"]
+dest_files=["res://.godot/imported/shed_low_res_wood.png-c5b796f541a37e94ec0e0e4f52db611e.s3tc.ctex", "res://.godot/imported/shed_low_res_wood.png-c5b796f541a37e94ec0e0e4f52db611e.etc2.ctex"]
 
 [params]
 

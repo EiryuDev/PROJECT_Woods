@@ -795,7 +795,6 @@ stream = ExtResource("18_4l8dh")
 bus = &"SFX"
 
 [node name="Player Locomotion Manager" parent="." instance=ExtResource("19_4l8dh")]
-jumpStamina = 20
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Player Locomotion Manager"]
 stream = ExtResource("20_oxae2")

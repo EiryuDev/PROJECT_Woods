@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bknhnf4x1nn2s"
 path.s3tc="res://.godot/imported/tree_ivy.png-1aec0b323a1d0be2cfe52429309fd3ff.s3tc.ctex"
+path.etc2="res://.godot/imported/tree_ivy.png-1aec0b323a1d0be2cfe52429309fd3ff.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://ArtResources/Environment/Source/tree_ivy.png"
-dest_files=["res://.godot/imported/tree_ivy.png-1aec0b323a1d0be2cfe52429309fd3ff.s3tc.ctex"]
+dest_files=["res://.godot/imported/tree_ivy.png-1aec0b323a1d0be2cfe52429309fd3ff.s3tc.ctex", "res://.godot/imported/tree_ivy.png-1aec0b323a1d0be2cfe52429309fd3ff.etc2.ctex"]
 
 [params]
 

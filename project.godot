@@ -143,3 +143,7 @@ Attack={
 3d_physics/layer_4="Gibs"
 3d_physics/layer_5="Pickups"
 3d_physics/layer_6="Interactables"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

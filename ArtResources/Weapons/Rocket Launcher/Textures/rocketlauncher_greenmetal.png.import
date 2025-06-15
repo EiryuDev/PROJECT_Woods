@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://xefpd6gpvo0r"
 path.s3tc="res://.godot/imported/rocketlauncher_greenmetal.png-878cc022db6936f580fd5b1b25005fbf.s3tc.ctex"
+path.etc2="res://.godot/imported/rocketlauncher_greenmetal.png-878cc022db6936f580fd5b1b25005fbf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://ArtResources/Weapons/Rocket Launcher/Textures/rocketlauncher_greenmetal.png"
-dest_files=["res://.godot/imported/rocketlauncher_greenmetal.png-878cc022db6936f580fd5b1b25005fbf.s3tc.ctex"]
+dest_files=["res://.godot/imported/rocketlauncher_greenmetal.png-878cc022db6936f580fd5b1b25005fbf.s3tc.ctex", "res://.godot/imported/rocketlauncher_greenmetal.png-878cc022db6936f580fd5b1b25005fbf.etc2.ctex"]
 
 [params]
 

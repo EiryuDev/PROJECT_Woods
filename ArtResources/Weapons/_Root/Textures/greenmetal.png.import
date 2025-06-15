@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjnqgudh0wiqn"
 path.s3tc="res://.godot/imported/greenmetal.png-47f8b4f5b27af9b09402e3b5700cb5ea.s3tc.ctex"
+path.etc2="res://.godot/imported/greenmetal.png-47f8b4f5b27af9b09402e3b5700cb5ea.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ArtResources/Weapons/_Root/Textures/greenmetal.png"
-dest_files=["res://.godot/imported/greenmetal.png-47f8b4f5b27af9b09402e3b5700cb5ea.s3tc.ctex"]
+dest_files=["res://.godot/imported/greenmetal.png-47f8b4f5b27af9b09402e3b5700cb5ea.s3tc.ctex", "res://.godot/imported/greenmetal.png-47f8b4f5b27af9b09402e3b5700cb5ea.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0384gpf8wyck"
 path.s3tc="res://.godot/imported/circle32.png-35236fd67240e68b93018547c03069a7.s3tc.ctex"
+path.etc2="res://.godot/imported/circle32.png-35236fd67240e68b93018547c03069a7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://ArtResources/VFX/Weapons/circle32.png"
-dest_files=["res://.godot/imported/circle32.png-35236fd67240e68b93018547c03069a7.s3tc.ctex"]
+dest_files=["res://.godot/imported/circle32.png-35236fd67240e68b93018547c03069a7.s3tc.ctex", "res://.godot/imported/circle32.png-35236fd67240e68b93018547c03069a7.etc2.ctex"]
 
 [params]
 
