@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=66 format=4 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://d22tr7toifvol" path="res://Scripts/Combat/Player/PlayerWeaponManager.gd" id="2_dfgsd"]
@@ -540,6 +540,9 @@ border_width_left = 2
 border_width_right = 2
 border_color = Color(0, 0.67451, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mytd1"]
+bg_color = Color(0.880375, 0.901395, 7.70092e-07, 1)
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 6
 collision_mask = 3
@@ -628,6 +631,7 @@ bus = &"SFX"
 [node name="Desert Eagle" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
 transform = Transform3D(-0.2, 8.74228e-09, -1.51421e-08, 0, 0.173205, 0.1, 1.74846e-08, 0.1, -0.173205, 0.441, -0.333, -0.881)
 script = ExtResource("4_y42te")
+staminaNeeded = 0
 attackRate = 0.5
 
 [node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle"]
@@ -791,6 +795,7 @@ stream = ExtResource("18_4l8dh")
 bus = &"SFX"
 
 [node name="Player Locomotion Manager" parent="." instance=ExtResource("19_4l8dh")]
+jumpStamina = 20
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Player Locomotion Manager"]
 stream = ExtResource("20_oxae2")
@@ -937,7 +942,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -592.0
-offset_top = -136.0
+offset_top = -256.0
 offset_right = -16.0
 offset_bottom = 16.0
 grow_horizontal = 0
@@ -951,9 +956,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = -152.0
+offset_top = -224.0
 offset_right = 568.0
-offset_bottom = -106.0
+offset_bottom = -178.0
 grow_vertical = 0
 text = "Ammo: 0"
 label_settings = SubResource("LabelSettings_ea56u")
@@ -966,9 +971,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = -96.0
+offset_top = -168.0
 offset_right = 203.0
-offset_bottom = -40.0
+offset_bottom = -112.0
 grow_vertical = 0
 text = "Health : "
 label_settings = SubResource("LabelSettings_ea56u")
@@ -981,12 +986,43 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 192.0
+offset_top = -168.0
+offset_right = 572.0
+offset_bottom = -120.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_ea56u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8ietw")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Stamina Text" type="Label" parent="CanvasLayer/GUI/Stats Display"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -96.0
+offset_right = 200.0
+offset_bottom = -40.0
+grow_vertical = 0
+text = "Stamina : "
+label_settings = SubResource("LabelSettings_ea56u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stamina Display" type="ProgressBar" parent="CanvasLayer/GUI/Stats Display"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
 offset_top = -96.0
 offset_right = 572.0
 offset_bottom = -48.0
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_ea56u")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8ietw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mytd1")
 step = 1.0
 value = 50.0
 show_percentage = false

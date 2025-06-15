@@ -2,6 +2,7 @@ class_name PlayerLocomotionManager
 extends Node
 
 @onready var characterBody = get_parent() as CharacterBody3D
+@onready var playerStatsManager = %"Player Stats Manager"
 
 # === Movement Settings ===
 @export_group("Walk Settings")
@@ -17,10 +18,12 @@ var origCamPos := Vector3.ZERO
 # === Sprint Settings ===
 @export_group("Sprint Settings")
 @export var sprintSpeed = 2.0
+@export var sprintStaminaPerSecond = 5.0
 var is_sprinting = false
 
 # === Jump Settings ===
 @export_group("Jump Settings")
+@export var jumpStamina = 10
 const JUMP_VELOCITY = 4.5
 
 # === Crouch Settings ===
@@ -80,15 +83,17 @@ func _physics_process(delta):
 	process_camBob(delta)
 
 func GroundedMovement(delta):
-		# Add gravity
+	# Add gravity
 	if not characterBody.is_on_floor():
 		characterBody.velocity.y -= gravity * delta
 
 	# Handle jump
-	if Input.is_action_just_pressed("jump") and characterBody.is_on_floor():
-		characterBody.velocity.y = JUMP_VELOCITY
-		if has_node("JumpSound"):
-			$JumpSound.play()
+	if playerStatsManager.currentStamina >= jumpStamina:
+		if Input.is_action_just_pressed("jump") and characterBody.is_on_floor():
+			characterBody.velocity.y = JUMP_VELOCITY
+			playerStatsManager.hurtStamina(jumpStamina)
+			if has_node("JumpSound"):
+				$JumpSound.play()
 
 	# Handle crouch
 	if Input.is_action_pressed("crouch"):
@@ -102,8 +107,13 @@ func GroundedMovement(delta):
 			player_collision_shape.shape.height = stand_height
 			camera.position.y = camera_start_pos.y
 
-	# Handle sprint
-	is_sprinting = Input.is_action_pressed("sprint") and !is_crouching
+	# Determine sprint
+	var can_sprint = Input.is_action_pressed("sprint") and !is_crouching and playerStatsManager.currentStamina >= sprintStaminaPerSecond * delta
+	is_sprinting = can_sprint
+
+	# Drain stamina if sprinting
+	if is_sprinting:
+		playerStatsManager.hurtStamina(sprintStaminaPerSecond * delta)
 
 	# Get movement input
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")

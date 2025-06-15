@@ -7,6 +7,7 @@ var currentSlot = 0
 var currentWeapon = null
 
 @onready var crosshair = $"../../CanvasLayer/GUI/Crosshair"
+@onready var playerStatsManager = %"Player Stats Manager"
 
 func _ready():
 	for weapon in weapons:

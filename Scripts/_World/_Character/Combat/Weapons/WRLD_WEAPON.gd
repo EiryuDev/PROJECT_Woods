@@ -5,11 +5,13 @@ class_name Weapon
 @onready var animationPlayer : AnimationPlayer = $Graphics/AnimationPlayer
 @onready var bulletEmitter = $BulletEmitter
 @onready var firePoint : Node3D = %FirePoint
+@onready var playerStatsManager = %"Player Stats Manager"
 
 @export var automatic = false
 
 @export var damage = 5
 @export var ammo = 0
+@export var staminaNeeded = 15
 
 @export  var attackRate = 0.2
 var lastAttackTime = -9999.9
@@ -27,6 +29,9 @@ func SetBodiesToExclude(bodies: Array):
 	bulletEmitter.SetBodiesToExclude(bodies)
 	
 func Attack(inputJustPressed: bool, inputHeld: bool):
+	if playerStatsManager.currentStamina < staminaNeeded:
+		return
+		
 	if !automatic and !inputJustPressed:
 		return
 	if automatic and !inputHeld:
@@ -51,6 +56,8 @@ func Attack(inputJustPressed: bool, inputHeld: bool):
 	lastAttackTime = curTime
 	animationPlayer.stop()
 	animationPlayer.play("Attack")
+	if staminaNeeded > 0:
+		playerStatsManager.hurtStamina(staminaNeeded)
 	fired.emit()
 	$AttackSounds.play()
 	ammoUpdated.emit(ammo)
