@@ -5,6 +5,7 @@ extends Node
 @onready var playerWeaponManager = $"Camera3D/Player Weapon Manager"
 @onready var interactRaycast = $Camera3D/InteractRayCast
 @onready var interactDisplay =  $"CanvasLayer/GUI/Interact Display"
+@onready var deathScreen = $CanvasLayer/GUI/DeathScreen
 @onready var canvasLayer = $CanvasLayer
 @onready var objectPoint = %ObjectPoint
 
@@ -80,3 +81,4 @@ func Hurt(WRLD_DAMAGE_DATA: DamageData):
 func kill():
 	isDead = true;
 	playerLocomotionManager.StopMovement()
+	deathScreen.ShowDeathScreen()

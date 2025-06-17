@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=73 format=4 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://d22tr7toifvol" path="res://Scripts/Combat/Player/PlayerWeaponManager.gd" id="2_dfgsd"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" uid="uid://dnmsfddd0sqtx" path="res://Scripts/Audio/Player/PlayerStepTrackerSoundManager.gd" id="21_03qow"]
 [ext_resource type="AudioStream" uid="uid://d05p3mivl34ob" path="res://Audio/SFX/SE/steps/step_1.wav" id="21_6v78c"]
 [ext_resource type="AudioStream" uid="uid://cry4itlgfcu48" path="res://Audio/SFX/SE/steps/step_2.wav" id="22_03qow"]
+[ext_resource type="Script" uid="uid://d1tj0s44xx2aa" path="res://Scripts/UI/Player/UI_DeathScreen.gd" id="33_gra3g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbvo1"]
 
@@ -548,6 +549,46 @@ border_color = Color(0, 0.67451, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mytd1"]
 bg_color = Color(0.880375, 0.901395, 7.70092e-07, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mytd1"]
+font_size = 91
+
+[sub_resource type="Animation" id="Animation_41fad"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4vp4g"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2btc3"]
+_data = {
+&"RESET": SubResource("Animation_41fad"),
+&"fade_in": SubResource("Animation_4vp4g")
+}
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 6
@@ -1073,5 +1114,75 @@ text = "Interact"
 label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DeathScreen" type="Control" parent="CanvasLayer/GUI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_ea56u")
+script = ExtResource("33_gra3g")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/DeathScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.513726)
+
+[node name="Panel" type="Panel" parent="CanvasLayer/GUI/DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = -101.0
+offset_right = 219.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_ea56u")
+
+[node name="Title" type="Label" parent="CanvasLayer/GUI/DeathScreen/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -196.0
+offset_top = 28.0
+offset_right = 196.0
+offset_bottom = 135.0
+grow_horizontal = 2
+theme = ExtResource("15_ea56u")
+text = "You Died"
+label_settings = SubResource("LabelSettings_mytd1")
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/GUI/DeathScreen/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -116.0
+offset_right = 106.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Restart"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GUI/DeathScreen"]
+libraries = {
+&"": SubResource("AnimationLibrary_2btc3")
+}
 
 [editable path="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]

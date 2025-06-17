@@ -48,16 +48,26 @@ func _process(delta):
 func hurt(damageData: DamageData):
 	if currentHealth <= 0:
 		return
+	
+	var dead = currentHealth <= 0
+	if dead:
+		return
 	currentHealth -= damageData.amount
-	if currentHealth <= gibAt:
-		gibbed.emit()
-	if currentHealth <= 0:
-		died.emit() 
+	dead = currentHealth <= 0
+	
+	if dead:
+		if verbose:
+			print("died")
+		died.emit()
+		if has_node("DieSound"):
+			$DieSound.play()
 	else:
+		if has_node("HurtSound"):
+			$HurtSound.play()
 		damaged.emit()
 	healthChanged.emit(currentHealth, maxHealth)
 	if verbose:
-		print("Damaged for %s, health: %s/%s" % [damageData.amount, currentHealth, maxHealth])
+		print("damaged for %s, health: %s/%s" % [damageData.amount, currentHealth, maxHealth])
 
 func heal(amount: int):
 	if currentHealth <= 0:

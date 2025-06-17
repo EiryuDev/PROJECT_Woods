@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgj6ss0nemrow"]
+[gd_scene load_steps=13 format=3 uid="uid://dgj6ss0nemrow"]
 
 [ext_resource type="PackedScene" uid="uid://fqbffmriq6eb" path="res://Resources/Prefabs/Character Objects/Player/PlayerStatsManager.tscn" id="1_k5ur1"]
 [ext_resource type="Script" uid="uid://cdcywejflrk0h" path="res://Scripts/_Root/Enemy/EnemyManager.gd" id="1_uqdgf"]
 [ext_resource type="PackedScene" uid="uid://bxa8rbcxicnn6" path="res://Resources/Prefabs/Character Objects/Enemies/VisionManager.tscn" id="3_36ua4"]
+[ext_resource type="AudioStream" uid="uid://cmncagp2bclwd" path="res://Audio/SFX/SE/monster/monster die.wav" id="3_cih15"]
 [ext_resource type="AudioStream" uid="uid://d0ry0t7dm6gw6" path="res://Audio/SFX/SE/monster/monster alert.wav" id="4_57tk4"]
+[ext_resource type="Script" uid="uid://bupdlsdrvfd6p" path="res://Scripts/_World/_Character/Sound/WRLD_PLAY_RANDOM_SOUND.gd" id="4_72i0l"]
+[ext_resource type="AudioStream" uid="uid://bch7y5i0xq7is" path="res://Audio/SFX/SE/monster/monster hurt.wav" id="4_nc813"]
+[ext_resource type="PackedScene" uid="uid://diwswtjaiuc48" path="res://Resources/Prefabs/Character Objects/Enemies/LocomotionManager.tscn" id="4_tfn1g"]
+[ext_resource type="PackedScene" uid="uid://bvbvxylfuv4ft" path="res://Resources/Prefabs/VFX Objects/Weapons/Bullet Emitters/BulletEmitter.tscn" id="5_s017d"]
+[ext_resource type="AudioStream" uid="uid://dfbf8evo4w2mr" path="res://Audio/SFX/SE/monster/monster attack.wav" id="6_pol3s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ijf7h"]
 
@@ -16,7 +22,30 @@ script = ExtResource("1_uqdgf")
 
 [node name="Stats Manager" parent="." instance=ExtResource("1_k5ur1")]
 
+[node name="DieSound" type="AudioStreamPlayer3D" parent="Stats Manager"]
+stream = ExtResource("3_cih15")
+bus = &"SFX"
+
+[node name="HurtSound" type="Node3D" parent="Stats Manager"]
+script = ExtResource("4_72i0l")
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="Stats Manager/HurtSound"]
+stream = ExtResource("4_nc813")
+
+[node name="HurtSound2" type="AudioStreamPlayer3D" parent="Stats Manager/HurtSound"]
+stream = ExtResource("4_nc813")
+pitch_scale = 0.95
+
+[node name="HurtSound3" type="AudioStreamPlayer3D" parent="Stats Manager/HurtSound"]
+stream = ExtResource("4_nc813")
+pitch_scale = 1.05
+
 [node name="Vision Manager" parent="." instance=ExtResource("3_36ua4")]
+
+[node name="LocomotionManager" parent="." instance=ExtResource("4_tfn1g")]
+
+[node name="AttackEmitter" parent="." instance=ExtResource("5_s017d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.444)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -35,4 +64,8 @@ shape = SubResource("SphereShape3D_57tk4")
 
 [node name="AlertSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_57tk4")
+bus = &"SFX"
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_pol3s")
 bus = &"SFX"

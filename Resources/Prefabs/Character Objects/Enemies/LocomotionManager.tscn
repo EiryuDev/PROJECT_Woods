@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://diwswtjaiuc48"]
+
+[ext_resource type="Script" uid="uid://dy1t5ec6fdprj" path="res://Scripts/Movement/Enemy/EnemyLocomotionManager.gd" id="1_bf33d"]
+
+[node name="LocomotionManager" type="Node3D"]
+script = ExtResource("1_bf33d")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
