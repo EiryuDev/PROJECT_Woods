@@ -18,6 +18,8 @@ var lastAttackTime = -9999.9
 
 @export var animationControlledAttack = false
 
+@export var silentWeapon = false
+
 signal fired
 signal outOfAmmo
 signal ammoUpdated(ammoAmount: int)

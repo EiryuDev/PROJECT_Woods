@@ -26,13 +26,12 @@ signal healthChanged(currentHealth, maxHealth)
 signal staminaChanged(currentStamina, maxStamina)
 
 func _ready():
-	currentHealth = 60
 	currentStamina = maxStamina
 	healthChanged.emit(currentHealth, maxHealth)
 	staminaChanged.emit(currentStamina, maxStamina)
 	if verbose:
 		print("Starting health: %s/%s" % [currentHealth, maxHealth])
-		print("Starting stamina: %s/%s" % [currentStamina, maxStamina])
+		#print("Starting stamina: %s/%s" % [currentStamina, maxStamina])
 
 func _process(delta):
 	if _isStaminaRegenerating:
@@ -46,10 +45,10 @@ func _process(delta):
 				if verbose:
 					print("Stamina fully regenerated.")
 
-func hurt(WRLD_DAMAGE_DATA: DamageData):
+func hurt(damageData: DamageData):
 	if currentHealth <= 0:
 		return
-	currentHealth -= WRLD_DAMAGE_DATA.amount
+	currentHealth -= damageData.amount
 	if currentHealth <= gibAt:
 		gibbed.emit()
 	if currentHealth <= 0:
@@ -58,7 +57,7 @@ func hurt(WRLD_DAMAGE_DATA: DamageData):
 		damaged.emit()
 	healthChanged.emit(currentHealth, maxHealth)
 	if verbose:
-		print("Damaged for %s, health: %s/%s" % [WRLD_DAMAGE_DATA.amount, currentHealth, maxHealth])
+		print("Damaged for %s, health: %s/%s" % [damageData.amount, currentHealth, maxHealth])
 
 func heal(amount: int):
 	if currentHealth <= 0:
@@ -74,5 +73,5 @@ func hurtStamina(amount: float):
 	staminaChanged.emit(currentStamina, maxStamina)
 	_staminaRegenTimer = 0.0
 	_isStaminaRegenerating = true
-	if verbose:
-		print("Stamina used: %s, current stamina: %s/%s" % [amount, currentStamina, maxStamina])
+	#if verbose:
+		#print("Stamina used: %s, current stamina: %s/%s" % [amount, currentStamina, maxStamina])

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cylxh25eowvol"]
+
+[ext_resource type="Script" uid="uid://dun4opcvjqkd6" path="res://Scripts/_World/_Character/Combat/Hitbox/WRLD_HITBOX.gd" id="1_n5q33"]
+
+[node name="HitBox" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_n5q33")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

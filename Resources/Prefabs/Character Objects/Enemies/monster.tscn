@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgj6ss0nemrow"]
+
+[ext_resource type="PackedScene" uid="uid://fqbffmriq6eb" path="res://Resources/Prefabs/Character Objects/Player/PlayerStatsManager.tscn" id="1_k5ur1"]
+[ext_resource type="Script" uid="uid://cdcywejflrk0h" path="res://Scripts/_Root/Enemy/EnemyManager.gd" id="1_uqdgf"]
+[ext_resource type="PackedScene" uid="uid://bxa8rbcxicnn6" path="res://Resources/Prefabs/Character Objects/Enemies/VisionManager.tscn" id="3_36ua4"]
+[ext_resource type="AudioStream" uid="uid://d0ry0t7dm6gw6" path="res://Audio/SFX/SE/monster/monster alert.wav" id="4_57tk4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ijf7h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_57tk4"]
+
+[node name="Monster" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_uqdgf")
+
+[node name="Stats Manager" parent="." instance=ExtResource("1_k5ur1")]
+
+[node name="Vision Manager" parent="." instance=ExtResource("3_36ua4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ijf7h")
+debug_fill = false
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="NearbyMonstersAlertArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NearbyMonstersAlertArea"]
+shape = SubResource("SphereShape3D_57tk4")
+
+[node name="AlertSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_57tk4")
+bus = &"SFX"

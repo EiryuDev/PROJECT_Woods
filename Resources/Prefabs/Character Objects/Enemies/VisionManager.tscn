@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxa8rbcxicnn6"]
+
+[ext_resource type="Script" uid="uid://c5d16rvme6yen" path="res://Scripts/_Root/Enemy/EnemyVisionManager.gd" id="1_byvg1"]
+
+[node name="Vision Manager" type="Node3D"]
+script = ExtResource("1_byvg1")
+
+[node name="LOSRayCast3D" type="RayCast3D" parent="."]
+enabled = false

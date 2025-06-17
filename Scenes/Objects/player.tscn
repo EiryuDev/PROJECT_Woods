@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=68 format=4 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://d22tr7toifvol" path="res://Scripts/Combat/Player/PlayerWeaponManager.gd" id="2_dfgsd"]
@@ -475,6 +475,12 @@ _data = {
 &"RESET": SubResource("Animation_ea56u")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mytd1"]
+radius = 50.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kkk37"]
+radius = 15.0
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mxid"]
 radius = 0.583
 height = 2.091
@@ -558,6 +564,10 @@ fov = 80.0
 
 [node name="FirePoint" type="Node3D" parent="Camera3D"]
 unique_name_in_owner = true
+
+[node name="ObjectPoint" type="Node3D" parent="Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.79763)
 
 [node name="Player Weapon Manager" type="Node3D" parent="Camera3D"]
 unique_name_in_owner = true
@@ -778,6 +788,25 @@ libraries = {
 &"": SubResource("AnimationLibrary_ea56u")
 }
 
+[node name="NearbyMonstersAlertAreaLarge" type="Area3D" parent="Camera3D/Player Weapon Manager"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Player Weapon Manager/NearbyMonstersAlertAreaLarge"]
+shape = SubResource("SphereShape3D_mytd1")
+
+[node name="NearbyMonstersAlertAreaSmall" type="Area3D" parent="Camera3D/Player Weapon Manager"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Player Weapon Manager/NearbyMonstersAlertAreaSmall"]
+shape = SubResource("SphereShape3D_kkk37")
+
+[node name="LOSRayCast3D" type="RayCast3D" parent="Camera3D/Player Weapon Manager"]
+enabled = false
+
 [node name="InteractRayCast" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 32
@@ -785,6 +814,7 @@ collide_with_areas = true
 
 [node name="Player Stats Manager" parent="." instance=ExtResource("16_v7n4v")]
 unique_name_in_owner = true
+staminaRegenRate = 30.0
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="Player Stats Manager"]
 stream = ExtResource("17_glqjn")

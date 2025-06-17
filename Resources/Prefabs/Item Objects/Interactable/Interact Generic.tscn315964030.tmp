@@ -4,10 +4,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2wmv6"]
 
-[node name="Interact Generic" type="RigidBody3D" groups=["Interactable"]]
+[node name="Interact Generic" type="Area3D" groups=["Interactable"]]
 collision_layer = 33
 collision_mask = 32
-gravity_scale = 0.0
 script = ExtResource("1_eyfcy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Interactable"]]

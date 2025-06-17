@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://bc4u7he8yghg5"]
+[gd_scene load_steps=38 format=4 uid="uid://bc4u7he8yghg5"]
 
 [ext_resource type="AudioStream" uid="uid://ut1mhyvtapuk" path="res://Audio/BGS/Silent Hill Ambient.mp3" id="1_1eanf"]
 [ext_resource type="PackedScene" uid="uid://127i8t1q6urm" path="res://Resources/Prefabs/World Managers Objects/World Manager.tscn" id="1_ikhcb"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cxov42su3s2fo" path="res://Resources/Prefabs/Item Objects/Interactable/Interact Generic.tscn" id="14_k1sfk"]
 [ext_resource type="PackedScene" uid="uid://cayvxusygia1b" path="res://Resources/Prefabs/Item Objects/Interactable/Cube Interactable.tscn" id="15_n6cyh"]
 [ext_resource type="PackedScene" uid="uid://fe5e2bghp07v" path="res://Resources/Prefabs/Character Objects/NPC/Cop 1/Cop NPC.tscn" id="16_cbmdf"]
+[ext_resource type="PackedScene" uid="uid://dqlv78hfo8y57" path="res://Resources/Prefabs/Character Objects/Enemies/Bird Monster/bird_monster.tscn" id="17_wo8eb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -371,6 +372,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_c5nv4")
 
 [node name="Navigation" type="Node3D" parent="."]
+visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Navigation"]
 navigation_mesh = SubResource("NavigationMesh_6rwdy")
@@ -419,9 +421,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27276, 1, -37.5011)
 type = "Interact with Generic"
 
 [node name="CubeInteractable" parent="." instance=ExtResource("15_n6cyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88912, 1, -36.8213)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88912, 4.09662, -36.8213)
 type = "Interact with Cube"
 
 [node name="Cop NPC" parent="." instance=ExtResource("16_cbmdf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, 0.5, -24.152)
 dialoguePath = "res://Data/Dialogues/OpeningDialogue.json"
+
+[node name="BirdMonster" parent="." instance=ExtResource("17_wo8eb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03861, 0.5, -37.1066)

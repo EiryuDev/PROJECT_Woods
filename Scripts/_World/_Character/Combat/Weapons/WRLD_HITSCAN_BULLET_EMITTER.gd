@@ -14,7 +14,7 @@ func Fire():
 	raycast3D.enabled = true
 	raycast3D.force_raycast_update()
 	if raycast3D.is_colliding():
-		var canHurt = raycast3D.get_collider().has_method("Hurt")
+		var canHurt = raycast3D.get_collider().has_method("hurt")
 		if canHurt and onlyHitEnvironment:
 			pass
 		elif canHurt:

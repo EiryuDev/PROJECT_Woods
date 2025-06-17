@@ -9,3 +9,4 @@ script = ExtResource("1_4ika7")
 enabled = false
 target_position = Vector3(0, 0, -10000)
 collision_mask = 5
+collide_with_areas = true

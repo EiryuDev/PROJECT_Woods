@@ -1,11 +1,20 @@
 class_name Interactable
-extends Area3D
+extends RigidBody3D
 
 @export var isCubeInteractable = false
+enum INTERACTABLE_TYPES {GENERIC, CUBE1, CUBE2}
+@export var interactableType = INTERACTABLE_TYPES.GENERIC
 @export var type : String = "Interact"
 
 func action_use():
-	if !isCubeInteractable:
-		print("I am being interacted with")
-	else:
-		$MeshInstance3D.scale += Vector3(1,1,1)
+	match interactableType:
+		INTERACTABLE_TYPES.GENERIC:
+			print("I am being interacted with")
+			pass
+		INTERACTABLE_TYPES.CUBE1:
+			$MeshInstance3D.scale += Vector3(1,1,1)
+			pass
+		INTERACTABLE_TYPES.CUBE2:
+			#Inspect code here
+			pass
+		

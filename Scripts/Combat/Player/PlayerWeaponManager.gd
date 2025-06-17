@@ -9,8 +9,14 @@ var currentWeapon = null
 @onready var crosshair = $"../../CanvasLayer/GUI/Crosshair"
 @onready var playerStatsManager = %"Player Stats Manager"
 
+@onready var nearbyMonstersAlertAreaSmall = $NearbyMonstersAlertAreaSmall
+@onready var nearbyMonstersAlertAreaLarge = $NearbyMonstersAlertAreaLarge
+@onready var losRaycast3D = $LOSRayCast3D
+
 func _ready():
 	for weapon in weapons:
+		if !weapon.silentWeapon:
+			weapon.fired.connect(AlertEnemiesOnFired)
 		if weapon.has_method("SetBodiesToExclude"):
 			weapon.SetBodiesToExclude([get_parent().get_parent()])
 	DisableAllWeapons()
@@ -86,3 +92,17 @@ func GetWeaponFromPickUpType(weaponType: Pickup.WEAPONS) -> Weapon:
 		Pickup.WEAPONS.DEAGLE:
 			return $"Weapons/Desert Eagle"
 	return null
+
+func AlertEnemiesOnFired():
+	for monster in nearbyMonstersAlertAreaSmall.get_overlapping_bodies():
+		if monster is Enemy:
+			monster.Alert()
+	
+	for monster in nearbyMonstersAlertAreaLarge.get_overlapping_bodies():
+		if monster is Enemy:
+			losRaycast3D.enabled = true
+			losRaycast3D.target_position = losRaycast3D.to_local(monster.visionManager.global_position)
+			losRaycast3D.force_raycast_update()
+			if !losRaycast3D.is_colliding():
+				monster.Alert()
+			losRaycast3D.enabled = false

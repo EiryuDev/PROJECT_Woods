@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cayvxusygia1b"]
+[gd_scene load_steps=4 format=3 uid="uid://cayvxusygia1b"]
 
-[ext_resource type="PackedScene" uid="uid://cxov42su3s2fo" path="res://Resources/Prefabs/Item Objects/Interactable/Interact Generic.tscn" id="1_m401n"]
+[ext_resource type="Script" uid="uid://cuj8r33aebhuq" path="res://Scripts/_World/_Character/Items/Interactable/WRLD_Interactable.gd" id="1_m401n"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gv6i8"]
 
-[node name="CubeInteractable" instance=ExtResource("1_m401n")]
-isCubeInteractable = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_2wmv6"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+[node name="CubeInteractable" type="RigidBody3D" groups=["Interactable"]]
+collision_layer = 33
+collision_mask = 33
+script = ExtResource("1_m401n")
+isCubeInteractable = true
+interactableType = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_gv6i8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Interactable"]]
+shape = SubResource("BoxShape3D_2wmv6")
