@@ -23,6 +23,7 @@ func _ready():
 	for _i in range(weapons.size()):
 		weaponsUnlocked.append(false) # True for testing, default false
 	weaponsUnlocked[0] = true
+	weaponsUnlocked[1] = true
 	SwitchToWeaponSlot(0)
 	
 func _process(delta):

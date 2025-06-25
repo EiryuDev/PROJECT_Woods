@@ -617,6 +617,74 @@ script = ExtResource("2_dfgsd")
 
 [node name="Weapons" type="Node3D" parent="Camera3D/Player Weapon Manager"]
 
+[node name="Empty" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.448009, -0.535145, -0.656691)
+script = ExtResource("4_y42te")
+automatic = true
+damage = 15
+ammo = -1
+attackRate = 0.3
+animationControlledAttack = true
+
+[node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty"]
+rotation_edit_mode = 1
+
+[node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics"]
+visible = false
+
+[node name="Machete" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics/Machete"]
+visible = false
+layers = 524288
+mesh = SubResource("ArrayMesh_h8tfp")
+skeleton = NodePath("")
+
+[node name="PSX_Axe" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics" instance=ExtResource("6_gra3g")]
+transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 0, -0.30714, -0.0337296)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics"]
+libraries = {
+&"": SubResource("AnimationLibrary_6odyb")
+}
+autoplay = "RESET"
+
+[node name="BulletEmitter" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty"]
+transform = Transform3D(1, 1.06581e-14, -7.10543e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+script = ExtResource("6_2i876")
+metadata/_custom_type_script = "uid://b3ujgip13wym3"
+
+[node name="AreaDamageEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter" instance=ExtResource("6_1mxid")]
+offsetByRadius = true
+
+[node name="HitScanBulletEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter" instance=ExtResource("7_jvxap")]
+onlyHitEnvironment = true
+
+[node name="RayCast3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter/HitScanBulletEmitter" index="0"]
+target_position = Vector3(0, 0, -2)
+
+[node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty"]
+stream = ExtResource("8_uaqrc")
+pitch_scale = 1.3
+bus = &"SFX"
+
+[node name="AttackSounds" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty"]
+script = ExtResource("9_lq1qi")
+
+[node name="MeleeAttack01" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/AttackSounds"]
+stream = ExtResource("8_uaqrc")
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="MeleeAttack02" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/AttackSounds"]
+stream = ExtResource("8_uaqrc")
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="MeleeAttack03" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/AttackSounds"]
+stream = ExtResource("8_uaqrc")
+pitch_scale = 0.9
+bus = &"SFX"
+
 [node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.448009, -0.535145, -0.656691)
 script = ExtResource("4_y42te")
@@ -1190,4 +1258,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_2btc3")
 }
 
+[editable path="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter/HitScanBulletEmitter"]
 [editable path="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]
