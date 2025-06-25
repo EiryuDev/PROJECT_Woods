@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bebdx0b1l1cls"]
+
+[ext_resource type="PackedScene" uid="uid://iia6m6xf3xn0" path="res://ArtResources/Props/Royal Enfield/source/Royal Enfield Classic.glb" id="1_38f1u"]
+
+[node name="PlayerBikeManager" type="Node3D"]
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Royal Enfield Classic" parent="Graphics" instance=ExtResource("1_38f1u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)

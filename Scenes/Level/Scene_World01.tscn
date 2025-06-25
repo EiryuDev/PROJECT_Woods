@@ -1,14 +1,12 @@
-[gd_scene load_steps=44 format=4 uid="uid://bc4u7he8yghg5"]
+[gd_scene load_steps=43 format=4 uid="uid://bc4u7he8yghg5"]
 
 [ext_resource type="PackedScene" uid="uid://bf1dbei3nkcq8" path="res://Settings/Terrain/Demo Level/DemoTerrain.tscn" id="1_0jjbl"]
 [ext_resource type="AudioStream" uid="uid://ut1mhyvtapuk" path="res://Audio/BGS/Silent Hill Ambient.mp3" id="1_1eanf"]
 [ext_resource type="PackedScene" uid="uid://127i8t1q6urm" path="res://Resources/Prefabs/World Managers Objects/World Manager.tscn" id="1_ikhcb"]
 [ext_resource type="Material" uid="uid://dwh16uujwbqmm" path="res://ArtResources/Environment/Source/brick_ivy.tres" id="2_33l6s"]
 [ext_resource type="PackedScene" uid="uid://tnhuis33m6qk" path="res://Resources/Prefabs/Environment Objects/tree_01.tscn" id="2_bnhl3"]
-[ext_resource type="PackedScene" uid="uid://wfhoxjvwejbh" path="res://Resources/Prefabs/World Managers Objects/World Discord Manager.tscn" id="2_hqcm7"]
 [ext_resource type="Texture2D" uid="uid://2saoiftww80j" path="res://ArtResources/Environment/Source/shed_low_res_wood.png" id="3_5pkxh"]
 [ext_resource type="Texture2D" uid="uid://botwj57i0aic" path="res://ArtResources/Environment/Source/shed_door.png" id="4_24hrj"]
-[ext_resource type="Script" uid="uid://dhv6dhk64j5kk" path="res://Scripts/_World/_SDKs/WRLD_DISCORD_MANAGER.gd" id="5_obdna"]
 [ext_resource type="Texture2D" uid="uid://b65jnng6d16uy" path="res://ArtResources/Environment/Source/shed_window.png" id="5_oys0q"]
 [ext_resource type="Texture2D" uid="uid://de662x476g87i" path="res://ArtResources/Environment/Source/shed_roof.png" id="6_icyvo"]
 [ext_resource type="PackedScene" uid="uid://cq0a041eg5071" path="res://Scenes/Objects/player.tscn" id="7_n6wfk"]
@@ -20,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://fe5e2bghp07v" path="res://Resources/Prefabs/Character Objects/NPC/Cop 1/Cop NPC.tscn" id="16_cbmdf"]
 [ext_resource type="Script" uid="uid://bmowijr30ago8" path="res://Scripts/_World/_Character/_Root/WRLD_Cat.gd" id="18_0jjbl"]
 [ext_resource type="PackedScene" uid="uid://cdbcyv4nldlqw" path="res://ArtResources/Characters/Enemies/Cat/source/OiiaioooooiaiFin.fbx" id="18_yjnyt"]
+[ext_resource type="PackedScene" uid="uid://bebdx0b1l1cls" path="res://Resources/Prefabs/Character Objects/Player/PlayerBikeManager.tscn" id="20_bnhl3"]
 [ext_resource type="PackedScene" uid="uid://tbn3nhc5ycoo" path="res://Resources/Prefabs/Props Objects/Cars/PoliceCar01.tscn" id="20_obdna"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
@@ -532,6 +531,15 @@ transform = Transform3D(-0.925104, 0.379715, 1.65979e-08, -4.69972e-15, -4.37114
 [node name="tree160" parent="Node3D" instance=ExtResource("2_bnhl3")]
 transform = Transform3D(-0.922646, -0.385648, -1.68572e-08, -4.69972e-15, -4.37114e-08, 1, -0.385648, 0.922646, 4.03301e-08, 14.2961, 0.148191, 88.8503)
 
+[node name="tree190" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(-0.922646, -0.385648, -1.68572e-08, -4.69972e-15, -4.37114e-08, 1, -0.385648, 0.922646, 4.03301e-08, 14.2961, 0.148191, 96.8503)
+
+[node name="tree192" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(-0.922646, -0.385648, -1.68572e-08, -4.69972e-15, -4.37114e-08, 1, -0.385648, 0.922646, 4.03301e-08, 4.2961, 0.148191, 90.8503)
+
+[node name="tree191" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(-0.922646, -0.385648, -1.68572e-08, -4.69972e-15, -4.37114e-08, 1, -0.385648, 0.922646, 4.03301e-08, 6.2961, -0.171091, 98.8503)
+
 [node name="tree161" parent="Node3D" instance=ExtResource("2_bnhl3")]
 transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -4.48095e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, 38.2961, 0.148191, 68.8503)
 
@@ -880,9 +888,6 @@ autoplay = true
 parameters/looping = true
 
 [node name="World Manager" parent="." instance=ExtResource("1_ikhcb")]
-
-[node name="World Discord Manager" parent="." instance=ExtResource("2_hqcm7")]
-script = ExtResource("5_obdna")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.945518, -0.28195, 0.162784, 0, 0.5, 0.866026, -0.325568, 0.818843, -0.472759, 0, 0, 0)
@@ -2419,6 +2424,9 @@ shape = SubResource("BoxShape3D_0jjbl")
 
 [node name="PolicaCar01" parent="." instance=ExtResource("20_obdna")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 15.6697, -0.00457197, -24)
+
+[node name="PlayerBikeManager" parent="." instance=ExtResource("20_bnhl3")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 9.20395, -0.892205, -12.4479)
 
 [editable path="Node3D"]
 [editable path="Cat/OiiaioooooiaiFin"]

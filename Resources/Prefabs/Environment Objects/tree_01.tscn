@@ -15,7 +15,7 @@ objectToEnable = NodePath("LeafsFallingEffect")
 [node name="treee01" parent="." index="0"]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
 script = ExtResource("5_of2h5")
-swaySpeed = 0.8
+swaySpeed = 0.9
 
 [node name="tree_leaf" parent="." index="1" instance=ExtResource("2_t3kdd")]
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, 0)
