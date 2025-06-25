@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkhvvnpvked61"]
+
+[ext_resource type="PackedScene" uid="uid://cdbcyv4nldlqw" path="res://ArtResources/Characters/Enemies/Cat/source/OiiaioooooiaiFin.fbx" id="1_cufyu"]
+[ext_resource type="Script" uid="uid://dbbx0735i3nw" path="res://Scripts/_World/Enemy/WRLD_TESTJUMPSCARE.gd" id="2_yregt"]
+
+[sub_resource type="Environment" id="Environment_cufyu"]
+background_mode = 1
+
+[node name="KillScene" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cufyu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+current = true
+
+[node name="OiiaioooooiaiFin" parent="." instance=ExtResource("1_cufyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775, 1.157)
+script = ExtResource("2_yregt")
+
+[node name="Muchkin1_002" parent="OiiaioooooiaiFin" index="0"]
+transform = Transform3D(0.999792, 0, -0.0204431, 0, 1, 0, 0.0204431, 0, 0.999792, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="OiiaioooooiaiFin" index="1"]
+autoplay = "Take 001"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="OiiaioooooiaiFin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.32313)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 10.0
+pitch_scale = 1.5
+
+[editable path="OiiaioooooiaiFin"]

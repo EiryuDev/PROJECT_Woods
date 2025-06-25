@@ -1,6 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://wfhoxjvwejbh"]
-
-[ext_resource type="Script" uid="uid://dq1uggnt0h6yf" path="res://Scripts/_World/_Character/_Root/WRLD_MANAGER.gd" id="1_a12t6"]
+[gd_scene format=3 uid="uid://wfhoxjvwejbh"]
 
 [node name="World Discord Manager" type="Node"]
-script = ExtResource("1_a12t6")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://fqbffmriq6eb"]
+
+[ext_resource type="Script" uid="uid://c08p5lx400ri0" path="res://Scripts/Stats/PlayerStatsManager.gd" id="1_1boq1"]
+
+[node name="Player Stats Manager" type="Node3D"]
+script = ExtResource("1_1boq1")
+
+[node name="BloodRaycast" type="RayCast3D" parent="."]
+enabled = false

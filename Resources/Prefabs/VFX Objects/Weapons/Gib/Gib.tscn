@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjvcxghhf6v2d"]
+
+[ext_resource type="Script" uid="uid://bknybbe52q40d" path="res://Scripts/_World/_Character/Combat/Effects/WRLD_GIB.gd" id="1_sneih"]
+[ext_resource type="PackedScene" uid="uid://d1v8ardxv4h8j" path="res://ArtResources/VFX/Effects/Gib/gib1.glb" id="2_phj80"]
+[ext_resource type="PackedScene" uid="uid://dpobscutt5hyk" path="res://ArtResources/VFX/Effects/Gib/gib2.glb" id="3_0rtpp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p283y"]
+radius = 0.258403
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dpbsl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sx1o2"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(0.309804, 0.0745098, 0.0745098, 1)
+albedo_texture = SubResource("CompressedTexture2D_dpbsl")
+texture_filter = 2
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ig42b"]
+_data = [Vector2(0.702312, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gcyhd"]
+curve = SubResource("Curve_ig42b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nfdco"]
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+scale_min = 0.09
+scale_max = 0.12
+scale_curve = SubResource("CurveTexture_gcyhd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1f8k3"]
+
+[node name="Gib" type="CharacterBody3D"]
+collision_layer = 12
+script = ExtResource("1_sneih")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_p283y")
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="gib1" parent="Graphics" instance=ExtResource("2_phj80")]
+transform = Transform3D(0.32565, 0, 0, 0, 0.32565, 0, 0, 0, 0.32565, 0, 0, 0)
+
+[node name="gib2" parent="Graphics" instance=ExtResource("3_0rtpp")]
+transform = Transform3D(0.424194, 0, 0, 0, 0.424194, 0, 0, 0, 0.424194, 0, 0, 0)
+
+[node name="gib3" parent="Graphics" instance=ExtResource("3_0rtpp")]
+transform = Transform3D(0.424194, 0, 0, 0, 0.424194, 0, 0, 0, 0.424194, 0, 0, 0)
+
+[node name="BloodParticles" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_sx1o2")
+emitting = false
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.3
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_nfdco")
+draw_pass_1 = SubResource("QuadMesh_1f8k3")

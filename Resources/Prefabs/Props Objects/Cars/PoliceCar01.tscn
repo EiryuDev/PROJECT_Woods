@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://tbn3nhc5ycoo"]
+
+[ext_resource type="PackedScene" uid="uid://cp7ckywgr18kq" path="res://ArtResources/Props/Car/Police Car/Car5_Police.blend" id="1_7gdet"]
+[ext_resource type="Material" uid="uid://wf2yc2uheb1a" path="res://ArtResources/Props/Car/Police Car/Materials/police_car_black.material" id="2_ih3d5"]
+
+[node name="PolicaCar01" instance=ExtResource("1_7gdet")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Car5_Police" parent="." index="0"]
+material_override = ExtResource("2_ih3d5")

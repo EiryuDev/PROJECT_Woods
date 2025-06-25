@@ -1,12 +1,14 @@
-[gd_scene load_steps=38 format=4 uid="uid://bc4u7he8yghg5"]
+[gd_scene load_steps=44 format=4 uid="uid://bc4u7he8yghg5"]
 
+[ext_resource type="PackedScene" uid="uid://bf1dbei3nkcq8" path="res://Settings/Terrain/Demo Level/DemoTerrain.tscn" id="1_0jjbl"]
 [ext_resource type="AudioStream" uid="uid://ut1mhyvtapuk" path="res://Audio/BGS/Silent Hill Ambient.mp3" id="1_1eanf"]
 [ext_resource type="PackedScene" uid="uid://127i8t1q6urm" path="res://Resources/Prefabs/World Managers Objects/World Manager.tscn" id="1_ikhcb"]
-[ext_resource type="Texture2D" uid="uid://ckukvgj3xpwmj" path="res://ArtResources/Environment/Textures/grass_lowres.png" id="1_yuhoi"]
 [ext_resource type="Material" uid="uid://dwh16uujwbqmm" path="res://ArtResources/Environment/Source/brick_ivy.tres" id="2_33l6s"]
+[ext_resource type="PackedScene" uid="uid://tnhuis33m6qk" path="res://Resources/Prefabs/Environment Objects/tree_01.tscn" id="2_bnhl3"]
 [ext_resource type="PackedScene" uid="uid://wfhoxjvwejbh" path="res://Resources/Prefabs/World Managers Objects/World Discord Manager.tscn" id="2_hqcm7"]
 [ext_resource type="Texture2D" uid="uid://2saoiftww80j" path="res://ArtResources/Environment/Source/shed_low_res_wood.png" id="3_5pkxh"]
 [ext_resource type="Texture2D" uid="uid://botwj57i0aic" path="res://ArtResources/Environment/Source/shed_door.png" id="4_24hrj"]
+[ext_resource type="Script" uid="uid://dhv6dhk64j5kk" path="res://Scripts/_World/_SDKs/WRLD_DISCORD_MANAGER.gd" id="5_obdna"]
 [ext_resource type="Texture2D" uid="uid://b65jnng6d16uy" path="res://ArtResources/Environment/Source/shed_window.png" id="5_oys0q"]
 [ext_resource type="Texture2D" uid="uid://de662x476g87i" path="res://ArtResources/Environment/Source/shed_roof.png" id="6_icyvo"]
 [ext_resource type="PackedScene" uid="uid://cq0a041eg5071" path="res://Scenes/Objects/player.tscn" id="7_n6wfk"]
@@ -16,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://cxov42su3s2fo" path="res://Resources/Prefabs/Item Objects/Interactable/Interact Generic.tscn" id="14_k1sfk"]
 [ext_resource type="PackedScene" uid="uid://cayvxusygia1b" path="res://Resources/Prefabs/Item Objects/Interactable/Cube Interactable.tscn" id="15_n6cyh"]
 [ext_resource type="PackedScene" uid="uid://fe5e2bghp07v" path="res://Resources/Prefabs/Character Objects/NPC/Cop 1/Cop NPC.tscn" id="16_cbmdf"]
-[ext_resource type="PackedScene" uid="uid://dqlv78hfo8y57" path="res://Resources/Prefabs/Character Objects/Enemies/Bird Monster/bird_monster.tscn" id="17_wo8eb"]
+[ext_resource type="Script" uid="uid://bmowijr30ago8" path="res://Scripts/_World/_Character/_Root/WRLD_Cat.gd" id="18_0jjbl"]
+[ext_resource type="PackedScene" uid="uid://cdbcyv4nldlqw" path="res://ArtResources/Characters/Enemies/Cat/source/OiiaioooooiaiFin.fbx" id="18_yjnyt"]
+[ext_resource type="PackedScene" uid="uid://tbn3nhc5ycoo" path="res://Resources/Prefabs/Props Objects/Cars/PoliceCar01.tscn" id="20_obdna"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,12 +39,13 @@ glow_enabled = true
 fog_light_color = Color(0.627451, 0.533333, 0.427451, 1)
 fog_density = 0.0095
 fog_sky_affect = 0.45
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.0445
 volumetric_fog_albedo = Color(0.843137, 1, 0.811765, 1)
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_cbmdf"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_obdna"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cok01"]
 resource_name = "wood"
@@ -213,18 +218,6 @@ shadow_mesh = SubResource("ArrayMesh_rp0to")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_clnb3"]
 data = PackedVector3Array(-2, 3, -0.3, -2, 0, 0.3, -2, 0, -0.3, -2, 3, -0.3, -2, 3, 0.3, -2, 0, 0.3, 2, 3, -0.3, -2, 0, -0.3, 2, 0, -0.3, 2, 3, -0.3, -2, 3, -0.3, -2, 0, -0.3, 2, 3, 0.3, 2, 0, -0.3, 2, 0, 0.3, 2, 3, 0.3, 2, 3, -0.3, 2, 0, -0.3, -2, 3, 0.3, 2, 0, 0.3, -2, 0, 0.3, -2, 3, 0.3, 2, 3, 0.3, 2, 0, 0.3, -2, 0, 0.3, 2, 0, -0.3, -2, 0, -0.3, -2, 0, 0.3, 2, 0, 0.3, 2, 0, -0.3, 2, 3, 0.3, -2, 3, -0.3, 2, 3, -0.3, 2, 3, 0.3, -2, 3, 0.3, -2, 3, -0.3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pre3n"]
-albedo_color = Color(0.619608, 0.619608, 0.619608, 1)
-albedo_texture = ExtResource("1_yuhoi")
-uv1_scale = Vector3(50, 50, 50)
-
-[sub_resource type="BoxMesh" id="BoxMesh_k2nup"]
-material = SubResource("StandardMaterial3D_pre3n")
-size = Vector3(100, 1, 100)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c5nv4"]
-data = PackedVector3Array(-50, 0.5, 50, 50, 0.5, 50, -50, -0.5, 50, 50, 0.5, 50, 50, -0.5, 50, -50, -0.5, 50, 50, 0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, 0.5, -50, -50, -0.5, -50, 50, -0.5, -50, 50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, -50, 50, -0.5, -50, 50, -0.5, 50, -50, 0.5, -50, -50, 0.5, 50, -50, -0.5, -50, -50, 0.5, 50, -50, -0.5, 50, -50, -0.5, -50, 50, 0.5, 50, -50, 0.5, 50, 50, 0.5, -50, -50, 0.5, 50, -50, 0.5, -50, 50, 0.5, -50, -50, -0.5, 50, 50, -0.5, 50, -50, -0.5, -50, 50, -0.5, 50, 50, -0.5, -50, -50, -0.5, -50)
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_6rwdy"]
 vertices = PackedVector3Array(7.75, 1, -39.25, 9, 1, -39.75, 9, 1, -40.25, -2, 1, -40.5, 13.5, 1, -36, 13, 1, -36, 8, 1, -35.75, 13.5, 1, -28.5, -1.75, 1, -42, 0.25, 1, -42, 0.25, 1, -49.5, -6, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -49.5, -49.5, 1, -43.5, -31, 1, -49.5, -49.5, 1, 0, -49.5, 1, 6, -49.5, 1, 43.25, -49.5, 1, 49.5, -43.5, 1, 49.5, 12.25, 1, 49.5, 18.5, 1, 49.5, 49.5, 1, 29.5, -31, 1, -49.5, -49.5, 1, -18.75, -49.5, 1, -12.5, -2, 1, -40.5, -1.75, 1, -42, -6, 1, -49.5, -12.25, 1, -49.5, 8, 1, -35.75, 7.75, 1, -39.25, -2, 1, -40.5, 43.25, 1, 49.5, 49.5, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, -0.25, 49.5, 1, -10, 13.5, 1, -28.5, -37.25, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -43.5, -49.5, 1, -37.25, -49.5, 1, 43.25, -43.5, 1, 49.5, -37.25, 1, 49.5, -49.5, 1, 37, 37, 1, 49.5, 43.25, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -49.5, 1, -12.5, -49.5, 1, -6.25, 12.25, 1, 49.5, 49.5, 1, 29.5, 49.5, 1, 19.5, 6, 1, 49.5, -2, 1, -40.5, -12.25, 1, -49.5, -18.5, 1, -49.5, 13.5, 1, -28.5, 8, 1, -35.75, -2, 1, -40.5, -24.75, 1, -49.5, -31, 1, -49.5, 30.75, 1, 49.5, 37, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -37.25, 1, -49.5, -49.5, 1, -37.25, -49.5, 1, -31, -49.5, 1, 37, -37.25, 1, 49.5, -31, 1, 49.5, -49.5, 1, 30.75, -2, 1, -40.5, -18.5, 1, -49.5, -24.75, 1, -49.5, 49.5, 1, 9.75, 49.5, 1, -0.25, 13.5, 1, -28.5, -6.25, 1, 49.5, 0, 1, 49.5, 49.5, 1, 19.5, 13.5, 1, -28.5, -31, 1, -49.5, -49.5, 1, 6, 24.75, 1, 49.5, 30.75, 1, 49.5, 49.5, 1, 39.5, -49.5, 1, 18.5, -18.75, 1, 49.5, -12.5, 1, 49.5, -49.5, 1, 12.25, -31, 1, -49.5, -49.5, 1, -31, -49.5, 1, -24.75, -49.5, 1, 24.75, -49.5, 1, 30.75, -31, 1, 49.5, -24.75, 1, 49.5, 24.75, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, 29.5, 18.5, 1, 49.5, 49.5, 1, -29.75, 15.25, 1, -30, 15, 1, -28.25, 49.5, 1, -20, 49.5, 1, 19.5, 49.5, 1, 9.75, 13.5, 1, -28.5, -49.5, 1, 12.25, -12.5, 1, 49.5, -6.25, 1, 49.5, -49.5, 1, 6, -31, 1, -49.5, -49.5, 1, -24.75, -49.5, 1, -18.75, -31, 1, -49.5, -49.5, 1, -6.25, -49.5, 1, 0, 49.5, 1, -20, 15, 1, -28.25, 13.5, 1, -28.5, 49.5, 1, -10, -49.5, 1, 24.75, -24.75, 1, 49.5, -18.75, 1, 49.5, -49.5, 1, 18.5, 0, 1, 49.5, 6, 1, 49.5, 49.5, 1, 19.5, 6.5, 1, -49.5, 0.25, 1, -49.5, 0.25, 1, -42, 6.5, 1, -42, 6.5, 1, -42, 13, 1, -42, 13, 1, -49.5, 6.5, 1, -49.5, 13, 1, -49.5, 13, 1, -42, 15.25, 1, -41.75, 22, 1, -49.5, 49.5, 1, -39.75, 40.25, 1, -49.5, 31.25, 1, -49.5, 15.25, 1, -41.75, 15.25, 1, -30, 49.5, 1, -29.75, 49.5, 1, -39.75, 49.5, 1, -49.5, 40.25, 1, -49.5, 31.25, 1, -49.5, 22, 1, -49.5, 15.25, 1, -41.75, 12.75, 1, -39.5, 13, 1, -36, 13.5, 1, -36, 13.5, 1, -40.25, 12.75, 1, -39.5, 13.5, 1, -40.25, 9, 1, -40.25, 9, 1, -39.75, 8.75, 4.75, -38.75, 8.75, 4.75, -36.75, 12, 4.75, -36.75, 12, 4.75, -38.75, 8.75, 5.25, -37.75, 12, 5.25, -37.75, 9, 1, -38.25, 9, 1, -37, 11.75, 1, -37, 11.75, 1, -38.25)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(20, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 30), PackedInt32Array(33, 32, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(39, 38, 37), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(50, 49, 48), PackedInt32Array(53, 52, 51), PackedInt32Array(54, 57, 55), PackedInt32Array(55, 57, 56), PackedInt32Array(60, 59, 58), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(64, 61, 65), PackedInt32Array(68, 67, 66), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(79, 78, 77), PackedInt32Array(82, 81, 80), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(86, 83, 88), PackedInt32Array(86, 88, 87), PackedInt32Array(91, 90, 89), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 95), PackedInt32Array(98, 97, 96), PackedInt32Array(100, 99, 101), PackedInt32Array(101, 99, 102), PackedInt32Array(103, 106, 104), PackedInt32Array(104, 106, 105), PackedInt32Array(108, 107, 109), PackedInt32Array(109, 107, 110), PackedInt32Array(113, 112, 111), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(120, 119, 118), PackedInt32Array(123, 122, 121), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(129, 128, 130), PackedInt32Array(130, 128, 131), PackedInt32Array(134, 133, 132), PackedInt32Array(138, 137, 135), PackedInt32Array(135, 137, 136), PackedInt32Array(142, 141, 139), PackedInt32Array(139, 141, 140), PackedInt32Array(144, 143, 145), PackedInt32Array(145, 143, 146), PackedInt32Array(148, 147, 149), PackedInt32Array(149, 147, 152), PackedInt32Array(149, 152, 150), PackedInt32Array(150, 152, 151), PackedInt32Array(155, 154, 153), PackedInt32Array(158, 157, 156), PackedInt32Array(160, 159, 161), PackedInt32Array(161, 159, 162), PackedInt32Array(166, 165, 163), PackedInt32Array(163, 165, 164), PackedInt32Array(170, 172, 167), PackedInt32Array(167, 172, 171), PackedInt32Array(171, 172, 169), PackedInt32Array(171, 169, 168), PackedInt32Array(176, 175, 173), PackedInt32Array(173, 175, 174)]
@@ -234,11 +227,371 @@ geometry_source_geometry_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikhcb"]
 
+[sub_resource type="Animation" id="Animation_0jjbl"]
+resource_name = "Dododo"
+length = 1.2
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.392612), Vector3(0, 0, 0), Vector3(0, 0, -0.431917), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%OiiaioooooiaiFin/..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3, 3, 3), Vector3(3, 3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_obdna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%OiiaioooooiaiFin/..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, 3, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bnhl3"]
+_data = {
+&"Dododo": SubResource("Animation_0jjbl"),
+&"RESET": SubResource("Animation_obdna")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0jjbl"]
+size = Vector3(1, 0.552353, 1)
+
 [node name="World" type="Node3D"]
+
+[node name="Node3D" parent="." instance=ExtResource("1_0jjbl")]
+
+[node name="tree01" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.41634, 0, -1.89317)
+
+[node name="tree04" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.41634, 1.31134e-07, 1.10683)
+
+[node name="tree02" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.35796, -3.38463e-07, -9.63631)
+
+[node name="tree03" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.1705, -4.56135e-07, -12.3283)
+
+[node name="tree69" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.1705, -4.56135e-07, -19.3283)
+
+[node name="tree70" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17.1705, -4.56135e-07, -18.3283)
+
+[node name="tree05" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.745688, 9.15551e-07, 16.3185)
+
+[node name="tree06" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.74569, 1.04668e-06, 19.3185)
+
+[node name="tree07" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.68731, 5.77088e-07, 8.57531)
+
+[node name="tree08" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.49985, 4.59416e-07, 5.88334)
+
+[node name="tree09" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.2543, 9.15551e-07, 16.3185)
+
+[node name="tree10" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.25431, 1.04668e-06, 19.3185)
+
+[node name="tree11" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.31269, 5.77088e-07, 8.57531)
+
+[node name="tree12" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.50015, 4.59416e-07, 5.88334)
+
+[node name="tree21" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.1754, 5.77088e-07, 3.06941)
+
+[node name="tree22" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.3629, 4.59416e-07, 0.377439)
+
+[node name="tree23" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.4759, 5.77088e-07, -4.42875)
+
+[node name="tree24" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.6634, 4.59416e-07, -7.12072)
+
+[node name="tree25" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.4759, 5.77088e-07, -11.9178)
+
+[node name="tree26" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.6634, 4.59416e-07, -14.6098)
+
+[node name="tree27" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.1332, 5.77088e-07, 9.66724)
+
+[node name="tree28" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.3207, 4.59416e-07, 6.97527)
+
+[node name="tree29" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -18.6092, 5.77088e-07, 7.10357)
+
+[node name="tree30" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -17.7967, 4.59416e-07, 4.4116)
+
+[node name="tree31" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -18.6092, 5.77088e-07, 13.7765)
+
+[node name="tree32" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -17.7967, 4.59416e-07, 11.0845)
+
+[node name="tree33" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.6281, 5.77088e-07, 16.8196)
+
+[node name="tree34" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12.8155, 4.59416e-07, 14.1276)
+
+[node name="tree13" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.450118, 9.15551e-07, 34.2944)
+
+[node name="tree14" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.45012, 1.04668e-06, 37.2944)
+
+[node name="tree15" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.39174, 5.77088e-07, 26.5513)
+
+[node name="tree16" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.20428, 4.59416e-07, 23.8593)
+
+[node name="tree79" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.842546, -0.538624, -2.3544e-08, 0, -4.37114e-08, 1, -0.538624, -0.842546, -3.68289e-08, -15.4222, 1.04668e-06, 23.1981)
+
+[node name="tree80" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.842546, -0.538624, -2.3544e-08, 0, -4.37114e-08, 1, -0.538624, -0.842546, -3.68289e-08, -4.16458, 4.59416e-07, 21.3907)
+
+[node name="tree81" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.993181, -0.116584, -5.09605e-09, -1.49666e-15, -4.37114e-08, 1, -0.116584, -0.993181, -4.34133e-08, -15.2517, 1.04668e-06, 27.5922)
+
+[node name="tree82" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.993181, -0.116584, -5.09605e-09, -1.49666e-15, -4.37114e-08, 1, -0.116584, -0.993181, -4.34133e-08, -4.33507, 4.59416e-07, 30.8827)
+
+[node name="tree83" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.963859, -0.266414, -1.16453e-08, -1.49666e-15, -4.37114e-08, 1, -0.266414, -0.963859, -4.21316e-08, -20.5344, -0.129239, 36.6587)
+
+[node name="tree84" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.963859, -0.266414, -1.16453e-08, -1.49666e-15, -4.37114e-08, 1, -0.266414, -0.963859, -4.21316e-08, -9.24402, -0.12924, 38.2491)
+
+[node name="tree85" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.993181, -0.116584, -5.09605e-09, -1.49666e-15, -4.37114e-08, 1, -0.116584, -0.993181, -4.34133e-08, -15.2517, 1.04668e-06, 37.5922)
+
+[node name="tree86" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.993181, -0.116584, -5.09605e-09, -1.49666e-15, -4.37114e-08, 1, -0.116584, -0.993181, -4.34133e-08, -4.33507, 4.59416e-07, 40.8827)
+
+[node name="tree87" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.963859, -0.266414, -1.16453e-08, -1.49666e-15, -4.37114e-08, 1, -0.266414, -0.963859, -4.21316e-08, -20.5344, -0.129239, 46.6587)
+
+[node name="tree88" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.963859, -0.266414, -1.16453e-08, -1.49666e-15, -4.37114e-08, 1, -0.266414, -0.963859, -4.21316e-08, -9.24402, -0.12924, 48.2491)
+
+[node name="tree89" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.906455, -0.422302, -1.84594e-08, -1.49666e-15, -4.37114e-08, 1, -0.422302, -0.906455, -3.96224e-08, -14.1165, 0.277432, 45.8944)
+
+[node name="tree90" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.906455, -0.422302, -1.84594e-08, -1.49666e-15, -4.37114e-08, 1, -0.422302, -0.906455, -3.96224e-08, -2.71869, 0.277431, 45.5938)
+
+[node name="tree91" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.831605, -0.555367, -2.42759e-08, 3.05909e-16, -4.37114e-08, 1, -0.555367, -0.831605, -3.63506e-08, -16.2878, 0.148191, 56.1606)
+
+[node name="tree92" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.831605, -0.555367, -2.42759e-08, 3.05909e-16, -4.37114e-08, 1, -0.555367, -0.831605, -3.63506e-08, -5.06861, 0.148191, 54.1284)
+
+[node name="tree93" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.906455, -0.422302, -1.84594e-08, -1.49666e-15, -4.37114e-08, 1, -0.422302, -0.906455, -3.96224e-08, -11.1165, 0.277432, 50.8944)
+
+[node name="tree94" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.906455, -0.422302, -1.84594e-08, -1.49666e-15, -4.37114e-08, 1, -0.422302, -0.906455, -3.96224e-08, 0.281311, 0.277431, 50.5938)
+
+[node name="tree95" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.831605, -0.555367, -2.42759e-08, 3.05909e-16, -4.37114e-08, 1, -0.555367, -0.831605, -3.63506e-08, -13.2878, 0.148191, 61.1606)
+
+[node name="tree96" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.831605, -0.555367, -2.42759e-08, 3.05909e-16, -4.37114e-08, 1, -0.555367, -0.831605, -3.63506e-08, -2.06861, 0.148191, 59.1284)
+
+[node name="tree17" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.7444, 9.15551e-07, -8.37928)
+
+[node name="tree18" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.7444, 1.04668e-06, -5.37928)
+
+[node name="tree19" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.80277, 5.77088e-07, -16.1224)
+
+[node name="tree20" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.99023, 4.59416e-07, -18.8144)
+
+[node name="tree35" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.4163, 0, -1.89317)
+
+[node name="tree36" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.4163, 1.31134e-07, 1.10683)
+
+[node name="tree37" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.358, -3.38463e-07, -9.63631)
+
+[node name="tree38" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.1705, -4.56135e-07, -12.3283)
+
+[node name="tree39" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 29.7457, 9.15551e-07, 16.3185)
+
+[node name="tree40" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.7457, 1.04668e-06, 19.3185)
+
+[node name="tree41" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.6873, 5.77088e-07, 8.57531)
+
+[node name="tree42" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.4998, 4.59416e-07, 5.88334)
+
+[node name="tree43" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 18.7457, 9.15551e-07, 16.3185)
+
+[node name="tree44" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.7457, 1.04668e-06, 19.3185)
+
+[node name="tree45" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.6873, 5.77088e-07, 8.57531)
+
+[node name="tree46" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.4999, 4.59416e-07, 5.88334)
+
+[node name="tree47" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.8246, 5.77088e-07, 3.06941)
+
+[node name="tree48" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.6371, 4.59416e-07, 0.377439)
+
+[node name="tree49" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.5241, 5.77088e-07, -4.42875)
+
+[node name="tree50" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.3366, 4.59416e-07, -7.12072)
+
+[node name="tree51" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.5241, 5.77088e-07, -11.9178)
+
+[node name="tree52" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.3366, 4.59416e-07, -14.6098)
+
+[node name="tree53" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.8668, 5.77088e-07, 9.66724)
+
+[node name="tree54" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.6793, 4.59416e-07, 6.97527)
+
+[node name="tree55" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.3908, 5.77088e-07, 25.1036)
+
+[node name="tree56" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.8066, 4.59416e-07, -0.222808)
+
+[node name="tree57" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22.3908, 5.77088e-07, 27.7765)
+
+[node name="tree58" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.6434, 4.59416e-07, -9.9155)
+
+[node name="tree59" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.3719, 5.77088e-07, 16.8196)
+
+[node name="tree60" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 16.1845, 4.59416e-07, 14.1276)
+
+[node name="tree61" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 29.4501, 9.15551e-07, 34.2944)
+
+[node name="tree62" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.4501, 1.04668e-06, 37.2944)
+
+[node name="tree63" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.3917, 5.77088e-07, 26.5513)
+
+[node name="tree64" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.2043, 4.59416e-07, 23.8593)
+
+[node name="tree65" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22.2556, 9.15551e-07, -8.37928)
+
+[node name="tree66" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24.2556, 1.04668e-06, -5.37928)
+
+[node name="tree67" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 23.1972, 5.77088e-07, -16.1224)
+
+[node name="tree68" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24.0098, 4.59416e-07, -18.8144)
+
+[node name="tree71" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.0098, 4.59416e-07, -20.8144)
+
+[node name="tree73" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.233598, 0.972333, 4.2502e-08, 0, -4.37114e-08, 1, 0.972333, -0.233598, -1.02109e-08, 28.9969, 4.59416e-07, -27.2363)
+
+[node name="tree74" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.233598, 0.972333, 4.2502e-08, 0, -4.37114e-08, 1, 0.972333, -0.233598, -1.02109e-08, 21.9969, 4.59416e-07, -27.2363)
+
+[node name="tree75" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(-0.725266, 0.688468, 3.00939e-08, 0, -4.37114e-08, 1, 0.688468, 0.725266, 3.17024e-08, 28.9969, 4.59416e-07, -33.2363)
+
+[node name="tree76" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(-0.725266, 0.688468, 3.00939e-08, 0, -4.37114e-08, 1, 0.688468, 0.725266, 3.17024e-08, 34.9969, 4.59416e-07, -31.7564)
+
+[node name="tree77" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(-0.0901286, 0.99593, 4.35335e-08, 2.57666e-15, -4.37114e-08, 1, 0.99593, 0.0901286, 3.93964e-09, 35.9946, 4.59416e-07, -36.1564)
+
+[node name="tree78" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.726826, 0.686821, 3.00219e-08, 2.57666e-15, -4.37114e-08, 1, 0.686821, -0.726826, -3.17706e-08, 29.9946, 4.59416e-07, -39.1564)
+
+[node name="tree72" parent="Node3D" instance=ExtResource("2_bnhl3")]
+transform = Transform3D(0.206938, -0.978354, -4.27652e-08, 0, -4.37114e-08, 1, -0.978354, -0.206938, -9.04557e-09, 36.0098, 4.59416e-07, -20.8144)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rm08j")
 camera_attributes = SubResource("CameraAttributesPractical_cbmdf")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.4786)
+camera_attributes = SubResource("CameraAttributesPractical_obdna")
 
 [node name="Background Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_1eanf")
@@ -249,6 +602,7 @@ parameters/looping = true
 [node name="World Manager" parent="." instance=ExtResource("1_ikhcb")]
 
 [node name="World Discord Manager" parent="." instance=ExtResource("2_hqcm7")]
+script = ExtResource("5_obdna")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.945518, -0.28195, 0.162784, 0, 0.5, 0.866026, -0.325568, 0.818843, -0.472759, 0, 0, 0)
@@ -256,6 +610,7 @@ layers = 524289
 shadow_enabled = true
 
 [node name="Environment" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.122719, -0.49968, -0.518929)
 
 [node name="shed" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2588, 0, -33.263)
@@ -271,58 +626,6 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_0gb47")
 
 [node name="Walls" type="Node3D" parent="Environment"]
-
-[node name="brickwall" type="Node3D" parent="Environment/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55326, 0, -41.1805)
-
-[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/brickwall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
-mesh = SubResource("ArrayMesh_6my4r")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/brickwall/brickwall2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/brickwall/brickwall2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_clnb3")
-
-[node name="brickwall2" type="Node3D" parent="Environment/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55326, 0, -41.1805)
-
-[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/brickwall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
-mesh = SubResource("ArrayMesh_6my4r")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/brickwall2/brickwall2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/brickwall2/brickwall2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_clnb3")
-
-[node name="brickwall7" type="Node3D" parent="Environment/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55326, 0, -41.1805)
-
-[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/brickwall7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
-mesh = SubResource("ArrayMesh_6my4r")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/brickwall7/brickwall2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/brickwall7/brickwall2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_clnb3")
-
-[node name="brickwall3" type="Node3D" parent="Environment/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5533, 0, -41.1805)
-
-[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/brickwall3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
-mesh = SubResource("ArrayMesh_6my4r")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/brickwall3/brickwall2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/brickwall3/brickwall2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_clnb3")
 
 [node name="brickwall4" type="Node3D" parent="Environment/Walls"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.3081, 0, -38.8666)
@@ -363,14 +666,1393 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/brickwall6/brickwall2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_clnb3")
 
-[node name="Ground" type="MeshInstance3D" parent="Environment"]
-mesh = SubResource("BoxMesh_k2nup")
-skeleton = NodePath("../..")
+[node name="Right Border Walls" type="Node3D" parent="Environment/Walls"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Ground"]
+[node name="brickwall13" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -39.4637)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_c5nv4")
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall13/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall13/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall14" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -35.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall14/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall14/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall16" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -31.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall16/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall16/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall17" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -27.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall17/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall17/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall18" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -23.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall18/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall18/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall19" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -19.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall19/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall19/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall20" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -15.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall20/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall20/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall21" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -11.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall21/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall21/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall22" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -7.46366)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall22/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall22/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall23" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -3.46366)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall23/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall23/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall24" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 0.536339)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall24/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall24/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall25" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 4.53634)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall25/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall25/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall26" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 8.53634)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall26/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall26/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall27" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 12.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall27/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall27/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall28" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 16.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall28/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall28/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall29" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 20.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall29/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall29/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall30" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 24.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall30/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall30/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall31" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 28.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall31/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall31/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall15" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 32.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall15/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall15/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall32" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 36.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall32/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall32/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall33" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 40.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall33/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall33/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall34" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 44.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall34/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall34/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall35" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 48.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall35/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall35/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall36" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 52.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall36/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall36/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall37" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 56.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall37/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall37/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall38" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 60.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall38/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall38/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall39" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 64.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall39"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall39/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall39/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall40" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 68.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall40"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall40/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall40/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall41" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 72.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall41"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall41/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall41/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall42" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 76.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall42"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall42/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall42/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall43" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 80.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall43"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall43/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall43/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall44" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 84.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall44"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall44/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall44/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall45" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 88.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall45"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall45/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall45/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall46" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 92.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall46"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall46/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall46/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall47" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 96.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall47"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall47/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall47/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall48" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 100.536)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall48"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall48/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall48/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="Left Border Walls" type="Node3D" parent="Environment/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 0.0657783, 0)
+
+[node name="brickwall13" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -39.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall13/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall13/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall14" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -35.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall14/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall14/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall16" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -31.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall16/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall16/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall17" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -27.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall17/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall17/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall18" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -23.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall18/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall18/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall19" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -19.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall19/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall19/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall20" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -15.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall20/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall20/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall21" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -11.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall21/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall21/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall22" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -7.46366)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall22/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall22/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall23" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -3.46366)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall23/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall23/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall24" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 0.536339)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall24/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall24/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall25" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 4.53634)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall25/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall25/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall26" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 8.53634)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall26/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall26/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall27" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 12.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall27/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall27/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall28" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 16.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall28/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall28/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall29" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 20.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall29/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall29/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall30" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 24.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall30/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall30/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall31" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 28.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall31/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall31/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall15" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 32.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall15/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall15/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall32" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 36.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall32/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall32/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall33" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 40.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall33/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall33/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall34" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 44.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall34/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall34/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall35" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 48.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall35/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall35/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall36" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 52.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall36/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall36/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall37" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 56.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall37/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall37/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall38" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 60.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall38/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall38/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall39" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 64.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall39"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall39/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall39/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall40" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 68.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall40"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall40/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall40/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall41" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 72.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall41"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall41/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall41/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall42" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 76.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall42"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall42/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall42/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall43" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 80.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall43"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall43/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall43/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall44" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 84.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall44"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall44/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall44/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall45" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 88.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall45"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall45/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall45/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall46" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 92.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall46"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall46/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall46/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall47" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 96.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall47"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall47/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall47/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall48" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 100.536)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall48"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall48/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall48/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="Back Border Walls" type="Node3D" parent="Environment/Walls"]
+
+[node name="brickwall" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall2" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall2/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall2/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall7" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall7/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall7/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall3" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall3/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall3/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall8" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44674, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall8/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall8/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall9" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall9/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall9/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall10" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall10/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall10/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall11" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall11/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall11/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall12" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall12/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall12/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall15" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall15/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall15/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall13" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall13/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall13/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall14" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall14/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall14/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall16" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall16/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall16/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall17" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall17/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall17/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall18" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall18/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall18/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall19" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall19/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall19/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall20" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall20/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall20/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="Front Border Walls" type="Node3D" parent="Environment/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.351744, 0, 144)
+
+[node name="brickwall" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall2" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall2/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall2/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall7" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall7/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall7/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall3" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall3/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall3/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall8" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44674, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall8/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall8/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall9" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall9/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall9/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall10" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall10/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall10/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall11" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall11/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall11/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall12" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall12/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall12/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall15" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall15/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall15/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall13" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall13/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall13/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall14" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall14/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall14/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall16" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall16/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall16/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall17" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall17/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall17/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall18" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall18/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall18/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall19" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall19/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall19/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall20" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall20/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall20/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
 
 [node name="Navigation" type="Node3D" parent="."]
 visible = false
@@ -406,7 +2088,7 @@ mesh = SubResource("BoxMesh_ikhcb")
 shape = SubResource("BoxShape3D_ikhcb")
 
 [node name="Pickups" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69618, 0.5, -33.0517)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69618, -0.0300048, -33.0517)
 
 [node name="Deagle Pickup" parent="Pickups" instance=ExtResource("10_j5jdo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22446, 0.286174, 0)
@@ -426,8 +2108,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88912, 4.09662, -36.8213)
 type = "Interact with Cube"
 
 [node name="Cop NPC" parent="." instance=ExtResource("16_cbmdf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, 0.5, -24.152)
-dialoguePath = "res://Data/Dialogues/OpeningDialogue.json"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, -24.152)
 
-[node name="BirdMonster" parent="." instance=ExtResource("17_wo8eb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03861, 0.5, -37.1066)
+[node name="Cat" type="RigidBody3D" parent="." groups=["Interactable"]]
+transform = Transform3D(-2.83931, 0, -0.968676, 0, 3, 0, 0.968676, 0, -2.83931, 18.7164, -0.146122, -34.2039)
+collision_layer = 33
+collision_mask = 32
+gravity_scale = 0.0
+script = ExtResource("18_0jjbl")
+
+[node name="OiiaioooooiaiFin" parent="Cat" instance=ExtResource("18_yjnyt")]
+unique_name_in_owner = true
+
+[node name="Muchkin1_002" parent="Cat/OiiaioooooiaiFin" index="0"]
+transform = Transform3D(-0.985125, 0, 0.171839, 0, 1, 0, -0.171839, 0, -0.985125, 0, -0.0280054, 0)
+blend_shapes/body.Muchkin1 = 1.0
+
+[node name="AnimationPlayer" parent="Cat/OiiaioooooiaiFin" index="1"]
+active = false
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Cat/OiiaioooooiaiFin"]
+libraries = {
+&"": SubResource("AnimationLibrary_bnhl3")
+}
+autoplay = "Dododo"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.329247, 0)
+shape = SubResource("BoxShape3D_0jjbl")
+
+[node name="PolicaCar01" parent="." instance=ExtResource("20_obdna")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 15.6697, -0.00457197, -24)
+
+[editable path="Node3D"]
+[editable path="Cat/OiiaioooooiaiFin"]

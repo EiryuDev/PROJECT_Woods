@@ -75,7 +75,7 @@ func _input(event):
 			playerStatsManager.statsDisplay.visible = true
 		
 
-func Hurt(WRLD_DAMAGE_DATA: DamageData):
+func hurt(WRLD_DAMAGE_DATA: DamageData):
 	playerStatsManager.hurt(WRLD_DAMAGE_DATA)
 
 func kill():

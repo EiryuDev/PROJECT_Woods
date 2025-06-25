@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=74 format=4 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://d22tr7toifvol" path="res://Scripts/Combat/Player/PlayerWeaponManager.gd" id="2_dfgsd"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dtslyr5sut3p2" path="res://Resources/Prefabs/VFX Objects/Weapons/Damage Emitters/AreaDamageEmitter.tscn" id="6_1mxid"]
 [ext_resource type="Script" uid="uid://b3ujgip13wym3" path="res://Scripts/_World/_Character/Combat/Weapons/WRLD_BULLET_EMITTER.gd" id="6_2i876"]
 [ext_resource type="PackedScene" uid="uid://bnj33ns5cbt7o" path="res://Resources/Prefabs/VFX Objects/Weapons/Muzzle Flashes/MuzzleFlash.tscn" id="6_6odyb"]
+[ext_resource type="PackedScene" uid="uid://duyf0wokybk4e" path="res://ArtResources/Weapons/Axe/PSX_Axe.glb" id="6_gra3g"]
 [ext_resource type="PackedScene" uid="uid://oj4y021smnot" path="res://ArtResources/VFX/Weapons/Muzzle Flashes/muzzleflash1.glb" id="7_1mxid"]
 [ext_resource type="PackedScene" uid="uid://dflhlysk1h8pk" path="res://Resources/Prefabs/VFX Objects/Weapons/Bullet Emitters/HitScanBulletEmitter.tscn" id="7_jvxap"]
 [ext_resource type="AudioStream" uid="uid://28qpsnqdrbs7" path="res://Audio/SFX/SE/weapons/melee_attack.wav" id="8_uaqrc"]
@@ -618,7 +619,6 @@ script = ExtResource("2_dfgsd")
 
 [node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.448009, -0.535145, -0.656691)
-visible = false
 script = ExtResource("4_y42te")
 automatic = true
 damage = 15
@@ -630,11 +630,15 @@ animationControlledAttack = true
 rotation_edit_mode = 1
 
 [node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics"]
+visible = false
 
 [node name="Machete" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics/Machete"]
 layers = 524288
 mesh = SubResource("ArrayMesh_h8tfp")
 skeleton = NodePath("")
+
+[node name="PSX_Axe" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics" instance=ExtResource("6_gra3g")]
+transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 0, -0.30714, -0.0337296)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics"]
 libraries = {
@@ -681,6 +685,7 @@ bus = &"SFX"
 
 [node name="Desert Eagle" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
 transform = Transform3D(-0.2, 8.74228e-09, -1.51421e-08, 0, 0.173205, 0.1, 1.74846e-08, 0.1, -0.173205, 0.441, -0.333, -0.881)
+visible = false
 script = ExtResource("4_y42te")
 staminaNeeded = 0
 attackRate = 0.5

@@ -1,18 +1,36 @@
 [
-	{ "Name": "Random British Cop", "Text": "Oi! You're trespassing." },
-	{ "Name": "Random British Cop", "Text": "This area leads to a restricted forest zone—civilians aren’t allowed past here." },
-	{ "Name": "Ethan (Main Character)", "Text": "Who are you?" },
-	{ "Name": "Random British Cop", "Text": "Name’s John. I’m with the British police." },
-	{ "Name": "Ethan (Main Character)", "Text": "Never seen anyone posted here before. You stationed alone?" },
-	{ "Name": "John", "Text": "...That's none of your business." },
-	{ "Name": "Ethan (Main Character)", "Text": "I'm with the Office of Environmental Affairs. I’ve been assigned to investigate illegal deforestation in this region." },
-	{ "Name": "John", "Text": "Right. And you're here without backup or notice?" },
-	{ "Name": "Ethan (Main Character)", "Text": "The situation’s urgent. We got a tip this area was cleared overnight." },
-	{ "Name": "John", "Text": "Well, whoever sent that tip wants you dead. This forest... it’s not what it seems." },
-	{ "Name": "Ethan (Main Character)", "Text": "What do you mean by that?" },
-	{ "Name": "John", "Text": "...Just turn around and leave. Come back with proper clearance. Or better yet, don’t come back at all." },
-	{ "Name": "Ethan (Main Character)", "Text": "Are you hiding something, Officer John?" },
-	{ "Name": "John", "Text": "I’m trying to keep you alive. That forest took good men. It doesn’t care who you are." },
-	{ "Name": "Ethan (Main Character)", "Text": "If there’s a threat, I need to report it. Let me pass." },
-	{ "Name": "John", "Text": "...Suit yourself. But don’t say I didn’t warn you." }
+	{ "Name": "Random British Cop", "Text": "Oi! You're trespassing.", "next": 1 },
+	{ "Name": "Random British Cop", "Text": "This area leads to a restricted forest zone—civilians aren’t allowed past here.", "next": 2 },
+
+	{
+		"choice": true,
+		"choices": [
+			{ "text": "Who are you?", "next": 3 },
+			{ "text": "I have clearance to be here.", "next": 17 }
+		]
+	},
+
+	{ "Name": "Ethan (Main Character)", "Text": "Who are you?", "next": 4 },
+	{ "Name": "Random British Cop", "Text": "Name’s John. I’m with the British police.", "next": 5 },
+	{ "Name": "Ethan (Main Character)", "Text": "Never seen anyone posted here before. You stationed alone?", "next": 6 },
+	{ "Name": "John", "Text": "...That's none of your business.", "next": 7 },
+	{ "Name": "Ethan (Main Character)", "Text": "I'm with the Office of Environmental Affairs. I’ve been assigned to investigate illegal deforestation in this region.", "next": 8 },
+	{ "Name": "John", "Text": "Right. And you're here without backup or notice?", "next": 9 },
+	{ "Name": "Ethan (Main Character)", "Text": "The situation’s urgent. We got a tip this area was cleared overnight.", "next": 10 },
+	{ "Name": "John", "Text": "Well, whoever sent that tip wants you dead. This forest... it’s not what it seems.", "next": 11 },
+	{ "Name": "Ethan (Main Character)", "Text": "What do you mean by that?", "next": 12 },
+	{ "Name": "John", "Text": "...Just turn around and leave. Come back with proper clearance. Or better yet, don’t come back at all.", "next": 13 },
+	{ "Name": "Ethan (Main Character)", "Text": "Are you hiding something, Officer John?", "next": 14 },
+	{ "Name": "John", "Text": "I’m trying to keep you alive. That forest took good men. It doesn’t care who you are.", "next": 15 },
+	{ "Name": "Ethan (Main Character)", "Text": "If there’s a threat, I need to report it. Let me pass.", "next": 16 },
+	{ "Name": "John", "Text": "...Suit yourself. But don’t say I didn’t warn you.", "next": null},
+
+	{ "Name": "Ethan (Main Character)", "Text": "I have clearance to be here.", "next": 18 },
+	{ "Name": "John", "Text": "You do? Then let’s see the papers.", "next": 19 },
+	{ "Name": "Ethan (Main Character)", "Text": "...They were lost during transit. But I'm not here to start trouble.", "next": 20 },
+	{ "Name": "John", "Text": "Lost or never existed?", "next": 21 },
+	{ "Name": "Ethan (Main Character)", "Text": "I just need to verify a report of illegal activity.", "next": 22 },
+	{ "Name": "John", "Text": "Listen. This forest has its own rules. You walk in without knowing them, you don’t walk out.", "next": 23 },
+	{ "Name": "Ethan (Main Character)", "Text": "So you're confirming something's going on here?", "next": 24 },
+	{ "Name": "John", "Text": "I'm confirming you'll die if you don't turn back.", "next": null }
 ]

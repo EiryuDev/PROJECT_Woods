@@ -4,3 +4,7 @@
 
 [node name="Player Stats Manager" type="Node3D"]
 script = ExtResource("1_1boq1")
+
+[node name="BloodRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+enabled = false

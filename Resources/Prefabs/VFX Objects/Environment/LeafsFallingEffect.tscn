@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhtiofaoaa1pg"]
+
+[ext_resource type="Texture2D" uid="uid://c0kqegxu3h3c5" path="res://ArtResources/Environment/Terrain Meshes/Trees Pack/Textures/leafs pixel.png" id="1_nvojl"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wctwa"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -90.0
+angle_max = 1.07288e-05
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+angular_velocity_min = 50.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, -1, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 0.499998
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 0.999998
+scale_min = 0.2
+scale_max = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7g48"]
+transparency = 2
+alpha_scissor_threshold = 0.9
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_nvojl")
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mqul0"]
+material = SubResource("StandardMaterial3D_y7g48")
+orientation = 0
+
+[node name="LeafsFallingEffect" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 3
+lifetime = 10.0
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_wctwa")
+draw_pass_1 = SubResource("PlaneMesh_mqul0")

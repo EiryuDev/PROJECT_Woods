@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsjtdyb3qiuoh"]
+
+[ext_resource type="PackedScene" uid="uid://cdbcyv4nldlqw" path="res://ArtResources/Characters/Enemies/Cat/source/OiiaioooooiaiFin.fbx" id="1_ocs0m"]
+[ext_resource type="Script" uid="uid://bmowijr30ago8" path="res://Scripts/_World/_Character/_Root/WRLD_Cat.gd" id="1_x40mp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x40mp"]
+size = Vector3(0.298889, 0.339111, 0.690094)
+
+[node name="Cat" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.410235, 0)
+collision_layer = 33
+collision_mask = 32
+script = ExtResource("1_x40mp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205994, 0.592651, -0.0641022)
+shape = SubResource("BoxShape3D_x40mp")
+
+[node name="OiiaioooooiaiFin" parent="." instance=ExtResource("1_ocs0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775, 1.157)

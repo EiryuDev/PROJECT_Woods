@@ -22,6 +22,7 @@ func _ready():
 	for hitbox in hitboxes:
 		hitbox.onHurt.connect(statsManager.hurt)
 	statsManager.died.connect(SetState.bind(STATES.DEAD))
+	statsManager.gibbed.connect(queue_free)
 	
 	hitboxes.append(self)
 	attackEmitter.SetBodiesToExclude(hitboxes)

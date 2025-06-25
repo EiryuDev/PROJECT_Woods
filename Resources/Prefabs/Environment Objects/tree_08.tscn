@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://pagshfe7purx"]
+
+[ext_resource type="PackedScene" uid="uid://cfs2c8lboxmwj" path="res://ArtResources/Environment/Terrain Meshes/Trees Pack/Models/tree08.fbx" id="1_rkf8c"]
+
+[node name="tree08" instance=ExtResource("1_rkf8c")]

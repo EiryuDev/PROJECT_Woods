@@ -21,6 +21,16 @@ collision_mask = 3
 script = ExtResource("1_uqdgf")
 
 [node name="Stats Manager" parent="." instance=ExtResource("1_k5ur1")]
+maxHealth = null
+gibWhenDamageTaken = null
+bloodSplatterCount = null
+bloodSplatterRange = null
+bloodSplatterSizeVariance = null
+gibSpawnAmnt = null
+verbose = null
+maxStamina = null
+staminaRegenDelay = null
+staminaRegenRate = null
 
 [node name="DieSound" type="AudioStreamPlayer3D" parent="Stats Manager"]
 stream = ExtResource("3_cih15")

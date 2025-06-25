@@ -10,7 +10,7 @@ height = 1.76331
 
 [node name="Cop NPC" instance=ExtResource("1_56pwh")]
 script = ExtResource("2_fpclg")
-dialoguePath = ""
+dialoguePath = "res://Data/Dialogues/OpeningDialogue.json"
 sound = ""
 
 [node name="CollisionShape3D" parent="." index="0"]

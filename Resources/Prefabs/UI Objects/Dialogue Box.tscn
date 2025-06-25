@@ -119,3 +119,26 @@ one_shot = true
 [node name="AudioLetter" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_r5ekl")
 bus = &"SFX"
+
+[node name="Choice Box" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -392.0
+offset_top = -344.0
+offset_bottom = -184.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="Choice Button" type="Button" parent="Choice Box"]
+layout_mode = 2
+text = "Choice Number 1"
+
+[node name="Choice Button2" type="Button" parent="Choice Box"]
+layout_mode = 2
+text = "Choice Number 2"

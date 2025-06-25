@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bp8aevf7841i3"
+path="res://.godot/imported/Jumpscare Sound Effect.wav-c8b5e2469da6e03b686ba99e5e15ae40.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/SE/Jumpscare/Jumpscare Sound Effect.wav"
+dest_files=["res://.godot/imported/Jumpscare Sound Effect.wav-c8b5e2469da6e03b686ba99e5e15ae40.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
