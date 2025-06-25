@@ -1,0 +1,2432 @@
+[gd_scene load_steps=43 format=4 uid="uid://bouvsjodyea56"]
+
+[ext_resource type="PackedScene" uid="uid://bf1dbei3nkcq8" path="res://Settings/Terrain/Demo Level/DemoTerrain.tscn" id="1_n82nw"]
+[ext_resource type="PackedScene" uid="uid://tnhuis33m6qk" path="res://Resources/Prefabs/Environment Objects/tree_01.tscn" id="2_f1ybc"]
+[ext_resource type="AudioStream" uid="uid://ut1mhyvtapuk" path="res://Audio/BGS/Silent Hill Ambient.mp3" id="3_na48c"]
+[ext_resource type="PackedScene" uid="uid://127i8t1q6urm" path="res://Resources/Prefabs/World Managers Objects/World Manager.tscn" id="4_nagcp"]
+[ext_resource type="Texture2D" uid="uid://2saoiftww80j" path="res://ArtResources/Environment/Source/shed_low_res_wood.png" id="5_1gocl"]
+[ext_resource type="Texture2D" uid="uid://botwj57i0aic" path="res://ArtResources/Environment/Source/shed_door.png" id="6_hlkfp"]
+[ext_resource type="Texture2D" uid="uid://b65jnng6d16uy" path="res://ArtResources/Environment/Source/shed_window.png" id="7_6e1vg"]
+[ext_resource type="Texture2D" uid="uid://de662x476g87i" path="res://ArtResources/Environment/Source/shed_roof.png" id="8_wrrvi"]
+[ext_resource type="Material" uid="uid://dwh16uujwbqmm" path="res://ArtResources/Environment/Source/brick_ivy.tres" id="9_bb3jp"]
+[ext_resource type="PackedScene" uid="uid://cq0a041eg5071" path="res://Scenes/Objects/player.tscn" id="10_r16nr"]
+[ext_resource type="PackedScene" uid="uid://dhsl3maubl5in" path="res://Resources/Prefabs/Item Objects/Pickups/Deagle Pickup.tscn" id="11_vaogl"]
+[ext_resource type="PackedScene" uid="uid://b8yug1ie1muvy" path="res://Resources/Prefabs/Item Objects/Pickups/Deagle Ammo Pickup.tscn" id="12_qfmxi"]
+[ext_resource type="PackedScene" uid="uid://dq18tbgnu146j" path="res://Resources/Prefabs/Item Objects/Pickups/Health Pickup.tscn" id="13_ik1lq"]
+[ext_resource type="PackedScene" uid="uid://cxov42su3s2fo" path="res://Resources/Prefabs/Item Objects/Interactable/Interact Generic.tscn" id="14_3810f"]
+[ext_resource type="PackedScene" uid="uid://cayvxusygia1b" path="res://Resources/Prefabs/Item Objects/Interactable/Cube Interactable.tscn" id="15_r3eww"]
+[ext_resource type="PackedScene" uid="uid://fe5e2bghp07v" path="res://Resources/Prefabs/Character Objects/NPC/Cop 1/Cop NPC.tscn" id="16_o1g6i"]
+[ext_resource type="Script" uid="uid://bmowijr30ago8" path="res://Scripts/_World/_Character/_Root/WRLD_Cat.gd" id="17_wdud5"]
+[ext_resource type="PackedScene" uid="uid://cdbcyv4nldlqw" path="res://ArtResources/Characters/Enemies/Cat/source/OiiaioooooiaiFin.fbx" id="18_52mlg"]
+[ext_resource type="PackedScene" uid="uid://tbn3nhc5ycoo" path="res://Resources/Prefabs/Props Objects/Cars/PoliceCar01.tscn" id="19_oyffw"]
+[ext_resource type="PackedScene" uid="uid://bebdx0b1l1cls" path="res://Resources/Prefabs/Character Objects/Player/PlayerBikeManager.tscn" id="20_kye5b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_0d0sa"]
+sky_material = SubResource("ProceduralSkyMaterial_ib045")
+
+[sub_resource type="Environment" id="Environment_rm08j"]
+background_mode = 2
+sky = SubResource("Sky_0d0sa")
+tonemap_mode = 2
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_light_color = Color(0.627451, 0.533333, 0.427451, 1)
+fog_density = 0.0095
+fog_sky_affect = 0.45
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0445
+volumetric_fog_albedo = Color(0.843137, 1, 0.811765, 1)
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_cbmdf"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_obdna"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cok01"]
+resource_name = "wood"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_1gocl")
+roughness = 0.5
+emission_enabled = true
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0epry"]
+resource_name = "door"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("6_hlkfp")
+roughness = 0.5
+emission_enabled = true
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dilqg"]
+resource_name = "window"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("7_6e1vg")
+roughness = 0.5
+emission_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6dmj"]
+resource_name = "roof"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_wrrvi")
+roughness = 0.5
+emission_enabled = true
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ig230"]
+_surfaces = [{
+"aabb": AABB(-1.97396, -0.0063777, -1.51092, 4.04847, 4.31637, 2.66477),
+"format": 34359742465,
+"index_count": 402,
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAABAAUABAAAAAEABgAIAAcABgAJAAgACgAHAAsACgAGAAcADAAOAA0ADAAPAA4AAwARABAACwAPAAwACwAHAA8ABwAOAA8ABwAIAA4AAQATABIAAQACABMAFAAMAA0AFAALAAwAFQAXABYAFQAFABcACAAWAA4ACAAVABYACQAZABgAEwAXABIAEwAWABcADQAWABMADQAOABYAGAAFABUAGAAEAAUACQAVAAgACQAYABUAEAALABQAEAAKAAsAAwAUAAIAAwAQABQABgAZAAkAGAAZAAQAAAARAAMAEAARAAoAGgABABIAGwABABoAHAASABcAHAAaABIABQAcABcABQAdABwABQAbAB0ABQABABsAHgAgAB8AHgAhACAAIgAeACMAIgAhAB4AIgAlACQAIgAjACUAIAAlAB8AIAAkACUAIwAfACUAIwAeAB8AIQAkACAAIQAiACQAJgAoACcAJgApACgAKgAsACsAKgAtACwALQAnACwALQAmACcAKQArACgAKQAqACsALgAwAC8ALgAxADAAMgA0ADMAMgA1ADQANQAvADQANQAuAC8AMQAzADAAMQAyADMANgA4ADcANgA5ADgAOgA8ADsAOgA9ADwAPQA3ADwAPQA2ADcAOQA7ADgAOQA6ADsAPgBAAD8APgBBAEAAQQBDAEIAQQA+AEMARABAAEUAPwBAAEQAQABCAEUAQABBAEIAKgAmAC0AKgApACYARQBDAEQAQgBDAEUARgBIAEcASQBIAEYAPgBEAEMAPgA/AEQASgBMAEsASgBNAEwATQBIAEkATQBKAEgASABLAEcASABKAEsARwBMAEYASwBMAEcATQBGAEwATQBJAEYATgBQAE8ATgBRAFAAUgBUAFMAUgBVAFQAUQBTAFAAUQBSAFMAUwBPAFAAUwBUAE8AVQBPAFQAVQBOAE8AVQBRAE4AVQBSAFEAVgBYAFcAVgBZAFgAWgBcAFsAWgBdAFwAWQBbAFgAWQBaAFsAWwBXAFgAWwBcAFcAXQBXAFwAXQBWAFcAXQBZAFYAXQBaAFkA"),
+"name": "wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 94,
+"vertex_data": PackedByteArray("DHHyvxx+XkBI4Ku/DHHyv87NHkBI4Ku/DHHyv87NHkDGACW/DHHyvxx+XkDGACW/AAAAQBx+XkBI4Ku/AAAAQM7NHkBI4Ku/AAAAQBx+XkA8/ow/AAAAQM7NHkA8/ow/AAAAQM7NHkBgec4+AAAAQBx+XkBgec4+DHHyvxx+XkA8/ow/DHHyv87NHkA8/ow/DHHyvwAAAAA8/ow/DHHyvwAAAABgec4+AAAAQAAAAABgec4+AAAAQAAAAAA8/ow/DHHyvxx+XkBgec4+DHHyv37riUBOEPe9DHHyvwAAAABI4Ku/DHHyvwAAAADGACW/DHHyv87NHkBgec4+AAAAQM7NHkDGACW/AAAAQAAAAADGACW/AAAAQAAAAABI4Ku/AAAAQBx+XkDGACW/AAAAQH7riUBOEPe9SHn8vh05pD+jU6u/SHn8vmxfGUCjU6u/iloZPx05pD+jU6u/iloZP2xfGUCjU6u/3Kr8v5XyX0D6grK/3Kr8vwD80Lv6grK/3Kr8vwD80LsGgp+/3Kr8v5XyX0AGgp+/6Knpv5XyX0AGgp+/6Knpv5XyX0D6grK/6KnpvwD80LsGgp+/6KnpvwD80Lv6grK/3Kr8v5XyX0A6sIA/3Kr8vwD80Ls6sIA/3Kr8vwD80LsusZM/3Kr8v5XyX0AusZM/6Knpv5XyX0AusZM/6KnpvwD80LsusZM/6KnpvwD80Ls6sIA/6Knpv5XyX0A6sIA/WIj2P5XyX0D6grK/WIj2PwD80Lv6grK/WIj2PwD80LsGgp+/WIj2P5XyX0AGgp+/psQEQJXyX0AGgp+/psQEQAD80LsGgp+/psQEQAD80Lv6grK/psQEQJXyX0D6grK/WIj2P5XyX0A6sIA/WIj2PwD80Ls6sIA/WIj2PwD80LsusZM/WIj2P5XyX0AusZM/psQEQJXyX0AusZM/psQEQAD80LsusZM/psQEQAD80Ls6sIA/psQEQJXyX0A6sIA/kN1pP0SKI0D6ZK6/kN1pP0SKI0DuZcG/lthWv0KKI0DsZcG/lthWv0KKI0D4ZK6/lthWv8gJGkD4ZK6/kN1pP8oJGkD6ZK6/kN1pP8oJGkDuZcG/lthWv8gJGkDsZcG/kN1pP/QdkD/uZcG/lthWv/EdkD/sZcG/lthWv+Ueoz/sZcG/kN1pP+geoz/uZcG/lthWv+Ueoz/4ZK6/lthWv/EdkD/4ZK6/kN1pP/MdkD/6ZK6/kN1pP+ceoz/6ZK6/KugBv67GH0AGTb+/IugBv5NkPj8GTb+/Cuonv5NkPj8GTb+/Euonv67GH0AGTb+/EOonv67GH0ASTKy/Cuonv5NkPj8STKy/IugBv5NkPj8STKy/KOgBv67GH0ASTKy/3MtDP5UNIEAGTb+/5MtDPy6APz8GTb+//MkdPy6APz8GTb+/9MkdP5UNIEAGTb+/9skdP5UNIEASTKy//MkdPy6APz8STKy/5MtDPy6APz8STKy/3stDP5UNIEASTKy/")
+}, {
+"aabb": AABB(-1.91879, 0, -0.644543, 0.100495, 2.48131, 1.04781),
+"format": 34359742465,
+"index_count": 54,
+"index_data": PackedByteArray("AAACAAEAAwACAAAABAAGAAUABAABAAYABwACAAgABwAJAAIAAQAJAAYAAgAJAAEABwAEAAUABwAIAAQACgAAAAsACgADAAAACwABAAQACwAAAAEACAALAAQACAAKAAsAAwAIAAIAAwAKAAgA"),
+"name": "door",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("Qr7ovwAoDj1ftLw+8Jr1vwAElTwx3MQ+8Jr1v5aGG0Ax3MQ+Qr7ovy6VHEBftLw+8Jr1vwAElTxdChi/DHHyvwAAAADGACW/DHHyvwAAAABgec4+DHHyv87NHkDGACW/8Jr1v5aGG0BdChi/DHHyv87NHkBgec4+Qr7ovy6VHEBGHhy/Qr7ovwAoDj1GHhy/")
+}, {
+"aabb": AABB(-0.493113, 1.28299, -1.38069, 1.09215, 1.11346, 0.053308),
+"format": 34359742465,
+"index_count": 78,
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAAGAAUABwAGAAQACAAFAAkACAAEAAUACgAIAAkACgALAAgACgAHAAsACgAGAAcADAAHAAQADQAHAAwAAQAEAAgAAQAMAAQACwABAAgACwAAAAEACwANAAAACwAHAA0AAwAOAAIAAwAPAA4ADwAMAA4ADwANAAwADwAAAA0ADwADAAAAAgAMAAEAAgAOAAwA"),
+"name": "window",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("dTsLP+ziFUBVurC/dTsLPxwyqz9VurC/dTsLPxwyqz+J56m/dTsLP+ziFUCJ56m/zI31vm/dpT9VurC/SHn8vh05pD+jU6u/SHn8vmxfGUCjU6u/zI31vkKNGEBVurC/zeQVP2/dpT9VurC/iloZPx05pD+jU6u/iloZP2xfGUCjU6u/zeQVP0KNGEBVurC/GDvgvhwyqz9VurC/GDvgvuziFUBVurC/GDvgvhwyqz+J56m/GDvgvuziFUCJ56m/")
+}, {
+"aabb": AABB(-1.96891, 3.44681, -1.52473, 4.04375, 0.89616, 2.80818),
+"format": 34359742465,
+"index_count": 48,
+"index_data": PackedByteArray("AAACAAEAAAADAAIAAwAEAAIABQAEAAMABgAIAAcABgAEAAgABAABAAIABAAGAAEABAAJAAgABAAFAAkABgAAAAEABgAKAAAACQAHAAgACQALAAcACwAGAAcACgAGAAsA"),
+"name": "roof",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("DHHyvxx+XkBI4Ku/7Lj7v4yYXEBOKsO/8KMEQIyYXEBOKsO/AAAAQBx+XkBI4Ku/KcoEQJ75ikBOEPe9AAAAQH7riUBOEPe9XgX8v575ikBOEPe97Lj7v4yYXEBCSKQ/8KMEQIyYXEBCSKQ/AAAAQBx+XkA8/ow/DHHyv37riUBOEPe9DHHyvxx+XkA8/ow/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_t8p17"]
+resource_name = "shed_Cube_003"
+_surfaces = [{
+"aabb": AABB(-1.97396, -0.0063777, -1.51092, 4.04847, 4.31637, 2.66477),
+"attribute_data": PackedByteArray("NN+IPQQAuj45aqo+EAC6Pjlqqj7c3zQ+NN+IPdzfND5434g9B72zPzxqqj4GvbM/OWqqPhAAuj4034g9BAC6PnjfiD2KrwNASmqqPoivA0BKaqo+DnvvP3jfiD0Oe+8/QN+IPSyIlL42aqo+LIiUvjxqqj4SX6q/KN+IPRJfqr/QNK4+WksxP7lmyj5bSzE/uWbKPnRYxT7PNK4+dFjFPjTfiD3c3zQ+NN+IPVDg071Auh++gN8VPTZqqj4siJS+xQF/PzCIlL7IAX8/El+qvzxqqj4SX6q/SmqqPoivA0DIAX8/iK8DQMgBfz8Le+8/SmqqPg577z85aqo+EAC6PsUBfz8MALo+wQF/P9zfND45aqo+3N80Pjlqqj5w4NO9xQF/P3Dg073FAX8/MIiUvjZqqj4siJS+Q2qqPguhyz/FAX8/CaHLP8UBfz8DvbM/PGqqPga9sz9Kaqo+DnvvP8gBfz8Le+8/xQF/Pwmhyz9Daqo+C6HLP3jfiD0Oe+8/eN+IPQyhyz8Quh++DY7dP0q29D5cSzE/GXQIP1pLMT8ZdAg/dFjFPkq29D50WMU+uWbKPltLMT9KtvQ+XEsxP0q29D50WMU+uWbKPnRYxT5434g9DKHLP0Nqqj4Locs/PGqqPga9sz9434g9B72zP3jfiD0Oe+8/SmqqPg577z9Daqo+C6HLP3jfiD0Mocs/NN+IPVDg0705aqo+cODTvTZqqj4siJS+QN+IPSyIlL4034g93N80Pjlqqj7c3zQ+OWqqPnDg070034g9UODTvXjfiD2KrwNAeN+IPQ577z8Quh++DY7dP3jfiD0Mocs/eN+IPQe9sz8Quh++DY7dPzTfiD0EALo+NN+IPdzfND5Auh++gN8VPTTfiD1Q4NO9QN+IPSyIlL5Auh++gN8VPapBJj8ETjI/xQF/PwwAuj45aqo+EAC6PgmRsD4ETjI/q0EmP2dOhT/FAX8/A72zP8UBfz8MALo+qkEmPwROMj88aqo+Br2zP8UBfz8DvbM/q0EmP2dOhT8PkbA+aE6FPzxqqj4GvbM/D5GwPuomhD8JkbA+/5w0Pzlqqj4QALo+IDkTPgBA9rkOORM+tdp/P2DBPz622n8/WME/PgBA9rmkwq09zMFJP7gQLj3OwUk/yhAuPRWZVD+kwq09FZlUPwyiaD0AQPa5kKJoPbbafz+4Yc09tdp/P6dhzT0AQPa56yNQOBSZVD+mqC09FZlUP6aoLT3LwUk/LDZQOMvBST+nYc09AED2ubhhzT212n8/DjkTPrXafz8gORM+AED2uVjBPz4AQPa5YME/Prbafz+YSWw+tdp/P6lJbD4AQPa5IDkTPgBA9rkOORM+tdp/P2DBPz622n8/WME/PgBA9rkMomg9AED2uZCiaD222n8/uGHNPbXafz+nYc09AED2uadhzT0AQPa5uGHNPbXafz8OORM+tdp/PyA5Ez4AQPa5WME/PgBA9rlgwT8+ttp/P5hJbD612n8/qUlsPgBA9rkgORM+AED2uQ45Ez612n8/YME/Prbafz9YwT8+AED2uQyiaD0AQPa5kKJoPbbafz+4Yc09tdp/P6dhzT0AQPa5p2HNPQBA9rm4Yc09tdp/Pw45Ez612n8/IDkTPgBA9rlYwT8+AED2uWDBPz622n8/mElsPrXafz+pSWw+AED2uSA5Ez4AQPa5DjkTPrXafz9gwT8+ttp/P1jBPz4AQPa5DKJoPQBA9rmQomg9ttp/P7hhzT212n8/p2HNPQBA9rmnYc09AED2ubhhzT212n8/DjkTPrXafz8gORM+AED2uVjBPz4AQPa5YME/Prbafz+YSWw+tdp/P6lJbD4AQPa5XME/Pu67/z4XORM+7Lv/Pg45Ez612n8/YME/Prbafz9gwT8+ttp/P5hJbD612n8/oElsPuy7/z5cwT8+7rv/PrBhzT3su/8+uGHNPbXafz8OORM+tdp/Pxc5Ez7su/8+pqgtPRWZVD+mqC09y8FJPyw2UDjLwUk/6yNQOBSZVD8Momg9AED2uadhzT0AQPa5IDkTPgBA9rlYwT8+AED2ubhhzT212n8/sGHNPey7/z5Oomg98Lv/PpCiaD222n8/sGHNPey7/z64Yc09tdp/Pw45Ez612n8/FzkTPuy7/z5cwT8+7rv/Pk6iaD3wu/8+sGHNPey7/z4XORM+7Lv/PmDBPz622n8/mElsPrXafz+gSWw+7Lv/PlzBPz7uu/8+XME/Pu67/z4XORM+7Lv/Pg45Ez612n8/YME/Prbafz+mqC09FZlUP6aoLT3LwUk/LDZQOMvBST/rI1A4FJlUP7hhzT212n8/sGHNPey7/z5Oomg98Lv/PpCiaD222n8/XME/Pu67/z5Oomg98Lv/PrBhzT3su/8+FzkTPuy7/z6wYc097Lv/PrhhzT212n8/DjkTPrXafz8XORM+7Lv/PlzBPz7uu/8+YME/Prbafz+YSWw+tdp/P6BJbD7su/8+FzkTPuy7/z4OORM+tdp/P2DBPz622n8/XME/Pu67/z7rI1A4FJlUP6aoLT0VmVQ/pqgtPcvBST8sNlA4y8FJP06iaD3wu/8+kKJoPbbafz+4Yc09tdp/P7BhzT3su/8+TqJoPfC7/z6wYc097Lv/Phc5Ez7su/8+XME/Pu67/z6wYc097Lv/PrhhzT212n8/DjkTPrXafz8XORM+7Lv/PlzBPz7uu/8+YME/Prbafz+YSWw+tdp/P6BJbD7su/8+FzkTPuy7/z4OORM+tdp/P2DBPz622n8/XME/Pu67/z7rI1A4FJlUP6aoLT0VmVQ/pqgtPcvBST8sNlA4y8FJP06iaD3wu/8+kKJoPbbafz+4Yc09tdp/P7BhzT3su/8+TqJoPfC7/z6wYc097Lv/Phc5Ez7su/8+XME/Pu67/z4="),
+"format": 34359742487,
+"index_count": 402,
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAAGAAUABAAHAAYACAAKAAkACAALAAoADAAOAA0ADAAPAA4AEAASABEAEAATABIAFAAWABUAFwAZABgAFwAaABkAGwAdABwAGwAeAB0AHwAhACAAHwAiACEAIwAlACQAIwAmACUAJwApACgAJwAqACkAKwAtACwAKwAuAC0ALwAxADAAMgA0ADMAMgA1ADQANgA4ADcANgA5ADgAOgA8ADsAOgA9ADwAPgBAAD8APgBBAEAAQgBEAEMAQgBFAEQARgBIAEcARgBJAEgASgBMAEsATQBPAE4AUABSAFEAUwBVAFQAVgBYAFcAWQBYAFYAWgBcAFsAWgBdAFwAXgBgAF8AXgBhAGAAYgBkAGMAYgBlAGQAZgBoAGcAZgBpAGgAagBsAGsAagBtAGwAbgBwAG8AbgBxAHAAcgB0AHMAcgB1AHQAdgB4AHcAdgB5AHgAegB8AHsAegB9AHwAfgCAAH8AfgCBAIAAggCEAIMAggCFAIQAhgCIAIcAhgCJAIgAigCMAIsAigCNAIwAjgCQAI8AjgCRAJAAkgCUAJMAkgCVAJQAlgCYAJcAlgCZAJgAmgCcAJsAmgCdAJwAngCgAJ8AngChAKAAogCkAKMAogClAKQApgCoAKcApgCpAKgAqgCsAKsAqgCtAKwArgCwAK8ArgCxALAAsgC0ALMAsgC1ALQAtgC4ALcAuQC4ALYAugC8ALsAugC9ALwAvgDAAL8AvgDBAMAAwgDEAMMAxQDEAMIAxgDIAMcAyQDIAMYAygDMAMsAygDNAMwAzgDQAM8AzgDRANAA0gDUANMA0gDVANQA1gDYANcA1gDZANgA2gDcANsA3QDcANoA3gDgAN8A3gDhAOAA4gDkAOMA4gDlAOQA5gDoAOcA5gDpAOgA6gDsAOsA6gDtAOwA7gDwAO8A7gDxAPAA8gD0APMA8gD1APQA9gD4APcA9gD5APgA+gD8APsA+gD9APwA/gAAAf8A/gABAQABAgEEAQMBAgEFAQQBBgEIAQcBBgEJAQgBCgEMAQsBCgENAQwBDgEQAQ8BDgERARAB"),
+"material": SubResource("StandardMaterial3D_cok01"),
+"name": "wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 274,
+"vertex_data": PackedByteArray("DHHyvxx+XkBI4Ku/DHHyv87NHkBI4Ku/DHHyv87NHkDGACW/DHHyvxx+XkDGACW/AAAAQBx+XkBI4Ku/AAAAQM7NHkBI4Ku/DHHyv87NHkBI4Ku/DHHyvxx+XkBI4Ku/AAAAQBx+XkA8/ow/AAAAQM7NHkA8/ow/AAAAQM7NHkBgec4+AAAAQBx+XkBgec4+DHHyvxx+XkA8/ow/DHHyv87NHkA8/ow/AAAAQM7NHkA8/ow/AAAAQBx+XkA8/ow/DHHyvwAAAAA8/ow/DHHyvwAAAABgec4+AAAAQAAAAABgec4+AAAAQAAAAAA8/ow/DHHyvxx+XkDGACW/DHHyvxx+XkBgec4+DHHyv37riUBOEPe9DHHyv87NHkA8/ow/DHHyvwAAAAA8/ow/AAAAQAAAAAA8/ow/AAAAQM7NHkA8/ow/AAAAQM7NHkA8/ow/AAAAQAAAAAA8/ow/AAAAQAAAAABgec4+AAAAQM7NHkBgec4+DHHyv87NHkBI4Ku/DHHyvwAAAABI4Ku/DHHyvwAAAADGACW/DHHyv87NHkDGACW/DHHyv87NHkBgec4+DHHyvwAAAABgec4+DHHyvwAAAAA8/ow/DHHyv87NHkA8/ow/AAAAQM7NHkDGACW/AAAAQAAAAADGACW/AAAAQAAAAABI4Ku/AAAAQM7NHkBI4Ku/AAAAQM7NHkBgec4+AAAAQAAAAABgec4+AAAAQAAAAADGACW/AAAAQM7NHkDGACW/AAAAQBx+XkBgec4+AAAAQBx+XkDGACW/AAAAQH7riUBOEPe9DHHyvwAAAADGACW/DHHyvwAAAABI4Ku/AAAAQAAAAABI4Ku/AAAAQAAAAADGACW/DHHyvwAAAABgec4+DHHyvwAAAADGACW/AAAAQAAAAADGACW/AAAAQAAAAABgec4+AAAAQBx+XkDGACW/AAAAQM7NHkDGACW/AAAAQM7NHkBI4Ku/AAAAQBx+XkBI4Ku/AAAAQBx+XkBgec4+AAAAQM7NHkBgec4+AAAAQM7NHkDGACW/AAAAQBx+XkDGACW/DHHyvxx+XkBgec4+DHHyv87NHkBgec4+DHHyv87NHkA8/ow/DHHyvxx+XkA8/ow/DHHyvxx+XkDGACW/DHHyv87NHkDGACW/DHHyv87NHkBgec4+DHHyvxx+XkBgec4+AAAAQBx+XkA8/ow/AAAAQBx+XkBgec4+AAAAQH7riUBOEPe9AAAAQBx+XkDGACW/AAAAQBx+XkBI4Ku/AAAAQH7riUBOEPe9DHHyvxx+XkBI4Ku/DHHyvxx+XkDGACW/DHHyv37riUBOEPe9DHHyvxx+XkBgec4+DHHyvxx+XkA8/ow/DHHyv37riUBOEPe9SHn8vh05pD+jU6u/DHHyvwAAAABI4Ku/DHHyv87NHkBI4Ku/SHn8vmxfGUCjU6u/iloZPx05pD+jU6u/AAAAQAAAAABI4Ku/DHHyvwAAAABI4Ku/SHn8vh05pD+jU6u/AAAAQM7NHkBI4Ku/AAAAQAAAAABI4Ku/iloZPx05pD+jU6u/iloZP2xfGUCjU6u/AAAAQM7NHkBI4Ku/iloZP2xfGUCjU6u/SHn8vmxfGUCjU6u/DHHyv87NHkBI4Ku/3Kr8v5XyX0D6grK/3Kr8vwD80Lv6grK/3Kr8vwD80LsGgp+/3Kr8v5XyX0AGgp+/6Knpv5XyX0AGgp+/6Knpv5XyX0D6grK/3Kr8v5XyX0D6grK/3Kr8v5XyX0AGgp+/6Knpv5XyX0AGgp+/6KnpvwD80LsGgp+/6KnpvwD80Lv6grK/6Knpv5XyX0D6grK/3Kr8vwD80LsGgp+/3Kr8vwD80Lv6grK/6KnpvwD80Lv6grK/6KnpvwD80LsGgp+/6Knpv5XyX0D6grK/6KnpvwD80Lv6grK/3Kr8vwD80Lv6grK/3Kr8v5XyX0D6grK/3Kr8v5XyX0AGgp+/3Kr8vwD80LsGgp+/6KnpvwD80LsGgp+/6Knpv5XyX0AGgp+/3Kr8v5XyX0A6sIA/3Kr8vwD80Ls6sIA/3Kr8vwD80LsusZM/3Kr8v5XyX0AusZM/6Knpv5XyX0AusZM/6KnpvwD80LsusZM/6KnpvwD80Ls6sIA/6Knpv5XyX0A6sIA/6Knpv5XyX0A6sIA/6KnpvwD80Ls6sIA/3Kr8vwD80Ls6sIA/3Kr8v5XyX0A6sIA/3Kr8v5XyX0AusZM/3Kr8vwD80LsusZM/6KnpvwD80LsusZM/6Knpv5XyX0AusZM/WIj2P5XyX0D6grK/WIj2PwD80Lv6grK/WIj2PwD80LsGgp+/WIj2P5XyX0AGgp+/psQEQJXyX0AGgp+/psQEQAD80LsGgp+/psQEQAD80Lv6grK/psQEQJXyX0D6grK/psQEQJXyX0D6grK/psQEQAD80Lv6grK/WIj2PwD80Lv6grK/WIj2P5XyX0D6grK/WIj2P5XyX0AGgp+/WIj2PwD80LsGgp+/psQEQAD80LsGgp+/psQEQJXyX0AGgp+/WIj2P5XyX0A6sIA/WIj2PwD80Ls6sIA/WIj2PwD80LsusZM/WIj2P5XyX0AusZM/psQEQJXyX0AusZM/psQEQAD80LsusZM/psQEQAD80Ls6sIA/psQEQJXyX0A6sIA/psQEQJXyX0A6sIA/psQEQAD80Ls6sIA/WIj2PwD80Ls6sIA/WIj2P5XyX0A6sIA/WIj2P5XyX0AusZM/WIj2PwD80LsusZM/psQEQAD80LsusZM/psQEQJXyX0AusZM/kN1pP0SKI0D6ZK6/kN1pP0SKI0DuZcG/lthWv0KKI0DsZcG/lthWv0KKI0D4ZK6/lthWv0KKI0D4ZK6/lthWv8gJGkD4ZK6/kN1pP8oJGkD6ZK6/kN1pP0SKI0D6ZK6/kN1pP8oJGkDuZcG/lthWv8gJGkDsZcG/lthWv0KKI0DsZcG/kN1pP0SKI0DuZcG/lthWv0KKI0DsZcG/lthWv8gJGkDsZcG/lthWv8gJGkD4ZK6/lthWv0KKI0D4ZK6/6Knpv5XyX0AusZM/6Knpv5XyX0A6sIA/3Kr8v5XyX0A6sIA/3Kr8v5XyX0AusZM/lthWv8gJGkDsZcG/kN1pP8oJGkDuZcG/kN1pP8oJGkD6ZK6/lthWv8gJGkD4ZK6/kN1pP/QdkD/uZcG/lthWv/EdkD/sZcG/lthWv+Ueoz/sZcG/kN1pP+geoz/uZcG/kN1pP0SKI0D6ZK6/kN1pP8oJGkD6ZK6/kN1pP8oJGkDuZcG/kN1pP0SKI0DuZcG/lthWv+Ueoz/4ZK6/lthWv/EdkD/4ZK6/kN1pP/MdkD/6ZK6/kN1pP+ceoz/6ZK6/kN1pP+ceoz/6ZK6/kN1pP+geoz/uZcG/lthWv+Ueoz/sZcG/lthWv+Ueoz/4ZK6/lthWv+Ueoz/sZcG/lthWv/EdkD/sZcG/lthWv/EdkD/4ZK6/lthWv+Ueoz/4ZK6/lthWv/EdkD/sZcG/kN1pP/QdkD/uZcG/kN1pP/MdkD/6ZK6/lthWv/EdkD/4ZK6/kN1pP+ceoz/6ZK6/kN1pP/MdkD/6ZK6/kN1pP/QdkD/uZcG/kN1pP+geoz/uZcG/KugBv67GH0AGTb+/IugBv5NkPj8GTb+/Cuonv5NkPj8GTb+/Euonv67GH0AGTb+/EOonv67GH0ASTKy/Cuonv5NkPj8STKy/IugBv5NkPj8STKy/KOgBv67GH0ASTKy/Euonv67GH0AGTb+/Cuonv5NkPj8GTb+/Cuonv5NkPj8STKy/EOonv67GH0ASTKy/Cuonv5NkPj8STKy/Cuonv5NkPj8GTb+/IugBv5NkPj8GTb+/IugBv5NkPj8STKy/KOgBv67GH0ASTKy/IugBv5NkPj8STKy/IugBv5NkPj8GTb+/KugBv67GH0AGTb+/KOgBv67GH0ASTKy/KugBv67GH0AGTb+/Euonv67GH0AGTb+/EOonv67GH0ASTKy/3MtDP5UNIEAGTb+/5MtDPy6APz8GTb+//MkdPy6APz8GTb+/9MkdP5UNIEAGTb+/9skdP5UNIEASTKy//MkdPy6APz8STKy/5MtDPy6APz8STKy/3stDP5UNIEASTKy/9MkdP5UNIEAGTb+//MkdPy6APz8GTb+//MkdPy6APz8STKy/9skdP5UNIEASTKy//MkdPy6APz8STKy//MkdPy6APz8GTb+/5MtDPy6APz8GTb+/5MtDPy6APz8STKy/3stDP5UNIEASTKy/5MtDPy6APz8STKy/5MtDPy6APz8GTb+/3MtDP5UNIEAGTb+/3stDP5UNIEASTKy/3MtDP5UNIEAGTb+/9MkdP5UNIEAGTb+/9skdP5UNIEASTKy/AAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AID//////38AgP//////fwCA//////9/AID//////38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/fwAA///+//9/AAD///7//38AAP//////fwAA/////wAA/3//fwCAAAD/f/9/AIAAAP9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP9/AAAAAP7//38AAAAA/v//fwAAAAD+//9/AAD//////38AAP///v//fwAAAAD+//9/AAD//////38AAP////////9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgP///3//fwCA////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCAAAD/f/9/AIAAAP9//38AgP//mv//fwCA//+a//9/AID//5r//38AgP//mv//fwCAkf///458goGR////ooQcgpH////6dk+Ekf///4xkjY0AAJr//38AgAAAmv//fwCAAACa//9/AIAAAJr//38AgNX5AAACjzmK1fkAAP0tG6rV+QAA8MjLpdX5AACbyRymAAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f////3//v/9/////f/+//3////9//7//f////3//v////3///wCA////f/7/AID///9//v8AgP///3///////38AAP///v//fwAA///+//9/AAD///7//38AAP//////////AAD/v/////8AAP+//////wAA/7//////AAD/v/9//3////+//3//f/7//7//f/9//v//v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7////9///8AgP///3/+/wCA////f/7/AID///9///////////8AAP+//////wAA/7//////AAD/v/////8AAP+//3//f////7//f/9//v//v/9//3/+//+//3//f////78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v////3///wCA////f/7/AID///9//v8AgP///3///////////wAA/7//////AAD/v/////8AAP+//////wAA/7//f/9/////v/9//3/+//+//3//f/7//7//f/9/////vwAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/////f///AID///9//v8AgP///3/+/wCA////f///////////AAD/v/////8AAP+//////wAA/7//////AAD/v/9//3////+//3//f/7//7//f/9//v//v/9//3////+//3/+//9//7//f/7//3//v/9//v//f/+//3/+//9//7//f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgAAA/v//f///AAD+//9///8AAP7//3///wAA/v//f///AAD/f/7/AIAAAP9//////wAA/3/+/wCAAAD/f/7/AID/f///////v/9///////+//3///////7//f///////v/9/AAAAAACA/38AAAAAAID/fwAAAAAAgP9/AAAAAACAAAD+//9///8AAP7//3///wAA/v//f///AAD+//9///////9//385DP///3//f1UV////f/9/OQz///9//38AAP9//3//fwCA/3//f/9/AID/f/9//38AgP9//3//fwCA/3/+//9//7//f/7//3//v/9//v//f/+//3/+//9//78AAP9//v8AgAAA/3//////AAD/f/7/AIAAAP9//v8AgP9/AAAAAP7//38AAAAA/v//fwAAAAD+//9/AAAAAP7/////f/9/OQz///9//39VFf///3//fzkM////f/9/AAD/////AAD/v/////8AAP+//////wAA/7//////AAD/v/9//3/+//+//3//f/7//7//f/9//v//v/9//3/+//+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//fwAA///+//9/AAD///7//38AAP///v//fwAA//////7//38AAACA/v//fwAAAID+//9/AAAAgP7//38AAACA/3///30l/z//f///AAD/P/9///99Jf8//3////8//z//////AAD/v/////8AAP+//////wAA/7//////AAD/v/9//3/+//+//3//f/7//7//f/9//v//v/9//3/+//+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//fwAA///+//9/AAD///7//38AAP///v//fwAA//////7//38AAACA/v//fwAAAID+//9/AAAAgP7//38AAACA/3///30l/z//f///AAD/P/9///99Jf8//3////8//z8=")
+}, {
+"aabb": AABB(-1.91879, 0, -0.644543, 0.100495, 2.48131, 1.04781),
+"attribute_data": PackedByteArray("f5hxPw9zeT9/mHE/D3N5P3uYcT9gjQQ9e5hxP2CNBD0W84Q9CXN5P0A2Cj1s63w/fpN5P3LrfD9/mHE/D3N5P0A2Cj2ADpo8FvOEPWCNBD17mHE/YI0EPXqTeT+ADpo8f5hxPw9zeT9+k3k/cut8P3qTeT+ADpo8e5hxP2CNBD1ANgo9gA6aPEA2Cj1s63w/FvOEPQlzeT8W84Q9YI0EPRbzhD1gjQQ9FvOEPQlzeT9/mHE/D3N5P3uYcT9gjQQ9FvOEPQlzeT8W84Q9CXN5P3+YcT8Pc3k/f5hxPw9zeT8W84Q9YI0EPRbzhD0Jc3k/FvOEPQlzeT8W84Q9YI0EPXuYcT9gjQQ9e5hxP2CNBD0W84Q9YI0EPRbzhD1gjQQ9"),
+"format": 34359742487,
+"index_count": 54,
+"index_data": PackedByteArray("AAACAAEAAwACAAAABAAGAAUABAAHAAYACAAKAAkACAALAAoADAAOAA0ADwAOAAwAEAASABEAEAATABIAFAAWABUAFAAXABYAGAAaABkAGAAbABoAHAAeAB0AHAAfAB4AIAAiACEAIAAjACIA"),
+"material": SubResource("StandardMaterial3D_0epry"),
+"name": "door",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("Qr7ovwAoDj1ftLw+8Jr1vwAElTwx3MQ+8Jr1v5aGG0Ax3MQ+Qr7ovy6VHEBftLw+8Jr1vwAElTxdChi/DHHyvwAAAADGACW/DHHyvwAAAABgec4+8Jr1vwAElTwx3MQ+DHHyv87NHkDGACW/8Jr1v5aGG0BdChi/8Jr1v5aGG0Ax3MQ+DHHyv87NHkBgec4+8Jr1vwAElTwx3MQ+DHHyvwAAAABgec4+DHHyv87NHkBgec4+8Jr1v5aGG0Ax3MQ+DHHyv87NHkDGACW/DHHyvwAAAADGACW/8Jr1vwAElTxdChi/8Jr1v5aGG0BdChi/Qr7ovy6VHEBGHhy/Qr7ovwAoDj1GHhy/Qr7ovwAoDj1ftLw+Qr7ovy6VHEBftLw+Qr7ovwAoDj1GHhy/8Jr1vwAElTxdChi/8Jr1vwAElTwx3MQ+Qr7ovwAoDj1ftLw+8Jr1v5aGG0BdChi/8Jr1vwAElTxdChi/Qr7ovwAoDj1GHhy/Qr7ovy6VHEBGHhy/Qr7ovy6VHEBftLw+8Jr1v5aGG0Ax3MQ+8Jr1v5aGG0BdChi/Qr7ovy6VHEBGHhy/AAB77v///78AAHvu////vwAAe+7///+/AAB77v///7+7SUM2/3//v7tJQzb/f/+/u0lDNv9//7+7SUM2/3//v6kpqKn/f/+/qSmoqf9//7+pKaip/3//v6kpqKn/f/+/vEj/f7e0nNG8SP9/t7Sc0bxI/3+3tJzRvEj/f7e0nNEAAPupj119tAAA+6mPXX20AAD7qY9dfbQAAPupj119tAAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/7m3t7f///7/ube3t////v+5t7e3///+/7m3t7f///7+Dkf9/////P4OR/3////8/g5H/f////z+Dkf9/////PxCSERL///+/EJIREv///78QkhES////vxCSERL///+/")
+}, {
+"aabb": AABB(-0.493113, 1.28299, -1.38069, 1.09215, 1.11346, 0.053308),
+"attribute_data": PackedByteArray("KU3FPRiWqD2M9q89MQRpP4z2rz0xBGk/KU3FPRiWqD2RlW4/+HZzP9XIeD911n0/n+57P4DlbjwGeXE/gChfPVsSUT1ivHE/wOMmPFPzez/VyHg/ddZ9P5GVbj/4dnM/oCq4PAA97DvA4yY8U/N7P1sSUT1ivHE/fkl/PVB/Qz2gKrg8AD3sO35Jfz1Qf0M9BnlxP4AoXz2f7ns/gOVuPIXgZT8rnGo/kZVuP/h2cz8GeXE/gChfPVuLaD/IVbU9jPavPTEEaT9bElE9YrxxP5GVbj/4dnM/heBlPyucaj9+SX89UH9DPVsSUT1ivHE/jPavPTEEaT8pTcU9GJaoPX5Jfz1Qf0M9KU3FPRiWqD1bi2g/yFW1PQZ5cT+AKF89KU3FPRiWqD2M9q89MQRpP4XgZT8rnGo/W4toP8hVtT1bi2g/yFW1PYXgZT8rnGo/heBlPyucaj9bi2g/yFW1PVuLaD/IVbU9W4toP8hVtT0pTcU9GJaoPSlNxT0Ylqg9jPavPTEEaT+M9q89MQRpP4XgZT8rnGo/heBlPyucaj8="),
+"format": 34359742487,
+"index_count": 78,
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAAGAAUABwAGAAQACAAKAAkACAALAAoADAAOAA0ADAAPAA4AEAASABEAEAATABIAFAAWABUAFwAWABQAGAAaABkAGAAbABoAHAAeAB0AHAAfAB4AIAAiACEAIAAjACIAJAAmACUAJAAnACYAKAAqACkAKAArACoALAAuAC0ALAAvAC4AMAAyADEAMAAzADIA"),
+"material": SubResource("StandardMaterial3D_dilqg"),
+"name": "window",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 52,
+"vertex_data": PackedByteArray("dTsLP+ziFUBVurC/dTsLPxwyqz9VurC/dTsLPxwyqz+J56m/dTsLP+ziFUCJ56m/zI31vm/dpT9VurC/SHn8vh05pD+jU6u/SHn8vmxfGUCjU6u/zI31vkKNGEBVurC/zeQVP2/dpT9VurC/iloZPx05pD+jU6u/SHn8vh05pD+jU6u/zI31vm/dpT9VurC/iloZP2xfGUCjU6u/iloZPx05pD+jU6u/zeQVP2/dpT9VurC/zeQVP0KNGEBVurC/iloZP2xfGUCjU6u/zeQVP0KNGEBVurC/zI31vkKNGEBVurC/SHn8vmxfGUCjU6u/GDvgvhwyqz9VurC/zI31vm/dpT9VurC/zI31vkKNGEBVurC/GDvgvuziFUBVurC/dTsLPxwyqz9VurC/zeQVP2/dpT9VurC/zI31vm/dpT9VurC/GDvgvhwyqz9VurC/zeQVP0KNGEBVurC/zeQVP2/dpT9VurC/dTsLPxwyqz9VurC/dTsLP+ziFUBVurC/zeQVP0KNGEBVurC/dTsLP+ziFUBVurC/GDvgvuziFUBVurC/zI31vkKNGEBVurC/dTsLP+ziFUCJ56m/dTsLPxwyqz+J56m/GDvgvhwyqz+J56m/GDvgvuziFUCJ56m/GDvgvuziFUCJ56m/GDvgvhwyqz+J56m/GDvgvhwyqz9VurC/GDvgvuziFUBVurC/GDvgvuziFUCJ56m/GDvgvuziFUBVurC/dTsLP+ziFUBVurC/dTsLP+ziFUCJ56m/dTsLPxwyqz+J56m/dTsLPxwyqz9VurC/GDvgvhwyqz9VurC/GDvgvhwyqz+J56m/AAD/f////78AAP9/////vwAA/3////+/AAD/f////78AAAyfQGxL1wAADJ+TbPbXAAAMn5RsBKgAAAyfDG0Np9adAABGAJXA1p0AAEYAlsDWnQAAQQCLwNadAABBAIvA//8Mn5gwXfb//wyfSy/Jif//DJ/0LfOJ//8Mn4YymfbWnf//GAEgwNad//8YAR/A1p3//y0BIsDWnf//LQEiwP/////6AHzA//////oAfMD/////+gB8wP/////6AHzA//////oAfMD/////+gB8wP/////6AHzA//////oAfMD/////+gB8wP/////6AHzA//////oAfMD/////+gB8wP/////6AHzA//////oAfMD/////+gB8wP/////6AHzA//////oAfMD/////+gB8wP/////6AHzA//////oAfMD///9/////v////3////+/////f////7////9/////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+//3///////7//f///////v/9///////+//3///////78=")
+}, {
+"aabb": AABB(-1.96891, 3.44681, -1.52473, 4.04375, 0.89616, 2.80818),
+"attribute_data": PackedByteArray("NN+IPQQAuj4034g9BAC6PnjfiD0HvbM/eN+IPQe9sz9434g9B72zP3jfiD0HvbM/ELofvg2O3T8Quh++DY7dP0YeOD+tyoQ/RB44P7BZpD2A4is+AFqkPXriKz6xyoQ/huIrPgBXQzx64is+hBd4P0YeOD+EF3g/Rh44P4BWQzwQuh++DY7dP3jfiD2KrwNAeN+IPYqvA0AQuh++DY7dP0C6H76A3xU9NN+IPQQAuj4034g9BAC6PkC6H76A3xU9KN+IPRJfqr8o34g9El+qv0DfiD0siJS+QN+IPSyIlL5A34g9LIiUvkDfiD0siJS+QLofvoDfFT1Auh++gN8VPQ=="),
+"format": 34359742487,
+"index_count": 48,
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAAGAAUABwAGAAQACAAKAAkACAALAAoADAAOAA0ADAAPAA4AEAASABEAEAATABIAFAAWABUAFAAXABYAGAAaABkAGAAbABoAHAAeAB0AHwAeABwA"),
+"material": SubResource("StandardMaterial3D_c6dmj"),
+"name": "roof",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("DHHyvxx+XkBI4Ku/7Lj7v4yYXEBOKsO/8KMEQIyYXEBOKsO/AAAAQBx+XkBI4Ku/AAAAQBx+XkBI4Ku/8KMEQIyYXEBOKsO/KcoEQJ75ikBOEPe9AAAAQH7riUBOEPe9XgX8v575ikBOEPe97Lj7v4yYXEBCSKQ/8KMEQIyYXEBCSKQ/KcoEQJ75ikBOEPe9KcoEQJ75ikBOEPe98KMEQIyYXEBOKsO/7Lj7v4yYXEBOKsO/XgX8v575ikBOEPe9KcoEQJ75ikBOEPe98KMEQIyYXEBCSKQ/AAAAQBx+XkA8/ow/AAAAQH7riUBOEPe9XgX8v575ikBOEPe97Lj7v4yYXEBOKsO/DHHyvxx+XkBI4Ku/DHHyv37riUBOEPe9AAAAQBx+XkA8/ow/8KMEQIyYXEBCSKQ/7Lj7v4yYXEBCSKQ/DHHyvxx+XkA8/ow/DHHyvxx+XkA8/ow/7Lj7v4yYXEBCSKQ/XgX8v575ikBOEPe9DHHyv37riUBOEPe9/3/tEf///z//f+0R////P/9/7RH///8//3/tEf///z/fqqdM////P9+qp0z///8/36qnTP///z/fqqdM////P/9/Ic4AAP+//38hzgAA/7//fyHOAAD/v/9/Ic4AAP+/3bH//wAA/7/dsf//AAD/v92x//8AAP+/3bH//wAA/7+mzN8q////v6bM3yr///+/pszfKv///7+mzN8q////vx9Vp0z///8/H1WnTP///z8fVadM////Px9Vp0z///8/7ZEAAP///7/tkQAA////v+2RAAD///+/7ZEAAP///79YM98q////v1gz3yr///+/WDPfKv///79YM98q////vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ig230")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0gb47"]
+data = PackedVector3Array(-1.8941, 3.4764, -1.3428, -1.8941, 2.4813, -0.6445, -1.8941, 2.4813, -1.3428, -1.8941, 3.4764, -1.3428, -1.8941, 3.4764, -0.6445, -1.8941, 2.4813, -0.6445, 2, 3.4764, -1.3428, -1.8941, 2.4813, -1.3428, 2, 2.4813, -1.3428, 2, 3.4764, -1.3428, -1.8941, 3.4764, -1.3428, -1.8941, 2.4813, -1.3428, 2, 3.4764, 1.1015, 2, 2.4813, 0.4033, 2, 2.4813, 1.1015, 2, 3.4764, 1.1015, 2, 3.4764, 0.4033, 2, 2.4813, 0.4033, -1.8941, 3.4764, 1.1015, 2, 2.4813, 1.1015, -1.8941, 2.4813, 1.1015, -1.8941, 3.4764, 1.1015, 2, 3.4764, 1.1015, 2, 2.4813, 1.1015, -1.8941, 0, 1.1015, 2, 0, 0.4033, -1.8941, 0, 0.4033, -1.8941, 0, 1.1015, 2, 0, 1.1015, 2, 0, 0.4033, -1.8941, 3.4764, -0.6445, -1.8941, 4.31, -0.1206, -1.8941, 3.4764, 0.4033, -1.8941, 2.4813, 1.1015, 2, 0, 1.1015, -1.8941, 0, 1.1015, -1.8941, 2.4813, 1.1015, 2, 2.4813, 1.1015, 2, 0, 1.1015, 2, 2.4813, 1.1015, 2, 0, 0.4033, 2, 0, 1.1015, 2, 2.4813, 1.1015, 2, 2.4813, 0.4033, 2, 0, 0.4033, -1.8941, 2.4813, -1.3428, -1.8941, 0, -0.6445, -1.8941, 0, -1.3428, -1.8941, 2.4813, -1.3428, -1.8941, 2.4813, -0.6445, -1.8941, 0, -0.6445, -1.8941, 2.4813, 0.4033, -1.8941, 0, 1.1015, -1.8941, 0, 0.4033, -1.8941, 2.4813, 0.4033, -1.8941, 2.4813, 1.1015, -1.8941, 0, 1.1015, 2, 2.4813, -0.6445, 2, 0, -1.3428, 2, 0, -0.6445, 2, 2.4813, -0.6445, 2, 2.4813, -1.3428, 2, 0, -1.3428, 2, 2.4813, 0.4033, 2, 0, -0.6445, 2, 0, 0.4033, 2, 2.4813, 0.4033, 2, 2.4813, -0.6445, 2, 0, -0.6445, 2, 3.4764, 0.4033, 2, 4.31, -0.1206, 2, 3.4764, -0.6445, -1.8941, 0, -0.6445, 2, 0, -1.3428, -1.8941, 0, -1.3428, -1.8941, 0, -0.6445, 2, 0, -0.6445, 2, 0, -1.3428, -1.8941, 0, 0.4033, 2, 0, -0.6445, -1.8941, 0, -0.6445, -1.8941, 0, 0.4033, 2, 0, 0.4033, 2, 0, -0.6445, 2, 3.4764, -0.6445, 2, 2.4813, -1.3428, 2, 2.4813, -0.6445, 2, 3.4764, -0.6445, 2, 3.4764, -1.3428, 2, 2.4813, -1.3428, 2, 3.4764, 0.4033, 2, 2.4813, -0.6445, 2, 2.4813, 0.4033, 2, 3.4764, 0.4033, 2, 3.4764, -0.6445, 2, 2.4813, -0.6445, -1.8941, 3.4764, 0.4033, -1.8941, 2.4813, 1.1015, -1.8941, 2.4813, 0.4033, -1.8941, 3.4764, 0.4033, -1.8941, 3.4764, 1.1015, -1.8941, 2.4813, 1.1015, -1.8941, 3.4764, -0.6445, -1.8941, 2.4813, 0.4033, -1.8941, 2.4813, -0.6445, -1.8941, 3.4764, -0.6445, -1.8941, 3.4764, 0.4033, -1.8941, 2.4813, 0.4033, 2, 3.4764, 1.1015, 2, 4.31, -0.1206, 2, 3.4764, 0.4033, 2, 3.4764, -0.6445, 2, 4.31, -0.1206, 2, 3.4764, -1.3428, -1.8941, 3.4764, -1.3428, -1.8941, 4.31, -0.1206, -1.8941, 3.4764, -0.6445, -1.8941, 3.4764, 0.4033, -1.8941, 4.31, -0.1206, -1.8941, 3.4764, 1.1015, -0.4931, 1.283, -1.3385, -1.8941, 2.4813, -1.3428, -1.8941, 0, -1.3428, -0.4931, 2.3964, -1.3385, -1.8941, 2.4813, -1.3428, -0.4931, 1.283, -1.3385, 0.599, 1.283, -1.3385, -1.8941, 0, -1.3428, 2, 0, -1.3428, 0.599, 1.283, -1.3385, -0.4931, 1.283, -1.3385, -1.8941, 0, -1.3428, 2, 2.4813, -1.3428, 0.599, 1.283, -1.3385, 2, 0, -1.3428, 2, 2.4813, -1.3428, 0.599, 2.3964, -1.3385, 0.599, 1.283, -1.3385, 2, 2.4813, -1.3428, -0.4931, 2.3964, -1.3385, 0.599, 2.3964, -1.3385, 2, 2.4813, -1.3428, -1.8941, 2.4813, -1.3428, -0.4931, 2.3964, -1.3385, -1.974, 3.4992, -1.3946, -1.974, -0.0064, -1.2462, -1.974, -0.0064, -1.3946, -1.974, 3.4992, -1.3946, -1.974, 3.4992, -1.2462, -1.974, -0.0064, -1.2462, -1.8255, 3.4992, -1.2462, -1.974, 3.4992, -1.3946, -1.8255, 3.4992, -1.3946, -1.8255, 3.4992, -1.2462, -1.974, 3.4992, -1.2462, -1.974, 3.4992, -1.3946, -1.8255, 3.4992, -1.2462, -1.8255, -0.0064, -1.3946, -1.8255, -0.0064, -1.2462, -1.8255, 3.4992, -1.2462, -1.8255, 3.4992, -1.3946, -1.8255, -0.0064, -1.3946, -1.974, -0.0064, -1.2462, -1.8255, -0.0064, -1.3946, -1.974, -0.0064, -1.3946, -1.974, -0.0064, -1.2462, -1.8255, -0.0064, -1.2462, -1.8255, -0.0064, -1.3946, -1.8255, 3.4992, -1.3946, -1.974, -0.0064, -1.3946, -1.8255, -0.0064, -1.3946, -1.8255, 3.4992, -1.3946, -1.974, 3.4992, -1.3946, -1.974, -0.0064, -1.3946, -1.974, 3.4992, -1.2462, -1.8255, -0.0064, -1.2462, -1.974, -0.0064, -1.2462, -1.974, 3.4992, -1.2462, -1.8255, 3.4992, -1.2462, -1.8255, -0.0064, -1.2462, -1.974, 3.4992, 1.0054, -1.974, -0.0064, 1.1538, -1.974, -0.0064, 1.0054, -1.974, 3.4992, 1.0054, -1.974, 3.4992, 1.1538, -1.974, -0.0064, 1.1538, -1.8255, 3.4992, 1.1538, -1.8255, -0.0064, 1.0054, -1.8255, -0.0064, 1.1538, -1.8255, 3.4992, 1.1538, -1.8255, 3.4992, 1.0054, -1.8255, -0.0064, 1.0054, -1.8255, 3.4992, 1.0054, -1.974, -0.0064, 1.0054, -1.8255, -0.0064, 1.0054, -1.8255, 3.4992, 1.0054, -1.974, 3.4992, 1.0054, -1.974, -0.0064, 1.0054, -1.974, 3.4992, 1.1538, -1.8255, -0.0064, 1.1538, -1.974, -0.0064, 1.1538, -1.974, 3.4992, 1.1538, -1.8255, 3.4992, 1.1538, -1.8255, -0.0064, 1.1538, 1.926, 3.4992, -1.3946, 1.926, -0.0064, -1.2462, 1.926, -0.0064, -1.3946, 1.926, 3.4992, -1.3946, 1.926, 3.4992, -1.2462, 1.926, -0.0064, -1.2462, 2.0745, 3.4992, -1.2462, 2.0745, -0.0064, -1.3946, 2.0745, -0.0064, -1.2462, 2.0745, 3.4992, -1.2462, 2.0745, 3.4992, -1.3946, 2.0745, -0.0064, -1.3946, 2.0745, 3.4992, -1.3946, 1.926, -0.0064, -1.3946, 2.0745, -0.0064, -1.3946, 2.0745, 3.4992, -1.3946, 1.926, 3.4992, -1.3946, 1.926, -0.0064, -1.3946, 1.926, 3.4992, -1.2462, 2.0745, -0.0064, -1.2462, 1.926, -0.0064, -1.2462, 1.926, 3.4992, -1.2462, 2.0745, 3.4992, -1.2462, 2.0745, -0.0064, -1.2462, 1.926, 3.4992, 1.0054, 1.926, -0.0064, 1.1538, 1.926, -0.0064, 1.0054, 1.926, 3.4992, 1.0054, 1.926, 3.4992, 1.1538, 1.926, -0.0064, 1.1538, 2.0745, 3.4992, 1.1538, 2.0745, -0.0064, 1.0054, 2.0745, -0.0064, 1.1538, 2.0745, 3.4992, 1.1538, 2.0745, 3.4992, 1.0054, 2.0745, -0.0064, 1.0054, 2.0745, 3.4992, 1.0054, 1.926, -0.0064, 1.0054, 2.0745, -0.0064, 1.0054, 2.0745, 3.4992, 1.0054, 1.926, 3.4992, 1.0054, 1.926, -0.0064, 1.0054, 1.926, 3.4992, 1.1538, 2.0745, -0.0064, 1.1538, 1.926, -0.0064, 1.1538, 1.926, 3.4992, 1.1538, 2.0745, 3.4992, 1.1538, 2.0745, -0.0064, 1.1538, 0.9135, 2.5553, -1.3625, -0.8392, 2.5553, -1.5109, 0.9135, 2.5553, -1.5109, 0.9135, 2.5553, -1.3625, -0.8392, 2.5553, -1.3625, -0.8392, 2.5553, -1.5109, -0.8392, 2.5553, -1.3625, 0.9135, 2.4068, -1.3625, -0.8392, 2.4068, -1.3625, -0.8392, 2.5553, -1.3625, 0.9135, 2.5553, -1.3625, 0.9135, 2.4068, -1.3625, 0.9135, 2.4068, -1.5109, -0.8392, 2.5553, -1.5109, -0.8392, 2.4068, -1.5109, 0.9135, 2.5553, -1.5109, -0.8392, 2.5553, -1.5109, 0.9135, 2.4068, -1.5109, -0.8392, 2.5553, -1.5109, -0.8392, 2.4068, -1.3625, -0.8392, 2.4068, -1.5109, -0.8392, 2.5553, -1.5109, -0.8392, 2.5553, -1.3625, -0.8392, 2.4068, -1.3625, -1.8255, 3.4992, 1.1538, -1.974, 3.4992, 1.0054, -1.8255, 3.4992, 1.0054, -1.8255, 3.4992, 1.1538, -1.974, 3.4992, 1.1538, -1.974, 3.4992, 1.0054, -0.8392, 2.4068, -1.5109, 0.9135, 2.4068, -1.3625, 0.9135, 2.4068, -1.5109, -0.8392, 2.4068, -1.3625, 0.9135, 2.4068, -1.3625, -0.8392, 2.4068, -1.5109, 0.9135, 1.1259, -1.5109, -0.8392, 1.2744, -1.5109, -0.8392, 1.1259, -1.5109, 0.9135, 1.2744, -1.5109, -0.8392, 1.2744, -1.5109, 0.9135, 1.1259, -1.5109, 0.9135, 2.5553, -1.3625, 0.9135, 2.4068, -1.5109, 0.9135, 2.4068, -1.3625, 0.9135, 2.5553, -1.3625, 0.9135, 2.5553, -1.5109, 0.9135, 2.4068, -1.5109, -0.8392, 1.2744, -1.3625, 0.9135, 1.1259, -1.3625, -0.8392, 1.1259, -1.3625, -0.8392, 1.2744, -1.3625, 0.9135, 1.2744, -1.3625, 0.9135, 1.1259, -1.3625, 0.9135, 1.2744, -1.3625, -0.8392, 1.2744, -1.5109, 0.9135, 1.2744, -1.5109, 0.9135, 1.2744, -1.3625, -0.8392, 1.2744, -1.3625, -0.8392, 1.2744, -1.5109, -0.8392, 1.2744, -1.5109, -0.8392, 1.1259, -1.3625, -0.8392, 1.1259, -1.5109, -0.8392, 1.2744, -1.5109, -0.8392, 1.2744, -1.3625, -0.8392, 1.1259, -1.3625, -0.8392, 1.1259, -1.5109, 0.9135, 1.1259, -1.3625, 0.9135, 1.1259, -1.5109, -0.8392, 1.1259, -1.3625, 0.9135, 1.1259, -1.3625, -0.8392, 1.1259, -1.5109, 0.9135, 1.2744, -1.3625, 0.9135, 1.1259, -1.5109, 0.9135, 1.1259, -1.3625, 0.9135, 1.2744, -1.3625, 0.9135, 1.2744, -1.5109, 0.9135, 1.1259, -1.5109, -0.5074, 2.4965, -1.4945, -0.6559, 0.7437, -1.4945, -0.5074, 0.7437, -1.4945, -0.5074, 2.4965, -1.4945, -0.6559, 2.4965, -1.4945, -0.6559, 0.7437, -1.4945, -0.6559, 2.4965, -1.3461, -0.5074, 0.7437, -1.3461, -0.6559, 0.7437, -1.3461, -0.6559, 2.4965, -1.3461, -0.5074, 2.4965, -1.3461, -0.5074, 0.7437, -1.3461, -0.6559, 2.4965, -1.4945, -0.6559, 0.7437, -1.3461, -0.6559, 0.7437, -1.4945, -0.6559, 2.4965, -1.4945, -0.6559, 2.4965, -1.3461, -0.6559, 0.7437, -1.3461, -0.6559, 0.7437, -1.3461, -0.5074, 0.7437, -1.4945, -0.6559, 0.7437, -1.4945, -0.6559, 0.7437, -1.3461, -0.5074, 0.7437, -1.3461, -0.5074, 0.7437, -1.4945, -0.5074, 2.4965, -1.3461, -0.5074, 0.7437, -1.4945, -0.5074, 0.7437, -1.3461, -0.5074, 2.4965, -1.3461, -0.5074, 2.4965, -1.4945, -0.5074, 0.7437, -1.4945, -0.5074, 2.4965, -1.3461, -0.6559, 2.4965, -1.4945, -0.5074, 2.4965, -1.4945, -0.5074, 2.4965, -1.3461, -0.6559, 2.4965, -1.3461, -0.6559, 2.4965, -1.4945, 0.7648, 2.5008, -1.4945, 0.6164, 0.748, -1.4945, 0.7648, 0.748, -1.4945, 0.7648, 2.5008, -1.4945, 0.6164, 2.5008, -1.4945, 0.6164, 0.748, -1.4945, 0.6164, 2.5008, -1.3461, 0.7648, 0.748, -1.3461, 0.6164, 0.748, -1.3461, 0.6164, 2.5008, -1.3461, 0.7648, 2.5008, -1.3461, 0.7648, 0.748, -1.3461, 0.6164, 2.5008, -1.4945, 0.6164, 0.748, -1.3461, 0.6164, 0.748, -1.4945, 0.6164, 2.5008, -1.4945, 0.6164, 2.5008, -1.3461, 0.6164, 0.748, -1.3461, 0.6164, 0.748, -1.3461, 0.7648, 0.748, -1.4945, 0.6164, 0.748, -1.4945, 0.6164, 0.748, -1.3461, 0.7648, 0.748, -1.3461, 0.7648, 0.748, -1.4945, 0.7648, 2.5008, -1.3461, 0.7648, 0.748, -1.4945, 0.7648, 0.748, -1.3461, 0.7648, 2.5008, -1.3461, 0.7648, 2.5008, -1.4945, 0.7648, 0.748, -1.4945, 0.7648, 2.5008, -1.3461, 0.6164, 2.5008, -1.4945, 0.7648, 2.5008, -1.4945, 0.7648, 2.5008, -1.3461, 0.6164, 2.5008, -1.3461, 0.6164, 2.5008, -1.4945, -1.8183, 0.0347, 0.3686, -1.9188, 2.4301, 0.3845, -1.9188, 0.0182, 0.3845, -1.8183, 2.4466, 0.3686, -1.9188, 2.4301, 0.3845, -1.8183, 0.0347, 0.3686, -1.9188, 0.0182, -0.5939, -1.8941, 0, 0.4033, -1.8941, 0, -0.6445, -1.9188, 0.0182, -0.5939, -1.9188, 0.0182, 0.3845, -1.8941, 0, 0.4033, -1.8941, 2.4813, -0.6445, -1.9188, 2.4301, 0.3845, -1.9188, 2.4301, -0.5939, -1.8941, 2.4813, -0.6445, -1.8941, 2.4813, 0.4033, -1.9188, 2.4301, 0.3845, -1.9188, 0.0182, 0.3845, -1.8941, 2.4813, 0.4033, -1.8941, 0, 0.4033, -1.9188, 2.4301, 0.3845, -1.8941, 2.4813, 0.4033, -1.9188, 0.0182, 0.3845, -1.8941, 2.4813, -0.6445, -1.9188, 0.0182, -0.5939, -1.8941, 0, -0.6445, -1.8941, 2.4813, -0.6445, -1.9188, 2.4301, -0.5939, -1.9188, 0.0182, -0.5939, -1.8183, 2.4466, -0.6098, -1.8183, 0.0347, 0.3686, -1.8183, 0.0347, -0.6098, -1.8183, 2.4466, -0.6098, -1.8183, 2.4466, 0.3686, -1.8183, 0.0347, 0.3686, -1.8183, 0.0347, -0.6098, -1.9188, 0.0182, 0.3845, -1.9188, 0.0182, -0.5939, -1.8183, 0.0347, -0.6098, -1.8183, 0.0347, 0.3686, -1.9188, 0.0182, 0.3845, -1.9188, 2.4301, -0.5939, -1.8183, 0.0347, -0.6098, -1.9188, 0.0182, -0.5939, -1.9188, 2.4301, -0.5939, -1.8183, 2.4466, -0.6098, -1.8183, 0.0347, -0.6098, -1.8183, 2.4466, 0.3686, -1.9188, 2.4301, -0.5939, -1.9188, 2.4301, 0.3845, -1.8183, 2.4466, 0.3686, -1.8183, 2.4466, -0.6098, -1.9188, 2.4301, -0.5939, 0.5439, 2.342, -1.3807, 0.5439, 1.3375, -1.3274, 0.5439, 1.3375, -1.3807, 0.5439, 2.342, -1.3807, 0.5439, 2.342, -1.3274, 0.5439, 1.3375, -1.3274, -0.4796, 1.2958, -1.3807, -0.4931, 2.3964, -1.3385, -0.4931, 1.283, -1.3385, -0.4796, 2.3836, -1.3807, -0.4931, 2.3964, -1.3385, -0.4796, 1.2958, -1.3807, 0.5855, 1.2958, -1.3807, -0.4931, 1.283, -1.3385, 0.599, 1.283, -1.3385, 0.5855, 1.2958, -1.3807, -0.4796, 1.2958, -1.3807, -0.4931, 1.283, -1.3385, 0.599, 2.3964, -1.3385, 0.5855, 1.2958, -1.3807, 0.599, 1.283, -1.3385, 0.599, 2.3964, -1.3385, 0.5855, 2.3836, -1.3807, 0.5855, 1.2958, -1.3807, 0.599, 2.3964, -1.3385, -0.4796, 2.3836, -1.3807, 0.5855, 2.3836, -1.3807, 0.599, 2.3964, -1.3385, -0.4931, 2.3964, -1.3385, -0.4796, 2.3836, -1.3807, -0.438, 1.3375, -1.3807, -0.4796, 2.3836, -1.3807, -0.4796, 1.2958, -1.3807, -0.438, 2.342, -1.3807, -0.4796, 2.3836, -1.3807, -0.438, 1.3375, -1.3807, 0.5439, 1.3375, -1.3807, -0.4796, 1.2958, -1.3807, 0.5855, 1.2958, -1.3807, 0.5439, 1.3375, -1.3807, -0.438, 1.3375, -1.3807, -0.4796, 1.2958, -1.3807, 0.5855, 2.3836, -1.3807, 0.5439, 1.3375, -1.3807, 0.5855, 1.2958, -1.3807, 0.5855, 2.3836, -1.3807, 0.5439, 2.342, -1.3807, 0.5439, 1.3375, -1.3807, 0.5855, 2.3836, -1.3807, -0.438, 2.342, -1.3807, 0.5439, 2.342, -1.3807, 0.5855, 2.3836, -1.3807, -0.4796, 2.3836, -1.3807, -0.438, 2.342, -1.3807, 0.5439, 2.342, -1.3274, -0.438, 1.3375, -1.3274, 0.5439, 1.3375, -1.3274, 0.5439, 2.342, -1.3274, -0.438, 2.342, -1.3274, -0.438, 1.3375, -1.3274, -0.438, 2.342, -1.3274, -0.438, 1.3375, -1.3807, -0.438, 1.3375, -1.3274, -0.438, 2.342, -1.3274, -0.438, 2.342, -1.3807, -0.438, 1.3375, -1.3807, -0.438, 2.342, -1.3274, 0.5439, 2.342, -1.3807, -0.438, 2.342, -1.3807, -0.438, 2.342, -1.3274, 0.5439, 2.342, -1.3274, 0.5439, 2.342, -1.3807, 0.5439, 1.3375, -1.3274, -0.438, 1.3375, -1.3807, 0.5439, 1.3375, -1.3807, 0.5439, 1.3375, -1.3274, -0.438, 1.3375, -1.3274, -0.438, 1.3375, -1.3807, -1.8941, 3.4764, -1.3428, 2.0725, 3.4468, -1.5247, -1.9666, 3.4468, -1.5247, -1.8941, 3.4764, -1.3428, 2, 3.4764, -1.3428, 2.0725, 3.4468, -1.5247, 2, 3.4764, -1.3428, 2.0748, 4.343, -0.1206, 2.0725, 3.4468, -1.5247, 2, 4.31, -0.1206, 2.0748, 4.343, -0.1206, 2, 3.4764, -1.3428, -1.9689, 4.343, -0.1206, 2.0725, 3.4468, 1.2835, -1.9666, 3.4468, 1.2835, -1.9689, 4.343, -0.1206, 2.0748, 4.343, -0.1206, 2.0725, 3.4468, 1.2835, 2.0748, 4.343, -0.1206, -1.9666, 3.4468, -1.5247, 2.0725, 3.4468, -1.5247, 2.0748, 4.343, -0.1206, -1.9689, 4.343, -0.1206, -1.9666, 3.4468, -1.5247, 2.0748, 4.343, -0.1206, 2, 3.4764, 1.1015, 2.0725, 3.4468, 1.2835, 2.0748, 4.343, -0.1206, 2, 4.31, -0.1206, 2, 3.4764, 1.1015, -1.9689, 4.343, -0.1206, -1.8941, 3.4764, -1.3428, -1.9666, 3.4468, -1.5247, -1.9689, 4.343, -0.1206, -1.8941, 4.31, -0.1206, -1.8941, 3.4764, -1.3428, 2, 3.4764, 1.1015, -1.9666, 3.4468, 1.2835, 2.0725, 3.4468, 1.2835, 2, 3.4764, 1.1015, -1.8941, 3.4764, 1.1015, -1.9666, 3.4468, 1.2835, -1.8941, 3.4764, 1.1015, -1.9689, 4.343, -0.1206, -1.9666, 3.4468, 1.2835, -1.8941, 4.31, -0.1206, -1.9689, 4.343, -0.1206, -1.8941, 3.4764, 1.1015)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rp0to"]
+_surfaces = [{
+"aabb": AABB(-2, 0, -0.3, 4, 3.00001, 0.6),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAABAAUABAAAAAEABgAFAAcABgAEAAUAAwAHAAIAAwAGAAcAAgAFAAEAAgAHAAUABgAAAAQABgADAAAA"),
+"name": "brick_ivy",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAwAAAQECamZm+AAAAwAAAAACamZm+AAAAwAAAAACamZk+AAAAwAAAQECamZk+AAAAQAAAQECamZm+AAAAQAAAAACamZm+AAAAQAAAQECamZk+AAAAQAAAAACamZk+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6my4r"]
+resource_name = "brickwall_Cube_012"
+_surfaces = [{
+"aabb": AABB(-2, 0, -0.3, 4, 3.00001, 0.6),
+"attribute_data": PackedByteArray("5447OABAOzjlzjs4Ef1/P9XTTD4S/X8/1dNMPgBAOzgAyBE7AISJOgDIETs+PEA/NkOAPz48QD82Q4A/AIiJOueOOzgAQDs45c47OBH9fz/V00w+Ev1/P9XTTD4AQDs4AMgROwCEiToAxhE7PzxAPzZDgD9CPEA/N0OAPwCIiToAHEi7L81YP4AbSLvRMn8/0DJ/P9Eyfz/QMn8/Lc1YP3zvfz98/hU+fO9/PwAEZrsACDe5AARmuwAYN7l8/hU+"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAACAAEAAAADAAIABAAGAAUABAAHAAYACAAKAAkACAALAAoADAAOAA0ADAAPAA4AEAASABEAEAATABIAFAAWABUAFAAXABYA"),
+"material": ExtResource("9_bb3jp"),
+"name": "brick_ivy",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAwAAAQECamZm+AAAAwAAAAACamZm+AAAAwAAAAACamZk+AAAAwAAAQECamZk+AAAAQAAAQECamZm+AAAAQAAAAACamZm+AAAAwAAAAACamZm+AAAAwAAAQECamZm+AAAAQAAAQECamZk+AAAAQAAAAACamZk+AAAAQAAAAACamZm+AAAAQAAAQECamZm+AAAAwAAAQECamZk+AAAAwAAAAACamZk+AAAAQAAAAACamZk+AAAAQAAAQECamZk+AAAAwAAAAACamZk+AAAAwAAAAACamZm+AAAAQAAAAACamZm+AAAAQAAAAACamZk+AAAAQAAAQECamZk+AAAAQAAAQECamZm+AAAAwAAAQECamZm+AAAAwAAAQECamZk+AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//////AAD/v/////8AAP+//////wAA/7//////AAD/v////3//////////f/7///////9//v///////3///////3//f/7//7//f/9//v//v/9//3/+//+//3//f/7//7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9///////+//3///////7//f///////v/9///////+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_rp0to")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_clnb3"]
+data = PackedVector3Array(-2, 3, -0.3, -2, 0, 0.3, -2, 0, -0.3, -2, 3, -0.3, -2, 3, 0.3, -2, 0, 0.3, 2, 3, -0.3, -2, 0, -0.3, 2, 0, -0.3, 2, 3, -0.3, -2, 3, -0.3, -2, 0, -0.3, 2, 3, 0.3, 2, 0, -0.3, 2, 0, 0.3, 2, 3, 0.3, 2, 3, -0.3, 2, 0, -0.3, -2, 3, 0.3, 2, 0, 0.3, -2, 0, 0.3, -2, 3, 0.3, 2, 3, 0.3, 2, 0, 0.3, -2, 0, 0.3, 2, 0, -0.3, -2, 0, -0.3, -2, 0, 0.3, 2, 0, 0.3, 2, 0, -0.3, 2, 3, 0.3, -2, 3, -0.3, 2, 3, -0.3, 2, 3, 0.3, -2, 3, 0.3, -2, 3, -0.3)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_6rwdy"]
+vertices = PackedVector3Array(7.75, 1, -39.25, 9, 1, -39.75, 9, 1, -40.25, -2, 1, -40.5, 13.5, 1, -36, 13, 1, -36, 8, 1, -35.75, 13.5, 1, -28.5, -1.75, 1, -42, 0.25, 1, -42, 0.25, 1, -49.5, -6, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -49.5, -49.5, 1, -43.5, -31, 1, -49.5, -49.5, 1, 0, -49.5, 1, 6, -49.5, 1, 43.25, -49.5, 1, 49.5, -43.5, 1, 49.5, 12.25, 1, 49.5, 18.5, 1, 49.5, 49.5, 1, 29.5, -31, 1, -49.5, -49.5, 1, -18.75, -49.5, 1, -12.5, -2, 1, -40.5, -1.75, 1, -42, -6, 1, -49.5, -12.25, 1, -49.5, 8, 1, -35.75, 7.75, 1, -39.25, -2, 1, -40.5, 43.25, 1, 49.5, 49.5, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, -0.25, 49.5, 1, -10, 13.5, 1, -28.5, -37.25, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -43.5, -49.5, 1, -37.25, -49.5, 1, 43.25, -43.5, 1, 49.5, -37.25, 1, 49.5, -49.5, 1, 37, 37, 1, 49.5, 43.25, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -49.5, 1, -12.5, -49.5, 1, -6.25, 12.25, 1, 49.5, 49.5, 1, 29.5, 49.5, 1, 19.5, 6, 1, 49.5, -2, 1, -40.5, -12.25, 1, -49.5, -18.5, 1, -49.5, 13.5, 1, -28.5, 8, 1, -35.75, -2, 1, -40.5, -24.75, 1, -49.5, -31, 1, -49.5, 30.75, 1, 49.5, 37, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -37.25, 1, -49.5, -49.5, 1, -37.25, -49.5, 1, -31, -49.5, 1, 37, -37.25, 1, 49.5, -31, 1, 49.5, -49.5, 1, 30.75, -2, 1, -40.5, -18.5, 1, -49.5, -24.75, 1, -49.5, 49.5, 1, 9.75, 49.5, 1, -0.25, 13.5, 1, -28.5, -6.25, 1, 49.5, 0, 1, 49.5, 49.5, 1, 19.5, 13.5, 1, -28.5, -31, 1, -49.5, -49.5, 1, 6, 24.75, 1, 49.5, 30.75, 1, 49.5, 49.5, 1, 39.5, -49.5, 1, 18.5, -18.75, 1, 49.5, -12.5, 1, 49.5, -49.5, 1, 12.25, -31, 1, -49.5, -49.5, 1, -31, -49.5, 1, -24.75, -49.5, 1, 24.75, -49.5, 1, 30.75, -31, 1, 49.5, -24.75, 1, 49.5, 24.75, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, 29.5, 18.5, 1, 49.5, 49.5, 1, -29.75, 15.25, 1, -30, 15, 1, -28.25, 49.5, 1, -20, 49.5, 1, 19.5, 49.5, 1, 9.75, 13.5, 1, -28.5, -49.5, 1, 12.25, -12.5, 1, 49.5, -6.25, 1, 49.5, -49.5, 1, 6, -31, 1, -49.5, -49.5, 1, -24.75, -49.5, 1, -18.75, -31, 1, -49.5, -49.5, 1, -6.25, -49.5, 1, 0, 49.5, 1, -20, 15, 1, -28.25, 13.5, 1, -28.5, 49.5, 1, -10, -49.5, 1, 24.75, -24.75, 1, 49.5, -18.75, 1, 49.5, -49.5, 1, 18.5, 0, 1, 49.5, 6, 1, 49.5, 49.5, 1, 19.5, 6.5, 1, -49.5, 0.25, 1, -49.5, 0.25, 1, -42, 6.5, 1, -42, 6.5, 1, -42, 13, 1, -42, 13, 1, -49.5, 6.5, 1, -49.5, 13, 1, -49.5, 13, 1, -42, 15.25, 1, -41.75, 22, 1, -49.5, 49.5, 1, -39.75, 40.25, 1, -49.5, 31.25, 1, -49.5, 15.25, 1, -41.75, 15.25, 1, -30, 49.5, 1, -29.75, 49.5, 1, -39.75, 49.5, 1, -49.5, 40.25, 1, -49.5, 31.25, 1, -49.5, 22, 1, -49.5, 15.25, 1, -41.75, 12.75, 1, -39.5, 13, 1, -36, 13.5, 1, -36, 13.5, 1, -40.25, 12.75, 1, -39.5, 13.5, 1, -40.25, 9, 1, -40.25, 9, 1, -39.75, 8.75, 4.75, -38.75, 8.75, 4.75, -36.75, 12, 4.75, -36.75, 12, 4.75, -38.75, 8.75, 5.25, -37.75, 12, 5.25, -37.75, 9, 1, -38.25, 9, 1, -37, 11.75, 1, -37, 11.75, 1, -38.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(20, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 30), PackedInt32Array(33, 32, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(39, 38, 37), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(50, 49, 48), PackedInt32Array(53, 52, 51), PackedInt32Array(54, 57, 55), PackedInt32Array(55, 57, 56), PackedInt32Array(60, 59, 58), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(64, 61, 65), PackedInt32Array(68, 67, 66), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(79, 78, 77), PackedInt32Array(82, 81, 80), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(86, 83, 88), PackedInt32Array(86, 88, 87), PackedInt32Array(91, 90, 89), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 95), PackedInt32Array(98, 97, 96), PackedInt32Array(100, 99, 101), PackedInt32Array(101, 99, 102), PackedInt32Array(103, 106, 104), PackedInt32Array(104, 106, 105), PackedInt32Array(108, 107, 109), PackedInt32Array(109, 107, 110), PackedInt32Array(113, 112, 111), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(120, 119, 118), PackedInt32Array(123, 122, 121), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(129, 128, 130), PackedInt32Array(130, 128, 131), PackedInt32Array(134, 133, 132), PackedInt32Array(138, 137, 135), PackedInt32Array(135, 137, 136), PackedInt32Array(142, 141, 139), PackedInt32Array(139, 141, 140), PackedInt32Array(144, 143, 145), PackedInt32Array(145, 143, 146), PackedInt32Array(148, 147, 149), PackedInt32Array(149, 147, 152), PackedInt32Array(149, 152, 150), PackedInt32Array(150, 152, 151), PackedInt32Array(155, 154, 153), PackedInt32Array(158, 157, 156), PackedInt32Array(160, 159, 161), PackedInt32Array(161, 159, 162), PackedInt32Array(166, 165, 163), PackedInt32Array(163, 165, 164), PackedInt32Array(170, 172, 167), PackedInt32Array(167, 172, 171), PackedInt32Array(171, 172, 169), PackedInt32Array(171, 169, 168), PackedInt32Array(176, 175, 173), PackedInt32Array(173, 175, 174)]
+geometry_source_geometry_mode = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_ikhcb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikhcb"]
+
+[sub_resource type="Animation" id="Animation_0jjbl"]
+resource_name = "Dododo"
+length = 1.2
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.392612), Vector3(0, 0, 0), Vector3(0, 0, -0.431917), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3, 3, 3), Vector3(3, 3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_obdna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, 3, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bnhl3"]
+_data = {
+&"Dododo": SubResource("Animation_0jjbl"),
+&"RESET": SubResource("Animation_obdna")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0jjbl"]
+size = Vector3(1, 0.552353, 1)
+
+[node name="World_BikeScene" type="Node3D"]
+
+[node name="Node3D" parent="." instance=ExtResource("1_n82nw")]
+
+[node name="tree01" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.41634, 0, -1.89317)
+
+[node name="tree04" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.41634, 1.31134e-07, 1.10683)
+
+[node name="tree02" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.35796, -3.38463e-07, -9.63631)
+
+[node name="tree03" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.1705, -4.56135e-07, -12.3283)
+
+[node name="tree69" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.1705, -4.56135e-07, -19.3283)
+
+[node name="tree70" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17.1705, -4.56135e-07, -18.3283)
+
+[node name="tree05" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.745688, 9.15551e-07, 16.3185)
+
+[node name="tree06" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.74569, 1.04668e-06, 19.3185)
+
+[node name="tree07" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.68731, 5.77088e-07, 8.57531)
+
+[node name="tree08" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.49985, 4.59416e-07, 5.88334)
+
+[node name="tree09" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.2543, 9.15551e-07, 16.3185)
+
+[node name="tree10" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.25431, 1.04668e-06, 19.3185)
+
+[node name="tree11" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.31269, 5.77088e-07, 8.57531)
+
+[node name="tree12" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.50015, 4.59416e-07, 5.88334)
+
+[node name="tree21" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.1754, 5.77088e-07, 3.06941)
+
+[node name="tree22" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.3629, 4.59416e-07, 0.377439)
+
+[node name="tree23" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.4759, 5.77088e-07, -4.42875)
+
+[node name="tree24" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.6634, 4.59416e-07, -7.12072)
+
+[node name="tree25" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.4759, 5.77088e-07, -11.9178)
+
+[node name="tree26" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.6634, 4.59416e-07, -14.6098)
+
+[node name="tree27" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.1332, 5.77088e-07, 9.66724)
+
+[node name="tree28" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.3207, 4.59416e-07, 6.97527)
+
+[node name="tree29" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -18.6092, 5.77088e-07, 7.10357)
+
+[node name="tree30" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -17.7967, 4.59416e-07, 4.4116)
+
+[node name="tree31" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -18.6092, 5.77088e-07, 13.7765)
+
+[node name="tree32" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -17.7967, 4.59416e-07, 11.0845)
+
+[node name="tree33" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.6281, 5.77088e-07, 16.8196)
+
+[node name="tree34" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12.8155, 4.59416e-07, 14.1276)
+
+[node name="tree13" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.450118, 9.15551e-07, 34.2944)
+
+[node name="tree14" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.45012, 1.04668e-06, 37.2944)
+
+[node name="tree15" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.39174, 5.77088e-07, 26.5513)
+
+[node name="tree16" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.20428, 4.59416e-07, 23.8593)
+
+[node name="tree79" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.842546, -0.538624, -2.3544e-08, 0, -4.37114e-08, 1, -0.538624, -0.842546, -3.68289e-08, -15.4222, 1.04668e-06, 23.1981)
+
+[node name="tree80" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.842546, -0.538624, -2.3544e-08, 0, -4.37114e-08, 1, -0.538624, -0.842546, -3.68289e-08, -4.16458, 4.59416e-07, 21.3907)
+
+[node name="tree81" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.993181, -0.116584, -5.09605e-09, -1.49666e-15, -4.37114e-08, 1, -0.116584, -0.993181, -4.34133e-08, -15.2517, 1.04668e-06, 27.5922)
+
+[node name="tree82" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.993181, -0.116584, -5.09605e-09, -1.49666e-15, -4.37114e-08, 1, -0.116584, -0.993181, -4.34133e-08, -4.33507, 4.59416e-07, 30.8827)
+
+[node name="tree83" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.963859, -0.266414, -1.16453e-08, -1.49666e-15, -4.37114e-08, 1, -0.266414, -0.963859, -4.21316e-08, -20.5344, -0.129239, 36.6587)
+
+[node name="tree122" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.712651, 0.701519, 3.06644e-08, 3.05909e-16, -4.37114e-08, 1, 0.701519, -0.712651, -3.1151e-08, -20.5344, -0.129239, 28.6587)
+
+[node name="tree123" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.712651, 0.701519, 3.06644e-08, 3.05909e-16, -4.37114e-08, 1, 0.701519, -0.712651, -3.1151e-08, -9.53436, -0.129239, 31.6587)
+
+[node name="tree84" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.963859, -0.266414, -1.16453e-08, -1.49666e-15, -4.37114e-08, 1, -0.266414, -0.963859, -4.21316e-08, -9.24402, -0.12924, 38.2491)
+
+[node name="tree85" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.993181, -0.116584, -5.09605e-09, -1.49666e-15, -4.37114e-08, 1, -0.116584, -0.993181, -4.34133e-08, -15.2517, 1.04668e-06, 37.5922)
+
+[node name="tree86" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.993181, -0.116584, -5.09605e-09, -1.49666e-15, -4.37114e-08, 1, -0.116584, -0.993181, -4.34133e-08, -4.33507, 4.59416e-07, 40.8827)
+
+[node name="tree87" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.963859, -0.266414, -1.16453e-08, -1.49666e-15, -4.37114e-08, 1, -0.266414, -0.963859, -4.21316e-08, -20.5344, -0.129239, 46.6587)
+
+[node name="tree88" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.963859, -0.266414, -1.16453e-08, -1.49666e-15, -4.37114e-08, 1, -0.266414, -0.963859, -4.21316e-08, -9.24402, -0.12924, 48.2491)
+
+[node name="tree89" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.906455, -0.422302, -1.84594e-08, -1.49666e-15, -4.37114e-08, 1, -0.422302, -0.906455, -3.96224e-08, -14.1165, 0.277432, 45.8944)
+
+[node name="tree90" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.906455, -0.422302, -1.84594e-08, -1.49666e-15, -4.37114e-08, 1, -0.422302, -0.906455, -3.96224e-08, -2.71869, 0.277431, 45.5938)
+
+[node name="tree91" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.831605, -0.555367, -2.42759e-08, 3.05909e-16, -4.37114e-08, 1, -0.555367, -0.831605, -3.63506e-08, -16.2878, 0.148191, 56.1606)
+
+[node name="tree92" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.831605, -0.555367, -2.42759e-08, 3.05909e-16, -4.37114e-08, 1, -0.555367, -0.831605, -3.63506e-08, -5.06861, 0.148191, 54.1284)
+
+[node name="tree97" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, 3.05909e-16, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, -7.71805, 0.148191, 60.1284)
+
+[node name="tree98" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.655202, -0.755453, -3.30219e-08, 3.05909e-16, -4.37114e-08, 1, -0.755453, -0.655202, -2.86398e-08, -17.718, 0.148191, 67.1284)
+
+[node name="tree116" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.655202, -0.755453, -3.30219e-08, 3.05909e-16, -4.37114e-08, 1, -0.755453, -0.655202, -2.86398e-08, -21.718, 0.148191, 67.1284)
+
+[node name="tree117" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.752059, -0.659096, -2.881e-08, -3.36379e-15, -4.37114e-08, 1, -0.659096, 0.752059, 3.28735e-08, -21.718, 0.148191, 60.1284)
+
+[node name="tree118" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.752059, -0.659096, -2.881e-08, -3.36379e-15, -4.37114e-08, 1, -0.659096, 0.752059, 3.28735e-08, -21.718, 0.148191, 52.1284)
+
+[node name="tree119" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.925104, 0.379715, 1.65979e-08, -4.69972e-15, -4.37114e-08, 1, 0.379715, 0.925104, 4.04376e-08, -21.718, 0.148191, 76.1284)
+
+[node name="tree120" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.925104, 0.379715, 1.65979e-08, -4.69972e-15, -4.37114e-08, 1, 0.379715, 0.925104, 4.04376e-08, -21.718, 0.148191, 84.1284)
+
+[node name="tree121" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.922646, -0.385648, -1.68572e-08, -4.69972e-15, -4.37114e-08, 1, -0.385648, 0.922646, 4.03301e-08, -21.718, 0.148191, 93.1284)
+
+[node name="tree99" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -3.36379e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, -9.71804, 0.148191, 72.1284)
+
+[node name="tree100" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -3.36379e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, -9.71804, 0.148191, 65.1284)
+
+[node name="tree101" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.828403, -0.560133, -2.44842e-08, -4.03773e-15, -4.37114e-08, 1, -0.560133, -0.828403, -3.62106e-08, -2.71804, 0.148191, 65.1284)
+
+[node name="tree102" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -4.03773e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, -2.71804, 0.148191, 65.1284)
+
+[node name="tree103" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.326641, 0.945149, 4.13137e-08, -3.64149e-15, -4.37114e-08, 1, 0.945149, -0.326641, -1.42779e-08, 1.28196, 0.148191, 68.1284)
+
+[node name="tree124" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.326641, 0.945149, 4.13137e-08, -3.64149e-15, -4.37114e-08, 1, 0.945149, -0.326641, -1.42779e-08, -1.71804, 0.148191, 71.1284)
+
+[node name="tree125" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -4.48095e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, 2.28196, 0.148191, 73.1284)
+
+[node name="tree104" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.326641, 0.945149, 4.13137e-08, -3.64149e-15, -4.37114e-08, 1, 0.945149, -0.326641, -1.42779e-08, -4.71804, -0.851809, 76.1284)
+
+[node name="tree108" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.326641, 0.945149, 4.13137e-08, -3.64149e-15, -4.37114e-08, 1, 0.945149, -0.326641, -1.42779e-08, -10.718, -0.851809, 76.1284)
+
+[node name="tree109" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.655202, 0.755453, 3.30219e-08, -4.48095e-15, -4.37114e-08, 1, 0.755453, 0.655202, 2.86398e-08, -17.718, -0.851809, 73.1284)
+
+[node name="tree110" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.0708882, 0.997484, 4.36014e-08, -6.80869e-15, -4.37114e-08, 1, 0.997484, -0.0708882, -3.0986e-09, -17.718, -0.851809, 81.67)
+
+[node name="tree111" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.0708882, 0.997484, 4.36014e-08, -6.80869e-15, -4.37114e-08, 1, 0.997484, -0.0708882, -3.0986e-09, -8.71804, -1.85181, 83.67)
+
+[node name="tree112" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.0708882, 0.997484, 4.36014e-08, -6.80869e-15, -4.37114e-08, 1, 0.997484, -0.0708882, -3.0986e-09, -8.71804, -0.851809, 90.67)
+
+[node name="tree113" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.0708882, 0.997484, 4.36014e-08, -6.80869e-15, -4.37114e-08, 1, 0.997484, -0.0708882, -3.0986e-09, -17.718, -0.851809, 89.67)
+
+[node name="tree114" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.828403, 0.560133, 2.44842e-08, -6.58721e-15, -4.37114e-08, 1, 0.560133, 0.828403, 3.62106e-08, -17.718, -0.851809, 96.67)
+
+[node name="tree115" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.828403, 0.560133, 2.44842e-08, -6.58721e-15, -4.37114e-08, 1, 0.560133, 0.828403, 3.62106e-08, -7.71804, -0.851809, 96.67)
+
+[node name="tree105" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -4.48095e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, 0.281956, -1.85181, 79.1284)
+
+[node name="tree106" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.326641, 0.945149, 4.13137e-08, -3.6089e-15, -4.37114e-08, 1, 0.945149, -0.326641, -1.42779e-08, -0.718044, -0.851809, 89.1284)
+
+[node name="tree107" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.326641, 0.945149, 4.13137e-08, -3.6089e-15, -4.37114e-08, 1, 0.945149, -0.326641, -1.42779e-08, -0.718044, -0.851809, 96.1284)
+
+[node name="tree158" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.925104, 0.379715, 1.65979e-08, -4.69972e-15, -4.37114e-08, 1, 0.379715, 0.925104, 4.04376e-08, 14.2961, 0.148191, 71.8503)
+
+[node name="tree159" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.925104, 0.379715, 1.65979e-08, -4.69972e-15, -4.37114e-08, 1, 0.379715, 0.925104, 4.04376e-08, 14.2961, 0.148191, 79.8503)
+
+[node name="tree160" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.922646, -0.385648, -1.68572e-08, -4.69972e-15, -4.37114e-08, 1, -0.385648, 0.922646, 4.03301e-08, 14.2961, 0.148191, 88.8503)
+
+[node name="tree190" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.922646, -0.385648, -1.68572e-08, -4.69972e-15, -4.37114e-08, 1, -0.385648, 0.922646, 4.03301e-08, 14.2961, 0.148191, 96.8503)
+
+[node name="tree192" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.922646, -0.385648, -1.68572e-08, -4.69972e-15, -4.37114e-08, 1, -0.385648, 0.922646, 4.03301e-08, 4.2961, 0.148191, 90.8503)
+
+[node name="tree191" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.922646, -0.385648, -1.68572e-08, -4.69972e-15, -4.37114e-08, 1, -0.385648, 0.922646, 4.03301e-08, 6.2961, -0.171091, 98.8503)
+
+[node name="tree161" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -4.48095e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, 38.2961, 0.148191, 68.8503)
+
+[node name="tree162" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.326641, 0.945149, 4.13137e-08, -3.64149e-15, -4.37114e-08, 1, 0.945149, -0.326641, -1.42779e-08, 25.2757, -0.851809, 71.8473)
+
+[node name="tree163" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.0708882, 0.997484, 4.36014e-08, -6.80869e-15, -4.37114e-08, 1, 0.997484, -0.0708882, -3.0986e-09, 27.2757, -0.851809, 79.389)
+
+[node name="tree176" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.0708882, 0.997484, 4.36014e-08, -6.80869e-15, -4.37114e-08, 1, 0.997484, -0.0708882, -3.0986e-09, 28.2757, -0.851809, 76.389)
+
+[node name="tree174" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.899291, 0.437351, 1.91172e-08, -6.58721e-15, -4.37114e-08, 1, 0.437351, -0.899291, -3.93092e-08, 20.2757, -0.851809, 77.389)
+
+[node name="tree175" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.899291, 0.437351, 1.91172e-08, -6.58721e-15, -4.37114e-08, 1, 0.437351, -0.899291, -3.93092e-08, 32.2757, -0.851809, 72.389)
+
+[node name="tree164" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.0708882, 0.997484, 4.36014e-08, -6.80869e-15, -4.37114e-08, 1, 0.997484, -0.0708882, -3.0986e-09, 27.2961, -1.85181, 86.3919)
+
+[node name="tree165" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.828403, 0.560133, 2.44842e-08, -6.58721e-15, -4.37114e-08, 1, 0.560133, 0.828403, 3.62106e-08, 18.2961, -0.851809, 92.3919)
+
+[node name="tree171" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.828403, 0.560133, 2.44842e-08, -6.58721e-15, -4.37114e-08, 1, 0.560133, 0.828403, 3.62106e-08, 21.2961, -0.851809, 97.3919)
+
+[node name="tree172" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.317139, 0.948379, 4.1455e-08, -6.58721e-15, -4.37114e-08, 1, 0.948379, -0.317139, -1.38626e-08, 29.0718, -0.851809, 97.3919)
+
+[node name="tree173" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.317139, 0.948379, 4.1455e-08, -6.58721e-15, -4.37114e-08, 1, 0.948379, -0.317139, -1.38626e-08, 35.0718, -0.851809, 97.3919)
+
+[node name="tree170" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.828403, 0.560133, 2.44842e-08, -6.58721e-15, -4.37114e-08, 1, 0.560133, 0.828403, 3.62106e-08, 18.2757, -0.851809, 84.389)
+
+[node name="tree166" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.828403, 0.560133, 2.44842e-08, -6.58721e-15, -4.37114e-08, 1, 0.560133, 0.828403, 3.62106e-08, 28.2961, -0.851809, 92.3919)
+
+[node name="tree167" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -4.48095e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, 36.2961, -0.851809, 74.8503)
+
+[node name="tree177" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -4.48095e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, 38.2961, -0.851809, 79.8503)
+
+[node name="tree178" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.981843, 0.189695, 8.29185e-09, -4.48095e-15, -4.37114e-08, 1, 0.189695, -0.981843, -4.29177e-08, 38.2961, -0.851809, 86.8503)
+
+[node name="tree179" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.828403, -0.560133, -2.44842e-08, -3.6089e-15, -4.37114e-08, 1, -0.560133, -0.828403, -3.62106e-08, 38.2961, -0.851809, 92.8503)
+
+[node name="tree180" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.828403, -0.560133, -2.44842e-08, -3.6089e-15, -4.37114e-08, 1, -0.560133, -0.828403, -3.62106e-08, 38.2961, -0.851809, 98.8503)
+
+[node name="tree168" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.326641, 0.945149, 4.13137e-08, -3.6089e-15, -4.37114e-08, 1, 0.945149, -0.326641, -1.42779e-08, 35.2961, -0.851809, 84.8503)
+
+[node name="tree169" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.326641, 0.945149, 4.13137e-08, -3.6089e-15, -4.37114e-08, 1, 0.945149, -0.326641, -1.42779e-08, 35.2961, -0.851809, 91.8503)
+
+[node name="tree93" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.906455, -0.422302, -1.84594e-08, -1.49666e-15, -4.37114e-08, 1, -0.422302, -0.906455, -3.96224e-08, -11.1165, 0.277432, 50.8944)
+
+[node name="tree94" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.906455, -0.422302, -1.84594e-08, -1.49666e-15, -4.37114e-08, 1, -0.422302, -0.906455, -3.96224e-08, 0.281311, 0.277431, 50.5938)
+
+[node name="tree95" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.831605, -0.555367, -2.42759e-08, 3.05909e-16, -4.37114e-08, 1, -0.555367, -0.831605, -3.63506e-08, -13.2878, 0.148191, 61.1606)
+
+[node name="tree96" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.831605, -0.555367, -2.42759e-08, 3.05909e-16, -4.37114e-08, 1, -0.555367, -0.831605, -3.63506e-08, -2.06861, 0.148191, 59.1284)
+
+[node name="tree17" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.7444, 9.15551e-07, -8.37928)
+
+[node name="tree18" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.7444, 1.04668e-06, -5.37928)
+
+[node name="tree19" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.80277, 5.77088e-07, -16.1224)
+
+[node name="tree20" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.99023, 4.59416e-07, -18.8144)
+
+[node name="tree35" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.4163, 0, -1.89317)
+
+[node name="tree36" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.4163, 1.31134e-07, 1.10683)
+
+[node name="tree37" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.358, -3.38463e-07, -9.63631)
+
+[node name="tree38" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.1705, -4.56135e-07, -12.3283)
+
+[node name="tree181" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 37.4163, 0, -1.89317)
+
+[node name="tree182" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 39.4163, 1.31134e-07, 1.10683)
+
+[node name="tree183" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 39.1705, -4.56135e-07, -12.3283)
+
+[node name="tree184" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.982389, 0.18685, 8.16747e-09, 0, -4.37114e-08, 1, 0.18685, -0.982389, -4.29416e-08, 37.9753, 0, 16.8294)
+
+[node name="tree185" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.982389, 0.18685, 8.16747e-09, 0, -4.37114e-08, 1, 0.18685, -0.982389, -4.29416e-08, 36.3795, 1.31134e-07, 22.1502)
+
+[node name="tree186" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.982389, 0.18685, 8.16747e-09, 0, -4.37114e-08, 1, 0.18685, -0.982389, -4.29416e-08, 38.6484, -4.56135e-07, 8.90578)
+
+[node name="tree187" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.997302, -0.073403, -0.00104617, 0.00101669, -0.000438994, 0.999999, -0.0734034, -0.997302, -0.000363165, 35.6016, -0.000184399, 41.192)
+
+[node name="tree188" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.997302, -0.073403, -0.00104617, 0.00101669, -0.000438994, 0.999999, -0.0734034, -0.997302, -0.000363165, 37.8164, 0.00316596, 44.0371)
+
+[node name="tree189" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.997302, -0.073403, -0.00104617, 0.00101669, -0.000438994, 0.999999, -0.0734034, -0.997302, -0.000363165, 36.5851, -0.00298188, 30.6563)
+
+[node name="tree39" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 29.7457, 9.15551e-07, 16.3185)
+
+[node name="tree40" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.7457, 1.04668e-06, 19.3185)
+
+[node name="tree41" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.6873, 5.77088e-07, 8.57531)
+
+[node name="tree42" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.4998, 4.59416e-07, 5.88334)
+
+[node name="tree43" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 18.7457, 9.15551e-07, 16.3185)
+
+[node name="tree44" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.7457, 1.04668e-06, 19.3185)
+
+[node name="tree45" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.6873, 5.77088e-07, 8.57531)
+
+[node name="tree46" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.4999, 4.59416e-07, 5.88334)
+
+[node name="tree47" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.8246, 5.77088e-07, 3.06941)
+
+[node name="tree48" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.6371, 4.59416e-07, 0.377439)
+
+[node name="tree49" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.5241, 5.77088e-07, -4.42875)
+
+[node name="tree50" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.3366, 4.59416e-07, -7.12072)
+
+[node name="tree51" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.5241, 5.77088e-07, -11.9178)
+
+[node name="tree52" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.3366, 4.59416e-07, -14.6098)
+
+[node name="tree53" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14.8668, 5.77088e-07, 9.66724)
+
+[node name="tree54" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.6793, 4.59416e-07, 6.97527)
+
+[node name="tree55" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.3908, 5.77088e-07, 25.1036)
+
+[node name="tree56" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.8066, 4.59416e-07, -0.222808)
+
+[node name="tree57" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22.3908, 5.77088e-07, 27.7765)
+
+[node name="tree58" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.6434, 4.59416e-07, -9.9155)
+
+[node name="tree59" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.3719, 5.77088e-07, 16.8196)
+
+[node name="tree60" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 16.1845, 4.59416e-07, 14.1276)
+
+[node name="tree61" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 29.4501, 9.15551e-07, 34.2944)
+
+[node name="tree62" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.4501, 1.04668e-06, 37.2944)
+
+[node name="tree126" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.983518, 0.180811, 7.9035e-09, 0, -4.37114e-08, 1, 0.180811, -0.983518, -4.29909e-08, 20.8449, 5.77088e-07, 32.7009)
+
+[node name="tree127" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.983518, 0.180811, 7.9035e-09, 0, -4.37114e-08, 1, 0.180811, -0.983518, -4.29909e-08, 33.0107, 9.15551e-07, 44.2823)
+
+[node name="tree128" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.983518, 0.180811, 7.9035e-09, 0, -4.37114e-08, 1, 0.180811, -0.983518, -4.29909e-08, 34.4353, 1.04668e-06, 47.5945)
+
+[node name="tree129" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.983518, 0.180811, 7.9035e-09, 0, -4.37114e-08, 1, 0.180811, -0.983518, -4.29909e-08, 13.8449, 5.77088e-07, 32.7009)
+
+[node name="tree130" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.983518, 0.180811, 7.9035e-09, 0, -4.37114e-08, 1, 0.180811, -0.983518, -4.29909e-08, 26.0107, 9.15551e-07, 44.2823)
+
+[node name="tree131" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.983518, 0.180811, 7.9035e-09, 0, -4.37114e-08, 1, 0.180811, -0.983518, -4.29909e-08, 27.4353, 1.04668e-06, 47.5945)
+
+[node name="tree132" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.567599, 0.823305, 3.59878e-08, 0, -4.37114e-08, 1, 0.823305, -0.567599, -2.48106e-08, 16.3904, 9.15551e-07, 44.2637)
+
+[node name="tree133" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.567599, 0.823305, 3.59878e-08, 0, -4.37114e-08, 1, 0.823305, -0.567599, -2.48106e-08, 15.0557, 1.04668e-06, 47.6131)
+
+[node name="tree134" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.989881, -0.141903, -6.20279e-09, 0, -4.37114e-08, 1, -0.141903, -0.989881, -4.32691e-08, 18.5203, 9.15551e-07, 36.5955)
+
+[node name="tree135" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.989881, -0.141903, -6.20279e-09, 0, -4.37114e-08, 1, -0.141903, -0.989881, -4.32691e-08, 20.9258, 1.04668e-06, 39.2813)
+
+[node name="tree136" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.989881, -0.141903, -6.20279e-09, 0, -4.37114e-08, 1, -0.141903, -0.989881, -4.32691e-08, 15.5203, 9.15551e-07, 37.5955)
+
+[node name="tree137" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.989881, -0.141903, -6.20279e-09, 0, -4.37114e-08, 1, -0.141903, -0.989881, -4.32691e-08, 17.9258, 1.04668e-06, 40.2813)
+
+[node name="tree138" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.941529, -0.336931, -1.47277e-08, 9.43737e-16, -4.37114e-08, 1, -0.336931, -0.941529, -4.11556e-08, 21.2761, 9.15551e-07, 50.863)
+
+[node name="tree139" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.941529, -0.336931, -1.47277e-08, 9.43737e-16, -4.37114e-08, 1, -0.336931, -0.941529, -4.11556e-08, 24.1699, 1.04668e-06, 53.0138)
+
+[node name="tree140" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.762555, 0.646923, 2.82779e-08, 9.43737e-16, -4.37114e-08, 1, 0.646923, -0.762555, -3.33324e-08, 16.9309, 9.15551e-07, 50.1476)
+
+[node name="tree141" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.762555, 0.646923, 2.82779e-08, 9.43737e-16, -4.37114e-08, 1, 0.646923, -0.762555, -3.33324e-08, 16.5152, 1.04668e-06, 53.7291)
+
+[node name="tree142" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.762555, 0.646923, 2.82779e-08, 9.43737e-16, -4.37114e-08, 1, 0.646923, -0.762555, -3.33324e-08, 28.9309, 9.15551e-07, 52.1476)
+
+[node name="tree143" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.762555, 0.646923, 2.82779e-08, 9.43737e-16, -4.37114e-08, 1, 0.646923, -0.762555, -3.33324e-08, 28.5152, 1.04668e-06, 55.7291)
+
+[node name="tree144" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.762555, 0.646923, 2.82779e-08, 9.43737e-16, -4.37114e-08, 1, 0.646923, -0.762555, -3.33324e-08, 35.9309, 9.15551e-07, 52.1476)
+
+[node name="tree145" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.762555, 0.646923, 2.82779e-08, 9.43737e-16, -4.37114e-08, 1, 0.646923, -0.762555, -3.33324e-08, 35.5152, 1.04668e-06, 55.7291)
+
+[node name="tree146" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.646923, -0.762555, -3.33324e-08, 9.43737e-16, -4.37114e-08, 1, -0.762555, -0.646923, -2.82779e-08, 18.9323, 9.15551e-07, 59.7306)
+
+[node name="tree152" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.904008, 0.427516, 1.86873e-08, 9.43737e-16, -4.37114e-08, 1, 0.427516, -0.904008, -3.95154e-08, 13.9323, 9.15551e-07, 59.7306)
+
+[node name="tree153" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.941529, -0.336931, -1.47277e-08, 9.43737e-16, -4.37114e-08, 1, -0.336931, -0.941529, -4.11556e-08, 14.9323, 9.15551e-07, 54.7306)
+
+[node name="tree154" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.569136, 0.822243, 3.59414e-08, 9.43737e-16, -4.37114e-08, 1, 0.822243, -0.569136, -2.48777e-08, 15.5614, 9.15551e-07, 64.7306)
+
+[node name="tree155" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.569136, 0.822243, 3.59414e-08, 9.43737e-16, -4.37114e-08, 1, 0.822243, -0.569136, -2.48777e-08, 22.0165, 9.15551e-07, 65.0308)
+
+[node name="tree156" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.569136, 0.822243, 3.59414e-08, 9.43737e-16, -4.37114e-08, 1, 0.822243, -0.569136, -2.48777e-08, 29.0165, 9.15551e-07, 65.0308)
+
+[node name="tree157" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.569136, 0.822243, 3.59414e-08, 9.43737e-16, -4.37114e-08, 1, 0.822243, -0.569136, -2.48777e-08, 35.1736, 2.8229e-06, 64.9239)
+
+[node name="tree147" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.646923, -0.762555, -3.33324e-08, 9.43737e-16, -4.37114e-08, 1, -0.762555, -0.646923, -2.82779e-08, 22.5138, 1.04668e-06, 60.1462)
+
+[node name="tree148" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.336931, -0.941529, -4.11556e-08, 9.43737e-16, -4.37114e-08, 1, -0.941529, 0.336931, 1.47277e-08, 28.6477, 9.15551e-07, 61.3853)
+
+[node name="tree149" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.336931, -0.941529, -4.11556e-08, 9.43737e-16, -4.37114e-08, 1, -0.941529, 0.336931, 1.47277e-08, 30.7984, 1.04668e-06, 58.4915)
+
+[node name="tree150" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.336931, -0.941529, -4.11556e-08, 9.43737e-16, -4.37114e-08, 1, -0.941529, 0.336931, 1.47277e-08, 34.6477, 9.15551e-07, 61.3853)
+
+[node name="tree151" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.336931, -0.941529, -4.11556e-08, 9.43737e-16, -4.37114e-08, 1, -0.941529, 0.336931, 1.47277e-08, 36.7984, 1.04668e-06, 58.4915)
+
+[node name="tree63" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.3917, 5.77088e-07, 26.5513)
+
+[node name="tree64" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 31.2043, 4.59416e-07, 23.8593)
+
+[node name="tree65" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22.2556, 9.15551e-07, -8.37928)
+
+[node name="tree66" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24.2556, 1.04668e-06, -5.37928)
+
+[node name="tree67" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 23.1972, 5.77088e-07, -16.1224)
+
+[node name="tree68" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24.0098, 4.59416e-07, -18.8144)
+
+[node name="tree71" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.0098, 4.59416e-07, -20.8144)
+
+[node name="tree73" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.233598, 0.972333, 4.2502e-08, 0, -4.37114e-08, 1, 0.972333, -0.233598, -1.02109e-08, 28.9969, 4.59416e-07, -27.2363)
+
+[node name="tree74" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.233598, 0.972333, 4.2502e-08, 0, -4.37114e-08, 1, 0.972333, -0.233598, -1.02109e-08, 21.9969, 4.59416e-07, -27.2363)
+
+[node name="tree75" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.725266, 0.688468, 3.00939e-08, 0, -4.37114e-08, 1, 0.688468, 0.725266, 3.17024e-08, 28.9969, 4.59416e-07, -33.2363)
+
+[node name="tree76" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.725266, 0.688468, 3.00939e-08, 0, -4.37114e-08, 1, 0.688468, 0.725266, 3.17024e-08, 34.9969, 4.59416e-07, -31.7564)
+
+[node name="tree77" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(-0.0901286, 0.99593, 4.35335e-08, 2.57666e-15, -4.37114e-08, 1, 0.99593, 0.0901286, 3.93964e-09, 35.9946, 4.59416e-07, -36.1564)
+
+[node name="tree78" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.726826, 0.686821, 3.00219e-08, 2.57666e-15, -4.37114e-08, 1, 0.686821, -0.726826, -3.17706e-08, 29.9946, 4.59416e-07, -39.1564)
+
+[node name="tree72" parent="Node3D" instance=ExtResource("2_f1ybc")]
+transform = Transform3D(0.206938, -0.978354, -4.27652e-08, 0, -4.37114e-08, 1, -0.978354, -0.206938, -9.04557e-09, 36.0098, 4.59416e-07, -20.8144)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rm08j")
+camera_attributes = SubResource("CameraAttributesPractical_cbmdf")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.4786)
+camera_attributes = SubResource("CameraAttributesPractical_obdna")
+
+[node name="Background Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_na48c")
+volume_db = 1.0
+autoplay = true
+parameters/looping = true
+
+[node name="World Manager" parent="." instance=ExtResource("4_nagcp")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.945518, -0.28195, 0.162784, 0, 0.5, 0.866026, -0.325568, 0.818843, -0.472759, 0, 0, 0)
+layers = 524289
+shadow_enabled = true
+
+[node name="Environment" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.122719, -0.49968, -0.518929)
+
+[node name="shed" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2588, 0, -33.263)
+
+[node name="Shed" type="MeshInstance3D" parent="Environment/shed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.470706, -4.30778)
+mesh = SubResource("ArrayMesh_t8p17")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/shed/Shed"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/shed/Shed/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0gb47")
+
+[node name="Walls" type="Node3D" parent="Environment"]
+
+[node name="brickwall4" type="Node3D" parent="Environment/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.3081, 0, -38.8666)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/brickwall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/brickwall4/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/brickwall4/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall5" type="Node3D" parent="Environment/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.3081, 0, -34.8666)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/brickwall5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/brickwall5/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/brickwall5/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall6" type="Node3D" parent="Environment/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.302, -0.0201116, -30.8661)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/brickwall6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/brickwall6/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/brickwall6/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="Right Border Walls" type="Node3D" parent="Environment/Walls"]
+
+[node name="brickwall13" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -39.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall13/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall13/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall14" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -35.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall14/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall14/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall16" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -31.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall16/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall16/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall17" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -27.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall17/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall17/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall18" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -23.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall18/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall18/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall19" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -19.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall19/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall19/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall20" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -15.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall20/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall20/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall21" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -11.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall21/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall21/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall22" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -7.46366)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall22/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall22/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall23" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -3.46366)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall23/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall23/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall24" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 0.536339)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall24/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall24/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall25" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 4.53634)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall25/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall25/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall26" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 8.53634)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall26/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall26/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall27" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 12.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall27/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall27/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall28" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 16.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall28/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall28/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall29" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 20.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall29/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall29/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall30" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 24.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall30/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall30/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall31" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 28.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall31/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall31/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall15" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 32.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall15/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall15/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall32" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 36.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall32/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall32/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall33" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 40.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall33/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall33/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall34" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 44.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall34/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall34/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall35" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 48.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall35/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall35/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall36" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 52.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall36/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall36/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall37" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 56.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall37/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall37/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall38" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 60.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall38/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall38/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall39" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 64.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall39"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall39/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall39/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall40" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 68.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall40"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall40/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall40/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall41" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 72.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall41"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall41/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall41/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall42" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 76.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall42"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall42/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall42/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall43" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 80.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall43"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall43/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall43/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall44" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 84.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall44"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall44/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall44/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall45" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 88.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall45"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall45/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall45/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall46" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 92.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall46"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall46/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall46/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall47" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 96.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall47"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall47/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall47/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall48" type="Node3D" parent="Environment/Walls/Right Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 100.536)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Right Border Walls/brickwall48"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Right Border Walls/brickwall48/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Right Border Walls/brickwall48/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="Left Border Walls" type="Node3D" parent="Environment/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 0.0657783, 0)
+
+[node name="brickwall13" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -39.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall13/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall13/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall14" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -35.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall14/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall14/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall16" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -31.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall16/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall16/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall17" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -27.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall17/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall17/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall18" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -23.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall18/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall18/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall19" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -19.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall19/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall19/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall20" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -15.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall20/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall20/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall21" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -11.4637)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall21/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall21/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall22" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -7.46366)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall22/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall22/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall23" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, -3.46366)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall23/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall23/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall24" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 0.536339)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall24/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall24/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall25" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 4.53634)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall25/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall25/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall26" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 8.53634)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall26/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall26/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall27" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 12.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall27/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall27/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall28" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 16.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall28/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall28/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall29" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 20.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall29/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall29/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall30" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 24.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall30/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall30/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall31" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 28.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall31/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall31/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall15" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 32.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall15/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall15/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall32" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 36.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall32/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall32/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall33" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 40.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall33/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall33/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall34" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 44.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall34/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall34/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall35" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 48.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall35/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall35/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall36" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 52.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall36/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall36/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall37" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 56.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall37/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall37/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall38" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 60.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall38/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall38/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall39" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 64.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall39"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall39/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall39/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall40" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 68.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall40"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall40/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall40/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall41" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 72.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall41"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall41/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall41/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall42" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 76.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall42"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall42/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall42/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall43" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 80.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall43"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall43/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall43/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall44" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 84.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall44"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall44/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall44/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall45" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 88.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall45"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall45/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall45/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall46" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 92.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall46"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall46/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall46/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall47" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 96.5363)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall47"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall47/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall47/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall48" type="Node3D" parent="Environment/Walls/Left Border Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.7576, 0.0098629, 100.536)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Left Border Walls/brickwall48"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37247, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Left Border Walls/brickwall48/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Left Border Walls/brickwall48/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="Back Border Walls" type="Node3D" parent="Environment/Walls"]
+
+[node name="brickwall" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall2" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall2/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall2/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall7" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall7/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall7/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall3" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall3/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall3/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall8" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44674, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall8/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall8/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall9" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall9/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall9/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall10" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall10/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall10/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall11" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall11/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall11/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall12" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall12/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall12/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall15" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall15/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall15/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall13" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall13/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall13/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall14" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall14/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall14/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall16" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall16/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall16/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall17" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall17/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall17/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall18" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall18/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall18/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall19" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall19/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall19/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall20" type="Node3D" parent="Environment/Walls/Back Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Back Border Walls/brickwall20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Back Border Walls/brickwall20/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Back Border Walls/brickwall20/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="Front Border Walls" type="Node3D" parent="Environment/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.351744, 0, 144)
+
+[node name="brickwall" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall2" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall2/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall2/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall7" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55326, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall7/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall7/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall3" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall3/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall3/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall8" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.44674, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall8/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall8/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall9" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall9/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall9/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall10" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall10/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall10/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall11" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall11/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall11/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall12" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall12/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall12/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall15" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4467, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall15/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall15/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall13" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall13/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall13/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall14" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall14/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall14/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall16" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall16/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall16/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall17" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall17/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall17/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall18" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall18/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall18/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall19" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall19/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall19/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall20" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5533, 0, -41.1805)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall20/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall20/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="Navigation" type="Node3D" parent="."]
+visible = false
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Navigation"]
+navigation_mesh = SubResource("NavigationMesh_6rwdy")
+
+[node name="Player" parent="." instance=ExtResource("10_r16nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26979, -29.255)
+
+[node name="Stair" type="Node" parent="."]
+
+[node name="Staircase" type="MeshInstance3D" parent="Stair"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15.6601, 1.56065, -33.4245)
+material_override = ExtResource("9_bb3jp")
+mesh = SubResource("BoxMesh_ikhcb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stair/Staircase"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stair/Staircase/StaticBody3D"]
+shape = SubResource("BoxShape3D_ikhcb")
+
+[node name="Stair2" type="Node" parent="."]
+
+[node name="Staircase" type="MeshInstance3D" parent="Stair2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15.6485, 0.538179, -31.4807)
+material_override = ExtResource("9_bb3jp")
+mesh = SubResource("BoxMesh_ikhcb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stair2/Staircase"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stair2/Staircase/StaticBody3D"]
+shape = SubResource("BoxShape3D_ikhcb")
+
+[node name="Pickups" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69618, -0.0300048, -33.0517)
+
+[node name="Deagle Pickup" parent="Pickups" instance=ExtResource("11_vaogl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22446, 0.286174, 0)
+
+[node name="Deagle Ammo Pickup" parent="Pickups" instance=ExtResource("12_qfmxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4288, 0.19163, 1.81209)
+
+[node name="Health Pickup" parent="Pickups" instance=ExtResource("13_ik1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81243, 0.315706, 0.822128)
+
+[node name="Interact Generic" parent="." instance=ExtResource("14_3810f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27276, 1, -37.5011)
+type = "Interact with Generic"
+
+[node name="CubeInteractable" parent="." instance=ExtResource("15_r3eww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88912, 4.09662, -36.8213)
+type = "Interact with Cube"
+
+[node name="Cop NPC" parent="." instance=ExtResource("16_o1g6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, -24.152)
+
+[node name="Cat" type="RigidBody3D" parent="." groups=["Interactable"]]
+transform = Transform3D(-2.83931, 0, -0.968676, 0, 3, 0, 0.968676, 0, -2.83931, 18.7164, -0.146122, -34.2039)
+collision_layer = 33
+collision_mask = 32
+gravity_scale = 0.0
+script = ExtResource("17_wdud5")
+
+[node name="OiiaioooooiaiFin" parent="Cat" instance=ExtResource("18_52mlg")]
+unique_name_in_owner = true
+
+[node name="Muchkin1_002" parent="Cat/OiiaioooooiaiFin" index="0"]
+transform = Transform3D(-0.985125, 0, 0.171839, 0, 1, 0, -0.171839, 0, -0.985125, 0, -0.0280054, 0)
+blend_shapes/body.Muchkin1 = 1.0
+
+[node name="AnimationPlayer" parent="Cat/OiiaioooooiaiFin" index="1"]
+active = false
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Cat/OiiaioooooiaiFin"]
+libraries = {
+&"": SubResource("AnimationLibrary_bnhl3")
+}
+autoplay = "Dododo"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.329247, 0)
+shape = SubResource("BoxShape3D_0jjbl")
+
+[node name="PolicaCar01" parent="." instance=ExtResource("19_oyffw")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 15.6697, -0.00457197, -24)
+
+[node name="PlayerBikeManager" parent="." instance=ExtResource("20_kye5b")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 9.20395, -0.892205, -12.4479)
+
+[editable path="Node3D"]
+[editable path="Cat/OiiaioooooiaiFin"]
