@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://tnhuis33m6qk"]
+[gd_scene load_steps=7 format=3 uid="uid://tnhuis33m6qk"]
 
 [ext_resource type="PackedScene" uid="uid://bddcoutd4d117" path="res://ArtResources/Environment/Terrain Meshes/Trees Pack/Models/tree01.fbx" id="1_pn526"]
 [ext_resource type="Script" uid="uid://bopm8s5er5ugw" path="res://Scripts/_World/_Character/Utility/WRLD_UTILITY_RANDOM_ENABLE.gd" id="2_ctnru"]
 [ext_resource type="PackedScene" uid="uid://cuigwnpjunxn2" path="res://ArtResources/Environment/Terrain Meshes/Trees Pack/Models/Trees 02/source/tree_leaf.fbx" id="2_t3kdd"]
 [ext_resource type="PackedScene" uid="uid://pagshfe7purx" path="res://Resources/Prefabs/Environment Objects/tree_08.tscn" id="3_ro5sy"]
 [ext_resource type="PackedScene" uid="uid://dhtiofaoaa1pg" path="res://Resources/Prefabs/VFX Objects/Environment/LeafsFallingEffect.tscn" id="4_qpnq0"]
+[ext_resource type="Script" uid="uid://daw241jaoy35v" path="res://Scripts/_World/_Character/Environment/WRLD_TREE.gd" id="5_of2h5"]
 
 [node name="tree01" node_paths=PackedStringArray("objectToEnable") instance=ExtResource("1_pn526")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -13,6 +14,8 @@ objectToEnable = NodePath("LeafsFallingEffect")
 
 [node name="treee01" parent="." index="0"]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+script = ExtResource("5_of2h5")
+swaySpeed = 0.8
 
 [node name="tree_leaf" parent="." index="1" instance=ExtResource("2_t3kdd")]
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, 0)
@@ -21,6 +24,8 @@ visible = false
 [node name="tree08" parent="." index="2" instance=ExtResource("3_ro5sy")]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
+script = ExtResource("5_of2h5")
+swayAngle = 6.0
 
 [node name="treee08" parent="tree08" index="0"]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
