@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc5tqs0sfsdt6"]
+
+[ext_resource type="Texture2D" uid="uid://dreknc4ldkl3d" path="res://addons/Motercycle/prototype_texture.png" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://dtw8s4325fy7s" path="res://addons/Motercycle/addons/gevp/scripts/vehicle_controllergd.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://cy2vtnqfwkp3o" path="res://addons/Motercycle/addons/gevp/scripts/gui.gd" id="1_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cqfp6bqy07b73" path="res://addons/Motercycle/motorcycle.tscn" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://djn2jscvb8dk5" path="res://addons/Motercycle/addons/gevp/scripts/camera.gd" id="5_j1ywh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("ProceduralSkyMaterial_h2yge")
+
+[sub_resource type="Environment" id="Environment_lquwl"]
+background_mode = 2
+sky = SubResource("Sky_1bvp3")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
+albedo_color = Color(0.843184, 0.843184, 0.843184, 1)
+albedo_texture = ExtResource("1_1bvp3")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lquwl")
+
+[node name="GUI" type="Control" parent="." node_paths=PackedStringArray("vehicle")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lquwl")
+vehicle = NodePath("../VehicleController/motorcycle")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speed" type="Label" parent="GUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="RPM" type="Label" parent="GUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Gear" type="Label" parent="GUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(300, 0.01, 300)
+material = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59928, -0.0606303)
+script = ExtResource("5_j1ywh")
+
+[node name="VehicleController" type="Node3D" parent="." node_paths=PackedStringArray("vehicle_node")]
+script = ExtResource("1_h2yge")
+vehicle_node = NodePath("motorcycle")
+
+[node name="motorcycle" parent="VehicleController" instance=ExtResource("2_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136788, 0)
+throttle_speed = 15.0
+
+[node name="Node3D" type="Node3D" parent="VehicleController/motorcycle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40349, -1.09068)

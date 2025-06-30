@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://tnhuis33m6qk"]
 
 [ext_resource type="PackedScene" uid="uid://bddcoutd4d117" path="res://ArtResources/Environment/Terrain Meshes/Trees Pack/Models/tree01.fbx" id="1_pn526"]
-[ext_resource type="Script" uid="uid://bopm8s5er5ugw" path="res://Scripts/_World/_Character/Utility/WRLD_UTILITY_RANDOM_ENABLE.gd" id="2_ctnru"]
+[ext_resource type="Script" uid="uid://bopm8s5er5ugw" path="res://Scripts/_World/_Character/Utility/WRLD_UTILITY_RANDOM_ENABLE.gd" id="2_of2h5"]
 [ext_resource type="PackedScene" uid="uid://cuigwnpjunxn2" path="res://ArtResources/Environment/Terrain Meshes/Trees Pack/Models/Trees 02/source/tree_leaf.fbx" id="2_t3kdd"]
 [ext_resource type="PackedScene" uid="uid://pagshfe7purx" path="res://Resources/Prefabs/Environment Objects/tree_08.tscn" id="3_ro5sy"]
 [ext_resource type="PackedScene" uid="uid://dhtiofaoaa1pg" path="res://Resources/Prefabs/VFX Objects/Environment/LeafsFallingEffect.tscn" id="4_qpnq0"]
@@ -9,7 +9,7 @@
 
 [node name="tree01" node_paths=PackedStringArray("objectToEnable") instance=ExtResource("1_pn526")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-script = ExtResource("2_ctnru")
+script = ExtResource("2_of2h5")
 objectToEnable = NodePath("LeafsFallingEffect")
 
 [node name="treee01" parent="." index="0"]

@@ -1,10 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://bebdx0b1l1cls"]
+[gd_scene load_steps=4 format=3 uid="uid://bebdx0b1l1cls"]
 
-[ext_resource type="PackedScene" uid="uid://iia6m6xf3xn0" path="res://ArtResources/Props/Royal Enfield/source/Royal Enfield Classic.glb" id="1_38f1u"]
+[ext_resource type="Script" uid="uid://bh5k1dgp3fqow" path="res://Scripts/_Root/Player/PlayerBikeManager.gd" id="1_cy3fp"]
+[ext_resource type="PackedScene" uid="uid://3io6ql5gwsvy" path="res://Resources/Prefabs/Props Objects/Royal Enfield/royal_enfield_classic.tscn" id="2_cy3fp"]
+[ext_resource type="Script" uid="uid://d3y1s3xw0bvq8" path="res://Scripts/_Root/Player/PlayerBikeCameraManager.gd" id="3_gme87"]
 
 [node name="PlayerBikeManager" type="Node3D"]
+script = ExtResource("1_cy3fp")
 
 [node name="Graphics" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="Royal Enfield Classic" parent="Graphics" instance=ExtResource("1_38f1u")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
+[node name="Royal Enfield Classic" parent="Graphics" instance=ExtResource("2_cy3fp")]
+
+[node name="PlayerCameraController" type="Node3D" parent="."]
+script = ExtResource("3_gme87")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="PlayerCameraController"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.095, 2, 0)
+
+[node name="CameraOffset" type="Node3D" parent="PlayerCameraController/SpringArm3D"]
+
+[node name="Camera3D" type="Camera3D" parent="PlayerCameraController/SpringArm3D/CameraOffset"]
+current = true

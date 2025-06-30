@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bc4u7he8yghg5"]
+[gd_scene load_steps=42 format=4 uid="uid://bc4u7he8yghg5"]
 
 [ext_resource type="PackedScene" uid="uid://bf1dbei3nkcq8" path="res://Settings/Terrain/Demo Level/DemoTerrain.tscn" id="1_0jjbl"]
 [ext_resource type="AudioStream" uid="uid://ut1mhyvtapuk" path="res://Audio/BGS/Silent Hill Ambient.mp3" id="1_1eanf"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://fe5e2bghp07v" path="res://Resources/Prefabs/Character Objects/NPC/Cop 1/Cop NPC.tscn" id="16_cbmdf"]
 [ext_resource type="Script" uid="uid://bmowijr30ago8" path="res://Scripts/_World/_Character/_Root/WRLD_Cat.gd" id="18_0jjbl"]
 [ext_resource type="PackedScene" uid="uid://cdbcyv4nldlqw" path="res://ArtResources/Characters/Enemies/Cat/source/OiiaioooooiaiFin.fbx" id="18_yjnyt"]
-[ext_resource type="PackedScene" uid="uid://bebdx0b1l1cls" path="res://Resources/Prefabs/Character Objects/Player/PlayerBikeManager.tscn" id="20_bnhl3"]
 [ext_resource type="PackedScene" uid="uid://tbn3nhc5ycoo" path="res://Resources/Prefabs/Props Objects/Cars/PoliceCar01.tscn" id="20_obdna"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
@@ -2424,9 +2423,6 @@ shape = SubResource("BoxShape3D_0jjbl")
 
 [node name="PolicaCar01" parent="." instance=ExtResource("20_obdna")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 15.6697, -0.00457197, -24)
-
-[node name="PlayerBikeManager" parent="." instance=ExtResource("20_bnhl3")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 9.20395, -0.892205, -12.4479)
 
 [editable path="Node3D"]
 [editable path="Cat/OiiaioooooiaiFin"]

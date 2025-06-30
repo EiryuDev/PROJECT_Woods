@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpmw1fl8xpwjt"]
+
+[ext_resource type="Script" uid="uid://djn2jscvb8dk5" path="res://addons/Motercycle/addons/gevp/scripts/camera.gd" id="1_x60om"]
+[ext_resource type="Script" uid="uid://dtw8s4325fy7s" path="res://addons/Motercycle/addons/gevp/scripts/vehicle_controllergd.gd" id="2_6qs50"]
+[ext_resource type="PackedScene" uid="uid://cqfp6bqy07b73" path="res://addons/Motercycle/motorcycle.tscn" id="3_2hmjo"]
+
+[node name="PlayerBike" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 9, 0.504228, -11.8392)
+script = ExtResource("1_x60om")
+target_path = NodePath("../VehicleController/motorcycle/Node3D")
+offset = Vector3(0, 0, -1)
+
+[node name="VehicleController" type="Node3D" parent="." node_paths=PackedStringArray("vehicle_node")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, -1.03605, -12.388)
+script = ExtResource("2_6qs50")
+vehicle_node = NodePath("motorcycle")
+
+[node name="motorcycle" parent="VehicleController" instance=ExtResource("3_2hmjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136788, 0)
+throttle_speed = 2.0
+max_torque = 200.0
+
+[node name="Node3D" type="Node3D" parent="VehicleController/motorcycle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0602894, 1.43665, -1.09068)

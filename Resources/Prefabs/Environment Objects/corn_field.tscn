@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm84xr4fceg4d"]
+
+[ext_resource type="PackedScene" uid="uid://dawo5gkcs148a" path="res://ArtResources/Environment/Corn Field/corn_field.fbx" id="1_t080u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tk4gp"]
+size = Vector3(59.8129, 0.001, 51.0499)
+
+[node name="Corn Field" type="StaticBody3D"]
+
+[node name="corn_field" parent="." instance=ExtResource("1_t080u")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.72162, -0.532333, -3.16193)
+shape = SubResource("BoxShape3D_tk4gp")
+
+[editable path="corn_field"]

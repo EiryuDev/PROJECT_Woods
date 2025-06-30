@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbury8ia14i6h"]
+
+[ext_resource type="PackedScene" uid="uid://o8bga2clga7h" path="res://ArtResources/Environment/Sign boards/Wooden Sign Board/Source/wooden_sign_4_dark.glb" id="1_3n5t1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3n5t1"]
+size = Vector3(2.00391, 3.01022, 0.234131)
+
+[node name="WoodenSignBoard" type="StaticBody3D"]
+
+[node name="wooden_sign_4_dark" parent="." instance=ExtResource("1_3n5t1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0205078, 1.29561, 0.0181885)
+shape = SubResource("BoxShape3D_3n5t1")
+
+[editable path="wooden_sign_4_dark"]
