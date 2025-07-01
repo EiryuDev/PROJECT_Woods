@@ -49,7 +49,9 @@ _shader_parameters = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d04cr"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_u1fhn")
@@ -67,7 +69,7 @@ height_offset = 0.5
 material_override = SubResource("StandardMaterial3D_d04cr")
 last_lod = 0
 last_shadow_lod = 0
-lod0_range = 128.0
+lod0_range = 100.0
 resource_local_to_scene = true
 
 [sub_resource type="Image" id="Image_u1fhn"]

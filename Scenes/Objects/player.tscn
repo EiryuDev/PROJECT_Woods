@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=75 format=4 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://d22tr7toifvol" path="res://Scripts/Combat/Player/PlayerWeaponManager.gd" id="2_dfgsd"]
@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://d05p3mivl34ob" path="res://Audio/SFX/SE/steps/step_1.wav" id="21_6v78c"]
 [ext_resource type="AudioStream" uid="uid://cry4itlgfcu48" path="res://Audio/SFX/SE/steps/step_2.wav" id="22_03qow"]
 [ext_resource type="Script" uid="uid://d1tj0s44xx2aa" path="res://Scripts/UI/Player/UI_DeathScreen.gd" id="33_gra3g"]
+[ext_resource type="Script" uid="uid://bf4x4oxaftrix" path="res://Scripts/UI/Player/UI_FPSDisplay.gd" id="34_0ykjt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbvo1"]
 
@@ -1169,6 +1170,21 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_mytd1")
 step = 1.0
 value = 50.0
 show_percentage = false
+
+[node name="FPS Display" type="Label" parent="CanvasLayer/GUI"]
+self_modulate = Color(1, 1, 0.666667, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -374.0
+offset_top = 23.0
+offset_right = -13.0
+offset_bottom = 69.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_5rt57")
+horizontal_alignment = 2
+script = ExtResource("34_0ykjt")
 
 [node name="Interact Display" type="Label" parent="CanvasLayer/GUI"]
 layout_mode = 1

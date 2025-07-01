@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Woods"
-run/main_scene="uid://i61p0ensn6yc"
+run/main_scene="uid://dqgfa42q6hsho"
 config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
@@ -181,3 +181,4 @@ Handbrake={
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
+occlusion_culling/use_occlusion_culling=true

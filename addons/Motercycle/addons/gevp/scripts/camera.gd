@@ -13,25 +13,22 @@ var max_yaw_radians: float
 func _ready():
 	target = get_node_or_null(target_path)
 	if not target:
-		push_warning("Camera script: target_path is invalid")
-	
+		push_warning("Target is invalid")
+		
 	max_yaw_radians = deg_to_rad(max_yaw_degrees)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		# Adjust yaw and clamp to realistic limit
 		yaw -= event.relative.x * yaw_speed * mouse_sens
 		yaw = clamp(yaw, -max_yaw_radians, max_yaw_radians)
 		rotation.y = yaw
-
+		
 func _process(delta):
 	if not target:
 		return
-
-	# Keep camera fixed relative to bike's rotation and position (corrected for Godot 4)
+	
 	global_position = target.global_transform.origin + target.global_transform.basis * offset
-
-	# Add local yaw rotation for looking left/right
+	
 	var base_rotation = target.global_transform.basis.get_euler()
 	rotation.y = base_rotation.y + yaw
