@@ -1,38 +1,37 @@
 extends Camera3D
 
-# -- export vars let you tweak in the Inspector --
-@export var target_path: NodePath            # drag your motorcycle (Node3D) here
-@export var offset: Vector3 = Vector3(0, 2, -6)  # camera sits 2m up, 6m behind by default
-@export var yaw_speed: float = 0.005         # how fast mouse X turns the camera
-@export var max_yaw_degrees: float = 60      # max left/right look in degrees
+@export var target_path: NodePath
+@export var offset: Vector3 = Vector3(0, 1.5, 0.1)  # Head position on bike
+@export var yaw_speed: float = 0.005
+@export var mouse_sens: float = 0.5
+@export var max_yaw_degrees: float = 60.0  # Look limit: 60° left/right
 
-# -- internal state --
 var target: Node3D
-var yaw: float = 0.0                         # current yaw offset, in radians
+var yaw: float = 0.0
 var max_yaw_radians: float
 
 func _ready():
-	# resolve the target node
 	target = get_node_or_null(target_path)
 	if not target:
 		push_warning("Camera script: target_path is invalid")
-	# convert clamp angle to radians once
+	
 	max_yaw_radians = deg_to_rad(max_yaw_degrees)
-	# capture the mouse so we can read relative motion
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-#func _input(event):
-	#if event is InputEventMouseMotion and target:
-		## subtract so rightward mouse (positive x) turns view right
-		#yaw -= event.relative.x * yaw_speed
-		#yaw = clamp(yaw, -max_yaw_radians, max_yaw_radians)
+func _input(event):
+	if event is InputEventMouseMotion:
+		# Adjust yaw and clamp to realistic limit
+		yaw -= event.relative.x * yaw_speed * mouse_sens
+		yaw = clamp(yaw, -max_yaw_radians, max_yaw_radians)
+		rotation.y = yaw
 
 func _process(delta):
 	if not target:
 		return
-	# rotate the offset around Y by current yaw
-	var rotated_offset = offset.rotated(Vector3.UP, yaw)
-	# position camera relative to the target’s global position
-	global_transform.origin = target.global_transform.origin + rotated_offset
-	# always look straight at the target, but only yaw-wise
-	look_at(target.global_transform.origin, Vector3.UP)
+
+	# Keep camera fixed relative to bike's rotation and position (corrected for Godot 4)
+	global_position = target.global_transform.origin + target.global_transform.basis * offset
+
+	# Add local yaw rotation for looking left/right
+	var base_rotation = target.global_transform.basis.get_euler()
+	rotation.y = base_rotation.y + yaw

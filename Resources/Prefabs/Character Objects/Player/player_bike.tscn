@@ -7,10 +7,10 @@
 [node name="PlayerBike" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 9, 0.504228, -11.8392)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 8.90147, 0.504228, -12.117)
 script = ExtResource("1_x60om")
 target_path = NodePath("../VehicleController/motorcycle/Node3D")
-offset = Vector3(0, 0, -1)
+offset = Vector3(0, 0, 0.95)
 
 [node name="VehicleController" type="Node3D" parent="." node_paths=PackedStringArray("vehicle_node")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, -1.03605, -12.388)

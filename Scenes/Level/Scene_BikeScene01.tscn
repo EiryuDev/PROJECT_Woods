@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cdbcyv4nldlqw" path="res://ArtResources/Characters/Enemies/Cat/source/OiiaioooooiaiFin.fbx" id="18_52mlg"]
 [ext_resource type="PackedScene" uid="uid://tbn3nhc5ycoo" path="res://Resources/Prefabs/Props Objects/Cars/PoliceCar01.tscn" id="19_oyffw"]
 [ext_resource type="PackedScene" uid="uid://bbury8ia14i6h" path="res://Resources/Prefabs/Environment Objects/wooden_sign_board.tscn" id="22_na48c"]
-[ext_resource type="PackedScene" uid="uid://cq0a041eg5071" path="res://Scenes/Objects/player.tscn" id="22_nagcp"]
+[ext_resource type="PackedScene" uid="uid://dpmw1fl8xpwjt" path="res://Resources/Prefabs/Character Objects/Player/player_bike.tscn" id="22_nagcp"]
 [ext_resource type="PackedScene" uid="uid://bebwmry642d5b" path="res://Resources/Prefabs/Environment Objects/wooden_house.tscn" id="23_nagcp"]
 [ext_resource type="PackedScene" uid="uid://bm84xr4fceg4d" path="res://Resources/Prefabs/Environment Objects/corn_field.tscn" id="24_1gocl"]
 
@@ -2608,8 +2608,7 @@ transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 
 [node name="Corn Field" parent="." instance=ExtResource("24_1gocl")]
 transform = Transform3D(0.35, 0, 0, 0, 0.349793, -0.0120256, 0, 0.0120256, 0.349793, -4.25101, -0.458319, 138.849)
 
-[node name="Player" parent="." instance=ExtResource("22_nagcp")]
-transform = Transform3D(-0.999962, 0, 0.00872657, 0, 1, 0, -0.00872657, 0, -0.999962, 10.1528, 0.448834, 100.982)
+[node name="PlayerBike" parent="." instance=ExtResource("22_nagcp")]
 
 [editable path="Node3D"]
 [editable path="Cat/OiiaioooooiaiFin"]
