@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://brk7i6uvr3acl"]
+
+[ext_resource type="PackedScene" uid="uid://fjfnmk5cqsbj" path="res://ArtResources/Props/Cigarette/model.dae" id="1_suftu"]
+[ext_resource type="PackedScene" uid="uid://dcmf2yj8xj27w" path="res://Resources/Prefabs/VFX Objects/Props/Cigarette/vfx_cigarette_smoke.tscn" id="2_2pi4s"]
+
+[node name="Cigarette" instance=ExtResource("1_suftu")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="ember" parent="." index="0"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
+
+[node name="VFX_Cigarette_Smoke" parent="." index="2" instance=ExtResource("2_2pi4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.883458, 0.0245241, 0)

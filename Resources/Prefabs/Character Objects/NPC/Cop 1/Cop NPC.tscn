@@ -9,9 +9,11 @@ radius = 0.374548
 height = 1.76331
 
 [node name="Cop NPC" instance=ExtResource("1_56pwh")]
+mass = 1000.0
 script = ExtResource("2_fpclg")
 dialoguePath = "res://Data/Dialogues/OpeningDialogue.json"
 sound = ""
+requireAnimation = false
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

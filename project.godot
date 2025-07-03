@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Woods"
-run/main_scene="uid://46hrhkpqmo0r"
+run/main_scene="uid://dn7jc15cko6b3"
 config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false

@@ -2557,7 +2557,6 @@ type = "Interact with Generic"
 
 [node name="Cop NPC" parent="." instance=ExtResource("16_o1g6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, -24.152)
-requireAnimation = false
 
 [node name="Cat" type="RigidBody3D" parent="." groups=["Interactable"]]
 transform = Transform3D(-2.83931, 0, -0.968676, 0, 3, 0, 0.968676, 0, -2.83931, 18.7164, -0.146122, -34.2039)
@@ -2614,7 +2613,12 @@ occluder = ExtResource("23_1gocl")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 1.38677, 105)
 
 [node name="Male Casual" parent="." instance=ExtResource("24_hlkfp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.04886, 0, 126.032)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.04886, -0.155462, 126.032)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 60.0
+gravity_scale = 1.0
 dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
 
 [node name="Chappal" parent="." instance=ExtResource("25_hlkfp")]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcmf2yj8xj27w"]
+
+[ext_resource type="Texture2D" uid="uid://gvm1xk686hjw" path="res://ArtResources/VFX/Effects/Smoke/T_smoke_flipbook.png" id="1_f1vmv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1oa8"]
+transparency = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_f1vmv")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+proximity_fade_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_tndp8"]
+colors = PackedColorArray(1, 0.598174, 0.406331, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f4tlj"]
+gradient = SubResource("Gradient_tndp8")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8k7ia"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.8
+initial_velocity_max = 2.3
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.04
+scale_max = 0.1
+color = Color(1.4, 1.4, 1.4, 1)
+color_ramp = SubResource("GradientTexture1D_f4tlj")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_f1vmv"]
+
+[node name="VFX_Cigarette_Smoke" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_x1oa8")
+amount = 20
+lifetime = 2.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_8k7ia")
+draw_pass_1 = SubResource("QuadMesh_f1vmv")
