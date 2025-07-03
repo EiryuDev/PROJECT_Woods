@@ -1,6 +1,7 @@
-[gd_scene load_steps=47 format=4 uid="uid://46hrhkpqmo0r"]
+[gd_scene load_steps=52 format=4 uid="uid://46hrhkpqmo0r"]
 
-[ext_resource type="PackedScene" uid="uid://bf1dbei3nkcq8" path="res://Settings/Terrain/Demo Level/DemoTerrain.tscn" id="1_n82nw"]
+[ext_resource type="Script" uid="uid://d2xo74qgh4wsj" path="res://Scripts/_World/_Character/_Root/WRLD_SCENE_MANAGER.gd" id="1_6e1vg"]
+[ext_resource type="PackedScene" uid="uid://b1p4pmoroxcbu" path="res://Resources/Prefabs/Environment Objects/demo_terrain.tscn" id="2_6e1vg"]
 [ext_resource type="PackedScene" uid="uid://tnhuis33m6qk" path="res://Resources/Prefabs/Environment Objects/tree_01.tscn" id="2_f1ybc"]
 [ext_resource type="AudioStream" uid="uid://ut1mhyvtapuk" path="res://Audio/BGS/Silent Hill Ambient.mp3" id="3_na48c"]
 [ext_resource type="PackedScene" uid="uid://127i8t1q6urm" path="res://Resources/Prefabs/World Managers Objects/World Manager.tscn" id="4_nagcp"]
@@ -23,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bm84xr4fceg4d" path="res://Resources/Prefabs/Environment Objects/corn_field.tscn" id="24_1gocl"]
 [ext_resource type="PackedScene" uid="uid://cq0a041eg5071" path="res://Scenes/Objects/player.tscn" id="24_6e1vg"]
 [ext_resource type="PackedScene" uid="uid://dp1h8dwwtlpi4" path="res://Resources/Prefabs/Character Objects/NPC/Male/Male Casual.tscn" id="24_hlkfp"]
+[ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="25_6e1vg"]
 [ext_resource type="PackedScene" uid="uid://bjhbd68q3d31f" path="res://Resources/Prefabs/Props Objects/Outfits/chappal.tscn" id="25_hlkfp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
@@ -297,9 +299,73 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jjbl"]
 size = Vector3(1, 0.552353, 1)
 
-[node name="World_BikeScene" type="Node3D"]
+[sub_resource type="Animation" id="Animation_wrrvi"]
+resource_name = "Fade In"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../Background Ambient:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
-[node name="Node3D" parent="." instance=ExtResource("1_n82nw")]
+[sub_resource type="Animation" id="Animation_bb3jp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../Background Ambient:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r16nr"]
+_data = {
+&"Fade In": SubResource("Animation_wrrvi"),
+&"RESET": SubResource("Animation_bb3jp")
+}
+
+[node name="World_BikeScene" type="Node3D"]
+script = ExtResource("1_6e1vg")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Demo Terrain" parent="Node3D" instance=ExtResource("2_6e1vg")]
 
 [node name="tree01" parent="Node3D" instance=ExtResource("2_f1ybc")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.41634, 0, -1.89317)
@@ -1080,7 +1146,6 @@ camera_attributes = SubResource("CameraAttributesPractical_obdna")
 [node name="Background Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_na48c")
 volume_db = 1.0
-autoplay = true
 parameters/looping = true
 
 [node name="World Manager" parent="." instance=ExtResource("4_nagcp")]
@@ -2613,18 +2678,50 @@ occluder = ExtResource("23_1gocl")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 1.38677, 105)
 
 [node name="Male Casual" parent="." instance=ExtResource("24_hlkfp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.04886, -0.155462, 126.032)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.04886, -0.175325, 126.032)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 60.0
-gravity_scale = 1.0
 dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
 
 [node name="Chappal" parent="." instance=ExtResource("25_hlkfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8685, 0, 127.337)
 
-[editable path="Node3D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Main Menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("25_6e1vg")
+
+[node name="Fade In Screen" type="Control" parent="CanvasLayer/Main Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Main Menu/Fade In Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Main Menu/Fade In Screen/ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_r16nr")
+}
+autoplay = "Fade In"
+
 [editable path="Cat/OiiaioooooiaiFin"]
 [editable path="Player"]
 [editable path="Player/Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter/HitScanBulletEmitter"]

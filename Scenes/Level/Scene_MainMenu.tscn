@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://dn7jc15cko6b3"]
+[gd_scene load_steps=46 format=4 uid="uid://dn7jc15cko6b3"]
 
 [ext_resource type="PackedScene" uid="uid://bf1dbei3nkcq8" path="res://Settings/Terrain/Demo Level/DemoTerrain.tscn" id="1_um8h5"]
 [ext_resource type="PackedScene" uid="uid://tnhuis33m6qk" path="res://Resources/Prefabs/Environment Objects/tree_01.tscn" id="2_sgdtf"]
@@ -15,7 +15,11 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://1d6pr6scw7w7" path="res://Settings/Occluders/Scene_MainMenu.occ" id="12_eyob1"]
 [ext_resource type="PackedScene" uid="uid://brk7i6uvr3acl" path="res://Resources/Prefabs/Props Objects/Cigarette/Cigarette.tscn" id="12_l2tyg"]
 [ext_resource type="PackedScene" uid="uid://dcmf2yj8xj27w" path="res://Resources/Prefabs/VFX Objects/Props/Cigarette/vfx_cigarette_smoke.tscn" id="15_7ktwh"]
+[ext_resource type="Script" uid="uid://d08x3de7twvg" path="res://Scripts/UI/Player/UI_MainMenuCamera.gd" id="16_ir27f"]
 [ext_resource type="PackedScene" uid="uid://tbn3nhc5ycoo" path="res://Resources/Prefabs/Props Objects/Cars/PoliceCar01.tscn" id="17_3bg2m"]
+[ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="18_3fqnm"]
+[ext_resource type="Script" uid="uid://dh6oy04fgod3w" path="res://Scripts/UI/Player/UI_TitleScreenManager.gd" id="18_rft8w"]
+[ext_resource type="Texture2D" uid="uid://b8117ud4iy81t" path="res://ArtResources/UI/Menu/Cross Icon.png" id="20_virxk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -584,7 +588,7 @@ _data = {
 &"RESET": SubResource("Animation_flhcg")
 }
 
-[node name="World_BikeScene" type="Node3D"]
+[node name="World_MainMenu" type="Node3D"]
 
 [node name="Node3D" parent="." instance=ExtResource("1_um8h5")]
 
@@ -674,7 +678,7 @@ volume_db = 1.0
 
 [node name="Background Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_mu54g")
-volume_db = 0.25
+volume_db = 0.05
 parameters/looping = true
 
 [node name="World Manager" parent="." instance=ExtResource("4_a4ss1")]
@@ -1596,7 +1600,7 @@ bones/39/position = Vector3(-1.46009e-10, 0.17792, -1.20946e-09)
 bones/39/rotation = Quaternion(0.253678, 0.0764873, -0.0201258, 0.96405)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Cop NPC/Cop Model_Smoking Start/Skeleton3D" index="4"]
-transform = Transform3D(-0.146191, 0.56253, 0.81375, 0.255033, 0.816213, -0.518416, -0.955817, 0.131746, -0.262787, -0.00223511, 1.38768, 0.194244)
+transform = Transform3D(-0.146191, 0.56253, 0.81375, 0.255033, 0.816212, -0.518416, -0.955817, 0.131746, -0.262787, -0.00223511, 1.38768, 0.194244)
 bone_name = "mixamorig_RightHand"
 bone_idx = 22
 
@@ -1625,22 +1629,29 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 15.6697, -0.00457197, -
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("12_eyob1")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Main Menu Camera" type="Node3D" parent="."]
+script = ExtResource("16_ir27f")
+max_tilt_angle_deg = 3.0
+rotation_speed = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="Main Menu Camera"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.71, 2.261, -25.669)
 
 [node name="VFX_Cigarette_Smoke" parent="." instance=ExtResource("15_7ktwh")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Title Screen Manager" type="CanvasLayer" parent="."]
+script = ExtResource("18_rft8w")
 
-[node name="Main Menu" type="Control" parent="CanvasLayer"]
+[node name="Main Menu" type="Control" parent="Title Screen Manager"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("18_3fqnm")
 
-[node name="Fade In Screen" type="Control" parent="CanvasLayer/Main Menu"]
+[node name="Fade In Screen" type="Control" parent="Title Screen Manager/Main Menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1648,7 +1659,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Main Menu/Fade In Screen"]
+[node name="ColorRect" type="ColorRect" parent="Title Screen Manager/Main Menu/Fade In Screen"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1657,11 +1668,638 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Main Menu/Fade In Screen/ColorRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title Screen Manager/Main Menu/Fade In Screen/ColorRect"]
 libraries = {
 &"": SubResource("AnimationLibrary_flhcg")
 }
 autoplay = "Fade In"
+
+[node name="Menu Options" type="Control" parent="Title Screen Manager/Main Menu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -400.0
+offset_right = 456.0
+offset_bottom = -32.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title Screen Manager/Main Menu/Menu Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_right = -56.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Play Button" type="Button" parent="Title Screen Manager/Main Menu/Menu Options/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Options Button" type="Button" parent="Title Screen Manager/Main Menu/Menu Options/VBoxContainer"]
+layout_mode = 2
+text = "Options
+"
+
+[node name="Credits Button" type="Button" parent="Title Screen Manager/Main Menu/Menu Options/VBoxContainer"]
+layout_mode = 2
+text = "Credits
+"
+
+[node name="Quit Button" type="Button" parent="Title Screen Manager/Main Menu/Menu Options/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="Credits Options" type="Control" parent="Title Screen Manager/Main Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border" type="ColorRect" parent="Title Screen Manager/Main Menu/Credits Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Background" type="ColorRect" parent="Title Screen Manager/Main Menu/Credits Options/Border"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 64.0
+offset_right = -360.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[node name="Discord Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 592.0
+offset_bottom = 80.0
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://DISCORD.GG/LUMIMOTH "
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="The Woods Title" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background"]
+offset_left = 48.0
+offset_top = 104.0
+offset_right = 592.0
+offset_bottom = 144.0
+bbcode_enabled = true
+text = "THE WOODS."
+fit_content = true
+vertical_alignment = 1
+
+[node name="Credits Description" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background"]
+offset_left = 48.0
+offset_top = 128.0
+offset_right = 1136.0
+offset_bottom = 185.0
+bbcode_enabled = true
+text = "LOWER YOU CAN FIND ASSETS THAT REQUIRE ATTRIBUTION. PLEASE, KEEP IN MIND, I'VE BEEN DEVELOPING THIS GAME FOR LONG TIME, USED AND DELETED HUNDREDS OF ASSETS AND PLACEHOLDERS. IF I FORGOT TO ATTRIBUTE YOUR ASSET, PLEASE LET ME KNOW AND I'LL DO SO."
+fit_content = true
+vertical_alignment = 1
+
+[node name="Free Assets Title" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -72.0
+offset_right = 600.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "FREE ASSETS"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -552.0
+offset_top = -464.0
+offset_right = 552.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Royal Enfield Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "_________________________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Royal Enfield Asset List"]
+layout_mode = 1
+offset_right = 224.0
+offset_bottom = 19.0
+text = "ROYAL ENFIELD CLASSIC 350"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Royal Enfield Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/OGVYO"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Chappal Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_______"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Chappal Asset List"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 19.0
+text = "CHAPPAL"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Chappal Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -464.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/6RO9U"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Axe Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_______"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Axe Asset List"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 19.0
+text = "PSX AXE"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Axe Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -464.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/PQSVW"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Desert Eagle Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "________________________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Desert Eagle Asset List"]
+layout_mode = 1
+offset_right = 208.0
+offset_bottom = 19.0
+text = "PSX STYLE - DESERT EAGLE"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Desert Eagle Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/OVU6P"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Wooden Sign Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "___________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Wooden Sign Asset List"]
+layout_mode = 1
+offset_right = 96.0
+offset_bottom = 19.0
+text = "WOODEN SIGN"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Wooden Sign Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -432.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/OBOSS"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="House Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_____"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/House Asset List"]
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 19.0
+text = "HOUSE"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/House Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -480.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/OWPJT"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Corn Field Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "__________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Corn Field Asset List"]
+layout_mode = 1
+offset_right = 88.0
+offset_bottom = 19.0
+text = "CORN FIELD"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Corn Field Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -440.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/OHKBU"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Cop Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_______"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Cop Asset List"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 19.0
+text = "PSX COP"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Cop Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -464.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/OTRGS"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Cat Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_________________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Cat Asset List"]
+layout_mode = 1
+offset_right = 152.0
+offset_bottom = 19.0
+text = "OIIAIOOOOOIAI CAT"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Cat Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -376.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/PRRXD"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Handpump Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_____________________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Handpump Asset List"]
+layout_mode = 1
+offset_right = 184.0
+offset_bottom = 19.0
+text = "HANDPUMP INDIAN STYLE"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Handpump Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -344.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/OSNIA"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Cars Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "______________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Cars Asset List"]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 19.0
+text = "PSX STYLE CARS"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Cars Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://GGBOT.ITCH.IO/PSX-STYLE-CARS"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Trees Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_______________________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Trees Asset List"]
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 19.0
+text = "PSX TREE AND GRASS PACK"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Trees Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -328.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://DOMI236.ITCH.IO/PS1-STYLE-TREE-AND-GRASS-PACK"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Terrain Texture Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_______________________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Terrain Texture Asset List"]
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 19.0
+text = "TINY TEXTURE FOR GROUND"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Terrain Texture Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -328.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SCREAMINGBRAINSTUDIOS.ITCH.IO/TINY-TEXTURE-PACK-2"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Crosshair Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "______________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Crosshair Asset List"]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 19.0
+text = "CROSSHAIR PACK"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Crosshair Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://KENNEY-ASSETS.ITCH.IO/CROSSHAIR-PACK"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Male Character Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_________________________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Male Character Asset List"]
+layout_mode = 1
+offset_right = 224.0
+offset_bottom = 19.0
+text = "PSX CASUAL MALE CHARACTER"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Male Character Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://VINRAX.ITCH.IO/PSX-CASUAL-MALE-CHARACTER"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
+[node name="Close Button" type="Button" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background"]
+layout_mode = 0
+offset_left = 1112.0
+offset_top = 16.0
+offset_right = 1630.0
+offset_bottom = 534.0
+scale = Vector2(0.124206, 0.124206)
+icon = ExtResource("20_virxk")
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Play Button" to="Title Screen Manager" method="PlayGame"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Credits Button" to="Title Screen Manager" method="OpenCreditsMenu"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Quit Button" to="Title Screen Manager" method="QuitGame"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Credits Options/Border/Background/Close Button" to="Title Screen Manager" method="CloseCreditsMenu"]
 
 [editable path="Node3D"]
 [editable path="Cop NPC/Cop1"]
