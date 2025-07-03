@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cqllxin3jdpu0"
+path="res://.godot/imported/Buddy DeFranco Quartet - Deep Purple.mp3-4e1c39fbc7ba0eab639279dff219113d.mp3str"
+
+[deps]
+
+source_file="res://Audio/BGM/Buddy DeFranco Quartet - Deep Purple.mp3"
+dest_files=["res://.godot/imported/Buddy DeFranco Quartet - Deep Purple.mp3-4e1c39fbc7ba0eab639279dff219113d.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

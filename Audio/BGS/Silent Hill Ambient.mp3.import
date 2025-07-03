@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Silent Hill Ambient.mp3-694253db87518b9740ac7
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
