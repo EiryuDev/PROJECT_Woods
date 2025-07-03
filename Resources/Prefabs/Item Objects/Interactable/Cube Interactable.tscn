@@ -5,6 +5,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_gv6i8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2wmv6"]
+size = Vector3(1.00024, 0.997444, 1.00255)
 
 [node name="CubeInteractable" type="RigidBody3D" groups=["Interactable"]]
 collision_layer = 33
@@ -17,4 +18,5 @@ interactableType = 1
 mesh = SubResource("BoxMesh_gv6i8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000302732, 0.00150681, -0.00067997)
 shape = SubResource("BoxShape3D_2wmv6")

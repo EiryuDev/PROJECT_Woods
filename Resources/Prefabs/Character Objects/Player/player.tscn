@@ -612,6 +612,11 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.79763)
 
+[node name="Pickup" type="Node3D" parent="Camera3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.29, -0.155, -0.498)
+
+[node name="PickupPoint" type="Node3D" parent="Camera3D/Pickup"]
+
 [node name="Player Weapon Manager" type="Node3D" parent="Camera3D"]
 unique_name_in_owner = true
 script = ExtResource("2_dfgsd")

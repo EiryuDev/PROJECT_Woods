@@ -5,6 +5,10 @@ extends Interactable
 @onready var DialogueScene = preload("res://Resources/Prefabs/UI Objects/Dialogue Box.tscn")
 @onready var canvasLayer = $CanvasLayer
 
+@export_group("ANIMATION SETTINGS")
+@export var animationPlayer : AnimationPlayer
+@export var requireAnimation = false
+
 signal hasTalkedAlready
 var hasSignalEmitted = false
 var hasDialogueStarted = false
@@ -12,6 +16,8 @@ var hasDialogueStarted = false
 func action_use():
 	if !hasDialogueStarted:
 		hasDialogueStarted = true
+		if requireAnimation:
+			animationPlayer.play("Talking")
 		var dialogueScene = DialogueScene.instantiate()
 		dialogueScene
 		dialogueScene.dialoguePath = self.dialoguePath
@@ -20,6 +26,8 @@ func action_use():
 		canvasLayer.add_child(dialogueScene)
 
 func DialogueFinished():
+	if requireAnimation:
+		animationPlayer.play("Idle")
 	if !hasSignalEmitted:
 		hasSignalEmitted = true
 		emit_signal("hasTalkedAlready")

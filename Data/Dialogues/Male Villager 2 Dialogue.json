@@ -1,0 +1,44 @@
+[
+  { "Name": "Ethan (Main Character)", "Text": "Hey.", "next": 1 },
+  { "Name": "Random Villager", "Text": "Hi.", "next": 2 },
+  { "Name": "Ethan (Main Character)", "Text": "Is this your field?", "next": 3 },
+  { "Name": "Random Villager", "Text": "Yeh.", "next": 4 },
+  { "Name": "Ethan (Main Character)", "Text": "The crops... they’re dying.", "next": 5 },
+  { "Name": "Random Villager", "Text": "Cause they’re angry.", "next": 6 },
+  { "Name": "Ethan (Main Character)", "Text": "Who?", "next": 7 },
+  { "Name": "Random Villager", "Text": "The woods.", "next": 8 },
+
+  {
+	"choice": true,
+	"choices": [
+	  { "text": "I don't get it.", "next": 9 },
+	  { "text": "What’s with the woods?", "next": 10 }
+	]
+  },
+
+  { "Name": "Random Villager", "Text": "You won’t get it.", "next": 11 },
+  { "Name": "Random Villager", "Text": "We don’t talk about it.", "next": 11 },
+
+  { "Name": "Ethan (Main Character)", "Text": "Heyy, heyy... tell me. I can help you.", "next": 12 },
+  { "Name": "Random Villager", "Text": "You can’t.", "next": 13 },
+  { "Name": "Ethan (Main Character)", "Text": "No, I can.", "next": 14 },
+  { "Name": "Random Villager", "Text": "The only help you can do is by leaving this place as soon as possible.", "next": 15 },
+  { "Name": "Ethan (Main Character)", "Text": "What’s wrong with this place?", "next": 16 },
+  { "Name": "Random Villager", "Text": "I don’t want to talk about it. Just leave…", "next": 17 },
+  { "Name": "Ethan (Main Character)", "Text": "Fine.", "next": 18 },
+  { "Name": "Random Villager", "Text": "Just remember—don’t go in the woods. No matter what.", "next": 19 },
+
+  {
+	"choice": true,
+	"choices": [
+	  { "text": "Why?", "next": 20 },
+	  { "text": "Or else what?", "next": 21 }
+	]
+  },
+
+  { "Name": "Random Villager", "Text": "You don’t want to know.", "next": 22 },
+  { "Name": "Random Villager", "Text": "You don’t want to know.", "next": 22 },
+  
+  { "Name": "Random Villager", "Text": "Now leave... before it's too late.", "next": 23 },
+  { "Name": "Narration(CUTSCENE NEED TO ADD)", "Text": "The villager slowly stands up and walks toward his house. You notice a small talisman tied to his ankle.", "next": null }
+]

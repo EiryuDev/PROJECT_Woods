@@ -1,6 +1,7 @@
-[gd_scene load_steps=75 format=4 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=76 format=4 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
+[ext_resource type="Script" uid="uid://o8cqav6lwi8x" path="res://Scripts/Items/Player/Pickup/PlayerPickupPointManager.gd" id="2_34odq"]
 [ext_resource type="Script" uid="uid://d22tr7toifvol" path="res://Scripts/Combat/Player/PlayerWeaponManager.gd" id="2_dfgsd"]
 [ext_resource type="Material" uid="uid://w04cgjpaao52" path="res://ArtResources/Weapons/_Root/Materials/black_metal.material" id="4_mytd1"]
 [ext_resource type="Script" uid="uid://mv2yjxs4djj7" path="res://Scripts/_World/_Character/Combat/Weapons/WRLD_WEAPON.gd" id="4_y42te"]
@@ -611,6 +612,10 @@ unique_name_in_owner = true
 [node name="ObjectPoint" type="Node3D" parent="Camera3D"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.79763)
+
+[node name="PickupPoint" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.29, -0.155, -0.498)
+script = ExtResource("2_34odq")
 
 [node name="Player Weapon Manager" type="Node3D" parent="Camera3D"]
 unique_name_in_owner = true

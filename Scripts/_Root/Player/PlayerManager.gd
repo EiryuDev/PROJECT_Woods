@@ -1,3 +1,4 @@
+class_name PlayerManager
 extends Node
 
 @onready var playerStatsManager = %"Player Stats Manager"
@@ -11,6 +12,9 @@ extends Node
 
 @export_group("FLAGS")
 @export var canMove = true
+
+@export_group("INTERACTION DATA")
+@onready var pickupPoint = $Camera3D/PickupPoint
 
 const HOTKEYS = {
 	KEY_1:0,
@@ -29,6 +33,7 @@ var toggleActive = false
 
 func _ready():
 	playerStatsManager.died.connect(kill)
+	print(pickupPoint.name)
 
 func _process(delta):
 	if isDead:

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjhbd68q3d31f"]
+
+[ext_resource type="Script" uid="uid://cuj8r33aebhuq" path="res://Scripts/_World/_Character/Items/Interactable/WRLD_Interactable.gd" id="1_lu3qg"]
+[ext_resource type="PackedScene" uid="uid://c8n1lbimiofxb" path="res://ArtResources/Props/Chappal/Source/Chappal.fbx" id="2_lu3qg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2wmv6"]
+size = Vector3(0.223541, 0.148789, 0.528958)
+
+[node name="Chappal" type="RigidBody3D" groups=["Interactable"]]
+collision_layer = 33
+collision_mask = 33
+script = ExtResource("1_lu3qg")
+isCubeInteractable = true
+interactableType = 2
+
+[node name="Chappal" parent="." instance=ExtResource("2_lu3qg")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.653018, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00104219, 0.0767588, -0.0357077)
+shape = SubResource("BoxShape3D_2wmv6")
