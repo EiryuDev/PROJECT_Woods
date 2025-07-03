@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://botwj57i0aic" path="res://ArtResources/Environment/Source/shed_door.png" id="4_24hrj"]
 [ext_resource type="Texture2D" uid="uid://b65jnng6d16uy" path="res://ArtResources/Environment/Source/shed_window.png" id="5_oys0q"]
 [ext_resource type="Texture2D" uid="uid://de662x476g87i" path="res://ArtResources/Environment/Source/shed_roof.png" id="6_icyvo"]
-[ext_resource type="PackedScene" uid="uid://cq0a041eg5071" path="res://Scenes/Objects/player.tscn" id="7_n6wfk"]
+[ext_resource type="PackedScene" uid="uid://dmk5n7xl5kox5" path="res://Resources/Prefabs/Character Objects/Player/player.tscn" id="7_n6wfk"]
 [ext_resource type="PackedScene" uid="uid://dhsl3maubl5in" path="res://Resources/Prefabs/Item Objects/Pickups/Deagle Pickup.tscn" id="10_j5jdo"]
 [ext_resource type="PackedScene" uid="uid://b8yug1ie1muvy" path="res://Resources/Prefabs/Item Objects/Pickups/Deagle Ammo Pickup.tscn" id="11_1eanf"]
 [ext_resource type="PackedScene" uid="uid://dq18tbgnu146j" path="res://Resources/Prefabs/Item Objects/Pickups/Health Pickup.tscn" id="12_k1sfk"]
