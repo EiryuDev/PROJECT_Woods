@@ -1146,6 +1146,7 @@ camera_attributes = SubResource("CameraAttributesPractical_obdna")
 [node name="Background Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_na48c")
 volume_db = 1.0
+bus = &"BGM"
 parameters/looping = true
 
 [node name="World Manager" parent="." instance=ExtResource("4_nagcp")]
@@ -2676,6 +2677,9 @@ occluder = ExtResource("23_1gocl")
 
 [node name="Player" parent="." instance=ExtResource("24_6e1vg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 1.38677, 105)
+
+[node name="SubViewport" parent="Player/CanvasLayer/SubViewport" index="0"]
+size = Vector2i(1280, 720)
 
 [node name="Male Casual" parent="." instance=ExtResource("24_hlkfp")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.04886, -0.175325, 126.032)

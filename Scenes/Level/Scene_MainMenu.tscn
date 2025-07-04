@@ -675,10 +675,12 @@ camera_attributes = SubResource("CameraAttributesPractical_obdna")
 [node name="Main Menu Theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_flhcg")
 volume_db = 1.0
+bus = &"BGM"
 
 [node name="Background Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_mu54g")
 volume_db = 0.05
+bus = &"BGM"
 parameters/looping = true
 
 [node name="World Manager" parent="." instance=ExtResource("4_a4ss1")]
@@ -1641,6 +1643,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.71, 
 
 [node name="Title Screen Manager" type="CanvasLayer" parent="."]
 script = ExtResource("18_rft8w")
+bgmVolumeName = "BGM"
+sfxVolumeName = "SFX"
 
 [node name="Main Menu" type="Control" parent="Title Screen Manager"]
 layout_mode = 3
@@ -1716,6 +1720,117 @@ layout_mode = 2
 text = "Quit
 "
 
+[node name="Settings Options" type="Control" parent="Title Screen Manager/Main Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border2" type="ColorRect" parent="Title Screen Manager/Main Menu/Settings Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Background" type="ColorRect" parent="Title Screen Manager/Main Menu/Settings Options/Border2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 64.0
+offset_right = -360.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[node name="Close Button" type="Button" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background"]
+layout_mode = 0
+offset_left = 1112.0
+offset_top = 16.0
+offset_right = 1630.0
+offset_bottom = 534.0
+scale = Vector2(0.124206, 0.124206)
+icon = ExtResource("20_virxk")
+flat = true
+icon_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -140.0
+offset_right = 168.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Master Volume Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="Master Volume" type="HSlider" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="BGM Volume Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+text = "BGM Volume"
+
+[node name="BGM Volume" type="HSlider" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="SFX Volume Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFX Volume" type="HSlider" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Mute Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+text = "Mute"
+
+[node name="Mute Checkbox" type="CheckBox" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_disabled_color = Color(0.966909, 0.0785458, 0, 1)
+theme_override_font_sizes/font_size = 18
+flat = true
+
+[node name="Fullscreen Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Fullscreen CheckBox" type="CheckBox" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Resolutions" type="OptionButton" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
 [node name="Credits Options" type="Control" parent="Title Screen Manager/Main Menu"]
 visible = false
 layout_mode = 1
@@ -1762,6 +1877,7 @@ vertical_alignment = 1
 selection_enabled = true
 
 [node name="The Woods Title" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background"]
+layout_mode = 0
 offset_left = 48.0
 offset_top = 104.0
 offset_right = 592.0
@@ -1772,6 +1888,7 @@ fit_content = true
 vertical_alignment = 1
 
 [node name="Credits Description" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background"]
+layout_mode = 0
 offset_left = 48.0
 offset_top = 128.0
 offset_right = 1136.0
@@ -2297,8 +2414,16 @@ flat = true
 icon_alignment = 1
 
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Play Button" to="Title Screen Manager" method="PlayGame"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="OpenSettingsMenu"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Credits Button" to="Title Screen Manager" method="OpenCreditsMenu"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Quit Button" to="Title Screen Manager" method="QuitGame"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="CloseSettingsMenu"]
+[connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Master Volume" to="Title Screen Manager" method="OnMasterVolumeValueChanged"]
+[connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/BGM Volume" to="Title Screen Manager" method="OnBGMVolumeValueChanged"]
+[connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/SFX Volume" to="Title Screen Manager" method="OnSFXVolumeValueChanged"]
+[connection signal="toggled" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Mute Checkbox" to="Title Screen Manager" method="OnMuteToggled"]
+[connection signal="toggled" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Fullscreen CheckBox" to="Title Screen Manager" method="OnFullscreenToggled"]
+[connection signal="item_selected" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Resolutions" to="Title Screen Manager" method="OnResolutionsItemSelected"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Credits Options/Border/Background/Close Button" to="Title Screen Manager" method="CloseCreditsMenu"]
 
 [editable path="Node3D"]

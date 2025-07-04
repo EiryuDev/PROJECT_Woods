@@ -45,7 +45,7 @@ func _unhandled_key_input(p_event: InputEvent) -> void:
 				vp.debug_draw = (vp.debug_draw + 1 ) % 6
 				get_viewport().set_input_as_handled()
 			KEY_F11:
-				toggle_fullscreen()
+				#toggle_fullscreen()
 				get_viewport().set_input_as_handled()
 			KEY_ESCAPE, KEY_F12:
 				if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
@@ -55,10 +55,10 @@ func _unhandled_key_input(p_event: InputEvent) -> void:
 				get_viewport().set_input_as_handled()
 		
 		
-func toggle_fullscreen() -> void:
-	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN or \
-		DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		DisplayServer.window_set_size(Vector2(1280, 720))
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+#func toggle_fullscreen() -> void:
+	#if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN or \
+		#DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		#DisplayServer.window_set_size(Vector2(1280, 720))
+	#else:
+		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
