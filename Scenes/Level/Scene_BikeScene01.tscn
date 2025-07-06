@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://46hrhkpqmo0r"]
+[gd_scene load_steps=53 format=4 uid="uid://46hrhkpqmo0r"]
 
 [ext_resource type="Script" uid="uid://d2xo74qgh4wsj" path="res://Scripts/_World/_Character/_Root/WRLD_SCENE_MANAGER.gd" id="1_6e1vg"]
 [ext_resource type="PackedScene" uid="uid://b1p4pmoroxcbu" path="res://Resources/Prefabs/Environment Objects/demo_terrain.tscn" id="2_6e1vg"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dp1h8dwwtlpi4" path="res://Resources/Prefabs/Character Objects/NPC/Male/Male Casual.tscn" id="24_hlkfp"]
 [ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="25_6e1vg"]
 [ext_resource type="PackedScene" uid="uid://bjhbd68q3d31f" path="res://Resources/Prefabs/Props Objects/Outfits/chappal.tscn" id="25_hlkfp"]
+[ext_resource type="PackedScene" uid="uid://bwibl3vittp7u" path="res://Resources/Prefabs/Environment Objects/bamboo_house.tscn" id="27_wrrvi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -2719,6 +2720,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_r16nr")
 }
 autoplay = "Fade In"
+
+[node name="Bamboo House" parent="." instance=ExtResource("27_wrrvi")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.5839, 0.0253134, 145.434)
 
 [editable path="Cat/OiiaioooooiaiFin"]
 [editable path="Player"]
