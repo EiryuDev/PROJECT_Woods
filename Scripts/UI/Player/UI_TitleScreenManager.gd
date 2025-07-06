@@ -9,6 +9,7 @@ var bgmBusID
 var sfxBusID
 
 func _ready():
+	$"Main Menu/Menu Options/VBoxContainer/Play Button".grab_focus()
 	masterBusID = AudioServer.get_bus_index("Master")
 	bgmBusID = AudioServer.get_bus_index(bgmVolumeName)
 	sfxBusID = AudioServer.get_bus_index(sfxVolumeName)
@@ -29,6 +30,7 @@ func OpenSettingsMenu():
 	$"Main Menu/Settings Options".visible = true
 	
 func CloseSettingsMenu():
+	$"Main Menu/Menu Options/VBoxContainer/Options Button".grab_focus()
 	mainMenuCamera.parallaxEffect = true
 	$"Main Menu/Settings Options".visible = false
 	
@@ -37,6 +39,7 @@ func OpenCreditsMenu():
 	$"Main Menu/Credits Options".visible = true
 	
 func CloseCreditsMenu():
+	$"Main Menu/Menu Options/VBoxContainer/Credits Button".grab_focus()
 	mainMenuCamera.parallaxEffect = true
 	$"Main Menu/Credits Options".visible = false
 
@@ -66,3 +69,50 @@ func OnFullscreenToggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func OnVSyncToggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+func SetGraphicsQuality(index: int) -> void:
+	match index:
+		0:  # Low
+			ProjectSettings.set_setting("rendering/quality/driver/driver_name", "forward_plus")
+			ProjectSettings.set_setting("rendering/quality/filters/msaa", 0)
+			ProjectSettings.set_setting("rendering/quality/shadows/filter_mode", 0)
+			ProjectSettings.set_setting("rendering/quality/shadows/atlas_size", 1024)
+			ProjectSettings.set_setting("rendering/quality/shadows/directional_shadow_max_distance", 50.0)
+			ProjectSettings.set_setting("rendering/quality/ssao/quality", 0)
+			ProjectSettings.set_setting("rendering/quality/screen_space_reflection/quality", 0)
+			ProjectSettings.set_setting("rendering/quality/sdfgi/frames_to_converge", 16)
+			ProjectSettings.set_setting("rendering/textures/default_filters/mipmap_bias", 1.5)  # Blurrier/lower res
+			
+		1:  # Medium
+			ProjectSettings.set_setting("rendering/quality/filters/msaa", 2)
+			ProjectSettings.set_setting("rendering/quality/shadows/filter_mode", 1)
+			ProjectSettings.set_setting("rendering/quality/shadows/atlas_size", 2048)
+			ProjectSettings.set_setting("rendering/quality/shadows/directional_shadow_max_distance", 150.0)
+			ProjectSettings.set_setting("rendering/quality/ssao/quality", 1)
+			ProjectSettings.set_setting("rendering/quality/screen_space_reflection/quality", 1)
+			ProjectSettings.set_setting("rendering/quality/sdfgi/frames_to_converge", 8)
+			ProjectSettings.set_setting("rendering/textures/default_filters/mipmap_bias", 0.5)
+			
+		2:  # High
+			ProjectSettings.set_setting("rendering/quality/filters/msaa", 4)
+			ProjectSettings.set_setting("rendering/quality/shadows/filter_mode", 2)
+			ProjectSettings.set_setting("rendering/quality/shadows/atlas_size", 4096)
+			ProjectSettings.set_setting("rendering/quality/shadows/directional_shadow_max_distance", 300.0)
+			ProjectSettings.set_setting("rendering/quality/ssao/quality", 2)
+			ProjectSettings.set_setting("rendering/quality/screen_space_reflection/quality", 2)
+			ProjectSettings.set_setting("rendering/quality/sdfgi/frames_to_converge", 4)
+			ProjectSettings.set_setting("rendering/textures/default_filters/mipmap_bias", 0.0)
+
+	print("Graphics quality set to index:", index)
+
+func PlayButtonHoverSound() -> void:
+	$"Main Menu/Button Hover".play()
+
+func PlayButtonPressedSound() -> void:
+	$"Main Menu/Button Pressed".play()

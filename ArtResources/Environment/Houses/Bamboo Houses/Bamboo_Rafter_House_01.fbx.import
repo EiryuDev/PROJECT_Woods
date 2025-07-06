@@ -1,0 +1,113 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://scamyajbkb2q"
+path="res://.godot/imported/Bamboo_Rafter_House_01.fbx-31d270013934b006e8c3d6fbed49ec5b.scn"
+
+[deps]
+
+source_file="res://ArtResources/Environment/Houses/Bamboo Houses/Bamboo_Rafter_House_01.fbx"
+dest_files=["res://.godot/imported/Bamboo_Rafter_House_01.fbx-31d270013934b006e8c3d6fbed49ec5b.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"M_Chimney01a": {
+"use_external/enabled": true,
+"use_external/path": "uid://bvttsy1f2vsgc"
+},
+"M_Door01a": {
+"use_external/enabled": true,
+"use_external/path": "uid://cloo3c04jvqgl"
+},
+"M_Door01i": {
+"use_external/enabled": true,
+"use_external/path": "uid://bukrge24wudh"
+},
+"M_Floor01a": {
+"use_external/enabled": true,
+"use_external/path": "uid://oo3owawv02mo"
+},
+"M_Floor01b": {
+"use_external/enabled": true,
+"use_external/path": "uid://dkt20gr5xk4i5"
+},
+"M_Ground01a": {
+"use_external/enabled": true,
+"use_external/path": "uid://b1ufknmtit3g4"
+},
+"M_Ground02a": {
+"use_external/enabled": true,
+"use_external/path": "uid://xe81bry21ejw"
+},
+"M_Pillar01a": {
+"use_external/enabled": true,
+"use_external/path": "uid://dqcoc0mjmi12f"
+},
+"M_Pillar01b": {
+"use_external/enabled": true,
+"use_external/path": "uid://crsqovt48wlcr"
+},
+"M_Pillar02a": {
+"use_external/enabled": true,
+"use_external/path": "uid://bhfvty1osuu5t"
+},
+"M_Roof01a_01": {
+"use_external/enabled": true,
+"use_external/path": "uid://5x11eqw1mksj"
+},
+"M_Roof01a_02": {
+"use_external/enabled": true,
+"use_external/path": "uid://dng3o71g54ynp"
+},
+"M_Roof01a_03": {
+"use_external/enabled": true,
+"use_external/path": "uid://b4g5mhtasps16"
+},
+"M_Wall01a": {
+"use_external/enabled": true,
+"use_external/path": "uid://drhojmr2tf1kr"
+},
+"M_Wall01b": {
+"use_external/enabled": true,
+"use_external/path": "uid://dy0jqw75b8bvl"
+},
+"M_Window01i": {
+"use_external/enabled": true,
+"use_external/path": "uid://c1j8qq257r016"
+},
+"M_Wood_Burning_Stove01b": {
+"use_external/enabled": true,
+"use_external/path": "uid://bxx8df43kl1tl"
+},
+"M_Wood_Burning_Stove02b": {
+"use_external/enabled": true,
+"use_external/path": "uid://l3tsxjpruus0"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://dn7jc15cko6b3"]
+[gd_scene load_steps=48 format=4 uid="uid://dn7jc15cko6b3"]
 
 [ext_resource type="PackedScene" uid="uid://bf1dbei3nkcq8" path="res://Settings/Terrain/Demo Level/DemoTerrain.tscn" id="1_um8h5"]
 [ext_resource type="PackedScene" uid="uid://tnhuis33m6qk" path="res://Resources/Prefabs/Environment Objects/tree_01.tscn" id="2_sgdtf"]
@@ -20,6 +20,8 @@
 [ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="18_3fqnm"]
 [ext_resource type="Script" uid="uid://dh6oy04fgod3w" path="res://Scripts/UI/Player/UI_TitleScreenManager.gd" id="18_rft8w"]
 [ext_resource type="Texture2D" uid="uid://b8117ud4iy81t" path="res://ArtResources/UI/Menu/Cross Icon.png" id="20_virxk"]
+[ext_resource type="AudioStream" uid="uid://bpav2oe20srib" path="res://Audio/SFX/SE/UI/SFX_ButtonPressed.mp3" id="21_oxt3t"]
+[ext_resource type="AudioStream" uid="uid://ced5g7qb87xy1" path="res://Audio/SFX/SE/UI/SFX_ButtonHover.ogg" id="22_40lm6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -1721,6 +1723,7 @@ text = "Quit
 "
 
 [node name="Settings Options" type="Control" parent="Title Screen Manager/Main Menu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1768,12 +1771,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -216.0
-offset_top = -140.0
-offset_right = 168.0
-offset_bottom = 152.0
+offset_left = -536.0
+offset_top = -376.0
+offset_right = 560.0
+offset_bottom = 448.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sound Settings Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Sound Settings"
 
 [node name="Master Volume Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
 layout_mode = 2
@@ -1812,6 +1820,11 @@ theme_override_colors/icon_disabled_color = Color(0.966909, 0.0785458, 0, 1)
 theme_override_font_sizes/font_size = 18
 flat = true
 
+[node name="Resolution Settings Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Resolution Settings"
+
 [node name="Fullscreen Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
 layout_mode = 2
 text = "Fullscreen"
@@ -1829,6 +1842,35 @@ popup/item_0/id = 0
 popup/item_1/text = "1600x900"
 popup/item_1/id = 1
 popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[node name="Graphics Settings Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "
+Graphics Settings"
+
+[node name="Vsync Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+text = "Vsync"
+
+[node name="Vsync CheckBox" type="CheckBox" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Graphics Quality Label" type="Label" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+text = "Graphics Quality"
+
+[node name="Graphics Quality" type="OptionButton" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "Low"
+popup/item_0/id = 0
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "High"
 popup/item_2/id = 2
 
 [node name="Credits Options" type="Control" parent="Title Screen Manager/Main Menu"]
@@ -2413,18 +2455,48 @@ icon = ExtResource("20_virxk")
 flat = true
 icon_alignment = 1
 
+[node name="Button Pressed" type="AudioStreamPlayer" parent="Title Screen Manager/Main Menu"]
+stream = ExtResource("21_oxt3t")
+volume_db = 1.0
+bus = &"SFX"
+
+[node name="Button Hover" type="AudioStreamPlayer" parent="Title Screen Manager/Main Menu"]
+stream = ExtResource("22_40lm6")
+volume_db = 1.0
+bus = &"SFX"
+
+[connection signal="focus_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Play Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
+[connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Play Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Play Button" to="Title Screen Manager" method="PlayGame"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Play Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
+[connection signal="focus_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
+[connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="OpenSettingsMenu"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
+[connection signal="focus_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Credits Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
+[connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Credits Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Credits Button" to="Title Screen Manager" method="OpenCreditsMenu"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Credits Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
+[connection signal="focus_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Quit Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
+[connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Quit Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Quit Button" to="Title Screen Manager" method="QuitGame"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Quit Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
+[connection signal="focus_entered" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
+[connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="CloseSettingsMenu"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
 [connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Master Volume" to="Title Screen Manager" method="OnMasterVolumeValueChanged"]
 [connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/BGM Volume" to="Title Screen Manager" method="OnBGMVolumeValueChanged"]
 [connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/SFX Volume" to="Title Screen Manager" method="OnSFXVolumeValueChanged"]
 [connection signal="toggled" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Mute Checkbox" to="Title Screen Manager" method="OnMuteToggled"]
 [connection signal="toggled" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Fullscreen CheckBox" to="Title Screen Manager" method="OnFullscreenToggled"]
 [connection signal="item_selected" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Resolutions" to="Title Screen Manager" method="OnResolutionsItemSelected"]
+[connection signal="toggled" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Vsync CheckBox" to="Title Screen Manager" method="OnVSyncToggled"]
+[connection signal="item_selected" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Graphics Quality" to="Title Screen Manager" method="SetGraphicsQuality"]
+[connection signal="focus_entered" from="Title Screen Manager/Main Menu/Credits Options/Border/Background/Close Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
+[connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Credits Options/Border/Background/Close Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Credits Options/Border/Background/Close Button" to="Title Screen Manager" method="CloseCreditsMenu"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Credits Options/Border/Background/Close Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
 
 [editable path="Node3D"]
 [editable path="Cop NPC/Cop1"]

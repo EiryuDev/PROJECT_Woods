@@ -2625,7 +2625,7 @@ type = "Interact with Generic"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, -24.152)
 
 [node name="Cat" type="RigidBody3D" parent="." groups=["Interactable"]]
-transform = Transform3D(-2.83931, 0, -0.968676, 0, 3, 0, 0.968676, 0, -2.83931, 18.7164, -0.146122, -34.2039)
+transform = Transform3D(1.38069, 0, -2.6634, 0, 3, 0, 2.6634, 0, 1.38069, 2.60164, -0.146122, 112.598)
 collision_layer = 33
 collision_mask = 32
 gravity_scale = 0.0
@@ -2678,14 +2678,8 @@ occluder = ExtResource("23_1gocl")
 [node name="Player" parent="." instance=ExtResource("24_6e1vg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 1.38677, 105)
 
-[node name="SubViewport" parent="Player/CanvasLayer/SubViewport" index="0"]
-size = Vector2i(1280, 720)
-
 [node name="Male Casual" parent="." instance=ExtResource("24_hlkfp")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.04886, -0.175325, 126.032)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 mass = 60.0
 dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
 

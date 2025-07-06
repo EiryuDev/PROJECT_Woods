@@ -445,6 +445,12 @@ _data = {
 }
 
 [node name="Male Casual" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("1_1ki7u")]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 animationPlayer = NodePath("male_casual/AnimationPlayer")
 requireAnimation = true
 

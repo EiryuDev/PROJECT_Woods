@@ -998,7 +998,7 @@ stretch = true
 transparent_bg = true
 handle_input_locally = false
 positional_shadow_atlas_size = 4096
-size = Vector2i(1280, 720)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="ViewportCamera" type="Camera3D" parent="CanvasLayer/SubViewport/SubViewport"]
@@ -1176,16 +1176,16 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
-[node name="FPS Display" type="Label" parent="CanvasLayer/GUI"]
+[node name="FPS Display" type="Label" parent="CanvasLayer/GUI/Stats Display"]
 self_modulate = Color(1, 1, 0.666667, 1)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -374.0
-offset_top = 23.0
-offset_right = -13.0
-offset_bottom = 69.0
+offset_left = -358.0
+offset_top = -801.0
+offset_right = 3.0
+offset_bottom = -755.0
 grow_horizontal = 0
 label_settings = SubResource("LabelSettings_5rt57")
 horizontal_alignment = 2
