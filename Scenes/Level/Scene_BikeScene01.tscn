@@ -2670,6 +2670,9 @@ transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 
 [node name="Wooden House3" parent="." instance=ExtResource("23_nagcp")]
 transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 20.704, 0, 134.342)
 
+[node name="Bamboo House" parent="." instance=ExtResource("27_wrrvi")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.418, 0.0253134, 148.996)
+
 [node name="Corn Field" parent="." instance=ExtResource("24_1gocl")]
 transform = Transform3D(0.35, 0, 0, 0, 0.349793, -0.0120256, 0, 0.0120256, 0.349793, -4.25101, -0.458319, 138.849)
 
@@ -2720,9 +2723,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_r16nr")
 }
 autoplay = "Fade In"
-
-[node name="Bamboo House" parent="." instance=ExtResource("27_wrrvi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.5839, 0.0253134, 145.434)
 
 [editable path="Cat/OiiaioooooiaiFin"]
 [editable path="Player"]

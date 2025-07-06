@@ -212,7 +212,7 @@ points = PackedVector3Array(-0.00940761, -0.00035194, 0.615582, -0.0250799, -0.0
 [node name="Bamboo House" type="Node3D"]
 
 [node name="Bamboo_Rafter_House_01" parent="." instance=ExtResource("1_ajlwh")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1.4, 0, -2.11394e-07, 0, 1.4, 0, 2.11394e-07, 0, -1.4, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Bamboo_Rafter_House_01/Bamboo_Rafter_House_01/SM_Pillar01a" index="0"]
 
@@ -233,6 +233,9 @@ shape = SubResource("ConvexPolygonShape3D_wnn55")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bamboo_Rafter_House_01/Bamboo_Rafter_House_01/SM_Wall04a/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_bfnfy")
+
+[node name="SM_Door01i_01" parent="Bamboo_Rafter_House_01/Bamboo_Rafter_House_01" index="4"]
+visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Bamboo_Rafter_House_01/Bamboo_Rafter_House_01/SM_Door01i_01" index="0"]
 
@@ -418,6 +421,9 @@ shape = SubResource("ConvexPolygonShape3D_fumsx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bamboo_Rafter_House_01/Bamboo_Rafter_House_01/SM_Wall03b_2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_sl4ag")
+
+[node name="SM_Door01i_02" parent="Bamboo_Rafter_House_01/Bamboo_Rafter_House_01" index="45"]
+visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Bamboo_Rafter_House_01/Bamboo_Rafter_House_01/SM_Door01i_02" index="0"]
 
