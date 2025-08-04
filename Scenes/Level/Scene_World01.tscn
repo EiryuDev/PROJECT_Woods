@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bc4u7he8yghg5"]
+[gd_scene load_steps=47 format=4 uid="uid://bc4u7he8yghg5"]
 
 [ext_resource type="PackedScene" uid="uid://bf1dbei3nkcq8" path="res://Settings/Terrain/Demo Level/DemoTerrain.tscn" id="1_0jjbl"]
 [ext_resource type="AudioStream" uid="uid://ut1mhyvtapuk" path="res://Audio/BGS/Silent Hill Ambient.mp3" id="1_1eanf"]
@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://fe5e2bghp07v" path="res://Resources/Prefabs/Character Objects/NPC/Cop 1/Cop NPC.tscn" id="16_cbmdf"]
 [ext_resource type="Script" uid="uid://bmowijr30ago8" path="res://Scripts/_World/_Character/_Root/WRLD_Cat.gd" id="18_0jjbl"]
 [ext_resource type="PackedScene" uid="uid://cdbcyv4nldlqw" path="res://ArtResources/Characters/Enemies/Cat/source/OiiaioooooiaiFin.fbx" id="18_yjnyt"]
+[ext_resource type="Texture2D" uid="uid://bqo3u2n4bh7w6" path="res://ArtResources/Environment/Source/Plateau_grass_lowres.png" id="20_bnhl3"]
 [ext_resource type="PackedScene" uid="uid://tbn3nhc5ycoo" path="res://Resources/Prefabs/Props Objects/Cars/PoliceCar01.tscn" id="20_obdna"]
+[ext_resource type="PackedScene" uid="uid://dqlv78hfo8y57" path="res://Resources/Prefabs/Character Objects/Enemies/Bird Monster/bird_monster.tscn" id="21_bnhl3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -218,8 +220,6 @@ shadow_mesh = SubResource("ArrayMesh_rp0to")
 data = PackedVector3Array(-2, 3, -0.3, -2, 0, 0.3, -2, 0, -0.3, -2, 3, -0.3, -2, 3, 0.3, -2, 0, 0.3, 2, 3, -0.3, -2, 0, -0.3, 2, 0, -0.3, 2, 3, -0.3, -2, 3, -0.3, -2, 0, -0.3, 2, 3, 0.3, 2, 0, -0.3, 2, 0, 0.3, 2, 3, 0.3, 2, 3, -0.3, 2, 0, -0.3, -2, 3, 0.3, 2, 0, 0.3, -2, 0, 0.3, -2, 3, 0.3, 2, 3, 0.3, 2, 0, 0.3, -2, 0, 0.3, 2, 0, -0.3, -2, 0, -0.3, -2, 0, 0.3, 2, 0, 0.3, 2, 0, -0.3, 2, 3, 0.3, -2, 3, -0.3, 2, 3, -0.3, 2, 3, 0.3, -2, 3, 0.3, -2, 3, -0.3)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_6rwdy"]
-vertices = PackedVector3Array(7.75, 1, -39.25, 9, 1, -39.75, 9, 1, -40.25, -2, 1, -40.5, 13.5, 1, -36, 13, 1, -36, 8, 1, -35.75, 13.5, 1, -28.5, -1.75, 1, -42, 0.25, 1, -42, 0.25, 1, -49.5, -6, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -49.5, -49.5, 1, -43.5, -31, 1, -49.5, -49.5, 1, 0, -49.5, 1, 6, -49.5, 1, 43.25, -49.5, 1, 49.5, -43.5, 1, 49.5, 12.25, 1, 49.5, 18.5, 1, 49.5, 49.5, 1, 29.5, -31, 1, -49.5, -49.5, 1, -18.75, -49.5, 1, -12.5, -2, 1, -40.5, -1.75, 1, -42, -6, 1, -49.5, -12.25, 1, -49.5, 8, 1, -35.75, 7.75, 1, -39.25, -2, 1, -40.5, 43.25, 1, 49.5, 49.5, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, -0.25, 49.5, 1, -10, 13.5, 1, -28.5, -37.25, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -43.5, -49.5, 1, -37.25, -49.5, 1, 43.25, -43.5, 1, 49.5, -37.25, 1, 49.5, -49.5, 1, 37, 37, 1, 49.5, 43.25, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -49.5, 1, -12.5, -49.5, 1, -6.25, 12.25, 1, 49.5, 49.5, 1, 29.5, 49.5, 1, 19.5, 6, 1, 49.5, -2, 1, -40.5, -12.25, 1, -49.5, -18.5, 1, -49.5, 13.5, 1, -28.5, 8, 1, -35.75, -2, 1, -40.5, -24.75, 1, -49.5, -31, 1, -49.5, 30.75, 1, 49.5, 37, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -37.25, 1, -49.5, -49.5, 1, -37.25, -49.5, 1, -31, -49.5, 1, 37, -37.25, 1, 49.5, -31, 1, 49.5, -49.5, 1, 30.75, -2, 1, -40.5, -18.5, 1, -49.5, -24.75, 1, -49.5, 49.5, 1, 9.75, 49.5, 1, -0.25, 13.5, 1, -28.5, -6.25, 1, 49.5, 0, 1, 49.5, 49.5, 1, 19.5, 13.5, 1, -28.5, -31, 1, -49.5, -49.5, 1, 6, 24.75, 1, 49.5, 30.75, 1, 49.5, 49.5, 1, 39.5, -49.5, 1, 18.5, -18.75, 1, 49.5, -12.5, 1, 49.5, -49.5, 1, 12.25, -31, 1, -49.5, -49.5, 1, -31, -49.5, 1, -24.75, -49.5, 1, 24.75, -49.5, 1, 30.75, -31, 1, 49.5, -24.75, 1, 49.5, 24.75, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, 29.5, 18.5, 1, 49.5, 49.5, 1, -29.75, 15.25, 1, -30, 15, 1, -28.25, 49.5, 1, -20, 49.5, 1, 19.5, 49.5, 1, 9.75, 13.5, 1, -28.5, -49.5, 1, 12.25, -12.5, 1, 49.5, -6.25, 1, 49.5, -49.5, 1, 6, -31, 1, -49.5, -49.5, 1, -24.75, -49.5, 1, -18.75, -31, 1, -49.5, -49.5, 1, -6.25, -49.5, 1, 0, 49.5, 1, -20, 15, 1, -28.25, 13.5, 1, -28.5, 49.5, 1, -10, -49.5, 1, 24.75, -24.75, 1, 49.5, -18.75, 1, 49.5, -49.5, 1, 18.5, 0, 1, 49.5, 6, 1, 49.5, 49.5, 1, 19.5, 6.5, 1, -49.5, 0.25, 1, -49.5, 0.25, 1, -42, 6.5, 1, -42, 6.5, 1, -42, 13, 1, -42, 13, 1, -49.5, 6.5, 1, -49.5, 13, 1, -49.5, 13, 1, -42, 15.25, 1, -41.75, 22, 1, -49.5, 49.5, 1, -39.75, 40.25, 1, -49.5, 31.25, 1, -49.5, 15.25, 1, -41.75, 15.25, 1, -30, 49.5, 1, -29.75, 49.5, 1, -39.75, 49.5, 1, -49.5, 40.25, 1, -49.5, 31.25, 1, -49.5, 22, 1, -49.5, 15.25, 1, -41.75, 12.75, 1, -39.5, 13, 1, -36, 13.5, 1, -36, 13.5, 1, -40.25, 12.75, 1, -39.5, 13.5, 1, -40.25, 9, 1, -40.25, 9, 1, -39.75, 8.75, 4.75, -38.75, 8.75, 4.75, -36.75, 12, 4.75, -36.75, 12, 4.75, -38.75, 8.75, 5.25, -37.75, 12, 5.25, -37.75, 9, 1, -38.25, 9, 1, -37, 11.75, 1, -37, 11.75, 1, -38.25)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(20, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 30), PackedInt32Array(33, 32, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(39, 38, 37), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(50, 49, 48), PackedInt32Array(53, 52, 51), PackedInt32Array(54, 57, 55), PackedInt32Array(55, 57, 56), PackedInt32Array(60, 59, 58), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(64, 61, 65), PackedInt32Array(68, 67, 66), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(79, 78, 77), PackedInt32Array(82, 81, 80), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(86, 83, 88), PackedInt32Array(86, 88, 87), PackedInt32Array(91, 90, 89), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 95), PackedInt32Array(98, 97, 96), PackedInt32Array(100, 99, 101), PackedInt32Array(101, 99, 102), PackedInt32Array(103, 106, 104), PackedInt32Array(104, 106, 105), PackedInt32Array(108, 107, 109), PackedInt32Array(109, 107, 110), PackedInt32Array(113, 112, 111), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(120, 119, 118), PackedInt32Array(123, 122, 121), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(129, 128, 130), PackedInt32Array(130, 128, 131), PackedInt32Array(134, 133, 132), PackedInt32Array(138, 137, 135), PackedInt32Array(135, 137, 136), PackedInt32Array(142, 141, 139), PackedInt32Array(139, 141, 140), PackedInt32Array(144, 143, 145), PackedInt32Array(145, 143, 146), PackedInt32Array(148, 147, 149), PackedInt32Array(149, 147, 152), PackedInt32Array(149, 152, 150), PackedInt32Array(150, 152, 151), PackedInt32Array(155, 154, 153), PackedInt32Array(158, 157, 156), PackedInt32Array(160, 159, 161), PackedInt32Array(161, 159, 162), PackedInt32Array(166, 165, 163), PackedInt32Array(163, 165, 164), PackedInt32Array(170, 172, 167), PackedInt32Array(167, 172, 171), PackedInt32Array(171, 172, 169), PackedInt32Array(171, 169, 168), PackedInt32Array(176, 175, 173), PackedInt32Array(173, 175, 174)]
 geometry_source_geometry_mode = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_ikhcb"]
@@ -292,9 +292,25 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jjbl"]
 size = Vector3(1, 0.552353, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj1v1"]
+albedo_color = Color(0.619608, 0.619608, 0.619608, 1)
+albedo_texture = ExtResource("20_bnhl3")
+uv1_scale = Vector3(100, 100, 100)
+uv1_offset = Vector3(1, 1, 1)
+texture_filter = 4
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_12plm"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ipgoc"]
+vertices = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
+
 [node name="World" type="Node3D"]
 
 [node name="Node3D" parent="." instance=ExtResource("1_0jjbl")]
+
+[node name="Terrain3D" parent="Node3D" index="0"]
+visible = false
 
 [node name="tree01" parent="Node3D" instance=ExtResource("2_bnhl3")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.41634, 0, -1.89317)
@@ -2339,7 +2355,6 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_clnb3")
 
 [node name="Navigation" type="Node3D" parent="."]
-visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Navigation"]
 navigation_mesh = SubResource("NavigationMesh_6rwdy")
@@ -2423,6 +2438,17 @@ shape = SubResource("BoxShape3D_0jjbl")
 
 [node name="PolicaCar01" parent="." instance=ExtResource("20_obdna")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 15.6697, -0.00457197, -24)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(92.6433, 0, 0, 0, 7.64839, 0, 0, 0, 124.842, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_uj1v1")
+mesh = SubResource("PlaneMesh_12plm")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="MeshInstance3D"]
+navigation_mesh = SubResource("NavigationMesh_ipgoc")
+
+[node name="BirdMonster" parent="." instance=ExtResource("21_bnhl3")]
+transform = Transform3D(0.408267, 0, 0.912863, 0, 1, 0, -0.912863, 0, 0.408267, -11.4176, 0, -28.8166)
 
 [editable path="Node3D"]
 [editable path="Cat/OiiaioooooiaiFin"]

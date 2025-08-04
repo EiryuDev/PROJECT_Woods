@@ -2444,6 +2444,37 @@ fit_content = true
 vertical_alignment = 1
 selection_enabled = true
 
+[node name="Bucket Asset List" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "_________________________"
+fit_content = true
+
+[node name="Asset Name" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Bucket Asset List"]
+layout_mode = 1
+offset_right = 224.0
+offset_bottom = 19.0
+text = "BUCKET"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Asset Link" type="RichTextLabel" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background/ScrollContainer/VBoxContainer/Bucket Asset List"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_right = 476.0
+offset_bottom = 19.0
+grow_horizontal = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0.703233, 0.827431, 1)
+bbcode_enabled = true
+text = "HTTPS://SKFB.LY/OAQKG"
+fit_content = true
+vertical_alignment = 1
+selection_enabled = true
+
 [node name="Close Button" type="Button" parent="Title Screen Manager/Main Menu/Credits Options/Border/Background"]
 layout_mode = 0
 offset_left = 1112.0
@@ -2483,8 +2514,8 @@ bus = &"SFX"
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Quit Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
 [connection signal="focus_entered" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
-[connection signal="pressed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="CloseSettingsMenu"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="CloseSettingsMenu"]
 [connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Master Volume" to="Title Screen Manager" method="OnMasterVolumeValueChanged"]
 [connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/BGM Volume" to="Title Screen Manager" method="OnBGMVolumeValueChanged"]
 [connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/SFX Volume" to="Title Screen Manager" method="OnSFXVolumeValueChanged"]

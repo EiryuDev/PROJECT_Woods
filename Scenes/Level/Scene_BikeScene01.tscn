@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://46hrhkpqmo0r"]
+[gd_scene load_steps=56 format=4 uid="uid://46hrhkpqmo0r"]
 
 [ext_resource type="Script" uid="uid://d2xo74qgh4wsj" path="res://Scripts/_World/_Character/_Root/WRLD_SCENE_MANAGER.gd" id="1_6e1vg"]
 [ext_resource type="PackedScene" uid="uid://b1p4pmoroxcbu" path="res://Resources/Prefabs/Environment Objects/demo_terrain.tscn" id="2_6e1vg"]
@@ -22,11 +22,15 @@
 [ext_resource type="ArrayOccluder3D" uid="uid://cbrelhv5tmkcc" path="res://Settings/Occluders/Scene_BikeScene01.occ" id="23_1gocl"]
 [ext_resource type="PackedScene" uid="uid://bebwmry642d5b" path="res://Resources/Prefabs/Environment Objects/wooden_house.tscn" id="23_nagcp"]
 [ext_resource type="PackedScene" uid="uid://bm84xr4fceg4d" path="res://Resources/Prefabs/Environment Objects/corn_field.tscn" id="24_1gocl"]
-[ext_resource type="PackedScene" uid="uid://cq0a041eg5071" path="res://Scenes/Objects/player.tscn" id="24_6e1vg"]
 [ext_resource type="PackedScene" uid="uid://dp1h8dwwtlpi4" path="res://Resources/Prefabs/Character Objects/NPC/Male/Male Casual.tscn" id="24_hlkfp"]
 [ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="25_6e1vg"]
 [ext_resource type="PackedScene" uid="uid://bjhbd68q3d31f" path="res://Resources/Prefabs/Props Objects/Outfits/chappal.tscn" id="25_hlkfp"]
 [ext_resource type="PackedScene" uid="uid://bwibl3vittp7u" path="res://Resources/Prefabs/Environment Objects/bamboo_house.tscn" id="27_wrrvi"]
+[ext_resource type="PackedScene" uid="uid://brolecwl5tj47" path="res://Resources/Prefabs/Props Objects/Handpump/handpump.tscn" id="28_bb3jp"]
+[ext_resource type="PackedScene" uid="uid://cpats3t60ukmo" path="res://Resources/Prefabs/Props Objects/Bucket/bucket.tscn" id="29_r16nr"]
+[ext_resource type="PackedScene" uid="uid://cq0a041eg5071" path="res://Scenes/Objects/player.tscn" id="29_vaogl"]
+[ext_resource type="PackedScene" uid="uid://d3rt2q1anhcq8" path="res://Resources/Prefabs/Props Objects/Hays/hay.tscn" id="30_qfmxi"]
+[ext_resource type="PackedScene" uid="uid://iia6m6xf3xn0" path="res://ArtResources/Props/Royal Enfield/source/Royal Enfield Classic.glb" id="31_ik1lq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -225,11 +229,6 @@ shadow_mesh = SubResource("ArrayMesh_rp0to")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_clnb3"]
 data = PackedVector3Array(-2, 3, -0.3, -2, 0, 0.3, -2, 0, -0.3, -2, 3, -0.3, -2, 3, 0.3, -2, 0, 0.3, 2, 3, -0.3, -2, 0, -0.3, 2, 0, -0.3, 2, 3, -0.3, -2, 3, -0.3, -2, 0, -0.3, 2, 3, 0.3, 2, 0, -0.3, 2, 0, 0.3, 2, 3, 0.3, 2, 3, -0.3, 2, 0, -0.3, -2, 3, 0.3, 2, 0, 0.3, -2, 0, 0.3, -2, 3, 0.3, 2, 3, 0.3, 2, 0, 0.3, -2, 0, 0.3, 2, 0, -0.3, -2, 0, -0.3, -2, 0, 0.3, 2, 0, 0.3, 2, 0, -0.3, 2, 3, 0.3, -2, 3, -0.3, 2, 3, -0.3, 2, 3, 0.3, -2, 3, 0.3, -2, 3, -0.3)
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_6rwdy"]
-vertices = PackedVector3Array(7.75, 1, -39.25, 9, 1, -39.75, 9, 1, -40.25, -2, 1, -40.5, 13.5, 1, -36, 13, 1, -36, 8, 1, -35.75, 13.5, 1, -28.5, -1.75, 1, -42, 0.25, 1, -42, 0.25, 1, -49.5, -6, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -49.5, -49.5, 1, -43.5, -31, 1, -49.5, -49.5, 1, 0, -49.5, 1, 6, -49.5, 1, 43.25, -49.5, 1, 49.5, -43.5, 1, 49.5, 12.25, 1, 49.5, 18.5, 1, 49.5, 49.5, 1, 29.5, -31, 1, -49.5, -49.5, 1, -18.75, -49.5, 1, -12.5, -2, 1, -40.5, -1.75, 1, -42, -6, 1, -49.5, -12.25, 1, -49.5, 8, 1, -35.75, 7.75, 1, -39.25, -2, 1, -40.5, 43.25, 1, 49.5, 49.5, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, -0.25, 49.5, 1, -10, 13.5, 1, -28.5, -37.25, 1, -49.5, -43.5, 1, -49.5, -49.5, 1, -43.5, -49.5, 1, -37.25, -49.5, 1, 43.25, -43.5, 1, 49.5, -37.25, 1, 49.5, -49.5, 1, 37, 37, 1, 49.5, 43.25, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -49.5, 1, -12.5, -49.5, 1, -6.25, 12.25, 1, 49.5, 49.5, 1, 29.5, 49.5, 1, 19.5, 6, 1, 49.5, -2, 1, -40.5, -12.25, 1, -49.5, -18.5, 1, -49.5, 13.5, 1, -28.5, 8, 1, -35.75, -2, 1, -40.5, -24.75, 1, -49.5, -31, 1, -49.5, 30.75, 1, 49.5, 37, 1, 49.5, 49.5, 1, 39.5, -31, 1, -49.5, -37.25, 1, -49.5, -49.5, 1, -37.25, -49.5, 1, -31, -49.5, 1, 37, -37.25, 1, 49.5, -31, 1, 49.5, -49.5, 1, 30.75, -2, 1, -40.5, -18.5, 1, -49.5, -24.75, 1, -49.5, 49.5, 1, 9.75, 49.5, 1, -0.25, 13.5, 1, -28.5, -6.25, 1, 49.5, 0, 1, 49.5, 49.5, 1, 19.5, 13.5, 1, -28.5, -31, 1, -49.5, -49.5, 1, 6, 24.75, 1, 49.5, 30.75, 1, 49.5, 49.5, 1, 39.5, -49.5, 1, 18.5, -18.75, 1, 49.5, -12.5, 1, 49.5, -49.5, 1, 12.25, -31, 1, -49.5, -49.5, 1, -31, -49.5, 1, -24.75, -49.5, 1, 24.75, -49.5, 1, 30.75, -31, 1, 49.5, -24.75, 1, 49.5, 24.75, 1, 49.5, 49.5, 1, 39.5, 49.5, 1, 29.5, 18.5, 1, 49.5, 49.5, 1, -29.75, 15.25, 1, -30, 15, 1, -28.25, 49.5, 1, -20, 49.5, 1, 19.5, 49.5, 1, 9.75, 13.5, 1, -28.5, -49.5, 1, 12.25, -12.5, 1, 49.5, -6.25, 1, 49.5, -49.5, 1, 6, -31, 1, -49.5, -49.5, 1, -24.75, -49.5, 1, -18.75, -31, 1, -49.5, -49.5, 1, -6.25, -49.5, 1, 0, 49.5, 1, -20, 15, 1, -28.25, 13.5, 1, -28.5, 49.5, 1, -10, -49.5, 1, 24.75, -24.75, 1, 49.5, -18.75, 1, 49.5, -49.5, 1, 18.5, 0, 1, 49.5, 6, 1, 49.5, 49.5, 1, 19.5, 6.5, 1, -49.5, 0.25, 1, -49.5, 0.25, 1, -42, 6.5, 1, -42, 6.5, 1, -42, 13, 1, -42, 13, 1, -49.5, 6.5, 1, -49.5, 13, 1, -49.5, 13, 1, -42, 15.25, 1, -41.75, 22, 1, -49.5, 49.5, 1, -39.75, 40.25, 1, -49.5, 31.25, 1, -49.5, 15.25, 1, -41.75, 15.25, 1, -30, 49.5, 1, -29.75, 49.5, 1, -39.75, 49.5, 1, -49.5, 40.25, 1, -49.5, 31.25, 1, -49.5, 22, 1, -49.5, 15.25, 1, -41.75, 12.75, 1, -39.5, 13, 1, -36, 13.5, 1, -36, 13.5, 1, -40.25, 12.75, 1, -39.5, 13.5, 1, -40.25, 9, 1, -40.25, 9, 1, -39.75, 8.75, 4.75, -38.75, 8.75, 4.75, -36.75, 12, 4.75, -36.75, 12, 4.75, -38.75, 8.75, 5.25, -37.75, 12, 5.25, -37.75, 9, 1, -38.25, 9, 1, -37, 11.75, 1, -37, 11.75, 1, -38.25)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(20, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(26, 25, 24), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 30), PackedInt32Array(33, 32, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(39, 38, 37), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(50, 49, 48), PackedInt32Array(53, 52, 51), PackedInt32Array(54, 57, 55), PackedInt32Array(55, 57, 56), PackedInt32Array(60, 59, 58), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(64, 61, 65), PackedInt32Array(68, 67, 66), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(79, 78, 77), PackedInt32Array(82, 81, 80), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(86, 83, 88), PackedInt32Array(86, 88, 87), PackedInt32Array(91, 90, 89), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 95), PackedInt32Array(98, 97, 96), PackedInt32Array(100, 99, 101), PackedInt32Array(101, 99, 102), PackedInt32Array(103, 106, 104), PackedInt32Array(104, 106, 105), PackedInt32Array(108, 107, 109), PackedInt32Array(109, 107, 110), PackedInt32Array(113, 112, 111), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(120, 119, 118), PackedInt32Array(123, 122, 121), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(129, 128, 130), PackedInt32Array(130, 128, 131), PackedInt32Array(134, 133, 132), PackedInt32Array(138, 137, 135), PackedInt32Array(135, 137, 136), PackedInt32Array(142, 141, 139), PackedInt32Array(139, 141, 140), PackedInt32Array(144, 143, 145), PackedInt32Array(145, 143, 146), PackedInt32Array(148, 147, 149), PackedInt32Array(149, 147, 152), PackedInt32Array(149, 152, 150), PackedInt32Array(150, 152, 151), PackedInt32Array(155, 154, 153), PackedInt32Array(158, 157, 156), PackedInt32Array(160, 159, 161), PackedInt32Array(161, 159, 162), PackedInt32Array(166, 165, 163), PackedInt32Array(163, 165, 164), PackedInt32Array(170, 172, 167), PackedInt32Array(167, 172, 171), PackedInt32Array(171, 172, 169), PackedInt32Array(171, 169, 168), PackedInt32Array(176, 175, 173), PackedInt32Array(173, 175, 174)]
-geometry_source_geometry_mode = 1
-
 [sub_resource type="BoxMesh" id="BoxMesh_ikhcb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikhcb"]
@@ -367,6 +366,7 @@ script = ExtResource("1_6e1vg")
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="Demo Terrain" parent="Node3D" instance=ExtResource("2_6e1vg")]
+collision_mode = 3
 
 [node name="tree01" parent="Node3D" instance=ExtResource("2_f1ybc")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.41634, 0, -1.89317)
@@ -2394,6 +2394,110 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall2/brickwall2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_clnb3")
 
+[node name="brickwall3" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51726, -0.372563, 19.017)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall3/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall3/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall4" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.482743, -0.372563, 19.017)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall4/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall4/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall5" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48274, -0.372563, 19.017)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall5/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall5/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall6" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.48274, -0.372563, 19.017)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall6/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall6/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall21" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.52926, -0.328683, 27.4656)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall21/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall21/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall22" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47074, -0.328683, 27.4656)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall22/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall22/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall23" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.47074, -0.328683, 27.4656)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall23/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall23/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
+[node name="brickwall24" type="Node3D" parent="Environment/Walls/Front Border Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47074, -0.328683, 27.4656)
+
+[node name="brickwall2" type="MeshInstance3D" parent="Environment/Walls/Front Border Walls/brickwall24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477692, 0)
+mesh = SubResource("ArrayMesh_6my4r")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Walls/Front Border Walls/brickwall24/brickwall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall24/brickwall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_clnb3")
+
 [node name="brickwall7" type="Node3D" parent="Environment/Walls/Front Border Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55326, 0, -41.1805)
 
@@ -2576,12 +2680,6 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Walls/Front Border Walls/brickwall20/brickwall2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_clnb3")
 
-[node name="Navigation" type="Node3D" parent="."]
-visible = false
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Navigation"]
-navigation_mesh = SubResource("NavigationMesh_6rwdy")
-
 [node name="Stair" type="Node" parent="."]
 
 [node name="Staircase" type="MeshInstance3D" parent="Stair"]
@@ -2624,6 +2722,9 @@ type = "Interact with Generic"
 
 [node name="Cop NPC" parent="." instance=ExtResource("16_o1g6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, -24.152)
+
+[node name="Cop NPC2" parent="." instance=ExtResource("16_o1g6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, 152.848)
 
 [node name="Cat" type="RigidBody3D" parent="." groups=["Interactable"]]
 transform = Transform3D(1.38069, 0, -2.6634, 0, 3, 0, 2.6634, 0, 1.38069, 2.60164, -0.146122, 112.598)
@@ -2677,13 +2778,31 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.418
 transform = Transform3D(0.35, 0, 0, 0, 0.349793, -0.0120256, 0, 0.0120256, 0.349793, -4.25101, -0.458319, 138.849)
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.260036, -3.8147e-06, 0.117119)
 occluder = ExtResource("23_1gocl")
-
-[node name="Player" parent="." instance=ExtResource("24_6e1vg")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 1.38677, 105)
 
 [node name="Male Casual" parent="." instance=ExtResource("24_hlkfp")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.04886, -0.175325, 126.032)
+mass = 60.0
+dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
+
+[node name="Male Casual2" parent="." instance=ExtResource("24_hlkfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.322, -0.175325, 126.44)
+mass = 60.0
+dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
+
+[node name="Male Casual3" parent="." instance=ExtResource("24_hlkfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1615, -0.175325, 151.7)
+mass = 60.0
+dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
+
+[node name="Male Casual4" parent="." instance=ExtResource("24_hlkfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1615, -0.175325, 154.178)
+mass = 60.0
+dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
+
+[node name="Male Casual5" parent="." instance=ExtResource("24_hlkfp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.36153, -0.478491, 164.813)
 mass = 60.0
 dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
 
@@ -2724,7 +2843,19 @@ libraries = {
 }
 autoplay = "Fade In"
 
+[node name="Handpump" parent="." instance=ExtResource("28_bb3jp")]
+transform = Transform3D(-2.18557e-10, 0, -0.005, 0, 0.005, 0, 0.005, 0, -2.18557e-10, 18.0287, 0.0523233, 168.239)
+
+[node name="Bucket" parent="." instance=ExtResource("29_r16nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5009, 0.0806648, 168.162)
+
+[node name="Player" parent="." instance=ExtResource("29_vaogl")]
+
+[node name="Hay" parent="." instance=ExtResource("30_qfmxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22306, -0.533454, 167.257)
+
+[node name="Royal Enfield Classic" parent="." instance=ExtResource("31_ik1lq")]
+transform = Transform3D(-0.076197, 0, 0.997093, 0, 1, 0, -0.997093, 0, -0.076197, 17.8802, 0.896253, 163.473)
+
+[editable path="Node3D/Demo Terrain"]
 [editable path="Cat/OiiaioooooiaiFin"]
-[editable path="Player"]
-[editable path="Player/Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter/HitScanBulletEmitter"]
-[editable path="Player/Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]
