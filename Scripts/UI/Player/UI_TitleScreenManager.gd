@@ -14,6 +14,14 @@ func _ready():
 	bgmBusID = AudioServer.get_bus_index(bgmVolumeName)
 	sfxBusID = AudioServer.get_bus_index(sfxVolumeName)
 	
+	var video_settings = ConfigFileManager.load_video_settings()
+	%"Fullscreen CheckBox".button_pressed = video_settings.fullscreen
+	
+	var audio_settings = ConfigFileManager.load_audio_settings()
+	%"Master Volume".value = min(audio_settings.master_volume, 1.0) * 100
+	%"BGM Volume".value = min(audio_settings.bgm_volume, 1.0) * 100
+	%"SFX Volume".value = min(audio_settings.sfx_volume, 1.0) * 100
+	
 func PlayGame():
 	call_deferred("_load_game_scene")
 
@@ -65,6 +73,7 @@ func OnResolutionsItemSelected(index: int) -> void:
 			DisplayServer.window_set_size(Vector2i(1280,720))
 
 func OnFullscreenToggled(toggled_on: bool) -> void:
+	ConfigFileManager.save_video_setting("fullscreen", toggled_on)
 	if toggled_on == true:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
@@ -116,3 +125,19 @@ func PlayButtonHoverSound() -> void:
 
 func PlayButtonPressedSound() -> void:
 	$"Main Menu/Button Pressed".play()
+
+
+func _on_master_volume_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		ConfigFileManager.save_audio_settings("master_volume", %"Master Volume".value / 100)
+
+func _on_bgm_volume_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		ConfigFileManager.save_audio_settings("bgm_volume", %"BGM Volume".value / 100)
+
+func _on_sfx_volume_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		ConfigFileManager.save_audio_settings("sfx_volume", %"SFX Volume".value / 100)
+
+func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
+	pass # Replace with function body.

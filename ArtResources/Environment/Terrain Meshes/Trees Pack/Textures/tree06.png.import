@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bet48rm6v0t54"
-path.s3tc="res://.godot/imported/tree06.png-11710135d9961933d701849b615eaa26.s3tc.ctex"
-path.etc2="res://.godot/imported/tree06.png-11710135d9961933d701849b615eaa26.etc2.ctex"
+path.s3tc="res://.godot/imported/tree06.png-0b1bc80219f17cc0880cf5f969b5d81a.s3tc.ctex"
+path.etc2="res://.godot/imported/tree06.png-0b1bc80219f17cc0880cf5f969b5d81a.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://ArtResources/Environment/Terrain Meshes/Trees Pack/textures/tree06.png"
-dest_files=["res://.godot/imported/tree06.png-11710135d9961933d701849b615eaa26.s3tc.ctex", "res://.godot/imported/tree06.png-11710135d9961933d701849b615eaa26.etc2.ctex"]
+source_file="res://ArtResources/Environment/Terrain Meshes/Trees Pack/Textures/tree06.png"
+dest_files=["res://.godot/imported/tree06.png-0b1bc80219f17cc0880cf5f969b5d81a.s3tc.ctex", "res://.godot/imported/tree06.png-0b1bc80219f17cc0880cf5f969b5d81a.etc2.ctex"]
 
 [params]
 

@@ -4,6 +4,7 @@ extends Node3D
 @export var enableChance := 0.5
 @export var objectToEnable : Node3D
 
+
 func _ready():
 	randomize()
 	

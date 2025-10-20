@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=77 format=4 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://o8cqav6lwi8x" path="res://Scripts/Items/Player/Pickup/PlayerPickupPointManager.gd" id="2_34odq"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://dnmsfddd0sqtx" path="res://Scripts/Audio/Player/PlayerStepTrackerSoundManager.gd" id="21_03qow"]
 [ext_resource type="AudioStream" uid="uid://d05p3mivl34ob" path="res://Audio/SFX/SE/steps/step_1.wav" id="21_6v78c"]
 [ext_resource type="AudioStream" uid="uid://cry4itlgfcu48" path="res://Audio/SFX/SE/steps/step_2.wav" id="22_03qow"]
+[ext_resource type="Script" uid="uid://ruxj265rtky7" path="res://Scripts/UI/Player/PlayerUIManager.gd" id="30_kgbis"]
 [ext_resource type="Script" uid="uid://d1tj0s44xx2aa" path="res://Scripts/UI/Player/UI_DeathScreen.gd" id="33_gra3g"]
 [ext_resource type="Script" uid="uid://bf4x4oxaftrix" path="res://Scripts/UI/Player/UI_FPSDisplay.gd" id="34_0ykjt"]
 
@@ -987,6 +988,7 @@ stream = ExtResource("15_uaqrc")
 bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("30_kgbis")
 
 [node name="SubViewport" type="SubViewportContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -1280,6 +1282,50 @@ text = "Restart"
 libraries = {
 &"": SubResource("AnimationLibrary_2btc3")
 }
+
+[node name="Pause Display" type="Control" parent="CanvasLayer/GUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/Pause Display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.28235295)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI/Pause Display"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -63.0
+offset_right = 120.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Save Game" type="Button" parent="CanvasLayer/GUI/Pause Display/VBoxContainer"]
+layout_mode = 2
+text = "Save Game"
+
+[node name="Quit Game" type="Button" parent="CanvasLayer/GUI/Pause Display/VBoxContainer"]
+layout_mode = 2
+text = "Quit Game"
+
+[connection signal="pressed" from="CanvasLayer/GUI/Pause Display/VBoxContainer/Save Game" to="Player Locomotion Manager" method="_on_save_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/GUI/Pause Display/VBoxContainer/Quit Game" to="CanvasLayer" method="_on_quit_game_pressed"]
 
 [editable path="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter/HitScanBulletEmitter"]
 [editable path="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]

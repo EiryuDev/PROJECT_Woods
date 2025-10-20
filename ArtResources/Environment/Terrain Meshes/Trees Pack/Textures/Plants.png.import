@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca7114ytkgldq"
-path.s3tc="res://.godot/imported/Plants.png-51048785ef9557202f9e3ae6ab529170.s3tc.ctex"
-path.etc2="res://.godot/imported/Plants.png-51048785ef9557202f9e3ae6ab529170.etc2.ctex"
+path.s3tc="res://.godot/imported/Plants.png-361f9869798f7b2946227216032b9c65.s3tc.ctex"
+path.etc2="res://.godot/imported/Plants.png-361f9869798f7b2946227216032b9c65.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://ArtResources/Environment/Terrain Meshes/Trees Pack/textures/Plants.png"
-dest_files=["res://.godot/imported/Plants.png-51048785ef9557202f9e3ae6ab529170.s3tc.ctex", "res://.godot/imported/Plants.png-51048785ef9557202f9e3ae6ab529170.etc2.ctex"]
+source_file="res://ArtResources/Environment/Terrain Meshes/Trees Pack/Textures/Plants.png"
+dest_files=["res://.godot/imported/Plants.png-361f9869798f7b2946227216032b9c65.s3tc.ctex", "res://.godot/imported/Plants.png-361f9869798f7b2946227216032b9c65.etc2.ctex"]
 
 [params]
 

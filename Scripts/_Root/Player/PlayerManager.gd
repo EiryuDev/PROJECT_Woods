@@ -29,7 +29,8 @@ const HOTKEYS = {
 	KEY_0:9,
 }
 var isDead = false
-var toggleActive = false
+var toggleHideUI = false
+var togglePause = false
 
 func _ready():
 	playerStatsManager.died.connect(kill)
@@ -72,13 +73,22 @@ func _input(event):
 			interacted.action_use()
 	
 	if Input.is_action_just_pressed("hide ui"):
-		if !toggleActive:
-			toggleActive = true
+		if !toggleHideUI:
+			toggleHideUI = true
 			playerStatsManager.statsDisplay.visible = false
 		else:
-			toggleActive = false
+			toggleHideUI = false
 			playerStatsManager.statsDisplay.visible = true
-		
+	
+	if Input.is_action_just_pressed("pause"):
+		if !togglePause:
+			togglePause = true
+			$"CanvasLayer/GUI/Pause Display".visible = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			togglePause = false
+			$"CanvasLayer/GUI/Pause Display".visible = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func hurt(WRLD_DAMAGE_DATA: DamageData):
 	playerStatsManager.hurt(WRLD_DAMAGE_DATA)

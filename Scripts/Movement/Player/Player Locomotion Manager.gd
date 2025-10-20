@@ -49,6 +49,7 @@ signal moved(velocity: Vector3, grounded: bool)
 
 func _ready():
 	origCamPos = camera.position
+	load_player_position()
 
 func _process(delta):
 	viewportCamera.set_global_transform(camera.get_global_transform())
@@ -166,3 +167,16 @@ func process_camBob(delta):
 		objCam = origCamPos + Vector3.UP * sin(cam_bob) * camBobUpDown * 0.1
 
 	camera.position = camera.position.lerp(objCam, delta)
+
+
+func _on_save_game_pressed() -> void:
+	if characterBody:
+		ConfigFileManager.save_player_position(characterBody)
+		$"../CanvasLayer/GUI/Pause Display".visible = false
+		
+func load_player_position():
+	if characterBody:
+		var data = ConfigFileManager.load_player_position()
+		if data["position"] != Vector3.ZERO:
+			characterBody.global_position = data["position"]
+			characterBody.rotation = data["rotation"]

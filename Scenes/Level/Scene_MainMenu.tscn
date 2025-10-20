@@ -1604,7 +1604,7 @@ bones/39/position = Vector3(-1.46009e-10, 0.17792, -1.20946e-09)
 bones/39/rotation = Quaternion(0.253678, 0.0764873, -0.0201258, 0.96405)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Cop NPC/Cop Model_Smoking Start/Skeleton3D" index="4"]
-transform = Transform3D(-0.146191, 0.56253, 0.81375, 0.255033, 0.816212, -0.518416, -0.955817, 0.131746, -0.262787, -0.00223511, 1.38768, 0.194244)
+transform = Transform3D(-0.14619067, 0.56253, 0.81374955, 0.25503317, 0.8162123, -0.51841575, -0.955817, 0.13174568, -0.2627866, -0.0022351146, 1.3876756, 0.19424354)
 bone_name = "mixamorig_RightHand"
 bone_idx = 22
 
@@ -1788,6 +1788,7 @@ layout_mode = 2
 text = "Master Volume"
 
 [node name="Master Volume" type="HSlider" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 min_value = -80.0
 max_value = 0.0
@@ -1797,6 +1798,7 @@ layout_mode = 2
 text = "BGM Volume"
 
 [node name="BGM Volume" type="HSlider" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 min_value = -80.0
 max_value = 0.0
@@ -1806,6 +1808,7 @@ layout_mode = 2
 text = "SFX Volume"
 
 [node name="SFX Volume" type="HSlider" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 min_value = -80.0
 max_value = 0.0
@@ -1830,6 +1833,7 @@ layout_mode = 2
 text = "Fullscreen"
 
 [node name="Fullscreen CheckBox" type="CheckBox" parent="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 flat = true
 
@@ -2502,8 +2506,8 @@ bus = &"SFX"
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Play Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
 [connection signal="focus_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
-[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="OpenSettingsMenu"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Options Button" to="Title Screen Manager" method="OpenSettingsMenu"]
 [connection signal="focus_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Credits Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Credits Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Credits Button" to="Title Screen Manager" method="OpenCreditsMenu"]
@@ -2514,10 +2518,13 @@ bus = &"SFX"
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Menu Options/VBoxContainer/Quit Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
 [connection signal="focus_entered" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
 [connection signal="mouse_entered" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonHoverSound"]
-[connection signal="pressed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
 [connection signal="pressed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="CloseSettingsMenu"]
+[connection signal="pressed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/Close Button" to="Title Screen Manager" method="PlayButtonPressedSound"]
+[connection signal="drag_ended" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Master Volume" to="Title Screen Manager" method="_on_master_volume_drag_ended"]
 [connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Master Volume" to="Title Screen Manager" method="OnMasterVolumeValueChanged"]
+[connection signal="drag_ended" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/BGM Volume" to="Title Screen Manager" method="_on_bgm_volume_drag_ended"]
 [connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/BGM Volume" to="Title Screen Manager" method="OnBGMVolumeValueChanged"]
+[connection signal="drag_ended" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/SFX Volume" to="Title Screen Manager" method="_on_sfx_volume_drag_ended"]
 [connection signal="value_changed" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/SFX Volume" to="Title Screen Manager" method="OnSFXVolumeValueChanged"]
 [connection signal="toggled" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Mute Checkbox" to="Title Screen Manager" method="OnMuteToggled"]
 [connection signal="toggled" from="Title Screen Manager/Main Menu/Settings Options/Border2/Background/VBoxContainer/Fullscreen CheckBox" to="Title Screen Manager" method="OnFullscreenToggled"]

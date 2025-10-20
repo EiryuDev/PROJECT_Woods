@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3j4hgwys3mci"
-path.s3tc="res://.godot/imported/man_tex.png-619f36f427bf9959eb734199b162762c.s3tc.ctex"
-path.etc2="res://.godot/imported/man_tex.png-619f36f427bf9959eb734199b162762c.etc2.ctex"
+path.s3tc="res://.godot/imported/man_tex.png-74214aff54595402f527fba6de457e82.s3tc.ctex"
+path.etc2="res://.godot/imported/man_tex.png-74214aff54595402f527fba6de457e82.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://ArtResources/Characters/NPC/Male Casual/textures/man_tex.png"
-dest_files=["res://.godot/imported/man_tex.png-619f36f427bf9959eb734199b162762c.s3tc.ctex", "res://.godot/imported/man_tex.png-619f36f427bf9959eb734199b162762c.etc2.ctex"]
+source_file="res://ArtResources/Characters/NPC/Male Casual/Textures/man_tex.png"
+dest_files=["res://.godot/imported/man_tex.png-74214aff54595402f527fba6de457e82.s3tc.ctex", "res://.godot/imported/man_tex.png-74214aff54595402f527fba6de457e82.etc2.ctex"]
 
 [params]
 

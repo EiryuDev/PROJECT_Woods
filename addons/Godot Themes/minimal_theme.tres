@@ -58,6 +58,7 @@ func _init() -> void:
 		dark_theme_icon_and_font = icon_and_font_color == 2 # ColorMode.LIGHT
 
 	var mono_color : Color = Color.WHITE if dark_theme else Color.BLACK
+	var mono_color_inv : Color = Color.BLACK if dark_theme else Color.WHITE
 	var mono_color_icon_and_font : Color = Color.WHITE if dark_theme_icon_and_font else Color.BLACK
 
 	var extra_border_color_1 : Color = Color(1, 1, 1, 0.4) if dark_theme else Color(0, 0, 0, 0.4)
@@ -79,40 +80,47 @@ func _init() -> void:
 	# button of editor settings, and it probably shouldn't even exist
 	var button_sb : StyleBoxFlat = base_sb.duplicate()
 	button_sb.bg_color = _get_base_color(0.3, 0.8)
+	button_sb.shadow_color = Color(0, 0, 0, 0.005) if dark_theme else Color(1, 1, 1, 0.005)
+	button_sb.shadow_size = int(ceilf(8 * scale))
+	button_sb.shadow_offset = Vector2(0, 4) * scale
 	if draw_extra_borders:
-		_set_border(button_sb, extra_border_color_1, floorf(scale))
+		_set_border(button_sb, extra_border_color_1, 1)
 	else:
-		_set_border(button_sb, _get_base_color(0.5, 0.7), 1, true)
+		_set_border(button_sb, _get_base_color(0.425, 0.7), 1)
 	_set_margin(button_sb, base_margin * 2, base_margin * 1.5, base_margin * 2, base_margin * 1.5)
 
 	var button_hover_sb : StyleBoxFlat = button_sb.duplicate()
 	button_hover_sb.bg_color = _get_base_color(0.5, 0.7)
 	if draw_extra_borders:
-		_set_border(button_hover_sb, extra_border_color_1, floorf(scale))
+		_set_border(button_hover_sb, extra_border_color_1, 1)
 	else:
-		_set_border(button_hover_sb, _get_base_color(0.7, 0.7), 1, true)
+		_set_border(button_hover_sb, _get_base_color(0.625, 0.7), 1)
 
 	var button_pressed_sb : StyleBoxFlat = button_sb.duplicate()
 	button_pressed_sb.bg_color = _get_base_color(0.7, 0.7)
 	if draw_extra_borders:
-		_set_border(button_pressed_sb, extra_border_color_1, floorf(scale))
+		_set_border(button_pressed_sb, extra_border_color_1, 1)
 	else:
-		_set_border(button_pressed_sb, _get_base_color(0.9, 0.7), 1, true)
+		_set_border(button_pressed_sb, _get_base_color(0.825, 0.7), 1)
 
 	var button_disabled_sb : StyleBoxFlat = button_sb.duplicate()
 	button_disabled_sb.set_border_width_all(0)
 	button_disabled_sb.bg_color = _get_base_color(0.2, 0.7)
 	if draw_extra_borders:
-		_set_border(button_disabled_sb, extra_border_color_2 * Color(1, 1, 1, 0.5), floorf(scale))
+		_set_border(button_disabled_sb, extra_border_color_2 * Color(1, 1, 1, 0.5), 1)
 
 	var flat_button_hover_sb : StyleBoxFlat = base_sb.duplicate()
-	_set_margin(flat_button_hover_sb, base_margin * 1.5, base_margin, base_margin * 1.5, base_margin)
+	# This affects buttons in Tree so top and bottom margins should be kept low
+	_set_margin(flat_button_hover_sb, base_margin * 1.5, base_margin * 0.9, base_margin * 1.5, base_margin * 0.9)
 	flat_button_hover_sb.bg_color = _get_base_color(0.3, 0.7)
 	if draw_extra_borders:
-		_set_border(flat_button_hover_sb, extra_border_color_1, floorf(scale))
+		_set_border(flat_button_hover_sb, extra_border_color_1, 1)
 
 	var flat_button_pressed_sb : StyleBoxFlat = flat_button_hover_sb.duplicate()
 	flat_button_pressed_sb.bg_color = _get_base_color(0.5, 0.7)
+
+	var flat_button_normal_sb : StyleBoxFlat = flat_button_hover_sb.duplicate()
+	flat_button_normal_sb.draw_center = false
 
 	var base_empty_sb : StyleBoxFlat = base_sb.duplicate()
 	base_empty_sb.draw_center = false
@@ -147,7 +155,7 @@ func _init() -> void:
 	var sb : StyleBoxFlat = base_sb.duplicate()
 	sb.bg_color = _get_base_color(0.55, 0.7)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_1, floorf(scale))
+		_set_border(sb, extra_border_color_1, 1)
 	set_stylebox('time_available', 'AnimationTimelineEdit', sb)
 
 	sb = base_sb.duplicate()
@@ -279,7 +287,7 @@ func _init() -> void:
 	sb.corner_radius_bottom_right = int(corner_radius * scale)
 	sb.corner_radius_bottom_left = int(corner_radius * scale)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_2, floorf(scale))
+		_set_border(sb, extra_border_color_2, 1)
 	set_stylebox('normal', 'EditorHelpBitContent', sb)
 
 	sb = base_sb.duplicate()
@@ -289,7 +297,7 @@ func _init() -> void:
 	sb.corner_radius_top_right = int(corner_radius * scale)
 	sb.corner_radius_top_left = int(corner_radius * scale)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_2, floorf(scale))
+		_set_border(sb, extra_border_color_2, 1)
 	set_stylebox('normal', 'EditorHelpBitTitle', sb)
 
 	# EditorInspector
@@ -297,12 +305,12 @@ func _init() -> void:
 	empty_sb = base_empty_sb.duplicate()
 	empty_sb.set_content_margin_all(base_margin * 2 * scale)
 	set_stylebox('panel', 'EditorInspector', empty_sb)
-	set_constant('v_separation', 'EditorInspector', int(base_margin * 0.85 * scale))
+	set_constant('v_separation', 'EditorInspector', int(base_margin * 0.5 * scale))
 	sb = base_sb.duplicate()
 	sb.bg_color = _get_base_color(0.2, 0.8)
 	_set_margin(sb, 0, base_margin * 1.2, 0, base_margin * 1.2)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_2, floorf(scale))
+		_set_border(sb, extra_border_color_2, 1)
 	set_stylebox('bg', 'EditorInspectorCategory', sb)
 	set_constant('h_separation', 'EditorInspectorSection', int(base_margin * scale))
 
@@ -319,12 +327,18 @@ func _init() -> void:
 	set_color('property_color', 'EditorProperty', mono_color_icon_and_font * Color(1, 1, 1, 0.6))
 	set_color('warning_color', 'EditorProperty', get_color('warning_color', 'Editor'))
 	set_stylebox('bg', 'EditorProperty', base_empty_sb)
-	set_stylebox('bg_selected', 'EditorProperty', base_empty_sb)
+
+	# Having visible indication of selected property doesn't bring
+	# any value to the regular inspector, however connection
+	# bindings editor relies on it for property removal
+	sb = base_sb.duplicate()
+	# Transparent background to make sure it blends with subresource editors
+	sb.bg_color = mono_color * Color(1, 1, 1, 0.03)
+	set_stylebox('bg_selected', 'EditorProperty', sb)
+
 	sb = base_sb.duplicate()
 	sb.bg_color = _get_base_color(-0.8) # Same as LineEdit normal
 	sb.set_content_margin_all(base_margin * scale)
-	if draw_extra_borders:
-		_set_border(sb, extra_border_color_2, floorf(scale))
 	set_stylebox('child_bg', 'EditorProperty', sb)
 
 	# EditorSpinSlider
@@ -451,14 +465,14 @@ func _init() -> void:
 
 	sb = base_sb.duplicate()
 	sb.draw_center = false
-	_set_border(sb, mono_color * Color(1, 1, 1, 0.3), 1, false)
+	_set_border(sb, mono_color * Color(1, 1, 1, 0.3), 1)
 
 	set_stylebox('sample_focus', 'ColorPicker', sb)
 	set_stylebox('picker_focus_rectangle', 'ColorPicker', sb)
 
 	sb = sb.duplicate()
-	sb.set_corner_radius_all(256 * scale)
-	sb.set_corner_detail(32 * scale)
+	sb.set_corner_radius_all(int(256 * scale))
+	sb.set_corner_detail(int(32 * scale))
 
 	set_stylebox('picker_focus_circle', 'ColorPicker', sb)
 
@@ -466,7 +480,7 @@ func _init() -> void:
 
 	sb = base_sb.duplicate()
 	sb.draw_center = false
-	_set_border(sb, mono_color * Color(1, 1, 1, 0.07), 2, false)
+	_set_border(sb, mono_color * Color(1, 1, 1, 0.07), 2)
 	set_stylebox('panel_focus', 'GraphEdit', sb)
 
 	# GraphStateMachine
@@ -535,27 +549,27 @@ func _init() -> void:
 	set_color('font_placeholder_color', 'LineEdit', mono_color_icon_and_font * Color(1, 1, 1, 0.4))
 
 	sb = base_sb.duplicate()
-	sb.bg_color = _get_base_color(-1.2 if dark_theme else -2.0)
+	sb.bg_color = _get_base_color(-1.3 if dark_theme else -2.2)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_1, floorf(scale))
+		_set_border(sb, extra_border_color_1, 1)
 	_set_margin(sb, base_margin * 2, base_margin * 0.75, base_margin * 2, base_margin * 0.75)
 	set_stylebox('focus', 'LineEdit', sb)
 	set_stylebox('focus', 'TextEdit', sb)
 
 	sb = sb.duplicate()
-	sb.bg_color = _get_base_color(-0.8 if dark_theme else -1.6)
+	sb.bg_color = _get_base_color(-0.9 if dark_theme else -1.8)
 	set_stylebox('normal', 'LineEdit', sb)
 	set_stylebox('normal', 'TextEdit', sb)
 
 	# Using transparent background for readonly otherwise it looks bad in the master audio bus
 	sb = sb.duplicate()
-	sb.bg_color = Color(0, 0, 0, 0.1) if dark_theme else Color(1, 1, 1, 0.1)
+	sb.bg_color = Color(0, 0, 0, 0.2) if dark_theme else Color(1, 1, 1, 0.5)
 	set_stylebox('read_only', 'LineEdit', sb)
 	set_stylebox('read_only', 'TextEdit', sb)
 
 	# MainMenuBar
 
-	set_stylebox('normal', 'MainMenuBar', base_empty_wide_sb)
+	set_stylebox('normal', 'MainMenuBar', flat_button_normal_sb)
 	set_stylebox('hover', 'MainMenuBar', flat_button_hover_sb)
 	set_stylebox('hover_pressed', 'MainMenuBar', flat_button_pressed_sb)
 	set_stylebox('pressed', 'MainMenuBar', flat_button_pressed_sb)
@@ -601,7 +615,7 @@ func _init() -> void:
 
 	# OptionButton
 
-	set_constant('arrow_margin', 'OptionButton', int(base_margin * 3.5))
+	set_constant('arrow_margin', 'OptionButton', int(base_margin * 2 * scale))
 
 	set_color('font_color', 'OptionButton', mono_color_icon_and_font * Color(1, 1, 1, 0.7))
 	set_color('font_disabled_color', 'OptionButton', mono_color_icon_and_font * Color(1, 1, 1, 0.3))
@@ -637,14 +651,14 @@ func _init() -> void:
 	sb.set_content_margin_all(int(popup_margin * scale))
 	sb.set_corner_radius_all(0)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_2, floorf(scale))
+		_set_border(sb, extra_border_color_2, 1)
 	set_stylebox('panel', 'PopupMenu', sb)
 
 	var line_sb : StyleBoxLine = StyleBoxLine.new()
-	line_sb.color = _get_base_color(0.1, 0.8)
+	line_sb.color = Color(0, 0, 0, 0.2)
 	line_sb.grow_begin = base_margin * -1.5 * scale
 	line_sb.grow_end = base_margin * -1.5 * scale
-	line_sb.thickness = int(ceilf(scale))
+	line_sb.thickness = int(ceilf(scale * 2))
 	set_stylebox('labeled_separator_left', 'PopupMenu', line_sb)
 	set_stylebox('labeled_separator_right', 'PopupMenu', line_sb)
 	set_stylebox('separator', 'PopupMenu', line_sb)
@@ -658,14 +672,15 @@ func _init() -> void:
 	sb.set_content_margin_all(int(popup_margin * scale))
 	sb.set_corner_radius_all(0)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_2, floorf(scale))
+		_set_border(sb, extra_border_color_2, 1)
 	set_stylebox('panel', 'PopupPanel', sb)
 
 	sb = base_sb.duplicate()
 	sb.bg_color = _get_base_color(-0.8, 0.9)
 	sb.set_content_margin_all(0)
+	sb.set_corner_radius_all(0)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_2, floorf(scale))
+		_set_border(sb, extra_border_color_2, 1)
 	set_stylebox('panel', 'TooltipPanel', sb)
 
 	sb = base_sb.duplicate()
@@ -675,33 +690,36 @@ func _init() -> void:
 	set_stylebox('panel', 'AcceptDialog', sb)
 
 	sb = sb.duplicate()
-	sb.bg_color = _get_base_color(-1)
+	sb.bg_color = _get_base_color(-1.4)
 	set_stylebox('panel', 'EditorSettingsDialog', sb)
 	set_stylebox('panel', 'ProjectSettingsEditor', sb)
+	set_stylebox('panel', 'ProjectExportDialog', sb)
+	set_stylebox('panel', 'SceneImportSettingsDialog', sb)
 	set_stylebox('panel', 'EditorAbout', sb)
+	set_stylebox('panel', 'ThemeItemEditorDialog', sb)
 
 	# ProgressBar
 
 	sb = base_sb.duplicate()
-	sb.bg_color = _get_base_color(-1.2, 0.9)
+	sb.bg_color = _get_base_color(-1.3, 0.9)
 	sb.expand_margin_top = base_margin * 0.5 * scale
 	sb.expand_margin_bottom = base_margin * 0.5 * scale
 	sb.set_content_margin_all(base_margin * scale)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_2, floorf(scale))
+		_set_border(sb, extra_border_color_2, 1)
 	set_stylebox('background', 'ProgressBar', sb)
 
 	sb = sb.duplicate()
 	sb.bg_color = _get_base_color(0.4, 0.8)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_1, floorf(scale))
+		_set_border(sb, extra_border_color_1, 1)
 	set_stylebox('fill', 'ProgressBar', sb)
 
 	# RichTextLabel
 
 	sb = base_sb.duplicate()
 	sb.bg_color = _get_base_color(-0.5)
-	sb.set_content_margin_all(base_margin * 1.5 * scale)
+	sb.set_content_margin_all(base_margin * 2 * scale)
 	set_stylebox('normal', 'RichTextLabel', sb)
 
 	# ScrollContainer
@@ -713,53 +731,46 @@ func _init() -> void:
 
 	sb = base_sb.duplicate()
 	sb.bg_color = _get_base_color(0.5, 0.6)
-	_set_border(sb, _get_base_color(), floorf(scale))
+	_set_border(sb, _get_base_color() * Color(1, 1, 1, 0), 3)
 
 	set_stylebox('grabber', 'HScrollBar', sb)
 	set_stylebox('grabber', 'VScrollBar', sb)
 
 	sb = base_sb.duplicate()
 	sb.bg_color = _get_base_color(1.4, 0.5)
+	_set_border(sb, _get_base_color() * Color(1, 1, 1, 0), 2.5)
 
 	set_stylebox('grabber_highlight', 'HScrollBar', sb)
 	set_stylebox('grabber_highlight', 'VScrollBar', sb)
 	set_stylebox('grabber_pressed', 'HScrollBar', sb)
 	set_stylebox('grabber_pressed', 'VScrollBar', sb)
 
-	var margin : int = 10 if increase_scrollbar_touch_area else 3
+	var margin : int = 12 if increase_scrollbar_touch_area else 6
 
 	empty_sb = base_empty_sb.duplicate()
-	_set_margin(empty_sb, 0, margin * scale, 0, margin * scale)
+	_set_margin(empty_sb, 0, margin, 0, margin)
 
 	set_stylebox('scroll', 'HScrollBar', empty_sb)
 	set_stylebox('scroll_focus', 'HScrollBar', empty_sb)
 
 	empty_sb = empty_sb.duplicate()
-	_set_margin(empty_sb, margin * scale, 0, margin * scale, 0)
+	_set_margin(empty_sb, margin, 0, margin, 0)
 
 	set_stylebox('scroll', 'VScrollBar', empty_sb)
 	set_stylebox('scroll_focus', 'VScrollBar', empty_sb)
 
 	# SplitContainer
 
-	set_constant('minimum_grab_thickness', 'SplitContainer', int(base_margin * 1.5 * scale))
+	set_constant('minimum_grab_thickness', 'SplitContainer', int(base_margin * 2.0 * scale))
 	set_constant('separation', 'SplitContainer', int(base_margin * 0.75 * scale))
-
-	var empty_texture : PlaceholderTexture2D = PlaceholderTexture2D.new()
-	empty_texture.size = Vector2(0, 0)
-	set_icon('h_grabber', 'SplitContainer', empty_texture)
-	set_icon('v_grabber', 'SplitContainer', empty_texture)
 
 	# TabContainer
 
 	sb = base_sb.duplicate()
-	_set_margin(sb, base_margin * 3.5, base_margin * 2, base_margin * 3.5, base_margin * 1.5)
+	_set_margin(sb, base_margin * 4, base_margin * 2.3, base_margin * 4, base_margin * 2.3)
 	sb.set_corner_radius_all(0)
-	sb.border_width_top = int(2 * scale)
-	var col : Color = accent_color
-	col.v = 0.5
-	col.s = 0.5
-	sb.border_color = col
+	sb.corner_radius_top_left = int(corner_radius * scale)
+	sb.corner_radius_top_right = int(corner_radius * scale)
 	set_stylebox('tab_selected', 'TabBar', sb)
 	set_stylebox('tab_selected', 'TabContainer', sb)
 
@@ -780,7 +791,7 @@ func _init() -> void:
 	set_stylebox('tab_unselected', 'TabContainer', sb)
 
 	sb = sb.duplicate()
-	sb.bg_color = _get_base_color(-0.5)
+	sb.bg_color = _get_base_color(-0.4)
 	set_stylebox('tab_hovered', 'TabBar', sb)
 	set_stylebox('tab_hovered', 'TabContainer', sb)
 
@@ -791,10 +802,8 @@ func _init() -> void:
 	sb.corner_radius_bottom_left = int(corner_radius * scale)
 	set_stylebox('panel', 'TabContainer', sb)
 
-	sb = base_sb.duplicate()
-	sb.bg_color = _get_base_color(-1.0)
-	sb.set_content_margin_all(0)
-	sb.set_corner_radius_all(0)	
+	sb = empty_sb.duplicate()
+	_set_margin(sb, 0, 0, base_margin * 2, 0)
 	set_stylebox('tabbar_background', 'TabContainer', sb)
 
 	# Tree
@@ -810,30 +819,37 @@ func _init() -> void:
 	set_constant('inner_item_margin_right', 'Tree', int(base_margin * scale))
 	set_constant('parent_hl_line_width', 'Tree', int(ceilf(scale)))
 	set_constant('relationship_line_width', 'Tree', 0)
-	set_constant('v_separation', 'Tree', int(base_margin * 0.25 * scale))
+
+	var tree_v_separation : int = int(pow(base_margin * 0.2 * scale, 3))
+	set_constant('v_separation', 'Tree', tree_v_separation)
 
 	# Using empty stylebox for trees to avoid drawing unnecessary borders in docks.
 	# Note that using opaque color that is the same as dock background
 	# doesn't work because EditorPropertyResource is using Tree panel
 	# stylebox to draw its background as well, making it look broken
 	empty_sb = base_empty_sb.duplicate()
-	empty_sb.set_content_margin_all(base_margin * 2 * scale)
+	_set_margin(empty_sb, base_margin * 1.5, base_margin * 2.5, base_margin * 1.5, base_margin * 2.5)
 	set_stylebox('panel', 'Tree', empty_sb)
 
 	# Leaving focus empty for trees and scroll containers because there's no way to
 	# make focus indication look not janky when only a part of a dock is highlighted
 	set_stylebox('focus', 'Tree', base_empty_sb)
 
-	# Rounded corners look a little janky in tree titles because there's no way to
-	# introduce gaps between columns, however not having rounded corners looks even worse
 	sb = base_sb.duplicate()
 	sb.bg_color = _get_base_color(-1.2 if dark_theme else -1.8)
+
+	# Using a transparent border to separate rounded column titles
+	sb.border_width_left = int(ceilf(scale))
+	sb.border_width_right = int(ceilf(scale))
+	sb.border_color = sb.bg_color * Color(1, 1, 1, 0)
+
 	set_stylebox('title_button_hover', 'Tree', sb)
 	set_stylebox('title_button_normal', 'Tree', sb)
 	set_stylebox('title_button_pressed', 'Tree', sb)
 
 	sb = flat_button_hover_sb.duplicate()
 	sb.set_content_margin_all(0)
+	sb.bg_color = _get_base_color(0.2, 0.7)
 	set_stylebox('button_hover', 'Tree', sb)
 	set_stylebox('hover', 'Tree', sb)
 	set_stylebox('hovered_dimmed', 'Tree', sb)
@@ -843,7 +859,7 @@ func _init() -> void:
 	set_stylebox('selected_focus', 'Tree', sb)
 
 	sb = sb.duplicate()
-	sb.bg_color = _get_base_color(0.5, 0.7)
+	sb.bg_color = _get_base_color(0.3, 0.7)
 	set_stylebox('hovered_selected', 'Tree', sb)
 	set_stylebox('hovered_selected_focus', 'Tree', sb)
 
@@ -859,7 +875,7 @@ func _init() -> void:
 	# Separators
 
 	line_sb = StyleBoxLine.new()
-	line_sb.color = _get_base_color(0.2, 0.8)
+	line_sb.color = Color(0, 0, 0, 0.3) if dark_theme else Color(0, 0, 0, 0.1)
 	line_sb.grow_begin = base_margin * -1 * scale
 	line_sb.grow_end = base_margin * -1 * scale
 	line_sb.thickness = int(ceilf(scale * 2))
@@ -872,38 +888,127 @@ func _init() -> void:
 	line_sb.vertical = true
 	set_stylebox('separator', 'VSeparator', line_sb)
 
+	# Sliders
+
+	sb = base_sb.duplicate()
+	sb.bg_color = mono_color_inv * Color(1, 1, 1, 0.35)
+	_set_margin(sb, 0, 2, 0, 2)
+	set_stylebox('slider', 'HSlider', sb)
+	sb = sb.duplicate()
+	_set_margin(sb, 2, 0, 2, 0)
+	set_stylebox('slider', 'VSlider', sb)
+
 	# Sidebars
 
 	sb = base_sb.duplicate()
 	sb.bg_color = _get_base_color(-0.55 if dark_theme else -0.9)
 	if draw_extra_borders:
-		_set_border(sb, extra_border_color_2, floorf(scale))
+		_set_border(sb, extra_border_color_2, 1)
 	set_stylebox('panel', 'TreeSecondary', sb)
 	set_stylebox('panel', 'ItemListSecondary', sb)
+	# Use sidebar stylebox for EditorDebuggerInspector in StackTrace
+	# to keep the default 3-column layout, as debugger inspector is
+	# too small to be considered a main area
+	set_stylebox('panel', 'EditorDebuggerInspector', sb)
+
+	# ProjectManager
+
+	sb = base_sb.duplicate()
+	sb.bg_color = _get_base_color(-0.7 if dark_theme else -0.9)
+	set_stylebox('project_list', 'ProjectManager', sb)
 
 	# HACKS
 	# This section is for workarounds for unthemable UI
 	# These could be fixed on the engine side in the future
 
-	# TilesetEditor
-
-	# Tileset editor is using Tree panel for the panel container of expanded view, while minimal theme
-	# needs trees to be transparent, so it needs to have an explicitly set style for the theme
-	# to still be able to support transparent Trees
-	# See https://github.com/godotengine/godot/issues/99118
 	(func() -> void:
-		# Check to see if we're running in project manager
+
+		# Project Manager fixes
 		if EditorInterface.get_script_editor() == null:
+
+			# QuickSettingsDialog
+
+			# QuickSettingsDialog is using EditorStyles Background stylebox
+			# by default which is way too dark for this theme
+
+			var scene_tree : SceneTree = Engine.get_main_loop()
+			var root : Window = scene_tree.root
+			var quick_settings_dialog : AcceptDialog = root.find_children('', 'QuickSettingsDialog', true, false)[0]
+			var quick_settings_dialog_list_panel : PanelContainer = quick_settings_dialog.find_children('', 'PanelContainer', true, false)[0]
+			var panel_sb_quick_settings : StyleBoxFlat = base_sb.duplicate()
+			panel_sb_quick_settings.bg_color = _get_base_color(-0.7 if dark_theme else -0.9)
+			quick_settings_dialog_list_panel.add_theme_stylebox_override('panel', panel_sb_quick_settings)
+			var _error_quick_settings : int = quick_settings_dialog.theme_changed.connect(func() -> void:
+				# Reapply the stylebox override on theme change
+				quick_settings_dialog_list_panel.add_theme_stylebox_override('panel', panel_sb_quick_settings)
+			)
+
+			# All fixes below are for the main editor window
 			return
+
+		# TilesetEditor
+
+		# Tileset editor is using Tree panel for the panel container of expanded view, while minimal theme
+		# needs trees to be transparent, so it needs to have an explicitly set style for the theme
+		# to still be able to support transparent Trees
+		# See https://github.com/godotengine/godot/issues/99118
 
 		var tileset_editor : Control = EditorInterface.get_base_control().find_children('', 'TileSetEditor', true, false)[0]
 		var expand_panel : Control = tileset_editor.get_child(3)
-		var panel_sb : StyleBoxFlat = base_sb.duplicate()
-		panel_sb.set_corner_radius_all(0)
-		expand_panel.add_theme_stylebox_override('panel', panel_sb)
-		var _error : int = tileset_editor.theme_changed.connect(func() -> void:
-			expand_panel.add_theme_stylebox_override('panel', panel_sb)
+		var panel_sb_expand_panel : StyleBoxFlat = base_sb.duplicate()
+		panel_sb_expand_panel.set_corner_radius_all(0)
+		expand_panel.add_theme_stylebox_override('panel', panel_sb_expand_panel)
+		var _error_tileset_editor : int = tileset_editor.theme_changed.connect(func() -> void:
+			expand_panel.add_theme_stylebox_override('panel', panel_sb_expand_panel)
 		)
+
+		# EditorObjectSelector
+
+		# Godot sometimes relies on unexposed MarginContainers
+
+		var editor_object_selector : Control = EditorInterface.get_base_control().find_children('', 'EditorObjectSelector', true, false)[0]
+		var editor_object_selector_margin_container : Control = editor_object_selector.find_children('', 'MarginContainer', true, false)[0]
+		editor_object_selector_margin_container.add_theme_constant_override('margin_left', int(base_margin * 2 * scale))
+		editor_object_selector_margin_container.add_theme_constant_override('margin_right', int(base_margin * 2.5 * scale))
+
+		# CanvasItemEditor, Node3DEditor, GameView
+
+		# Increase toolbar margins
+
+		var canvas_item_editor : Control = EditorInterface.get_base_control().find_children('', 'CanvasItemEditor', true, false)[0]
+		var canvas_item_editor_toolbar_margin_container : Control = canvas_item_editor.find_children('', 'MarginContainer', true, false)[0]
+		canvas_item_editor_toolbar_margin_container.add_theme_constant_override('margin_top', int(base_margin * 0.5 * scale))
+		canvas_item_editor_toolbar_margin_container.add_theme_constant_override('margin_bottom', int(base_margin * 0.5 * scale))
+
+		var node_3d_editor : Control = EditorInterface.get_base_control().find_children('', 'Node3DEditor', true, false)[0]
+		var node_3d_editor_toolbar_margin_container : Control = node_3d_editor.find_children('', 'MarginContainer', true, false)[0]
+		node_3d_editor_toolbar_margin_container.add_theme_constant_override('margin_top', int(base_margin * 0.5 * scale))
+		node_3d_editor_toolbar_margin_container.add_theme_constant_override('margin_bottom', int(base_margin * 0.5 * scale))
+
+		# GameView is not enabled in the Android editor as the Game workspace is implemented differently
+		if Engine.get_version_info().hex >= 0x040400 and not OS.has_feature('android'):
+			var game_view : Control = EditorInterface.get_base_control().find_children('', 'GameView', true, false)[0]
+			var game_view_toolbar_margin_container : Control = game_view.find_children('', 'MarginContainer', true, false)[0]
+			game_view_toolbar_margin_container.add_theme_constant_override('margin_top', int(base_margin * 0.5 * scale))
+			game_view_toolbar_margin_container.add_theme_constant_override('margin_bottom', int(base_margin * 0.5 * scale))
+		
+		# ThemeTypeEditor TabContainer
+
+		# Tabs of ThemeTypeEditor need to be custom because of lighter background of
+		# the bottom panel
+
+		var theme_type_editor : Control = EditorInterface.get_base_control().find_children('', 'ThemeTypeEditor', true, false)[0]
+		var theme_type_editor_tab_container : TabContainer = theme_type_editor.find_children('', 'TabContainer', true, false)[0]
+
+		var theme_type_editor_tab_container_sb : StyleBoxFlat = base_sb.duplicate()
+		theme_type_editor_tab_container_sb.bg_color = _get_base_color(-1.1)
+		theme_type_editor_tab_container_sb.set_content_margin_all(0)
+		theme_type_editor_tab_container_sb.content_margin_top = int(base_margin * scale)
+		theme_type_editor_tab_container_sb.corner_radius_bottom_left = 0
+		theme_type_editor_tab_container_sb.corner_radius_bottom_right = 0
+	
+		theme_type_editor_tab_container.add_theme_stylebox_override('tabbar_background', theme_type_editor_tab_container_sb)
+
 	).call_deferred()
 
 # Lighten base color in dark theme, darken in light theme, clamp

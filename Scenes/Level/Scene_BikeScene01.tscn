@@ -2727,7 +2727,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, -24.152)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, 152.848)
 
 [node name="Cat" type="RigidBody3D" parent="." groups=["Interactable"]]
-transform = Transform3D(1.38069, 0, -2.6634, 0, 3, 0, 2.6634, 0, 1.38069, 2.60164, -0.146122, 112.598)
+transform = Transform3D(1.3806897, 0, -2.6633992, 0, 3, 0, 2.6633992, 0, 1.3806897, 2.60164, -0.146122, 112.598)
 collision_layer = 33
 collision_mask = 32
 gravity_scale = 0.0
