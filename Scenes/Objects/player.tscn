@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://cq0a041eg5071"]
+[gd_scene load_steps=79 format=4 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://o8cqav6lwi8x" path="res://Scripts/Items/Player/Pickup/PlayerPickupPointManager.gd" id="2_34odq"]
@@ -595,11 +595,19 @@ _data = {
 &"fade_in": SubResource("Animation_4vp4g")
 }
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[sub_resource type="LabelSettings" id="LabelSettings_g4fta"]
+font_size = 40
+font_color = Color(0.5171842, 0.51718456, 0.51718444, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kgbis"]
+font_size = 30
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("playerUIManager") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.38677, 105)
 collision_layer = 6
 collision_mask = 3
 script = ExtResource("1_picsy")
+playerUIManager = NodePath("Player UI Manager")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_hbvo1")
@@ -987,10 +995,13 @@ bus = &"SFX"
 stream = ExtResource("15_uaqrc")
 bus = &"SFX"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Player UI Manager" type="CanvasLayer" parent="." node_paths=PackedStringArray("questPanel", "questTitle", "questDescription")]
 script = ExtResource("30_kgbis")
+questPanel = NodePath("GUI/Quest Panel")
+questTitle = NodePath("GUI/Quest Panel/ColorRect/Quest Title")
+questDescription = NodePath("GUI/Quest Panel/ColorRect/Quest Description")
 
-[node name="SubViewport" type="SubViewportContainer" parent="CanvasLayer"]
+[node name="SubViewport" type="SubViewportContainer" parent="Player UI Manager"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -998,20 +1009,20 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewport"]
+[node name="SubViewport" type="SubViewport" parent="Player UI Manager/SubViewport"]
 transparent_bg = true
 handle_input_locally = false
 positional_shadow_atlas_size = 4096
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="ViewportCamera" type="Camera3D" parent="CanvasLayer/SubViewport/SubViewport"]
+[node name="ViewportCamera" type="Camera3D" parent="Player UI Manager/SubViewport/SubViewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 cull_mask = 524288
 fov = 80.0
 
-[node name="GUI" type="Control" parent="CanvasLayer"]
+[node name="GUI" type="Control" parent="Player UI Manager"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1020,7 +1031,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("15_ea56u")
 
-[node name="Health Effects Display" type="Control" parent="CanvasLayer/GUI"]
+[node name="Health Effects Display" type="Control" parent="Player UI Manager/GUI"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -1030,7 +1041,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_5rt57")
 
-[node name="Healed" type="ColorRect" parent="CanvasLayer/GUI/Health Effects Display"]
+[node name="Healed" type="ColorRect" parent="Player UI Manager/GUI/Health Effects Display"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1040,7 +1051,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 0, 1)
 
-[node name="Hurt" type="ColorRect" parent="CanvasLayer/GUI/Health Effects Display"]
+[node name="Hurt" type="ColorRect" parent="Player UI Manager/GUI/Health Effects Display"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1050,12 +1061,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GUI/Health Effects Display"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player UI Manager/GUI/Health Effects Display"]
 libraries = {
 &"": SubResource("AnimationLibrary_u2cyj")
 }
 
-[node name="Pickup Info Display" type="Label" parent="CanvasLayer/GUI"]
+[node name="Pickup Info Display" type="Label" parent="Player UI Manager/GUI"]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 0.666667, 1)
 layout_mode = 1
@@ -1071,7 +1082,7 @@ Picked Up 9 Deagle Ammo"
 label_settings = SubResource("LabelSettings_5rt57")
 script = ExtResource("16_u2cyj")
 
-[node name="Crosshair" type="TextureRect" parent="CanvasLayer/GUI"]
+[node name="Crosshair" type="TextureRect" parent="Player UI Manager/GUI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1087,7 +1098,7 @@ grow_vertical = 2
 texture = ExtResource("10_jvxap")
 expand_mode = 3
 
-[node name="Stats Display" type="Control" parent="CanvasLayer/GUI"]
+[node name="Stats Display" type="Control" parent="Player UI Manager/GUI"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1103,7 +1114,7 @@ grow_vertical = 0
 theme = ExtResource("15_ea56u")
 script = ExtResource("16_8ietw")
 
-[node name="Ammo Display" type="Label" parent="CanvasLayer/GUI/Stats Display"]
+[node name="Ammo Display" type="Label" parent="Player UI Manager/GUI/Stats Display"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1118,7 +1129,7 @@ label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Health Text" type="Label" parent="CanvasLayer/GUI/Stats Display"]
+[node name="Health Text" type="Label" parent="Player UI Manager/GUI/Stats Display"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1133,7 +1144,7 @@ label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Health Display" type="ProgressBar" parent="CanvasLayer/GUI/Stats Display"]
+[node name="Health Display" type="ProgressBar" parent="Player UI Manager/GUI/Stats Display"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1149,7 +1160,7 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
-[node name="Stamina Text" type="Label" parent="CanvasLayer/GUI/Stats Display"]
+[node name="Stamina Text" type="Label" parent="Player UI Manager/GUI/Stats Display"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1164,7 +1175,7 @@ label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stamina Display" type="ProgressBar" parent="CanvasLayer/GUI/Stats Display"]
+[node name="Stamina Display" type="ProgressBar" parent="Player UI Manager/GUI/Stats Display"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1180,7 +1191,7 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
-[node name="FPS Display" type="Label" parent="CanvasLayer/GUI/Stats Display"]
+[node name="FPS Display" type="Label" parent="Player UI Manager/GUI/Stats Display"]
 self_modulate = Color(1, 1, 0.666667, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -1195,7 +1206,7 @@ label_settings = SubResource("LabelSettings_5rt57")
 horizontal_alignment = 2
 script = ExtResource("34_0ykjt")
 
-[node name="Interact Display" type="Label" parent="CanvasLayer/GUI"]
+[node name="Interact Display" type="Label" parent="Player UI Manager/GUI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1213,7 +1224,7 @@ label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DeathScreen" type="Control" parent="CanvasLayer/GUI"]
+[node name="DeathScreen" type="Control" parent="Player UI Manager/GUI"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -1224,7 +1235,7 @@ grow_vertical = 2
 theme = ExtResource("15_ea56u")
 script = ExtResource("33_gra3g")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/DeathScreen"]
+[node name="ColorRect" type="ColorRect" parent="Player UI Manager/GUI/DeathScreen"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1233,7 +1244,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.513726)
 
-[node name="Panel" type="Panel" parent="CanvasLayer/GUI/DeathScreen"]
+[node name="Panel" type="Panel" parent="Player UI Manager/GUI/DeathScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1248,7 +1259,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("15_ea56u")
 
-[node name="Title" type="Label" parent="CanvasLayer/GUI/DeathScreen/Panel"]
+[node name="Title" type="Label" parent="Player UI Manager/GUI/DeathScreen/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1263,7 +1274,7 @@ text = "You Died"
 label_settings = SubResource("LabelSettings_mytd1")
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="CanvasLayer/GUI/DeathScreen/Panel"]
+[node name="RestartButton" type="Button" parent="Player UI Manager/GUI/DeathScreen/Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1278,12 +1289,12 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GUI/DeathScreen"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player UI Manager/GUI/DeathScreen"]
 libraries = {
 &"": SubResource("AnimationLibrary_2btc3")
 }
 
-[node name="Pause Display" type="Control" parent="CanvasLayer/GUI"]
+[node name="Pause Display" type="Control" parent="Player UI Manager/GUI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1292,7 +1303,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/Pause Display"]
+[node name="ColorRect" type="ColorRect" parent="Player UI Manager/GUI/Pause Display"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1301,7 +1312,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.28235295)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI/Pause Display"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player UI Manager/GUI/Pause Display"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1316,16 +1327,60 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 
-[node name="Save Game" type="Button" parent="CanvasLayer/GUI/Pause Display/VBoxContainer"]
+[node name="Save Game" type="Button" parent="Player UI Manager/GUI/Pause Display/VBoxContainer"]
 layout_mode = 2
 text = "Save Game"
 
-[node name="Quit Game" type="Button" parent="CanvasLayer/GUI/Pause Display/VBoxContainer"]
+[node name="Quit Game" type="Button" parent="Player UI Manager/GUI/Pause Display/VBoxContainer"]
 layout_mode = 2
 text = "Quit Game"
 
-[connection signal="pressed" from="CanvasLayer/GUI/Pause Display/VBoxContainer/Save Game" to="Player Locomotion Manager" method="_on_save_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/GUI/Pause Display/VBoxContainer/Quit Game" to="CanvasLayer" method="_on_quit_game_pressed"]
+[node name="Quest Panel" type="Control" parent="Player UI Manager/GUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Player UI Manager/GUI/Quest Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -473.0
+offset_top = -390.0
+offset_bottom = -213.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+color = Color(0.09803922, 0.09803922, 0.09803922, 0.6156863)
+
+[node name="Quest Title" type="Label" parent="Player UI Manager/GUI/Quest Panel/ColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 514.0
+offset_bottom = 56.0
+text = "Quest Title"
+label_settings = SubResource("LabelSettings_g4fta")
+horizontal_alignment = 1
+
+[node name="Quest Description" type="Label" parent="Player UI Manager/GUI/Quest Panel/ColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 55.0
+offset_right = 514.0
+offset_bottom = 142.0
+text = "Quest Description"
+label_settings = SubResource("LabelSettings_kgbis")
+autowrap_mode = 3
+
+[connection signal="pressed" from="Player UI Manager/GUI/Pause Display/VBoxContainer/Save Game" to="Player Locomotion Manager" method="_on_save_game_pressed"]
+[connection signal="pressed" from="Player UI Manager/GUI/Pause Display/VBoxContainer/Quit Game" to="Player UI Manager" method="_on_quit_game_pressed"]
 
 [editable path="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter/HitScanBulletEmitter"]
 [editable path="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]

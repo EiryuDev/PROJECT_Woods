@@ -6,7 +6,7 @@ var weaponsUnlocked = []
 var currentSlot = 0
 var currentWeapon = null
 
-@onready var crosshair = $"../../CanvasLayer/GUI/Crosshair"
+@onready var crosshair = $"../../Player UI Manager/GUI/Crosshair"
 @onready var playerStatsManager = %"Player Stats Manager"
 
 @onready var nearbyMonstersAlertAreaSmall = $NearbyMonstersAlertAreaSmall

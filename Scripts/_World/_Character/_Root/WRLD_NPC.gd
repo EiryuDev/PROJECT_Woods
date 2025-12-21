@@ -9,6 +9,9 @@ extends Interactable
 @export var animationPlayer : AnimationPlayer
 @export var requireAnimation = false
 
+@export_group("QUEST SETTINGS")
+@export var quest: Quest
+
 signal hasTalkedAlready
 var hasSignalEmitted = false
 var hasDialogueStarted = false
@@ -32,3 +35,6 @@ func DialogueFinished():
 		hasSignalEmitted = true
 		emit_signal("hasTalkedAlready")
 	hasDialogueStarted = false
+	quest.ReachedGoal()
+	if quest.questStatus == quest.QuestStatus.reachedGoal:
+		quest.FinishQuest()

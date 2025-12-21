@@ -4,10 +4,11 @@ extends Node
 @onready var playerStatsManager = %"Player Stats Manager"
 @onready var playerLocomotionManager = $"Player Locomotion Manager"
 @onready var playerWeaponManager = $"Camera3D/Player Weapon Manager"
+@export var playerUIManager : CanvasLayer
 @onready var interactRaycast = $Camera3D/InteractRayCast
-@onready var interactDisplay =  $"CanvasLayer/GUI/Interact Display"
-@onready var deathScreen = $CanvasLayer/GUI/DeathScreen
-@onready var canvasLayer = $CanvasLayer
+@onready var interactDisplay =  $"Player UI Manager/GUI/Interact Display"
+@onready var deathScreen = $"Player UI Manager/GUI/DeathScreen"
+@onready var canvasLayer = $"Player UI Manager"
 @onready var objectPoint = %ObjectPoint
 
 @export_group("FLAGS")
@@ -35,6 +36,7 @@ var togglePause = false
 func _ready():
 	playerStatsManager.died.connect(kill)
 	print(pickupPoint.name)
+	add_to_group("player")
 
 func _process(delta):
 	if isDead:
@@ -83,7 +85,7 @@ func _input(event):
 	if Input.is_action_just_pressed("pause"):
 		if !togglePause:
 			togglePause = true
-			$"CanvasLayer/GUI/Pause Display".visible = true
+			$"Player UI Manager/GUI/Pause Display".visible = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			togglePause = false

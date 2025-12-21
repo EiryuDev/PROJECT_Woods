@@ -492,6 +492,8 @@ libraries = {
 }
 autoplay = "Idle"
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
 [editable path="Cop1"]
 [editable path="Cop1/Cop Model"]
 [editable path="male_casual"]
