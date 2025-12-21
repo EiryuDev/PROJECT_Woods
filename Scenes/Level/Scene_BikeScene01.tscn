@@ -46,8 +46,6 @@ background_mode = 2
 sky = SubResource("Sky_0d0sa")
 tonemap_mode = 2
 ssil_enabled = true
-sdfgi_enabled = true
-glow_enabled = true
 fog_light_color = Color(0.627451, 0.533333, 0.427451, 1)
 fog_density = 0.0095
 fog_sky_affect = 0.45
@@ -2726,7 +2724,7 @@ type = "Interact with Generic"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, -24.152)
 
 [node name="Cop NPC2" parent="." instance=ExtResource("16_o1g6i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.0174349, 152.848)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.349, -0.4752677, 152.848)
 
 [node name="Cat" type="RigidBody3D" parent="." groups=["Interactable"]]
 transform = Transform3D(1.3806897, 0, -2.6633992, 0, 3, 0, 2.6633992, 0, 1.3806897, 2.60164, -0.146122, 112.598)
@@ -2774,7 +2772,7 @@ transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 
 transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 20.704, 0, 134.342)
 
 [node name="Bamboo House" parent="." instance=ExtResource("27_wrrvi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.418, 0.0253134, 148.996)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.41363, 0.025313519, 148.9757)
 
 [node name="Corn Field" parent="." instance=ExtResource("24_1gocl")]
 transform = Transform3D(0.35, 0, 0, 0, 0.349793, -0.0120256, 0, 0.0120256, 0.349793, -4.25101, -0.458319, 138.849)
@@ -2802,7 +2800,7 @@ metadata/_custom_type_script = "uid://bqsubs6lg36q6"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Male Casual"]
 stream = ExtResource("26_3810f")
-volume_db = 2.0
+volume_db = 24.0
 bus = &"SFX"
 
 [node name="Male Casual2" parent="." instance=ExtResource("24_hlkfp")]
@@ -2811,12 +2809,12 @@ mass = 60.0
 dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
 
 [node name="Male Casual3" parent="." instance=ExtResource("24_hlkfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1615, -0.175325, 151.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1615, -0.50640583, 151.7)
 mass = 60.0
 dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
 
 [node name="Male Casual4" parent="." instance=ExtResource("24_hlkfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1615, -0.175325, 154.178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1615, -0.5318508, 154.178)
 mass = 60.0
 dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
 

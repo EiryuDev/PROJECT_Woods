@@ -39,6 +39,5 @@
   { "Name": "Random Villager", "Text": "You don’t want to know.", "next": 22 },
   { "Name": "Random Villager", "Text": "You don’t want to know.", "next": 22 },
   
-  { "Name": "Random Villager", "Text": "Now leave... before it's too late.", "next": 23 },
-  { "Name": "Narration", "Text": "The villager slowly stands up and walks toward his house. You notice a small talisman tied to his ankle.", "next": null }
+  { "Name": "Random Villager", "Text": "Now leave... before it's too late.", "next": null }
 ]
