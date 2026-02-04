@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bebwmry642d5b"]
+[gd_scene format=3 uid="uid://bebwmry642d5b"]
 
 [ext_resource type="PackedScene" uid="uid://cqj5he1hqaflo" path="res://ArtResources/Environment/Houses/Wooden House/wooden house.dae" id="1_uias4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ac3ad"]
 size = Vector3(8.81506, 8.11389, 11.3676)
 
-[node name="Wooden House" type="StaticBody3D"]
+[node name="Wooden House" type="StaticBody3D" unique_id=597168069]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
-[node name="wooden house" parent="." instance=ExtResource("1_uias4")]
+[node name="wooden house" parent="." unique_id=935786676 instance=ExtResource("1_uias4")]
 
 [node name="windows_and_door__Blocked_with_Wooden_Planks_Stock" parent="wooden house" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000526428, 0.0296328, -0.0105677)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=697250039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.394226, 3.95331, -1.68315)
 shape = SubResource("BoxShape3D_ac3ad")
 
