@@ -628,13 +628,14 @@ font_color = Color(0.5171842, 0.51718456, 0.51718444, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_kgbis"]
 font_size = 30
 
-[node name="Player" type="CharacterBody3D" unique_id=1523903681 node_paths=PackedStringArray("playerUIManager", "playerInventoryManager") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1523903681 node_paths=PackedStringArray("playerUIManager", "playerInventoryManager", "camera") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.38677, 105)
 collision_layer = 6
 collision_mask = 3
 script = ExtResource("1_picsy")
 playerUIManager = NodePath("Player UI Manager")
 playerInventoryManager = NodePath("Player Inventory Manager")
+camera = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1968839264]
 shape = SubResource("CapsuleShape3D_hbvo1")
@@ -1446,9 +1447,14 @@ visible = false
 modulate = Color(1, 1, 1, 0.49019608)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
 
 [connection signal="pressed" from="Player UI Manager/GUI/Pause Display/VBoxContainer/Save Game" to="Player Locomotion Manager" method="_on_save_game_pressed"]
 [connection signal="pressed" from="Player UI Manager/GUI/Pause Display/VBoxContainer/Quit Game" to="Player UI Manager" method="_on_quit_game_pressed"]
+[connection signal="drop_slot_data" from="Player UI Manager/InventoryInterface" to="Player Inventory Manager" method="_on_inventory_interface_drop_slot_data"]
+[connection signal="gui_input" from="Player UI Manager/InventoryInterface" to="Player UI Manager/InventoryInterface" method="_on_gui_input"]
+[connection signal="visibility_changed" from="Player UI Manager/InventoryInterface" to="Player UI Manager/InventoryInterface" method="_on_visibility_changed"]
 
 [editable path="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter/HitScanBulletEmitter"]
 [editable path="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter"]

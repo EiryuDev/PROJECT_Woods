@@ -16,6 +16,7 @@ extends Node
 @export var canMove = true
 
 @export_group("INTERACTION DATA")
+@export var camera: Camera3D
 @onready var pickupPoint = $Camera3D/PickupPoint
 
 const HOTKEYS = {

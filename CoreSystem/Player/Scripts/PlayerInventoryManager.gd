@@ -1,5 +1,7 @@
 extends Node3D
 
+const PickUp = preload("res://CoreSystem/Items/Apple/Prefab/Apple.tscn")
+
 @export var player: CharacterBody3D
 @export var inventoryData: InventoryData
 @export var inventoryInterface: Control
@@ -20,3 +22,14 @@ func ToggleInventoryInterface(external_inventory_owner = null) -> void:
 		inventoryInterface.SetExternalInventory(external_inventory_owner) 
 	else:
 		inventoryInterface.ClearExternalInventory()
+
+
+func _on_inventory_interface_drop_slot_data(slot_data: SlotData) -> void:
+	var pick_up = PickUp.instantiate()
+	pick_up.slot_data = slot_data
+	pick_up.position = GetDropPosition()
+	get_tree().current_scene.add_child(pick_up)
+
+func GetDropPosition() -> Vector3:
+	var direction = -player.camera.global_transform.basis.z
+	return player.camera.global_position + (direction * 2)

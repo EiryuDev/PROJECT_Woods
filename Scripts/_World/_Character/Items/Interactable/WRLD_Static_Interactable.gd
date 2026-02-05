@@ -10,7 +10,7 @@ enum INTERACTABLE_TYPES {HANDPUMP}
 func _ready():
 	player = get_node("../Player")
 	
-func action_use():
+func action_use(wants_grab := false):
 	match interactableType:
 		INTERACTABLE_TYPES.HANDPUMP:
 			$"../AnimationPlayer".play("Pump")

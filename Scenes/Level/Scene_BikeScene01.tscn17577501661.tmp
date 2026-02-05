@@ -1219,7 +1219,7 @@ environment = SubResource("Environment_rm08j")
 camera_attributes = SubResource("CameraAttributesPractical_cbmdf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene Lighting" unique_id=346576389]
-transform = Transform3D(-0.8660252, 0.48296294, -0.12940948, 0, -0.258819, -0.96592534, -0.49999997, -0.8365162, 0.22414376, 0, 0, 0)
+transform = Transform3D(-0.8660252, 0.48296294, -0.12940948, 0, -0.258819, -0.96592534, -0.49999994, -0.8365162, 0.22414376, 0, 0, 0)
 layers = 524289
 shadow_enabled = true
 
@@ -2799,6 +2799,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81243, 0.315706, 0.822128)
 
 [node name="Interact Generic" parent="." unique_id=46866566 instance=ExtResource("14_3810f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27276, 1, -37.5011)
+isCubeInteractable = null
+interactableType = null
 type = "Interact with Generic"
 
 [node name="Cop NPC" parent="." unique_id=1226787762 instance=ExtResource("16_o1g6i")]
@@ -2904,6 +2906,7 @@ dialoguePath = "res://Data/Dialogues/Male Villager 2 Dialogue.json"
 
 [node name="Chappal" parent="." unique_id=1750609733 instance=ExtResource("25_hlkfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8685, 0, 127.337)
+type = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=175013763]
 
@@ -2944,6 +2947,7 @@ transform = Transform3D(-2.18557e-10, 0, -0.005, 0, 0.005, 0, 0.005, 0, -2.18557
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5009, 0.0806648, 168.162)
 
 [node name="Player" parent="." unique_id=1059065346 instance=ExtResource("29_vaogl")]
+canMove = null
 
 [node name="GrabbedSlot" parent="Player/Player UI Manager/InventoryInterface" parent_id_path=PackedInt32Array(1059065346, 1228910429) index="2" unique_id=2050141258]
 offset_right = 96.0
@@ -2961,6 +2965,7 @@ visible = false
 
 [node name="Backpack" parent="." unique_id=1300612188 instance=ExtResource("36_wdud5")]
 transform = Transform3D(0.0026354322, 0, 0.99999654, 0, 1, 0, -0.99999654, 0, 0.0026354322, 15.312179, 0, 112.71387)
+type = null
 
 [node name="Node3D2" type="Node3D" parent="." unique_id=1457580574]
 

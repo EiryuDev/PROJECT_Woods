@@ -48,6 +48,13 @@ func DropSingleSlotData(grabbed_slot_data: SlotData, index: int) -> SlotData:
 		return null
 
 func PickUpSlotData(slot_data: SlotData) -> bool:
+	
+	for index in slots_datas.size():
+		if slots_datas[index] and slots_datas[index].CanFullyMergeWith(slot_data):
+			slots_datas[index].FullyMergeWith(slot_data)
+			inventory_updated.emit(self)
+			return true
+	
 	for index in slots_datas.size():
 		if not slots_datas[index]:
 			slots_datas[index] = slot_data

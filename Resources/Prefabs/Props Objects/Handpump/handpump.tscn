@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://brolecwl5tj47"]
+[gd_scene format=4 uid="uid://brolecwl5tj47"]
 
 [ext_resource type="Material" uid="uid://cbsjxybke8hoi" path="res://ArtResources/Props/Handpump/Materials/handpump_02.material" id="1_yy42n"]
 [ext_resource type="Material" uid="uid://d0rffbe2hahht" path="res://ArtResources/Props/Handpump/Materials/handpump_01.material" id="2_dxpp2"]
@@ -148,47 +148,45 @@ shader_parameter/ColorParameter = Color(0.07451, 0.533333, 1, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xrn67"]
 
-[node name="Handpump" type="Node3D"]
+[node name="Handpump" type="Node3D" unique_id=584665971]
 
-[node name="handpump" type="StaticBody3D" parent="."]
+[node name="handpump" type="StaticBody3D" parent="." unique_id=717683742]
 
-[node name="handpump" type="MeshInstance3D" parent="handpump"]
+[node name="handpump" type="MeshInstance3D" parent="handpump" unique_id=1213195164]
 transform = Transform3D(100, 0, 0, 0, 100, 7.54979e-06, 0, -7.54979e-06, 100, 0, 0, 0)
 mesh = SubResource("ArrayMesh_fp2bk")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="handpump"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="handpump" unique_id=55854120]
 transform = Transform3D(100, 0, 0, 0, 100, 7.54979e-06, 0, -7.54979e-06, 100, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_yy42n")
 
-[node name="Handle" type="StaticBody3D" parent="." groups=["Interactable"]]
-transform = Transform3D(1, 0, 0, 0, 0.99867, -0.0515691, 0, 0.0515691, 0.99867, 0, 331.694, 59.1498)
+[node name="Handle" type="StaticBody3D" parent="." unique_id=1597006235 groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 0.9986699, -0.051569078, 0, 0.051569078, 0.9986699, 0, 331.694, 59.1498)
 rotation_edit_mode = 1
 collision_layer = 33
 collision_mask = 33
 script = ExtResource("3_dxpp2")
 
-[node name="handpump_001" type="MeshInstance3D" parent="Handle"]
+[node name="handpump_001" type="MeshInstance3D" parent="Handle" unique_id=1234661890]
 transform = Transform3D(100, 0, 0, 0, 100, 7.54979e-06, 0, -7.54979e-06, 100, -1.65012, -87.4027, 118.197)
 mesh = SubResource("ArrayMesh_wvq2s")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Handle"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Handle" unique_id=2021523495]
 transform = Transform3D(99.7589, -6.88658, -0.858529, 5.08206, 80.9163, -58.5383, 4.72598, 58.3535, 81.0711, 0.49029, -92.7165, 117.501)
 shape = SubResource("BoxShape3D_dxpp2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_chggq")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=255078523]
+libraries/ = SubResource("AnimationLibrary_chggq")
+autoplay = &"RESET"
 
-[node name="WaterLeak" type="MeshInstance3D" parent="."]
+[node name="WaterLeak" type="MeshInstance3D" parent="." unique_id=425801424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 165.807, -109.831)
 mesh = SubResource("BoxMesh_lbkjs")
 script = ExtResource("4_lbkjs")
 
-[node name="WaterFlow" type="MeshInstance3D" parent="WaterLeak"]
+[node name="WaterFlow" type="MeshInstance3D" parent="WaterLeak" unique_id=1622974208]
 transform = Transform3D(15, 0, 0, 0, 58.7904, 0, 0, 0, 15, 0, -58.1337, 2.99976)
 material_override = SubResource("ShaderMaterial_lbkjs")
 mesh = SubResource("CylinderMesh_xrn67")

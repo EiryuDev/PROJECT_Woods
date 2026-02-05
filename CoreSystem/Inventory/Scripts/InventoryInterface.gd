@@ -1,5 +1,7 @@
 extends Control
 
+signal drop_slot_data(slot_data: SlotData)
+
 var grabbedSlotData: SlotData
 var external_inventory_owner 
 
@@ -54,3 +56,27 @@ func ClearExternalInventory() -> void:
 		
 		externalInventory.hide()
 		external_inventory_owner = null
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton \
+			and event.is_pressed() \
+			and grabbedSlotData:
+				
+		match event.button_index:
+			MOUSE_BUTTON_LEFT:
+				drop_slot_data.emit(grabbedSlotData)
+				grabbedSlotData = null
+			MOUSE_BUTTON_RIGHT:
+				drop_slot_data.emit(grabbedSlotData.CreateSingleSlotData())
+				if grabbedSlotData.quantity < 1:
+					grabbedSlotData = null
+				
+		UpdateGrabbedSlot()
+
+
+func _on_visibility_changed() -> void:
+	if not visible and grabbedSlotData:
+		drop_slot_data.emit(grabbedSlotData)
+		grabbedSlotData = null
+		UpdateGrabbedSlot()
