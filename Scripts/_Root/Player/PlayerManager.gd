@@ -5,6 +5,7 @@ extends Node
 @onready var playerLocomotionManager = $"Player Locomotion Manager"
 @onready var playerWeaponManager = $"Camera3D/Player Weapon Manager"
 @export var playerUIManager : CanvasLayer
+@export var playerInventoryManager : Node3D
 @onready var interactRaycast = $Camera3D/InteractRayCast
 @onready var interactDisplay =  $"Player UI Manager/GUI/Interact Display"
 @onready var deathScreen = $"Player UI Manager/GUI/DeathScreen"
@@ -33,6 +34,8 @@ var isDead = false
 var toggleHideUI = false
 var togglePause = false
 
+signal toggleInventory()
+
 func _ready():
 	playerStatsManager.died.connect(kill)
 	print(pickupPoint.name)
@@ -56,6 +59,9 @@ func PromptInteractable():
 	else:
 		interactDisplay.visible = false
 
+func is_holding_item() -> bool:
+	return pickupPoint.get_child_count() > 0
+	
 func _input(event):
 	if isDead:
 		return
@@ -71,8 +77,29 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("interact"):
 		var interacted = interactRaycast.get_collider()
-		if interacted != null and interacted.is_in_group("Interactable") and interacted.has_method("action_use"):
-			interacted.action_use()
+		if interacted == null:
+			return
+		if !interacted.is_in_group("Interactable"):
+			return
+		if !interacted.has_method("action_use"):
+			return
+		# 🚫 If holding something, block interaction
+		if is_holding_item():
+			return
+		# Interact ONLY
+		interacted.action_use(false)
+		
+	if Input.is_action_just_pressed("Grab"):
+		var interacted = interactRaycast.get_collider()
+		if interacted == null:
+			return
+		if !interacted.is_in_group("Interactable"):
+			return
+		# Only grab-capable items
+		if is_holding_item():
+			return
+		interacted.action_use(true)
+
 	
 	if Input.is_action_just_pressed("hide ui"):
 		if !toggleHideUI:
@@ -92,6 +119,10 @@ func _input(event):
 			$"CanvasLayer/GUI/Pause Display".visible = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Inventory"):
+		toggleInventory.emit()
+		
 func hurt(WRLD_DAMAGE_DATA: DamageData):
 	playerStatsManager.hurt(WRLD_DAMAGE_DATA)
 

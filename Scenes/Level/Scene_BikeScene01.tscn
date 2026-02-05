@@ -34,6 +34,8 @@
 [ext_resource type="PackedScene" uid="uid://cq0a041eg5071" path="res://Scenes/Objects/player.tscn" id="29_vaogl"]
 [ext_resource type="PackedScene" uid="uid://d3rt2q1anhcq8" path="res://Resources/Prefabs/Props Objects/Hays/hay.tscn" id="30_qfmxi"]
 [ext_resource type="PackedScene" uid="uid://iia6m6xf3xn0" path="res://ArtResources/Props/Royal Enfield/source/Royal Enfield Classic.glb" id="31_ik1lq"]
+[ext_resource type="PackedScene" uid="uid://c2sl0re6xyhld" path="res://CoreSystem/Items/Apple/Prefab/Apple.tscn" id="35_wdud5"]
+[ext_resource type="PackedScene" uid="uid://be7g6lb1idbi3" path="res://Resources/Prefabs/Item Objects/Interactable/Backpack.tscn" id="36_wdud5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ib045"]
 sky_top_color = Color(0.03529412, 0.05490196, 0.078431375, 1)
@@ -1217,7 +1219,7 @@ environment = SubResource("Environment_rm08j")
 camera_attributes = SubResource("CameraAttributesPractical_cbmdf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene Lighting" unique_id=346576389]
-transform = Transform3D(-0.8660254, 0.48296297, -0.12940954, 0, -0.25881904, -0.9659258, -0.50000006, -0.83651626, 0.22414386, 0, 0, 0)
+transform = Transform3D(-0.86602527, 0.48296294, -0.12940948, 0, -0.258819, -0.9659254, -0.5, -0.8365162, 0.22414377, 0, 0, 0)
 layers = 524289
 shadow_enabled = true
 
@@ -2943,20 +2945,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5009, 0.0806648, 168.162)
 
 [node name="Player" parent="." unique_id=1059065346 instance=ExtResource("29_vaogl")]
 
-[node name="AnimationPlayer" parent="Player/Camera3D/Player Weapon Manager/Weapons/Empty/Graphics" index="2"]
-autoplay = &"RESET"
-
-[node name="AnimationPlayer" parent="Player/Camera3D/Player Weapon Manager/Weapons/Machete/Graphics" index="2"]
-autoplay = &"RESET"
-
-[node name="AnimationPlayer" parent="Player/Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics" index="1"]
-autoplay = &"RESET"
+[node name="GrabbedSlot" parent="Player/Player UI Manager/InventoryInterface" parent_id_path=PackedInt32Array(1059065346, 1228910429) index="2" unique_id=2050141258]
+offset_right = 96.0
+offset_bottom = 96.0
 
 [node name="Hay" parent="." unique_id=994812464 instance=ExtResource("30_qfmxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22306, -0.533454, 167.257)
 
 [node name="Royal Enfield Classic" parent="." unique_id=1020422963 instance=ExtResource("31_ik1lq")]
 transform = Transform3D(-0.076197, 0, 0.997093, 0, 1, 0, -0.997093, 0, -0.076197, 17.8802, 0.896253, 163.473)
+
+[node name="Apple" parent="." unique_id=453972074 instance=ExtResource("35_wdud5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8942838, 0.2582751, 110.043144)
+
+[node name="Backpack" parent="." unique_id=1300612188 instance=ExtResource("36_wdud5")]
+transform = Transform3D(0.0026354322, 0, 0.99999654, 0, 1, 0, -0.99999654, 0, 0.0026354322, 15.312179, 0, 112.71387)
 
 [editable path="Node3D/Demo Terrain"]
 [editable path="Cat/OiiaioooooiaiFin"]

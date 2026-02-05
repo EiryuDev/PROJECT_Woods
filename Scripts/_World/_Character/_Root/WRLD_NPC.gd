@@ -16,7 +16,7 @@ signal hasTalkedAlready
 var hasSignalEmitted = false
 var hasDialogueStarted = false
 
-func action_use():
+func action_use(wants_grab := false):
 	if !hasDialogueStarted:
 		hasDialogueStarted = true
 		if requireAnimation:

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cugid8r2pkrru"]
+
+[ext_resource type="Script" uid="uid://dkmmqv7mhvtln" path="res://CoreSystem/Items/!Shared/Scripts/WLRD_ITEM.gd" id="1_est8i"]
+[ext_resource type="Texture2D" uid="uid://2gmx5vgovysl" path="res://CoreSystem/Items/!Shared/Sprites/Fantasy Icon.png" id="2_est8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p02ka"]
+atlas = ExtResource("2_est8i")
+region = Rect2(0, 448, 32, 32)
+
+[resource]
+script = ExtResource("1_est8i")
+name = "Apple"
+itemLore = "Just an apple, nothing else"
+stackable = true
+texture = SubResource("AtlasTexture_p02ka")
+metadata/_custom_type_script = "uid://dkmmqv7mhvtln"

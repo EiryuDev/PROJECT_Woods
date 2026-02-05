@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryData" format=3 uid="uid://dhe0tpqowj6g2"]
+
+[ext_resource type="Script" uid="uid://cmv5xipp53p8q" path="res://CoreSystem/Inventory/Scripts/WRLD_INVENTORY.gd" id="1_lykkl"]
+[ext_resource type="Script" uid="uid://d0f0r00kho2s8" path="res://CoreSystem/Inventory/Scripts/WRLD_SLOT.gd" id="2_4otpk"]
+[ext_resource type="Resource" uid="uid://cugid8r2pkrru" path="res://CoreSystem/Items/Apple/Data/appleItem.tres" id="3_lykkl"]
+
+[sub_resource type="Resource" id="Resource_g7gkc"]
+script = ExtResource("2_4otpk")
+item = ExtResource("3_lykkl")
+quantity = 10
+metadata/_custom_type_script = "uid://d0f0r00kho2s8"
+
+[sub_resource type="Resource" id="Resource_lykkl"]
+script = ExtResource("2_4otpk")
+item = ExtResource("3_lykkl")
+quantity = 10
+metadata/_custom_type_script = "uid://d0f0r00kho2s8"
+
+[resource]
+script = ExtResource("1_lykkl")
+slots_datas = Array[ExtResource("2_4otpk")]([null, null, SubResource("Resource_g7gkc"), SubResource("Resource_lykkl"), null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://cmv5xipp53p8q"

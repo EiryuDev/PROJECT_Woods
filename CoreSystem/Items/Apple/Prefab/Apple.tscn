@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c2sl0re6xyhld"]
+
+[ext_resource type="Script" uid="uid://c2u4n0kvceh46" path="res://CoreSystem/Items/Apple/Scripts/Apple.gd" id="1_g37qe"]
+[ext_resource type="PackedScene" uid="uid://0ml8brjq1eol" path="res://CoreSystem/Items/Apple/Prefab/GFX_Apple.tscn" id="2_r8jwj"]
+[ext_resource type="Resource" uid="uid://cugid8r2pkrru" path="res://CoreSystem/Items/Apple/Data/appleItem.tres" id="2_u3vby"]
+[ext_resource type="Script" uid="uid://d0f0r00kho2s8" path="res://CoreSystem/Inventory/Scripts/WRLD_SLOT.gd" id="3_kj5d7"]
+
+[sub_resource type="Resource" id="Resource_o3n0u"]
+script = ExtResource("3_kj5d7")
+item = ExtResource("2_u3vby")
+metadata/_custom_type_script = "uid://d0f0r00kho2s8"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u3vby"]
+radius = 0.3009616
+
+[node name="Apple" type="RigidBody3D" unique_id=453972074 groups=["Interactable"]]
+collision_layer = 33
+collision_mask = 33
+script = ExtResource("1_g37qe")
+slot_data = SubResource("Resource_o3n0u")
+metadata/_custom_type_script = "uid://cuj8r33aebhuq"
+
+[node name="GFX_Apple" parent="." unique_id=1130575729 instance=ExtResource("2_r8jwj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=673529103]
+shape = SubResource("SphereShape3D_u3vby")

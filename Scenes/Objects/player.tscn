@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://cq0a041eg5071"]
+[gd_scene format=4 uid="uid://cq0a041eg5071"]
 
 [ext_resource type="Script" uid="uid://d1l7a4bhingke" path="res://Scripts/_Root/Player/PlayerManager.gd" id="1_picsy"]
 [ext_resource type="Script" uid="uid://o8cqav6lwi8x" path="res://Scripts/Items/Player/Pickup/PlayerPickupPointManager.gd" id="2_34odq"]
@@ -30,13 +30,19 @@
 [ext_resource type="AudioStream" uid="uid://ns1sk2kh3ugx" path="res://Audio/SFX/SE/player/player_hurt.wav" id="17_glqjn"]
 [ext_resource type="AudioStream" uid="uid://conl6mjvhrl65" path="res://Audio/SFX/SE/player/player_die.wav" id="18_4l8dh"]
 [ext_resource type="PackedScene" uid="uid://bdy3j8i233lnn" path="res://Resources/Prefabs/Character Objects/Player/PlayerLocomotionManager.tscn" id="19_4l8dh"]
+[ext_resource type="Shader" uid="uid://dwu4gyk502p7t" path="res://addons/psx_camera/psx_camera_shader.gdshader" id="19_g4fta"]
 [ext_resource type="AudioStream" uid="uid://botqxrt4bx7gh" path="res://Audio/SFX/SE/player/player_jump.wav" id="20_oxae2"]
 [ext_resource type="Script" uid="uid://dnmsfddd0sqtx" path="res://Scripts/Audio/Player/PlayerStepTrackerSoundManager.gd" id="21_03qow"]
 [ext_resource type="AudioStream" uid="uid://d05p3mivl34ob" path="res://Audio/SFX/SE/steps/step_1.wav" id="21_6v78c"]
 [ext_resource type="AudioStream" uid="uid://cry4itlgfcu48" path="res://Audio/SFX/SE/steps/step_2.wav" id="22_03qow"]
 [ext_resource type="Script" uid="uid://ruxj265rtky7" path="res://Scripts/UI/Player/PlayerUIManager.gd" id="30_kgbis"]
+[ext_resource type="Script" uid="uid://cxbhpmoqglht4" path="res://CoreSystem/Player/Scripts/PlayerInventoryManager.gd" id="31_1bkec"]
+[ext_resource type="Resource" uid="uid://dhe0tpqowj6g2" path="res://CoreSystem/Inventory/Data/testInventory.tres" id="32_swcju"]
 [ext_resource type="Script" uid="uid://d1tj0s44xx2aa" path="res://Scripts/UI/Player/UI_DeathScreen.gd" id="33_gra3g"]
 [ext_resource type="Script" uid="uid://bf4x4oxaftrix" path="res://Scripts/UI/Player/UI_FPSDisplay.gd" id="34_0ykjt"]
+[ext_resource type="PackedScene" uid="uid://deyxqomkiy4bv" path="res://CoreSystem/Inventory/Prefabs/inventory.tscn" id="39_rn5df"]
+[ext_resource type="Script" uid="uid://ygvkesnfqxe" path="res://CoreSystem/Inventory/Scripts/InventoryInterface.gd" id="40_tvp2y"]
+[ext_resource type="PackedScene" uid="uid://fn3is1yiv78b" path="res://CoreSystem/Inventory/Prefabs/slot.tscn" id="43_bjk7v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hbvo1"]
 radius = 0.368202
@@ -487,6 +493,26 @@ radius = 50.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_kkk37"]
 radius = 15.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rap5"]
+render_priority = 0
+shader = ExtResource("19_g4fta")
+shader_parameter/enable_fog = true
+shader_parameter/fog_color = Color(0.729412, 0.729412, 0.729412, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = false
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 32
+shader_parameter/enable_dithering = false
+shader_parameter/dither_strength = 0.3
+
+[sub_resource type="QuadMesh" id="QuadMesh_rn5df"]
+material = SubResource("ShaderMaterial_2rap5")
+flip_faces = true
+size = Vector2(2, 2)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mxid"]
 radius = 0.583
 height = 2.091
@@ -602,39 +628,40 @@ font_color = Color(0.5171842, 0.51718456, 0.51718444, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_kgbis"]
 font_size = 30
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("playerUIManager") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1523903681 node_paths=PackedStringArray("playerUIManager", "playerInventoryManager") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.38677, 105)
 collision_layer = 6
 collision_mask = 3
 script = ExtResource("1_picsy")
 playerUIManager = NodePath("Player UI Manager")
+playerInventoryManager = NodePath("Player Inventory Manager")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1968839264]
 shape = SubResource("CapsuleShape3D_hbvo1")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2665107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 cull_mask = 524287
 fov = 80.0
 
-[node name="FirePoint" type="Node3D" parent="Camera3D"]
+[node name="FirePoint" type="Node3D" parent="Camera3D" unique_id=782585905]
 unique_name_in_owner = true
 
-[node name="ObjectPoint" type="Node3D" parent="Camera3D"]
+[node name="ObjectPoint" type="Node3D" parent="Camera3D" unique_id=458345605]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.79763)
 
-[node name="PickupPoint" type="Node3D" parent="Camera3D"]
+[node name="PickupPoint" type="Node3D" parent="Camera3D" unique_id=815969160]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.29, -0.155, -0.498)
 script = ExtResource("2_34odq")
 
-[node name="Player Weapon Manager" type="Node3D" parent="Camera3D"]
+[node name="Player Weapon Manager" type="Node3D" parent="Camera3D" unique_id=2048257320]
 unique_name_in_owner = true
 script = ExtResource("2_dfgsd")
 
-[node name="Weapons" type="Node3D" parent="Camera3D/Player Weapon Manager"]
+[node name="Weapons" type="Node3D" parent="Camera3D/Player Weapon Manager" unique_id=766257476]
 
-[node name="Empty" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
+[node name="Empty" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons" unique_id=851735831]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.448009, -0.535145, -0.656691)
 script = ExtResource("4_y42te")
 automatic = true
@@ -643,66 +670,64 @@ ammo = -1
 attackRate = 0.3
 animationControlledAttack = true
 
-[node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty"]
+[node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty" unique_id=1394952622]
 rotation_edit_mode = 1
 
-[node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics"]
+[node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics" unique_id=2057748896]
 visible = false
 
-[node name="Machete" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics/Machete"]
+[node name="Machete" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics/Machete" unique_id=1024675756]
 visible = false
 layers = 524288
 mesh = SubResource("ArrayMesh_h8tfp")
 skeleton = NodePath("")
 
-[node name="PSX_Axe" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics" instance=ExtResource("6_gra3g")]
+[node name="PSX_Axe" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics" unique_id=642367242 instance=ExtResource("6_gra3g")]
 transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 0, -0.30714, -0.0337296)
 visible = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics"]
-libraries = {
-&"": SubResource("AnimationLibrary_6odyb")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/Graphics" unique_id=1156204739]
+libraries/ = SubResource("AnimationLibrary_6odyb")
+autoplay = &"RESET"
 
-[node name="BulletEmitter" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty"]
+[node name="BulletEmitter" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty" unique_id=225564198]
 transform = Transform3D(1, 1.06581e-14, -7.10543e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 script = ExtResource("6_2i876")
 metadata/_custom_type_script = "uid://b3ujgip13wym3"
 
-[node name="AreaDamageEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter" instance=ExtResource("6_1mxid")]
+[node name="AreaDamageEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter" unique_id=1658582096 instance=ExtResource("6_1mxid")]
 offsetByRadius = true
 
-[node name="HitScanBulletEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter" instance=ExtResource("7_jvxap")]
+[node name="HitScanBulletEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter" unique_id=408020017 instance=ExtResource("7_jvxap")]
 onlyHitEnvironment = true
 
 [node name="RayCast3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty/BulletEmitter/HitScanBulletEmitter" index="0"]
 target_position = Vector3(0, 0, -2)
 
-[node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty"]
+[node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty" unique_id=519901065]
 stream = ExtResource("8_uaqrc")
 pitch_scale = 1.3
 bus = &"SFX"
 
-[node name="AttackSounds" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty"]
+[node name="AttackSounds" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Empty" unique_id=45220462]
 script = ExtResource("9_lq1qi")
 
-[node name="MeleeAttack01" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/AttackSounds"]
+[node name="MeleeAttack01" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/AttackSounds" unique_id=1166657454]
 stream = ExtResource("8_uaqrc")
 pitch_scale = 0.6
 bus = &"SFX"
 
-[node name="MeleeAttack02" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/AttackSounds"]
+[node name="MeleeAttack02" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/AttackSounds" unique_id=1555791350]
 stream = ExtResource("8_uaqrc")
 pitch_scale = 1.1
 bus = &"SFX"
 
-[node name="MeleeAttack03" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/AttackSounds"]
+[node name="MeleeAttack03" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Empty/AttackSounds" unique_id=1448749507]
 stream = ExtResource("8_uaqrc")
 pitch_scale = 0.9
 bus = &"SFX"
 
-[node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
+[node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons" unique_id=1637373769]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.448009, -0.535145, -0.656691)
 script = ExtResource("4_y42te")
 automatic = true
@@ -711,297 +736,302 @@ ammo = -1
 attackRate = 0.3
 animationControlledAttack = true
 
-[node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete"]
+[node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete" unique_id=1926752994]
 rotation_edit_mode = 1
 
-[node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics"]
+[node name="Machete" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics" unique_id=1854867355]
 visible = false
 
-[node name="Machete" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics/Machete"]
+[node name="Machete" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics/Machete" unique_id=1210901016]
 layers = 524288
 mesh = SubResource("ArrayMesh_h8tfp")
 skeleton = NodePath("")
 
-[node name="PSX_Axe" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics" instance=ExtResource("6_gra3g")]
+[node name="PSX_Axe" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics" unique_id=1415845547 instance=ExtResource("6_gra3g")]
 transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 0, -0.30714, -0.0337296)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics"]
-libraries = {
-&"": SubResource("AnimationLibrary_6odyb")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete/Graphics" unique_id=164293801]
+libraries/ = SubResource("AnimationLibrary_6odyb")
+autoplay = &"RESET"
 
-[node name="BulletEmitter" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete"]
+[node name="BulletEmitter" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete" unique_id=101429497]
 transform = Transform3D(1, 1.06581e-14, -7.10543e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 script = ExtResource("6_2i876")
 metadata/_custom_type_script = "uid://b3ujgip13wym3"
 
-[node name="AreaDamageEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter" instance=ExtResource("6_1mxid")]
+[node name="AreaDamageEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter" unique_id=1867124195 instance=ExtResource("6_1mxid")]
 offsetByRadius = true
 
-[node name="HitScanBulletEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter" instance=ExtResource("7_jvxap")]
+[node name="HitScanBulletEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter" unique_id=508961663 instance=ExtResource("7_jvxap")]
 onlyHitEnvironment = true
 
 [node name="RayCast3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete/BulletEmitter/HitScanBulletEmitter" index="0"]
 target_position = Vector3(0, 0, -2)
 
-[node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete"]
+[node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete" unique_id=347269789]
 stream = ExtResource("8_uaqrc")
 pitch_scale = 1.3
 bus = &"SFX"
 
-[node name="AttackSounds" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete"]
+[node name="AttackSounds" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Machete" unique_id=1946294879]
 script = ExtResource("9_lq1qi")
 
-[node name="MeleeAttack01" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete/AttackSounds"]
+[node name="MeleeAttack01" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete/AttackSounds" unique_id=849563892]
 stream = ExtResource("8_uaqrc")
 pitch_scale = 0.6
 bus = &"SFX"
 
-[node name="MeleeAttack02" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete/AttackSounds"]
+[node name="MeleeAttack02" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete/AttackSounds" unique_id=2102764528]
 stream = ExtResource("8_uaqrc")
 pitch_scale = 1.1
 bus = &"SFX"
 
-[node name="MeleeAttack03" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete/AttackSounds"]
+[node name="MeleeAttack03" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Machete/AttackSounds" unique_id=293289607]
 stream = ExtResource("8_uaqrc")
 pitch_scale = 0.9
 bus = &"SFX"
 
-[node name="Desert Eagle" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons"]
+[node name="Desert Eagle" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons" unique_id=67933370]
 transform = Transform3D(-0.2, 8.74228e-09, -1.51421e-08, 0, 0.173205, 0.1, 1.74846e-08, 0.1, -0.173205, 0.441, -0.333, -0.881)
 visible = false
 script = ExtResource("4_y42te")
 staminaNeeded = 0
 attackRate = 0.5
 
-[node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle"]
+[node name="Graphics" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle" unique_id=41351867]
 rotation_edit_mode = 1
 
-[node name="Desert Eagle" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics"]
+[node name="Desert Eagle" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics" unique_id=2074546442]
 transform = Transform3D(1, 3.55271e-15, -7.10543e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 
-[node name="Sketchfab_model" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle"]
+[node name="Sketchfab_model" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle" unique_id=1335853664]
 transform = Transform3D(1, 0, 0, 0, -3.57628e-07, 1, 0, -1, -3.57628e-07, 0, 0, 0)
 
-[node name="DesertEaglePS1_fbx" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model"]
+[node name="DesertEaglePS1_fbx" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model" unique_id=1350227089]
 transform = Transform3D(0.01, 0, 0, 0, -3.57628e-09, -0.01, 0, 0.01, -3.57628e-09, 0, 0, 0)
 
-[node name="RootNode" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx"]
+[node name="RootNode" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx" unique_id=560418979]
 
-[node name="Cube" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1699472665]
 transform = Transform3D(0, -25.8819, -96.5926, -100, 2.87868e-06, -7.71341e-07, 2.98023e-06, 96.5926, -25.8819, -184.74, -114, 360.21)
 
-[node name="Cube_001" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_001" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1936331219]
 transform = Transform3D(100, 0, 0, 0, 50, 86.6025, 0, -86.6025, 50, 0, -46, 0)
 
-[node name="Cube_001_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_001"]
+[node name="Cube_001_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_001" unique_id=1525239375]
 layers = 524288
 mesh = SubResource("ArrayMesh_46d8u")
 skeleton = NodePath("")
 
-[node name="Cube_002" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_002" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1104501782]
 transform = Transform3D(100, 0, 0, 0, 50, 86.6025, 0, -86.6025, 50, 0, -46, 0)
 
-[node name="Cube_002_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_002"]
+[node name="Cube_002_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_002" unique_id=643750334]
 layers = 524288
 mesh = SubResource("ArrayMesh_oe652")
 skeleton = NodePath("")
 
-[node name="Cube_003" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_003" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1557235146]
 transform = Transform3D(100, 0, 0, 0, 50, 86.6025, 0, -86.6025, 50, 0, -46, 0)
 
-[node name="Cube_003_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_003"]
+[node name="Cube_003_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_003" unique_id=799601184]
 layers = 524288
 mesh = SubResource("ArrayMesh_5k0jy")
 skeleton = NodePath("")
 
-[node name="Cube_004" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_004" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=2015909160]
 transform = Transform3D(100, 0, 0, 0, 50, 86.6025, 0, -86.6025, 50, 0, -46, 0)
 
-[node name="Cube_004_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_004"]
+[node name="Cube_004_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_004" unique_id=1595460147]
 layers = 524288
 mesh = SubResource("ArrayMesh_3uob6")
 skeleton = NodePath("")
 
-[node name="Cube_005" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_005" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1271317497]
 transform = Transform3D(100, 0, 0, 0, 50, 86.6025, 0, -86.6025, 50, 0, -46, 0)
 
-[node name="Cube_005_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_005"]
+[node name="Cube_005_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cube_005" unique_id=1648916928]
 layers = 524288
 mesh = SubResource("ArrayMesh_30jhi")
 skeleton = NodePath("")
 
-[node name="Cube_006" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_006" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1929552405]
 transform = Transform3D(1.19209e-05, -25.8819, -96.5926, -100, -3.08536e-06, -1.15147e-05, 0, 96.5926, -25.8819, -155.154, -114, 253.188)
 
-[node name="Cube_007" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_007" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1358734741]
 transform = Transform3D(1.19209e-05, -25.8819, -96.5926, -100, -3.08536e-06, -1.15147e-05, 0, 96.5926, -25.8819, -155.154, -114, 253.188)
 
-[node name="Cube_008" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_008" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=463884080]
 transform = Transform3D(1.19209e-05, -25.8819, -96.5926, -100, -3.08536e-06, -1.15147e-05, 0, 96.5926, -25.8819, -155.154, -114, 253.188)
 
-[node name="Cube_009" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_009" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1666949274]
 transform = Transform3D(1.19209e-05, -25.8819, -96.5926, -100, -3.08536e-06, -1.15147e-05, 0, 96.5926, -25.8819, -155.154, -114, 253.188)
 
-[node name="Cube_010" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_010" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=939032478]
 transform = Transform3D(93.9693, -34.202, -6.8777e-06, 2.98023e-06, -1.19209e-05, 100, -34.202, -93.9693, -1.01827e-05, 120, 0, -190)
 
-[node name="Cube_011" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cube_011" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=797819929]
 transform = Transform3D(2.38419e-05, -50, -86.6026, 100, 1.19209e-05, 2.06477e-05, 0, -86.6025, 50, -110, -120, -150)
 
-[node name="Cylinder" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cylinder" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1108646263]
 transform = Transform3D(100, 0, 0, 0, 50, 86.6025, 0, -86.6025, 50, 0, -46, 0)
 
-[node name="Cylinder_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cylinder"]
+[node name="Cylinder_Material_0" type="MeshInstance3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode/Cylinder" unique_id=2080875232]
 layers = 524288
 mesh = SubResource("ArrayMesh_37a56")
 skeleton = NodePath("")
 
-[node name="Cylinder_001" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cylinder_001" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=1331681405]
 transform = Transform3D(1.19209e-05, -25.8819, -96.5926, -100, -3.08536e-06, -1.15147e-05, 0, 96.5926, -25.8819, -155.154, -114, 253.188)
 
-[node name="Cylinder_002" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cylinder_002" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=721536068]
 transform = Transform3D(93.9693, -34.202, -6.8777e-06, 2.98023e-06, -1.19209e-05, 100, -34.202, -93.9693, -1.01827e-05, 120, 0, -190)
 
-[node name="Cylinder_003" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode"]
+[node name="Cylinder_003" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/Desert Eagle/Sketchfab_model/DesertEaglePS1_fbx/RootNode" unique_id=2102305516]
 transform = Transform3D(2.38419e-05, -50, -86.6026, 100, 1.19209e-05, 2.06477e-05, 0, -86.6025, 50, -110, -120, -150)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics"]
-libraries = {
-&"": SubResource("AnimationLibrary_h2jbs")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics" unique_id=1081682603]
+libraries/ = SubResource("AnimationLibrary_h2jbs")
+autoplay = &"RESET"
 
-[node name="MuzzleFlash" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics" instance=ExtResource("6_6odyb")]
+[node name="MuzzleFlash" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics" unique_id=1695388256 instance=ExtResource("6_6odyb")]
 transform = Transform3D(1, 8.88178e-14, -7.10543e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0.00677204, -1.16967, 2.69441)
 
-[node name="muzzleflash1" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/MuzzleFlash" instance=ExtResource("7_1mxid")]
+[node name="muzzleflash1" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/Graphics/MuzzleFlash" unique_id=889257632 instance=ExtResource("7_1mxid")]
 transform = Transform3D(1, -3.55271e-15, 0, 0, 1, 2.98023e-08, -7.10543e-15, -2.98023e-08, 1, 0, 0, 0)
 
-[node name="BulletEmitter" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle"]
+[node name="BulletEmitter" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle" unique_id=1876708748]
 transform = Transform3D(1, 1.06581e-14, -7.10543e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 script = ExtResource("6_2i876")
 metadata/_custom_type_script = "uid://b3ujgip13wym3"
 
-[node name="HitScanBulletEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/BulletEmitter" instance=ExtResource("7_jvxap")]
+[node name="HitScanBulletEmitter" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/BulletEmitter" unique_id=1982788134 instance=ExtResource("7_jvxap")]
 
-[node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle"]
+[node name="EquipSound" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle" unique_id=999242780]
 stream = ExtResource("15_bp0mo")
 pitch_scale = 1.2
 bus = &"SFX"
 
-[node name="OutofAmmoSound" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle"]
+[node name="OutofAmmoSound" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle" unique_id=227490673]
 stream = ExtResource("14_3274e")
 bus = &"SFX"
 
-[node name="AttackSounds" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle"]
+[node name="AttackSounds" type="Node3D" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle" unique_id=1059083778]
 transform = Transform3D(-5, -4.16334e-13, 4.37115e-07, 2.18558e-07, 4.33013, 2.5, -3.78553e-07, 2.5, -4.33013, 2.205, 3.64443, -2.98234)
 script = ExtResource("9_lq1qi")
 
-[node name="MeleeAttack01" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/AttackSounds"]
+[node name="MeleeAttack01" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/AttackSounds" unique_id=1726899257]
 stream = ExtResource("15_v7n4v")
 pitch_scale = 1.15
 bus = &"SFX"
 
-[node name="MeleeAttack02" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/AttackSounds"]
+[node name="MeleeAttack02" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/AttackSounds" unique_id=1955090452]
 stream = ExtResource("15_v7n4v")
 pitch_scale = 1.2
 bus = &"SFX"
 
-[node name="MeleeAttack03" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/AttackSounds"]
+[node name="MeleeAttack03" type="AudioStreamPlayer" parent="Camera3D/Player Weapon Manager/Weapons/Desert Eagle/AttackSounds" unique_id=968654410]
 stream = ExtResource("15_v7n4v")
 pitch_scale = 1.25
 bus = &"SFX"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager"]
-libraries = {
-&"": SubResource("AnimationLibrary_ea56u")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Player Weapon Manager" unique_id=1742673159]
+libraries/ = SubResource("AnimationLibrary_ea56u")
 
-[node name="NearbyMonstersAlertAreaLarge" type="Area3D" parent="Camera3D/Player Weapon Manager"]
+[node name="NearbyMonstersAlertAreaLarge" type="Area3D" parent="Camera3D/Player Weapon Manager" unique_id=1405461866]
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Player Weapon Manager/NearbyMonstersAlertAreaLarge"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Player Weapon Manager/NearbyMonstersAlertAreaLarge" unique_id=1887307511]
 shape = SubResource("SphereShape3D_mytd1")
 
-[node name="NearbyMonstersAlertAreaSmall" type="Area3D" parent="Camera3D/Player Weapon Manager"]
+[node name="NearbyMonstersAlertAreaSmall" type="Area3D" parent="Camera3D/Player Weapon Manager" unique_id=1233510536]
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Player Weapon Manager/NearbyMonstersAlertAreaSmall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Player Weapon Manager/NearbyMonstersAlertAreaSmall" unique_id=1585112208]
 shape = SubResource("SphereShape3D_kkk37")
 
-[node name="LOSRayCast3D" type="RayCast3D" parent="Camera3D/Player Weapon Manager"]
+[node name="LOSRayCast3D" type="RayCast3D" parent="Camera3D/Player Weapon Manager" unique_id=872239836]
 enabled = false
 
-[node name="InteractRayCast" type="RayCast3D" parent="Camera3D"]
+[node name="InteractRayCast" type="RayCast3D" parent="Camera3D" unique_id=1624715631]
 target_position = Vector3(0, 0, -2)
 collision_mask = 32
 collide_with_areas = true
 
-[node name="Player Stats Manager" parent="." instance=ExtResource("16_v7n4v")]
+[node name="PSXMesh" type="MeshInstance3D" parent="Camera3D" unique_id=1150216808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0763102, 0, -0.55748)
+visible = false
+mesh = SubResource("QuadMesh_rn5df")
+
+[node name="Player Stats Manager" parent="." unique_id=36770446 instance=ExtResource("16_v7n4v")]
 unique_name_in_owner = true
 staminaRegenRate = 30.0
 
-[node name="HurtSound" type="AudioStreamPlayer" parent="Player Stats Manager"]
+[node name="HurtSound" type="AudioStreamPlayer" parent="Player Stats Manager" unique_id=680881433]
 stream = ExtResource("17_glqjn")
 bus = &"SFX"
 
-[node name="DieSound" type="AudioStreamPlayer" parent="Player Stats Manager"]
+[node name="DieSound" type="AudioStreamPlayer" parent="Player Stats Manager" unique_id=830872350]
 stream = ExtResource("18_4l8dh")
 bus = &"SFX"
 
-[node name="Player Locomotion Manager" parent="." instance=ExtResource("19_4l8dh")]
+[node name="Player Locomotion Manager" parent="." unique_id=1120063824 instance=ExtResource("19_4l8dh")]
 
-[node name="JumpSound" type="AudioStreamPlayer" parent="Player Locomotion Manager"]
+[node name="JumpSound" type="AudioStreamPlayer" parent="Player Locomotion Manager" unique_id=793549176]
 stream = ExtResource("20_oxae2")
 bus = &"SFX"
 
-[node name="StepTracker" type="Node3D" parent="Player Locomotion Manager"]
+[node name="StepTracker" type="Node3D" parent="Player Locomotion Manager" unique_id=1016654342]
 script = ExtResource("21_03qow")
 stepAfterDistance = 2.5
 
-[node name="StepSounds" type="Node3D" parent="Player Locomotion Manager/StepTracker"]
+[node name="StepSounds" type="Node3D" parent="Player Locomotion Manager/StepTracker" unique_id=173413220]
 script = ExtResource("9_lq1qi")
 
-[node name="Step01" type="AudioStreamPlayer" parent="Player Locomotion Manager/StepTracker/StepSounds"]
+[node name="Step01" type="AudioStreamPlayer" parent="Player Locomotion Manager/StepTracker/StepSounds" unique_id=1410362559]
 stream = ExtResource("21_6v78c")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="Step02" type="AudioStreamPlayer" parent="Player Locomotion Manager/StepTracker/StepSounds"]
+[node name="Step02" type="AudioStreamPlayer" parent="Player Locomotion Manager/StepTracker/StepSounds" unique_id=1852555938]
 stream = ExtResource("22_03qow")
 volume_db = -6.0
 bus = &"SFX"
 
-[node name="Player Pickup Manager" type="Area3D" parent="."]
+[node name="Player Pickup Manager" type="Area3D" parent="." unique_id=13438466]
 collision_layer = 0
 collision_mask = 16
 monitorable = false
 script = ExtResource("13_h2jbs")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player Pickup Manager"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player Pickup Manager" unique_id=2039122660]
 shape = SubResource("CapsuleShape3D_1mxid")
 
-[node name="PickUpHealth" type="AudioStreamPlayer" parent="Player Pickup Manager"]
+[node name="PickUpHealth" type="AudioStreamPlayer" parent="Player Pickup Manager" unique_id=404240205]
 stream = ExtResource("14_bp0mo")
 bus = &"SFX"
 
-[node name="PickUpDeagleAmmo" type="AudioStreamPlayer" parent="Player Pickup Manager"]
+[node name="PickUpDeagleAmmo" type="AudioStreamPlayer" parent="Player Pickup Manager" unique_id=596348674]
 stream = ExtResource("15_uaqrc")
 bus = &"SFX"
 
-[node name="Player UI Manager" type="CanvasLayer" parent="." node_paths=PackedStringArray("questPanel", "questTitle", "questDescription")]
+[node name="Player Inventory Manager" type="Node3D" parent="." unique_id=346339013 node_paths=PackedStringArray("player", "inventoryInterface")]
+script = ExtResource("31_1bkec")
+player = NodePath("..")
+inventoryData = ExtResource("32_swcju")
+inventoryInterface = NodePath("../Player UI Manager/InventoryInterface")
+
+[node name="Player UI Manager" type="CanvasLayer" parent="." unique_id=404560257 node_paths=PackedStringArray("questPanel", "questTitle", "questDescription")]
 script = ExtResource("30_kgbis")
 questPanel = NodePath("GUI/Quest Panel")
 questTitle = NodePath("GUI/Quest Panel/ColorRect/Quest Title")
 questDescription = NodePath("GUI/Quest Panel/ColorRect/Quest Description")
 
-[node name="SubViewport" type="SubViewportContainer" parent="Player UI Manager"]
+[node name="SubViewport" type="SubViewportContainer" parent="Player UI Manager" unique_id=645091674]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1009,20 +1039,20 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="Player UI Manager/SubViewport"]
+[node name="SubViewport" type="SubViewport" parent="Player UI Manager/SubViewport" unique_id=911303003]
 transparent_bg = true
 handle_input_locally = false
 positional_shadow_atlas_size = 4096
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="ViewportCamera" type="Camera3D" parent="Player UI Manager/SubViewport/SubViewport"]
+[node name="ViewportCamera" type="Camera3D" parent="Player UI Manager/SubViewport/SubViewport" unique_id=1276846832]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 cull_mask = 524288
 fov = 80.0
 
-[node name="GUI" type="Control" parent="Player UI Manager"]
+[node name="GUI" type="Control" parent="Player UI Manager" unique_id=1434676386]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1031,7 +1061,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("15_ea56u")
 
-[node name="Health Effects Display" type="Control" parent="Player UI Manager/GUI"]
+[node name="Health Effects Display" type="Control" parent="Player UI Manager/GUI" unique_id=858642607]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -1041,7 +1071,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_5rt57")
 
-[node name="Healed" type="ColorRect" parent="Player UI Manager/GUI/Health Effects Display"]
+[node name="Healed" type="ColorRect" parent="Player UI Manager/GUI/Health Effects Display" unique_id=1692277911]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1051,7 +1081,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 0, 1)
 
-[node name="Hurt" type="ColorRect" parent="Player UI Manager/GUI/Health Effects Display"]
+[node name="Hurt" type="ColorRect" parent="Player UI Manager/GUI/Health Effects Display" unique_id=442529220]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1061,12 +1091,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player UI Manager/GUI/Health Effects Display"]
-libraries = {
-&"": SubResource("AnimationLibrary_u2cyj")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player UI Manager/GUI/Health Effects Display" unique_id=1186571147]
+libraries/ = SubResource("AnimationLibrary_u2cyj")
 
-[node name="Pickup Info Display" type="Label" parent="Player UI Manager/GUI"]
+[node name="Pickup Info Display" type="Label" parent="Player UI Manager/GUI" unique_id=503178603]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 0.666667, 1)
 layout_mode = 1
@@ -1082,7 +1110,7 @@ Picked Up 9 Deagle Ammo"
 label_settings = SubResource("LabelSettings_5rt57")
 script = ExtResource("16_u2cyj")
 
-[node name="Crosshair" type="TextureRect" parent="Player UI Manager/GUI"]
+[node name="Crosshair" type="TextureRect" parent="Player UI Manager/GUI" unique_id=1446333736]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1098,7 +1126,7 @@ grow_vertical = 2
 texture = ExtResource("10_jvxap")
 expand_mode = 3
 
-[node name="Stats Display" type="Control" parent="Player UI Manager/GUI"]
+[node name="Stats Display" type="Control" parent="Player UI Manager/GUI" unique_id=1407639058]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1114,7 +1142,7 @@ grow_vertical = 0
 theme = ExtResource("15_ea56u")
 script = ExtResource("16_8ietw")
 
-[node name="Ammo Display" type="Label" parent="Player UI Manager/GUI/Stats Display"]
+[node name="Ammo Display" type="Label" parent="Player UI Manager/GUI/Stats Display" unique_id=435858626]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1129,7 +1157,7 @@ label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Health Text" type="Label" parent="Player UI Manager/GUI/Stats Display"]
+[node name="Health Text" type="Label" parent="Player UI Manager/GUI/Stats Display" unique_id=1191938877]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1144,7 +1172,7 @@ label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Health Display" type="ProgressBar" parent="Player UI Manager/GUI/Stats Display"]
+[node name="Health Display" type="ProgressBar" parent="Player UI Manager/GUI/Stats Display" unique_id=1926669317]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1160,7 +1188,7 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
-[node name="Stamina Text" type="Label" parent="Player UI Manager/GUI/Stats Display"]
+[node name="Stamina Text" type="Label" parent="Player UI Manager/GUI/Stats Display" unique_id=1199118197]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1175,7 +1203,7 @@ label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stamina Display" type="ProgressBar" parent="Player UI Manager/GUI/Stats Display"]
+[node name="Stamina Display" type="ProgressBar" parent="Player UI Manager/GUI/Stats Display" unique_id=1689558783]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1191,7 +1219,7 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
-[node name="FPS Display" type="Label" parent="Player UI Manager/GUI/Stats Display"]
+[node name="FPS Display" type="Label" parent="Player UI Manager/GUI/Stats Display" unique_id=1573492]
 self_modulate = Color(1, 1, 0.666667, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -1206,7 +1234,7 @@ label_settings = SubResource("LabelSettings_5rt57")
 horizontal_alignment = 2
 script = ExtResource("34_0ykjt")
 
-[node name="Interact Display" type="Label" parent="Player UI Manager/GUI"]
+[node name="Interact Display" type="Label" parent="Player UI Manager/GUI" unique_id=29036531]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1224,7 +1252,7 @@ label_settings = SubResource("LabelSettings_ea56u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DeathScreen" type="Control" parent="Player UI Manager/GUI"]
+[node name="DeathScreen" type="Control" parent="Player UI Manager/GUI" unique_id=1534363346]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -1235,7 +1263,7 @@ grow_vertical = 2
 theme = ExtResource("15_ea56u")
 script = ExtResource("33_gra3g")
 
-[node name="ColorRect" type="ColorRect" parent="Player UI Manager/GUI/DeathScreen"]
+[node name="ColorRect" type="ColorRect" parent="Player UI Manager/GUI/DeathScreen" unique_id=1925012147]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1244,7 +1272,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.513726)
 
-[node name="Panel" type="Panel" parent="Player UI Manager/GUI/DeathScreen"]
+[node name="Panel" type="Panel" parent="Player UI Manager/GUI/DeathScreen" unique_id=85092221]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1259,7 +1287,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("15_ea56u")
 
-[node name="Title" type="Label" parent="Player UI Manager/GUI/DeathScreen/Panel"]
+[node name="Title" type="Label" parent="Player UI Manager/GUI/DeathScreen/Panel" unique_id=1678607361]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1274,7 +1302,7 @@ text = "You Died"
 label_settings = SubResource("LabelSettings_mytd1")
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="Player UI Manager/GUI/DeathScreen/Panel"]
+[node name="RestartButton" type="Button" parent="Player UI Manager/GUI/DeathScreen/Panel" unique_id=359765249]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1289,12 +1317,10 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Restart"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player UI Manager/GUI/DeathScreen"]
-libraries = {
-&"": SubResource("AnimationLibrary_2btc3")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player UI Manager/GUI/DeathScreen" unique_id=639107006]
+libraries/ = SubResource("AnimationLibrary_2btc3")
 
-[node name="Pause Display" type="Control" parent="Player UI Manager/GUI"]
+[node name="Pause Display" type="Control" parent="Player UI Manager/GUI" unique_id=531368480]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1303,7 +1329,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Player UI Manager/GUI/Pause Display"]
+[node name="ColorRect" type="ColorRect" parent="Player UI Manager/GUI/Pause Display" unique_id=1882303037]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1312,7 +1338,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.28235295)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player UI Manager/GUI/Pause Display"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player UI Manager/GUI/Pause Display" unique_id=1937612452]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1327,15 +1353,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 
-[node name="Save Game" type="Button" parent="Player UI Manager/GUI/Pause Display/VBoxContainer"]
+[node name="Save Game" type="Button" parent="Player UI Manager/GUI/Pause Display/VBoxContainer" unique_id=1697293144]
 layout_mode = 2
 text = "Save Game"
 
-[node name="Quit Game" type="Button" parent="Player UI Manager/GUI/Pause Display/VBoxContainer"]
+[node name="Quit Game" type="Button" parent="Player UI Manager/GUI/Pause Display/VBoxContainer" unique_id=1969230833]
 layout_mode = 2
 text = "Quit Game"
 
-[node name="Quest Panel" type="Control" parent="Player UI Manager/GUI"]
+[node name="Quest Panel" type="Control" parent="Player UI Manager/GUI" unique_id=2049824233]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1344,7 +1370,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Player UI Manager/GUI/Quest Panel"]
+[node name="ColorRect" type="ColorRect" parent="Player UI Manager/GUI/Quest Panel" unique_id=126915275]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -1359,7 +1385,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 color = Color(0.09803922, 0.09803922, 0.09803922, 0.6156863)
 
-[node name="Quest Title" type="Label" parent="Player UI Manager/GUI/Quest Panel/ColorRect"]
+[node name="Quest Title" type="Label" parent="Player UI Manager/GUI/Quest Panel/ColorRect" unique_id=879127465]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 5.0
@@ -1369,7 +1395,7 @@ text = "Quest Title"
 label_settings = SubResource("LabelSettings_g4fta")
 horizontal_alignment = 1
 
-[node name="Quest Description" type="Label" parent="Player UI Manager/GUI/Quest Panel/ColorRect"]
+[node name="Quest Description" type="Label" parent="Player UI Manager/GUI/Quest Panel/ColorRect" unique_id=1878409914]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 55.0
@@ -1378,6 +1404,48 @@ offset_bottom = 142.0
 text = "Quest Description"
 label_settings = SubResource("LabelSettings_kgbis")
 autowrap_mode = 3
+
+[node name="InventoryInterface" type="Control" parent="Player UI Manager" unique_id=1228910429 node_paths=PackedStringArray("playerInventory", "externalInventory", "grabbed_slot")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("40_tvp2y")
+playerInventory = NodePath("PlayerInventory")
+externalInventory = NodePath("ExternalInventory")
+grabbed_slot = NodePath("GrabbedSlot")
+
+[node name="PlayerInventory" parent="Player UI Manager/InventoryInterface" unique_id=946183042 instance=ExtResource("39_rn5df")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = -10.0
+grow_vertical = 0
+
+[node name="ExternalInventory" parent="Player UI Manager/InventoryInterface" unique_id=2141713517 instance=ExtResource("39_rn5df")]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1344.0
+offset_top = -677.0
+offset_right = 1384.0
+offset_bottom = -637.0
+grow_vertical = 0
+
+[node name="GrabbedSlot" parent="Player UI Manager/InventoryInterface" unique_id=2050141258 instance=ExtResource("43_bjk7v")]
+visible = false
+modulate = Color(1, 1, 1, 0.49019608)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 
 [connection signal="pressed" from="Player UI Manager/GUI/Pause Display/VBoxContainer/Save Game" to="Player Locomotion Manager" method="_on_save_game_pressed"]
 [connection signal="pressed" from="Player UI Manager/GUI/Pause Display/VBoxContainer/Quit Game" to="Player UI Manager" method="_on_quit_game_pressed"]

@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deio7egoj853m"
-path.s3tc="res://.godot/imported/Bucket_AO.png-e9104f6c54129d9fb776d466fb2ed526.s3tc.ctex"
-path.etc2="res://.godot/imported/Bucket_AO.png-e9104f6c54129d9fb776d466fb2ed526.etc2.ctex"
+uid="uid://dxxk165tporlg"
+path.s3tc="res://.godot/imported/Thumbnail.png-c6d1a497706ded32afcc9ddc0f19d519.s3tc.ctex"
+path.etc2="res://.godot/imported/Thumbnail.png-c6d1a497706ded32afcc9ddc0f19d519.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://ArtResources/Props/Bucket/Textures/Bucket_AO.png"
-dest_files=["res://.godot/imported/Bucket_AO.png-e9104f6c54129d9fb776d466fb2ed526.s3tc.ctex", "res://.godot/imported/Bucket_AO.png-e9104f6c54129d9fb776d466fb2ed526.etc2.ctex"]
+source_file="res://addons/psx_camera/Thumbnail.png"
+dest_files=["res://.godot/imported/Thumbnail.png-c6d1a497706ded32afcc9ddc0f19d519.s3tc.ctex", "res://.godot/imported/Thumbnail.png-c6d1a497706ded32afcc9ddc0f19d519.etc2.ctex"]
 
 [params]
 
@@ -27,8 +27,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=8
-roughness/src_normal="res://ArtResources/Props/Backpack/textures/Rucksack_Bag_Normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://be7g6lb1idbi3"]
+
+[ext_resource type="Script" uid="uid://cuj8r33aebhuq" path="res://Scripts/_World/_Character/Items/Interactable/WRLD_Interactable.gd" id="1_xdss1"]
+[ext_resource type="Script" uid="uid://cmv5xipp53p8q" path="res://CoreSystem/Inventory/Scripts/WRLD_INVENTORY.gd" id="2_c8jr7"]
+[ext_resource type="PackedScene" uid="uid://bge50kw3gpqex" path="res://ArtResources/Props/Backpack/source/Backpack.fbx" id="2_pggyk"]
+[ext_resource type="Script" uid="uid://d0f0r00kho2s8" path="res://CoreSystem/Inventory/Scripts/WRLD_SLOT.gd" id="3_jql3f"]
+[ext_resource type="Resource" uid="uid://cugid8r2pkrru" path="res://CoreSystem/Items/Apple/Data/appleItem.tres" id="4_jql3f"]
+
+[sub_resource type="Resource" id="Resource_t7f8g"]
+script = ExtResource("3_jql3f")
+item = ExtResource("4_jql3f")
+metadata/_custom_type_script = "uid://d0f0r00kho2s8"
+
+[sub_resource type="Resource" id="Resource_suqmy"]
+script = ExtResource("2_c8jr7")
+slots_datas = Array[ExtResource("3_jql3f")]([SubResource("Resource_t7f8g"), null, null, null, null])
+metadata/_custom_type_script = "uid://cmv5xipp53p8q"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c8jr7"]
+size = Vector3(0.5157404, 0.7134838, 0.54193115)
+
+[node name="Backpack" type="RigidBody3D" unique_id=1300612188 groups=["Interactable", "external_inventory"]]
+collision_layer = 33
+collision_mask = 33
+script = ExtResource("1_xdss1")
+isCubeInteractable = true
+interactableType = 3
+inventory_data = SubResource("Resource_suqmy")
+metadata/_custom_type_script = "uid://cuj8r33aebhuq"
+
+[node name="GFX_Backpack" parent="." unique_id=857122930 instance=ExtResource("2_pggyk")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=409004183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00013589859, 0.068873405, 0.10372925)
+shape = SubResource("BoxShape3D_c8jr7")

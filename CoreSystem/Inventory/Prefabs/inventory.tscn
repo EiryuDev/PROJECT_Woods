@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://deyxqomkiy4bv"]
+
+[ext_resource type="Theme" uid="uid://b0g385jjblira" path="res://ArtResources/UI/Fonts & Themes/main_theme.tres" id="1_dgrjc"]
+[ext_resource type="Script" uid="uid://5syrdm35k4bu" path="res://CoreSystem/Inventory/Scripts/inventory.gd" id="1_s7vpw"]
+
+[node name="Inventory" type="PanelContainer" unique_id=946183042 node_paths=PackedStringArray("itemGrid")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_s7vpw")
+itemGrid = NodePath("MarginContainer/ItemGrid")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=631943854]
+layout_mode = 2
+theme = ExtResource("1_dgrjc")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ItemGrid" type="GridContainer" parent="MarginContainer" unique_id=720772173]
+layout_mode = 2
+columns = 6

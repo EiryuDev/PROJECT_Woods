@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deio7egoj853m"
-path.s3tc="res://.godot/imported/Bucket_AO.png-e9104f6c54129d9fb776d466fb2ed526.s3tc.ctex"
-path.etc2="res://.godot/imported/Bucket_AO.png-e9104f6c54129d9fb776d466fb2ed526.etc2.ctex"
+uid="uid://dfomyeufosnso"
+path.s3tc="res://.godot/imported/Rucksack_Bag_Normal.png-15f41f4ccc228ce7c126828e322c7486.s3tc.ctex"
+path.etc2="res://.godot/imported/Rucksack_Bag_Normal.png-15f41f4ccc228ce7c126828e322c7486.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://ArtResources/Props/Bucket/Textures/Bucket_AO.png"
-dest_files=["res://.godot/imported/Bucket_AO.png-e9104f6c54129d9fb776d466fb2ed526.s3tc.ctex", "res://.godot/imported/Bucket_AO.png-e9104f6c54129d9fb776d466fb2ed526.etc2.ctex"]
+source_file="res://ArtResources/Props/Backpack/textures/Rucksack_Bag_Normal.png"
+dest_files=["res://.godot/imported/Rucksack_Bag_Normal.png-15f41f4ccc228ce7c126828e322c7486.s3tc.ctex", "res://.godot/imported/Rucksack_Bag_Normal.png-15f41f4ccc228ce7c126828e322c7486.etc2.ctex"]
 
 [params]
 
@@ -23,11 +23,11 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=8
+roughness/mode=1
 roughness/src_normal="res://ArtResources/Props/Backpack/textures/Rucksack_Bag_Normal.png"
 process/channel_remap/red=0
 process/channel_remap/green=1

@@ -6,7 +6,7 @@ var can_throw := false
 
 func _process(delta):
 	# Only throw if we're holding something and throwing is enabled
-	if Input.is_action_just_pressed("interact") and get_child_count() > 0 and can_throw:
+	if Input.is_action_just_pressed("Grab") and get_child_count() > 0 and can_throw:
 		throw_held_object()
 
 func throw_held_object():

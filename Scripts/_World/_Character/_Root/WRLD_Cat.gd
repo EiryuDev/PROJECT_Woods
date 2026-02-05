@@ -42,5 +42,5 @@ func look_at_player_y_only(delta: float):
 	# Apply angular velocity for smooth rotation
 	angular_velocity = Vector3.UP * angle_diff * rotation_speed
 	
-func action_use():
+func action_use(wants_grab := false):
 	get_tree().change_scene_to_file("res://Scenes/Level/KillScene.tscn")
