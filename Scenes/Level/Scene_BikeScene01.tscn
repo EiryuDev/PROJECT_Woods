@@ -1208,6 +1208,7 @@ visible = false
 
 [node name="Scene Lighting" type="Node3D" parent="." unique_id=205752226]
 script = ExtResource("4_r3eww")
+dayLengthInSecond = 860
 morningColorTop = Color(0.84313726, 1, 0.8117647, 1)
 dayColorTop = Color(0.6527786, 0.9999997, 0.58488584, 1)
 dayColorHorizon = Color(1, 1, 1, 1)
@@ -1219,7 +1220,7 @@ environment = SubResource("Environment_rm08j")
 camera_attributes = SubResource("CameraAttributesPractical_cbmdf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene Lighting" unique_id=346576389]
-transform = Transform3D(-0.8660252, 0.48296294, -0.12940948, 0, -0.258819, -0.96592534, -0.49999997, -0.8365162, 0.22414376, 0, 0, 0)
+transform = Transform3D(-0.8660252, 0.48296294, -0.12940946, 0, -0.258819, -0.9659253, -0.49999997, -0.8365162, 0.22414374, 0, 0, 0)
 layers = 524289
 shadow_enabled = true
 
@@ -2817,11 +2818,11 @@ script = ExtResource("17_wdud5")
 [node name="OiiaioooooiaiFin" parent="Cat" unique_id=1582324311 instance=ExtResource("18_52mlg")]
 unique_name_in_owner = true
 
-[node name="Muchkin1_002" parent="Cat/OiiaioooooiaiFin" index="0"]
+[node name="Muchkin1_002" parent="Cat/OiiaioooooiaiFin" index="0" unique_id=1699218584]
 transform = Transform3D(-0.985125, 0, 0.171839, 0, 1, 0, -0.171839, 0, -0.985125, 0, -0.0280054, 0)
 blend_shapes/body.Muchkin1 = 1.0
 
-[node name="AnimationPlayer" parent="Cat/OiiaioooooiaiFin" index="1"]
+[node name="AnimationPlayer" parent="Cat/OiiaioooooiaiFin" index="1" unique_id=1515435405]
 active = false
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Cat/OiiaioooooiaiFin" unique_id=1863822731]
@@ -2944,10 +2945,6 @@ transform = Transform3D(-2.18557e-10, 0, -0.005, 0, 0.005, 0, 0.005, 0, -2.18557
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5009, 0.0806648, 168.162)
 
 [node name="Player" parent="." unique_id=1059065346 instance=ExtResource("29_vaogl")]
-
-[node name="GrabbedSlot" parent="Player/Player UI Manager/InventoryInterface" parent_id_path=PackedInt32Array(1059065346, 1228910429) index="2" unique_id=2050141258]
-offset_right = 96.0
-offset_bottom = 96.0
 
 [node name="Hay" parent="." unique_id=994812464 instance=ExtResource("30_qfmxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22306, -0.533454, 167.257)

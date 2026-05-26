@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/Cop Model.fbx-4539a2fe28f3cb1df84db0551058690
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,14 +34,19 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "Materiais.003": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://ArtResources/Characters/NPC/Cops/psx-cop/Materials/cop_matGen.material",
 "use_external/path": "uid://ds2ffbxyv1532"
 },
 "cop_01_Body": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://ArtResources/Characters/NPC/Cops/psx-cop/Materials/cop_Body.material",
 "use_external/path": "uid://c72il3jlxalkl"
 }
 }
@@ -47,3 +54,4 @@ _subresources={
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=0
+fbx/naming_version=2
